@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevPodcasts.Web", "DevPodcasts.Web\DevPodcasts.Web.csproj", "{3B8BC306-1DCB-4CFB-83C9-511A6E95F455}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevPodcasts.DataLayer", "DevPodcasts.DataLayer\DevPodcasts.DataLayer.csproj", "{4AE9EE14-21C0-4DB6-AF8A-0AB2D4356470}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevPodcasts.ViewModels", "DevPodcasts.ViewModels\DevPodcasts.ViewModels.csproj", "{FC0B0EFF-2753-4F05-977D-E4F0FBC589F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{3B8BC306-1DCB-4CFB-83C9-511A6E95F455}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B8BC306-1DCB-4CFB-83C9-511A6E95F455}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B8BC306-1DCB-4CFB-83C9-511A6E95F455}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AE9EE14-21C0-4DB6-AF8A-0AB2D4356470}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AE9EE14-21C0-4DB6-AF8A-0AB2D4356470}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AE9EE14-21C0-4DB6-AF8A-0AB2D4356470}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AE9EE14-21C0-4DB6-AF8A-0AB2D4356470}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC0B0EFF-2753-4F05-977D-E4F0FBC589F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC0B0EFF-2753-4F05-977D-E4F0FBC589F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC0B0EFF-2753-4F05-977D-E4F0FBC589F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC0B0EFF-2753-4F05-977D-E4F0FBC589F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
