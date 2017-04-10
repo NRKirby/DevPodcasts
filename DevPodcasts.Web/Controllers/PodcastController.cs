@@ -1,6 +1,7 @@
 ﻿using DevPodcasts.ViewModels.Podcast;
 using DevPodcasts.ServiceLayer;
 using System.Web.Mvc;
+using System.Threading.Tasks;
 
 namespace DevPodcasts.Web.Controllers
 {
@@ -24,9 +25,9 @@ namespace DevPodcasts.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add(AddPodcastViewModel model)
+        public async Task<ActionResult> Add(AddPodcastViewModel model)
         {
-            var result = _service.Add(model);
+            var result = await _service.Add(model);
             return View();
         }
     }

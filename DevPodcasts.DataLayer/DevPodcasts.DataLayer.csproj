@@ -64,6 +64,14 @@
     <Compile Include="Migrations\201704101431536_RemoveSeparateUserEntityAddPropertiesToAspNetUser.Designer.cs">
       <DependentUpon>201704101431536_RemoveSeparateUserEntityAddPropertiesToAspNetUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704101757169_AddApprovedPropertiesToPodcastEntity.cs" />
+    <Compile Include="Migrations\201704101757169_AddApprovedPropertiesToPodcastEntity.Designer.cs">
+      <DependentUpon>201704101757169_AddApprovedPropertiesToPodcastEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704101758575_AddFeedUrlToPodcast.cs" />
+    <Compile Include="Migrations\201704101758575_AddFeedUrlToPodcast.Designer.cs">
+      <DependentUpon>201704101758575_AddFeedUrlToPodcast.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -84,6 +92,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704101431536_RemoveSeparateUserEntityAddPropertiesToAspNetUser.resx">
       <DependentUpon>201704101431536_RemoveSeparateUserEntityAddPropertiesToAspNetUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704101757169_AddApprovedPropertiesToPodcastEntity.resx">
+      <DependentUpon>201704101757169_AddApprovedPropertiesToPodcastEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704101758575_AddFeedUrlToPodcast.resx">
+      <DependentUpon>201704101758575_AddFeedUrlToPodcast.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

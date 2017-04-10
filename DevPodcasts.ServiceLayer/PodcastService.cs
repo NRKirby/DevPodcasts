@@ -1,13 +1,23 @@
-﻿using DevPodcasts.ViewModels.Podcast;
+﻿using DevPodcasts.Dtos;
+using DevPodcasts.Repositories;
+using DevPodcasts.ViewModels.Podcast;
 using System;
 using System.Xml;
 using System.ServiceModel.Syndication;
+using System.Threading.Tasks;
 
 namespace DevPodcasts.ServiceLayer
 {
     public class PodcastService
     {
-        public AddPodcastViewModel Add(AddPodcastViewModel model)
+        private PodcastRepository _repository;
+
+        public PodcastService()
+        {
+            _repository = new PodcastRepository();
+        }
+
+        public async Task<AddPodcastViewModel> Add(AddPodcastViewModel model)
         {
             if (!IsValidUrl(model.RssFeedUrl))
             {
@@ -21,7 +31,7 @@ namespace DevPodcasts.ServiceLayer
                 var reader = XmlReader.Create(model.RssFeedUrl);
                 feed = SyndicationFeed.Load(reader);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 model.Result = SuccessResult.Error;
             }
@@ -34,8 +44,14 @@ namespace DevPodcasts.ServiceLayer
 
             if (feed != null)
             {
-                // Add to podcast review queue
+                if (_repository.PodcastExists(feed.Title.Text))
+                {
+                    model.Result = SuccessResult.AlreadyExists;
+                    return model;
+                }
+
                 model.Result = SuccessResult.Success;
+                await AddPodcast(feed, model.RssFeedUrl);
             }
 
             return model;
@@ -50,6 +66,18 @@ namespace DevPodcasts.ServiceLayer
         private bool IsEnglishLanguage(SyndicationFeed feed)
         {
             return feed.Language.ToLower().Contains("en");
+        }
+
+        private async Task AddPodcast(SyndicationFeed feed, string rssFeedUrl)
+        {
+            var dto = new PodcastDto
+            {
+                Title = feed.Title?.Text,
+                Description = feed.Description?.Text,
+                ImageUrl = feed.ImageUrl?.AbsoluteUri,
+                FeedUrl = rssFeedUrl
+            };
+            await _repository.Add(dto);
         }
     }
 }

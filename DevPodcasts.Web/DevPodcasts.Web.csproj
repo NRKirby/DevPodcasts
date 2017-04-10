@@ -247,6 +247,10 @@
       <Project>{4ae9ee14-21c0-4db6-af8a-0ab2d4356470}</Project>
       <Name>DevPodcasts.DataLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DevPodcasts.Dtos\DevPodcasts.Dtos.csproj">
+      <Project>{4ecc6970-f931-4d33-b125-c58954d93917}</Project>
+      <Name>DevPodcasts.Dtos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DevPodcasts.ServiceLayer\DevPodcasts.ServiceLayer.csproj">
       <Project>{3a347680-db28-4ab0-99cf-7636eeac7515}</Project>
       <Name>DevPodcasts.ServiceLayer</Name>

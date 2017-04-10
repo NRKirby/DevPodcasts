@@ -11,6 +11,12 @@ namespace DevPodcasts.DataLayer.Models
 
         public string ImageUrl { get; set; }
 
+        public string FeedUrl { get; set; }
+
         public DateTime? DateCreated { get; set; }
+
+        public bool? IsApproved { get; set; }
+
+        public DateTime? DateApproved { get; set; }
     }
 }

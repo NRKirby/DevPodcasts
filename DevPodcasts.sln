@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevPodcasts.ViewModels", "D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevPodcasts.ServiceLayer", "DevPodcasts.ServiceLayer\DevPodcasts.ServiceLayer.csproj", "{3A347680-DB28-4AB0-99CF-7636EEAC7515}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevPodcasts.Repositories", "DevPodcasts.Repositories\DevPodcasts.Repositories.csproj", "{D4A10B8A-464F-4B49-99A5-33E6EE757852}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevPodcasts.Dtos", "DevPodcasts.Dtos\DevPodcasts.Dtos.csproj", "{4ECC6970-F931-4D33-B125-C58954D93917}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{3A347680-DB28-4AB0-99CF-7636EEAC7515}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A347680-DB28-4AB0-99CF-7636EEAC7515}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A347680-DB28-4AB0-99CF-7636EEAC7515}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4A10B8A-464F-4B49-99A5-33E6EE757852}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4A10B8A-464F-4B49-99A5-33E6EE757852}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4A10B8A-464F-4B49-99A5-33E6EE757852}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4A10B8A-464F-4B49-99A5-33E6EE757852}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4ECC6970-F931-4D33-B125-C58954D93917}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4ECC6970-F931-4D33-B125-C58954D93917}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4ECC6970-F931-4D33-B125-C58954D93917}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4ECC6970-F931-4D33-B125-C58954D93917}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
