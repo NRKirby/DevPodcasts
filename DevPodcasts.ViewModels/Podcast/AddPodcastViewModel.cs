@@ -3,5 +3,7 @@
     public class AddPodcastViewModel
     {
         public string RssFeedUrl { get; set; }
+
+        public SuccessResult Result { get; set; }
     }
 }

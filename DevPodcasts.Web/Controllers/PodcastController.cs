@@ -26,7 +26,7 @@ namespace DevPodcasts.Web.Controllers
         [HttpPost]
         public ActionResult Add(AddPodcastViewModel model)
         {
-            var result = _service.Add(model.RssFeedUrl);
+            var result = _service.Add(model);
             return View();
         }
     }

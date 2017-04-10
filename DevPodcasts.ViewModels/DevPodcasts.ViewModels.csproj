@@ -97,6 +97,7 @@
     <Compile Include="Manage\SetPasswordViewModel.cs" />
     <Compile Include="Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="Podcast\AddPodcastViewModel.cs" />
+    <Compile Include="Podcast\SuccessResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

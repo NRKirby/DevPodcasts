@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevPodcasts.ViewModels.Podcast;
+using System;
 using System.Xml;
 using System.ServiceModel.Syndication;
 
@@ -6,26 +7,43 @@ namespace DevPodcasts.ServiceLayer
 {
     public class PodcastService
     {
-        public bool Add(string url)
+        public AddPodcastViewModel Add(AddPodcastViewModel model)
         {
-            SyndicationFeed feed;
+            if (!IsValidUrl(model.RssFeedUrl))
+            {
+                model.Result = SuccessResult.InvalidUrl;
+                return model;
+            }
+
+            SyndicationFeed feed = null;
             try
             {
-                var reader = XmlReader.Create(url);
+                var reader = XmlReader.Create(model.RssFeedUrl);
                 feed = SyndicationFeed.Load(reader);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return false;
+                model.Result = SuccessResult.Error;
             }
 
-            if (feed != null)
+            if (feed != null && IsEnglishLanguage(feed))
             {
                 // Add to podcast review queue
-                return true;
+                model.Result = SuccessResult.Success;
             }
 
-            return false;
+            return model;
+        }
+
+        private static bool IsValidUrl(string source)
+        {
+            Uri uriResult;
+            return Uri.TryCreate(source, UriKind.Absolute, out uriResult) && uriResult.Scheme == Uri.UriSchemeHttp;
+        }
+
+        private bool IsEnglishLanguage(SyndicationFeed feed)
+        {
+            return feed.Language.ToLower().Contains("en");
         }
     }
 }
