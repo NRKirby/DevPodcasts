@@ -19,6 +19,7 @@ namespace DevPodcasts.Web.Controllers
 
         public AccountController()
         {
+            _context = new ApplicationDbContext();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -145,11 +146,13 @@ namespace DevPodcasts.Web.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
-                    user.FirstName = model.FirstName;
-                    user.LastName = model.LastName;
+                    var newUser = _context.Users.Single(i => i.Email == model.Email);
 
-                    await _context.SaveChangesAsync();
+                    newUser.FirstName = model.FirstName;
+                    newUser.LastName = model.LastName;
 
+                    await _context.SaveChangesAsync(); 
+                    
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
