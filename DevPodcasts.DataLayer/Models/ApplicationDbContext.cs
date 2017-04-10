@@ -27,7 +27,5 @@ namespace DevPodcasts.DataLayer.Models
         public DbSet<Podcast> Podcasts { get; set; }
 
         public DbSet<Episode> Episodes { get; set; }
-
-        public DbSet<User> User { get; set; }
     }
 }

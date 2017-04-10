@@ -60,12 +60,15 @@
     <Compile Include="Migrations\201704101414580_InitialAdd.Designer.cs">
       <DependentUpon>201704101414580_InitialAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704101431536_RemoveSeparateUserEntityAddPropertiesToAspNetUser.cs" />
+    <Compile Include="Migrations\201704101431536_RemoveSeparateUserEntityAddPropertiesToAspNetUser.Designer.cs">
+      <DependentUpon>201704101431536_RemoveSeparateUserEntityAddPropertiesToAspNetUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Episode.cs" />
     <Compile Include="Models\Podcast.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -78,6 +81,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704101414580_InitialAdd.resx">
       <DependentUpon>201704101414580_InitialAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704101431536_RemoveSeparateUserEntityAddPropertiesToAspNetUser.resx">
+      <DependentUpon>201704101431536_RemoveSeparateUserEntityAddPropertiesToAspNetUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
