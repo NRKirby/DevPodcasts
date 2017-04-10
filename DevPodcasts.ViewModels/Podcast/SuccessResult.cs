@@ -6,7 +6,6 @@
         Success = 1,
         InvalidUrl = 2,
         Error = 3,
-        NotEnglish = 4,
-        AlreadyExists = 5
+        AlreadyExists = 4
     }
 }

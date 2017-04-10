@@ -19,11 +19,11 @@ namespace DevPodcasts.ServiceLayer
 
         public async Task<AddPodcastViewModel> Add(AddPodcastViewModel model)
         {
-            if (!IsValidUrl(model.RssFeedUrl))
-            {
-                model.Result = SuccessResult.InvalidUrl;
-                return model;
-            }
+            //if (!IsValidUrl(model.RssFeedUrl)) // TODO NK - returning false for https://fivejs.codeschool.com/feed.rss
+            //{
+            //    model.Result = SuccessResult.InvalidUrl;
+            //    return model;
+            //}
 
             SyndicationFeed feed = null;
             try
@@ -34,12 +34,6 @@ namespace DevPodcasts.ServiceLayer
             catch (Exception)
             {
                 model.Result = SuccessResult.Error;
-            }
-
-            if (!IsEnglishLanguage(feed))
-            {
-                model.Result = SuccessResult.NotEnglish;
-                return model;
             }
 
             if (feed != null)
@@ -61,11 +55,6 @@ namespace DevPodcasts.ServiceLayer
         {
             Uri uriResult;
             return Uri.TryCreate(source, UriKind.Absolute, out uriResult) && uriResult.Scheme == Uri.UriSchemeHttp;
-        }
-
-        private bool IsEnglishLanguage(SyndicationFeed feed)
-        {
-            return feed.Language.ToLower().Contains("en");
         }
 
         private async Task AddPodcast(SyndicationFeed feed, string rssFeedUrl)
