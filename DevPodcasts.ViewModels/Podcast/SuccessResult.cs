@@ -5,6 +5,7 @@
         NotSet = 0,
         Success = 1,
         InvalidUrl = 2,
-        Error = 3
+        Error = 3,
+        NotEnglish = 4
     }
 }

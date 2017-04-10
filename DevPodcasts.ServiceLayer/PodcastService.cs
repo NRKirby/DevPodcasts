@@ -26,7 +26,13 @@ namespace DevPodcasts.ServiceLayer
                 model.Result = SuccessResult.Error;
             }
 
-            if (feed != null && IsEnglishLanguage(feed))
+            if (!IsEnglishLanguage(feed))
+            {
+                model.Result = SuccessResult.NotEnglish;
+                return model;
+            }
+
+            if (feed != null)
             {
                 // Add to podcast review queue
                 model.Result = SuccessResult.Success;
