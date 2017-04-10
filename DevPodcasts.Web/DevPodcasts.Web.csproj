@@ -155,6 +155,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PodcastController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -230,6 +231,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Podcast\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -244,6 +246,10 @@
     <ProjectReference Include="..\DevPodcasts.DataLayer\DevPodcasts.DataLayer.csproj">
       <Project>{4ae9ee14-21c0-4db6-af8a-0ab2d4356470}</Project>
       <Name>DevPodcasts.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DevPodcasts.ServiceLayer\DevPodcasts.ServiceLayer.csproj">
+      <Project>{3a347680-db28-4ab0-99cf-7636eeac7515}</Project>
+      <Name>DevPodcasts.ServiceLayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\DevPodcasts.ViewModels\DevPodcasts.ViewModels.csproj">
       <Project>{fc0b0eff-2753-4f05-977d-e4f0fbc589f9}</Project>
