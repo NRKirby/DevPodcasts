@@ -52,14 +52,33 @@
     <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201704101334372_InitialCreate.cs" />
+    <Compile Include="Migrations\201704101334372_InitialCreate.Designer.cs">
+      <DependentUpon>201704101334372_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704101414580_InitialAdd.cs" />
+    <Compile Include="Migrations\201704101414580_InitialAdd.Designer.cs">
+      <DependentUpon>201704101414580_InitialAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\Episode.cs" />
+    <Compile Include="Models\Podcast.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201704101334372_InitialCreate.resx">
+      <DependentUpon>201704101334372_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704101414580_InitialAdd.resx">
+      <DependentUpon>201704101414580_InitialAdd.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
