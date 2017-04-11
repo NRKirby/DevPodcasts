@@ -1,8 +1,8 @@
 ﻿using DevPodcasts.DataLayer.Models;
 using DevPodcasts.Dtos;
+using DevPodcasts.ViewModels.Admin;
 using System;
 using System.Collections.Generic;
-using DevPodcasts.ViewModels.Admin;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -41,7 +41,7 @@ namespace DevPodcasts.Repositories
         {
             return _context.Podcasts
                 .Where(i => i.IsApproved == null)
-                .OrderByDescending(i => i.DateCreated)
+                .OrderBy(i => i.DateCreated)
                 .Select(i => new PodcastViewModel
             {
                 Id = i.Id,
