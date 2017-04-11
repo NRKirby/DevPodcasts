@@ -2,6 +2,7 @@
 using DevPodcasts.Repositories;
 using DevPodcasts.ViewModels.Podcast;
 using System;
+using System.Linq;
 using System.Xml;
 using System.ServiceModel.Syndication;
 using System.Threading.Tasks;
@@ -31,7 +32,7 @@ namespace DevPodcasts.ServiceLayer
                 var reader = XmlReader.Create(model.RssFeedUrl);
                 feed = SyndicationFeed.Load(reader);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 model.Result = SuccessResult.Error;
             }
@@ -59,13 +60,14 @@ namespace DevPodcasts.ServiceLayer
 
         private async Task AddPodcast(SyndicationFeed feed, string rssFeedUrl)
         {
+            var siteUrl = feed.Links.FirstOrDefault(i => i.RelationshipType == "alternate")?.Uri.ToString();
             var dto = new PodcastDto
             {
                 Title = feed.Title?.Text,
                 Description = feed.Description?.Text,
                 ImageUrl = feed.ImageUrl?.AbsoluteUri,
                 FeedUrl = rssFeedUrl,
-                SiteUrl = feed.Links[1].Uri.ToString()
+                SiteUrl = siteUrl
             };
             await _repository.Add(dto);
         }
