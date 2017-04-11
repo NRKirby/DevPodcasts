@@ -64,7 +64,8 @@ namespace DevPodcasts.ServiceLayer
                 Title = feed.Title?.Text,
                 Description = feed.Description?.Text,
                 ImageUrl = feed.ImageUrl?.AbsoluteUri,
-                FeedUrl = rssFeedUrl
+                FeedUrl = rssFeedUrl,
+                SiteUrl = feed.Links[1].Uri.ToString()
             };
             await _repository.Add(dto);
         }

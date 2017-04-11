@@ -9,5 +9,7 @@
         public string ImageUrl { get; set; }
 
         public string FeedUrl { get; set; }
+
+        public string SiteUrl { get; set; }
     }
 }

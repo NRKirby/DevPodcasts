@@ -8,7 +8,7 @@ namespace DevPodcasts.Repositories
 {
     public class PodcastRepository
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
         public PodcastRepository()
         {
@@ -23,6 +23,7 @@ namespace DevPodcasts.Repositories
                 Description = dto.Description,
                 ImageUrl = dto.ImageUrl,
                 FeedUrl = dto.FeedUrl,
+                SiteUrl = dto.SiteUrl,
                 DateCreated = DateTime.Now
             };
             _context.Podcasts.Add(podcast);

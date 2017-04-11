@@ -26,6 +26,8 @@ namespace DevPodcasts.DataLayer.Models
 
         public DateTime? DateApproved { get; set; }
 
+        public string SiteUrl { get; set; }
+
         public ICollection<Episode> Episodes { get; set; }
     }
 }

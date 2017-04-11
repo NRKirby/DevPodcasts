@@ -7,7 +7,7 @@ namespace DevPodcasts.Web.Controllers
 {
     public class PodcastController : Controller
     {
-        private PodcastService _service;
+        private readonly PodcastService _service;
 
         public PodcastController()
         {
@@ -19,12 +19,14 @@ namespace DevPodcasts.Web.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult Add()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult> Add(AddPodcastViewModel model)
         {
             var result = await _service.Add(model);
