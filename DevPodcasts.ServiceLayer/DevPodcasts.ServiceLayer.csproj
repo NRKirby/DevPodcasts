@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminService.cs" />
     <Compile Include="PodcastService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

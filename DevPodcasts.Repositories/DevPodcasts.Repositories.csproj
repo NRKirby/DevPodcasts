@@ -65,6 +65,10 @@
       <Project>{4ecc6970-f931-4d33-b125-c58954d93917}</Project>
       <Name>DevPodcasts.Dtos</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DevPodcasts.ViewModels\DevPodcasts.ViewModels.csproj">
+      <Project>{fc0b0eff-2753-4f05-977d-e4f0fbc589f9}</Project>
+      <Name>DevPodcasts.ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -20,7 +20,7 @@ namespace DevPodcasts.DataLayer.Models
 
         public string FeedUrl { get; set; }
 
-        public DateTime? DateCreated { get; set; }
+        public DateTime DateCreated { get; set; }
 
         public bool? IsApproved { get; set; }
 
