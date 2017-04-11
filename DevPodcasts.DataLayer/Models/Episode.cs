@@ -15,5 +15,9 @@ namespace DevPodcasts.DataLayer.Models
         public DateTime? DatePublished { get; set; }
 
         public DateTime DateCreated { get; set; }
+
+        public int PodcastId { get; set; }
+
+        public virtual Podcast Podcast { get; set; }
     }
 }

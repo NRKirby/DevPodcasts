@@ -1,8 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace DevPodcasts.DataLayer.Models
 {
     public class Podcast
     {
+        public Podcast()
+        {
+            Episodes = new List<Episode>();
+        }
+
         public int Id { get; set; }
 
         public string Title { get; set; }
@@ -18,5 +25,7 @@ namespace DevPodcasts.DataLayer.Models
         public bool? IsApproved { get; set; }
 
         public DateTime? DateApproved { get; set; }
+
+        public ICollection<Episode> Episodes { get; set; }
     }
 }
