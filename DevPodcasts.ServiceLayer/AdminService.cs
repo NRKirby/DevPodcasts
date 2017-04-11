@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using DevPodcasts.Repositories;
+﻿using DevPodcasts.Repositories;
 using DevPodcasts.ViewModels.Admin;
 
 namespace DevPodcasts.ServiceLayer
@@ -20,6 +19,11 @@ namespace DevPodcasts.ServiceLayer
                 UnapprovedPodcasts = _repository.GetUnapprovedPodcasts()
             };
             return viewModel;
+        }
+
+        public void SaveApprovals(AdminIndexViewModel model)
+        {
+            
         }
     }
 }

@@ -1,9 +1,38 @@
-﻿
+﻿@model DevPodcasts.ViewModels.Admin.AdminIndexViewModel
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Admin</h2>
+@using (Html.BeginForm("Index", "Admin", FormMethod.Post))
+{
+    <button type="submit" class="btn btn-primary pull-right">Save</button>
+    <table class="table table-striped">
+        <thead> 
+        <tr>
+            <th>Title</th>
+            <th>Site Url</th>
+            <th>Date added</th>
+            <th>Approval</th>
+        </tr> 
+        </thead> 
+        <tbody>
+        @if (Model != null && Model.UnapprovedPodcasts != null)
+        {
+            foreach (var item in Model.UnapprovedPodcasts)
+            {
+                <tr> 
+                    <td>@item.Title</td> 
+                    <td>@item.SiteUrl</td> 
+                    <td>@item.DateAdded</td> 
+                    <td>@Html.EnumDropDownListFor(m => item.ApprovalState, new { @class = "form-control" })</td>
+                </tr>
+            }
+        }
+        </tbody>
+    </table>
+}
+
 
 
 
