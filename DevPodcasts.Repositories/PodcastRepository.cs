@@ -58,5 +58,37 @@ namespace DevPodcasts.Repositories
             podcast.IsApproved = false;
             await _context.SaveChangesAsync();
         }
+
+        public PodcastDto GetPodcast(int podcastId)
+        {
+            var podcast = _context.Podcasts.Single(i => i.Id == podcastId);
+            return new PodcastDto
+            {
+                Id = podcast.Id,
+                FeedUrl = podcast.FeedUrl
+            };
+        }
+
+        public void AddEpisodesToPodcast(PodcastDto dto)
+        {
+            var podcast = _context.Podcasts.Single(i => i.Id == dto.Id);
+
+            foreach (var episodeDto in dto.Episodes)
+            {
+                var episode = new Episode
+                {
+                    Title = episodeDto.Title,
+                    Summary = episodeDto.Summary,
+                    AudioUrl = episodeDto.AudioUrl,
+                    EpisodeUrl = episodeDto.EpisodeUrl,
+                    DatePublished = episodeDto.DatePublished,
+                    DateCreated = episodeDto.DateCreated
+                };
+                podcast.Episodes.Add(episode);
+            }
+            podcast.IsApproved = true;
+            podcast.DateApproved = DateTime.Now;
+            _context.SaveChanges();
+        }
     }
 }

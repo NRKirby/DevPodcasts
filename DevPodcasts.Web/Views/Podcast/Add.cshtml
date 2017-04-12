@@ -1,9 +1,9 @@
 ﻿@model DevPodcasts.ViewModels.Podcast.AddPodcastViewModel
 @{
-    ViewBag.Title = "Add";
+    ViewBag.Title = "AddPodcastForReview";
 }
 
-<h2>Add Podcast</h2>
+<h2>AddPodcastForReview Podcast</h2>
 
 
 @using (Html.BeginForm("Add", "Podcast", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
@@ -21,7 +21,7 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Add" />
+            <input type="submit" class="btn btn-default" value="AddPodcastForReview" />
         </div>
     </div>
 }

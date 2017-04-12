@@ -2,6 +2,7 @@
 using DevPodcasts.Repositories;
 using DevPodcasts.ViewModels.Podcast;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using System.ServiceModel.Syndication;
@@ -18,7 +19,7 @@ namespace DevPodcasts.ServiceLayer
             _repository = new PodcastRepository();
         }
 
-        public async Task<AddPodcastViewModel> Add(AddPodcastViewModel model)
+        public async Task<AddPodcastViewModel> AddPodcastForReview(AddPodcastViewModel model)
         {
             //if (!IsValidUrl(model.RssFeedUrl)) // TODO NK - returning false for https://fivejs.codeschool.com/feed.rss
             //{
@@ -46,7 +47,7 @@ namespace DevPodcasts.ServiceLayer
                 }
 
                 model.Result = SuccessResult.Success;
-                await AddPodcast(feed, model.RssFeedUrl);
+                await AddPodcastForReview(feed, model.RssFeedUrl);
             }
 
             return model;
@@ -58,7 +59,7 @@ namespace DevPodcasts.ServiceLayer
             return Uri.TryCreate(source, UriKind.Absolute, out uriResult) && uriResult.Scheme == Uri.UriSchemeHttp;
         }
 
-        private async Task AddPodcast(SyndicationFeed feed, string rssFeedUrl)
+        private async Task AddPodcastForReview(SyndicationFeed feed, string rssFeedUrl)
         {
             var siteUrl = feed.Links.FirstOrDefault(i => i.RelationshipType == "alternate")?.Uri.ToString();
             var dto = new PodcastDto
@@ -70,6 +71,37 @@ namespace DevPodcasts.ServiceLayer
                 SiteUrl = siteUrl
             };
             await _repository.Add(dto);
+        }
+
+        public void AddPodcastEpisodes(int podcastId)
+        {
+            var dto = _repository.GetPodcast(podcastId);
+
+            var reader = XmlReader.Create(dto.FeedUrl);
+            var feed = SyndicationFeed.Load(reader);
+
+            var episodes = new List<EpisodeDto>();
+
+            foreach (var item in feed.Items)
+            {
+                var episodeUrl = item.Links.FirstOrDefault(i => i.RelationshipType == "alternate")?.Uri.ToString();
+                var audioUrl = item.Links.FirstOrDefault(i => i.RelationshipType == "enclosure")?.Uri.ToString();
+
+                var episode = new EpisodeDto
+                {
+                    Title = item.Title?.Text,
+                    Summary = item.Summary?.Text,
+                    EpisodeUrl = episodeUrl,
+                    AudioUrl = audioUrl,
+                    DatePublished = item.PublishDate.DateTime,
+                    DateCreated = DateTime.Now
+                };
+                episodes.Add(episode);
+            }
+
+            dto.Episodes = episodes;
+
+            _repository.AddEpisodesToPodcast(dto);
         }
     }
 }

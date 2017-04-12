@@ -7,10 +7,12 @@ namespace DevPodcasts.ServiceLayer
     public class AdminService
     {
         private readonly PodcastRepository _repository;
+        private readonly PodcastService _podcastService;
 
         public AdminService()
         {
             _repository = new PodcastRepository();
+            _podcastService = new PodcastService();
         }
 
         public AdminIndexViewModel GetIndexViewModel()
@@ -24,7 +26,7 @@ namespace DevPodcasts.ServiceLayer
 
         public void Approve(int podcastId)
         {
-            
+            _podcastService.AddPodcastEpisodes(podcastId);
         }
 
         public async Task Reject(int podcastId)

@@ -29,7 +29,7 @@ namespace DevPodcasts.Web.Controllers
         [Authorize]
         public async Task<ActionResult> Add(AddPodcastViewModel model)
         {
-            var result = await _service.Add(model);
+            var result = await _service.AddPodcastForReview(model);
             return View();
         }
     }

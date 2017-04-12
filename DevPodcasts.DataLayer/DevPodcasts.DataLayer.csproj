@@ -84,6 +84,10 @@
     <Compile Include="Migrations\201704111258181_MakeDateCreatedNotNull.Designer.cs">
       <DependentUpon>201704111258181_MakeDateCreatedNotNull.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704121307107_AddEpisodeUrl.cs" />
+    <Compile Include="Migrations\201704121307107_AddEpisodeUrl.Designer.cs">
+      <DependentUpon>201704121307107_AddEpisodeUrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -119,6 +123,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704111258181_MakeDateCreatedNotNull.resx">
       <DependentUpon>201704111258181_MakeDateCreatedNotNull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704121307107_AddEpisodeUrl.resx">
+      <DependentUpon>201704121307107_AddEpisodeUrl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

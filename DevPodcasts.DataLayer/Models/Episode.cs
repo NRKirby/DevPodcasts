@@ -12,6 +12,8 @@ namespace DevPodcasts.DataLayer.Models
 
         public string AudioUrl { get; set; }
 
+        public string EpisodeUrl { get; set; }
+
         public DateTime? DatePublished { get; set; }
 
         public DateTime DateCreated { get; set; }
