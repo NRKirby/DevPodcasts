@@ -61,11 +61,15 @@ namespace DevPodcasts.Repositories
 
         public PodcastDto GetPodcast(int podcastId)
         {
-            var podcast = _context.Podcasts.Single(i => i.Id == podcastId);
+            var obj = _context.Podcasts
+                .Where(i => i.Id == podcastId)
+                .Select(i => new {i.Id, i.FeedUrl})
+                .Single();
+
             return new PodcastDto
             {
-                Id = podcast.Id,
-                FeedUrl = podcast.FeedUrl
+                Id = obj.Id,
+                FeedUrl = obj.FeedUrl
             };
         }
 
