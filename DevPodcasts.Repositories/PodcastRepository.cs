@@ -51,5 +51,12 @@ namespace DevPodcasts.Repositories
                 DateAdded = i.DateCreated,
             });
         }
+
+        public async Task Reject(int podcastId)
+        {
+            var podcast = _context.Podcasts.Single(i => i.Id == podcastId);
+            podcast.IsApproved = false;
+            await _context.SaveChangesAsync();
+        }
     }
 }

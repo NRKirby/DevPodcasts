@@ -1,4 +1,5 @@
-﻿using DevPodcasts.ServiceLayer;
+﻿using System.Threading.Tasks;
+using DevPodcasts.ServiceLayer;
 using DevPodcasts.ViewModels.Admin;
 using System.Web.Mvc;
 
@@ -26,9 +27,9 @@ namespace DevPodcasts.Web.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Reject(int podcastId)
+        public async Task<ActionResult> Reject(int podcastId)
         {
-            _service.Reject(podcastId);
+            await _service.Reject(podcastId);
             return RedirectToAction("Index");
         }
     }

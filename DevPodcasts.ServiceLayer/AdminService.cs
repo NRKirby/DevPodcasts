@@ -1,4 +1,5 @@
-﻿using DevPodcasts.Repositories;
+﻿using System.Threading.Tasks;
+using DevPodcasts.Repositories;
 using DevPodcasts.ViewModels.Admin;
 
 namespace DevPodcasts.ServiceLayer
@@ -26,9 +27,9 @@ namespace DevPodcasts.ServiceLayer
             
         }
 
-        public void Reject(int podcastId)
+        public async Task Reject(int podcastId)
         {
-            
+            await _repository.Reject(podcastId);
         }
     }
 }
