@@ -20,12 +20,16 @@ namespace DevPodcasts.Web.Controllers
             return View(viewModel);
         }
 
-        [HttpPost]
-        public ActionResult Index(AdminIndexViewModel model)
+        public ActionResult Approve(int podcastId)
         {
-            _service.SaveApprovals(model);
+            _service.Approve(podcastId);
             return RedirectToAction("Index");
         }
 
+        public ActionResult Reject(int podcastId)
+        {
+            _service.Reject(podcastId);
+            return RedirectToAction("Index");
+        }
     }
 }

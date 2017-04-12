@@ -89,7 +89,6 @@
     <Compile Include="Account\SendCodeViewModel.cs" />
     <Compile Include="Account\VerifyCodeViewModel.cs" />
     <Compile Include="Admin\AdminIndexViewModel.cs" />
-    <Compile Include="Admin\ApprovalState.cs" />
     <Compile Include="Admin\PodcastViewModel.cs" />
     <Compile Include="Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="Manage\ChangePasswordViewModel.cs" />

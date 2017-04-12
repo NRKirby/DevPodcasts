@@ -21,7 +21,12 @@ namespace DevPodcasts.ServiceLayer
             return viewModel;
         }
 
-        public void SaveApprovals(AdminIndexViewModel model)
+        public void Approve(int podcastId)
+        {
+            
+        }
+
+        public void Reject(int podcastId)
         {
             
         }

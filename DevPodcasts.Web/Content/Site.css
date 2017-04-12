@@ -22,3 +22,9 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/* font awesome styling */
+
+.fa-check {
+    color: chartreuse
+}

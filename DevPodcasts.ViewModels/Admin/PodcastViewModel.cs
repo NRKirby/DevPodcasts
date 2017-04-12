@@ -13,7 +13,5 @@ namespace DevPodcasts.ViewModels.Admin
         public string SiteUrl { get; set; }
 
         public DateTime DateAdded { get; set; }
-
-        public ApprovalState ApprovalState { get; set; }
     }
 }

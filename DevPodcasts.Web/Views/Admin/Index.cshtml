@@ -25,7 +25,10 @@
                     <td>@item.Title</td> 
                     <td>@item.SiteUrl</td> 
                     <td>@item.DateAdded</td> 
-                    <td>@Html.EnumDropDownListFor(m => item.ApprovalState, new { @class = "form-control" })</td>
+                    <td>
+                        <a href="@Url.Action("Approve", "Admin", new { podcastId = @item.Id })"><i class="fa fa-check fa-lg" aria-hidden="true" style="color: #228B22;" title="Approve"></i></a>
+                        <a href="@Url.Action("Reject", "Admin", new { podcastId = @item.Id })"><i class="fa fa-times fa-lg" aria-hidden="true" style="color: red; position: relative; left: 15px" title="Reject"></i></a>
+                    </td>
                 </tr>
             }
         }

@@ -49,7 +49,6 @@ namespace DevPodcasts.Repositories
                 Title = i.Title,
                 SiteUrl = i.SiteUrl,
                 DateAdded = i.DateCreated,
-                ApprovalState = ApprovalState.Unapproved
             });
         }
     }
