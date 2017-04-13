@@ -111,6 +111,9 @@ namespace DevPodcasts.ServiceLayer
 
             var episodes = new List<EpisodeDto>();
 
+            if (feed == null)
+                return;
+
             foreach (var item in feed.Items)
             {
                 var episodeUrl = GetEpisodeUrl(item);
