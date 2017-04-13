@@ -113,8 +113,8 @@ namespace DevPodcasts.ServiceLayer
 
             foreach (var item in feed.Items)
             {
-                var episodeUrl = item.Links.FirstOrDefault(i => i.RelationshipType == "alternate")?.Uri.ToString();
-                var audioUrl = item.Links.FirstOrDefault(i => i.RelationshipType == "enclosure")?.Uri.ToString();
+                var episodeUrl = GetEpisodeUrl(item);
+                var audioUrl = GetAudioUrl(item);
 
                 var episode = new EpisodeDto
                 {
@@ -132,7 +132,11 @@ namespace DevPodcasts.ServiceLayer
 
             _podcastRepository.AddEpisodesToPodcast(dto);
         }
-    
+
+        private static string GetEpisodeUrl(SyndicationItem item)
+        {
+            return item.Links.FirstOrDefault(i => i.RelationshipType == "alternate")?.Uri.ToString();
+        }
 
         private string GetSiteUrl(SyndicationFeed feed)
         {
