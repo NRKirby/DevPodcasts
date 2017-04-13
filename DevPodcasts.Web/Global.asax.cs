@@ -20,7 +20,7 @@ namespace DevPodcasts.Web
         public void UpdaterTest()
         {
             var updater = new EpisodeUpdater();
-            updater.Update();
+            //updater.Update();
         }
     }
 }

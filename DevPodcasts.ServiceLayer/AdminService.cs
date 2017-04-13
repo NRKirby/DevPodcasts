@@ -1,6 +1,6 @@
-﻿using System.Threading.Tasks;
-using DevPodcasts.Repositories;
+﻿using DevPodcasts.Repositories;
 using DevPodcasts.ViewModels.Admin;
+using System.Threading.Tasks;
 
 namespace DevPodcasts.ServiceLayer
 {
