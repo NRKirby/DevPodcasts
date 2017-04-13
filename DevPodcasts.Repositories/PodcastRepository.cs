@@ -94,5 +94,15 @@ namespace DevPodcasts.Repositories
             podcast.DateApproved = DateTime.Now;
             _context.SaveChanges();
         }
+
+        public IEnumerable<PodcastDto> GetDistinctPodcasts()
+        {
+            return _context.Podcasts.Distinct()
+                .Select(i => new PodcastDto
+                {
+                    Id = i.Id,
+                    FeedUrl = i.FeedUrl
+                });
+        }
     }
 }
