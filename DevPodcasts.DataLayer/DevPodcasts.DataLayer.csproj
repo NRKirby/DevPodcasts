@@ -88,6 +88,10 @@
     <Compile Include="Migrations\201704121307107_AddEpisodeUrl.Designer.cs">
       <DependentUpon>201704121307107_AddEpisodeUrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704131001260_AddEpisodeIdToEpisode.cs" />
+    <Compile Include="Migrations\201704131001260_AddEpisodeIdToEpisode.Designer.cs">
+      <DependentUpon>201704131001260_AddEpisodeIdToEpisode.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -126,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704121307107_AddEpisodeUrl.resx">
       <DependentUpon>201704121307107_AddEpisodeUrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704131001260_AddEpisodeIdToEpisode.resx">
+      <DependentUpon>201704131001260_AddEpisodeIdToEpisode.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

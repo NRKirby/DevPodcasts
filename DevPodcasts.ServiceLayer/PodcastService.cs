@@ -4,15 +4,15 @@ using DevPodcasts.ViewModels.Podcast;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Xml;
 using System.ServiceModel.Syndication;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace DevPodcasts.ServiceLayer
 {
     public class PodcastService
     {
-        private PodcastRepository _repository;
+        private readonly PodcastRepository _repository;
 
         public PodcastService()
         {

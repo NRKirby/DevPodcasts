@@ -12,6 +12,10 @@ namespace DevPodcasts.Dtos
 
         public string EpisodeUrl { get; set; }
 
+        public int PodcastId { get; set; }
+
+        public string EpisodeId { get; set; }
+
         public DateTime DatePublished { get; set; }
 
         public DateTime DateCreated { get; set; }       
