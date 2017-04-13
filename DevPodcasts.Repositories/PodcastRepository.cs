@@ -32,9 +32,9 @@ namespace DevPodcasts.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public bool PodcastExists(string title)
+        public bool PodcastExists(string rssFeedUrl)
         {
-            return _context.Podcasts.Any(i => i.Title == title);
+            return _context.Podcasts.Any(i => i.FeedUrl == rssFeedUrl);
         }
 
         public IEnumerable<PodcastViewModel> GetUnapprovedPodcasts()
@@ -97,7 +97,8 @@ namespace DevPodcasts.Repositories
 
         public IEnumerable<PodcastDto> GetDistinctPodcasts()
         {
-            return _context.Podcasts.Distinct()
+            return _context.Podcasts
+                .Distinct()
                 .Select(i => new PodcastDto
                 {
                     Id = i.Id,

@@ -26,8 +26,7 @@ namespace DevPodcasts.ServiceLayer
             if (mostRecentEpisodeDate == null)
                 return null;
 
-            var reader = XmlReader.Create(podcastDto.FeedUrl);
-            var feed = SyndicationFeed.Load(reader);
+            var feed = ParseRssFeed(podcastDto.FeedUrl);
 
             var episodes = new List<EpisodeDto>();
 
@@ -59,6 +58,14 @@ namespace DevPodcasts.ServiceLayer
             return episodes;
         }
 
+        private SyndicationFeed ParseRssFeed(string rssFeedUrl)
+        {
+            var xmlReader = XmlReader.Create(rssFeedUrl);
+            var feed = SyndicationFeed.Load(xmlReader);
+
+            return feed;
+        }
+
         public PodcastDto GetPodcastForReview(string rssFeedUrl)
         {
             //if (!IsValidUrl(model.RssFeedUrl)) // TODO NK - returning false for https://fivejs.codeschool.com/feed.rss
@@ -67,13 +74,18 @@ namespace DevPodcasts.ServiceLayer
             //    return podcastDto;
             //}
 
-            var dto = new PodcastDto{ FeedUrl = rssFeedUrl };
+            var dto = new PodcastDto { FeedUrl = rssFeedUrl };
+
+            if (_podcastRepository.PodcastExists(rssFeedUrl))
+            {
+                dto.SuccessResult = SuccessResult.AlreadyExists;
+                return dto;
+            }
 
             SyndicationFeed feed = null;
             try
             {
-                var reader = XmlReader.Create(rssFeedUrl);
-                feed = SyndicationFeed.Load(reader);
+                feed = ParseRssFeed(rssFeedUrl);
             }
             catch (Exception ex)
             {
@@ -82,12 +94,6 @@ namespace DevPodcasts.ServiceLayer
 
             if (feed != null)
             {
-                if (_podcastRepository.PodcastExists(feed.Title.Text))
-                {
-                    dto.SuccessResult = SuccessResult.AlreadyExists;
-                    return dto;
-                }
-
                 var siteUrl = GetSiteUrl(feed);
                 dto.Title = feed.Title?.Text;
                 dto.Description = feed.Description?.Text;
@@ -106,20 +112,15 @@ namespace DevPodcasts.ServiceLayer
         {
             var dto = _podcastRepository.GetPodcast(podcastId);
 
-            var reader = XmlReader.Create(dto.FeedUrl);
-            var feed = SyndicationFeed.Load(reader);
-
-            var episodes = new List<EpisodeDto>();
+            var feed = ParseRssFeed(dto.FeedUrl);
 
             if (feed == null)
                 return;
 
-            foreach (var item in feed.Items)
-            {
-                var episodeUrl = GetEpisodeUrl(item);
-                var audioUrl = GetAudioUrl(item);
-
-                var episode = new EpisodeDto
+            var episodes = from item in feed.Items
+                let episodeUrl = GetEpisodeUrl(item)
+                let audioUrl = GetAudioUrl(item)
+                select new EpisodeDto
                 {
                     Title = item.Title?.Text,
                     Summary = item.Summary?.Text,
@@ -128,8 +129,6 @@ namespace DevPodcasts.ServiceLayer
                     DatePublished = item.PublishDate.DateTime,
                     DateCreated = DateTime.Now
                 };
-                episodes.Add(episode);
-            }
 
             dto.Episodes = episodes;
 
