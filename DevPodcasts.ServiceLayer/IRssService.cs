@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DevPodcasts.ServiceLayer
 {
-    public interface IRssParser
+    public interface IRssService
     {
         IEnumerable<EpisodeDto> GetNewEpisodes(PodcastDto podcastDto);
 

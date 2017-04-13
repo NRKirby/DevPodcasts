@@ -7,13 +7,13 @@ namespace DevPodcasts.ServiceLayer
     {
         private readonly PodcastRepository _podcastRepository;
         private readonly EpisodeRepository _episodeRepository;
-        private readonly RssParser _parser;
+        private readonly RssService _parser;
 
         public EpisodeUpdater()
         {
             _podcastRepository = new PodcastRepository();
             _episodeRepository = new EpisodeRepository();
-            _parser = new RssParser();
+            _parser = new RssService();
         }
 
         public async Task Update()

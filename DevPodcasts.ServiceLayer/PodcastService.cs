@@ -8,17 +8,17 @@ namespace DevPodcasts.ServiceLayer
     public class PodcastService
     {
         private readonly PodcastRepository _repository;
-        private readonly RssParser _parser;
+        private readonly RssService _service;
 
         public PodcastService()
         {
             _repository = new PodcastRepository();
-            _parser = new RssParser();
+            _service = new RssService();
         }
 
         public async Task<AddPodcastViewModel> AddPodcastForReview(AddPodcastViewModel model)
         {
-            var podcastDto = _parser.GetPodcastForReview(model.RssFeedUrl);
+            var podcastDto = _service.GetPodcastForReview(model.RssFeedUrl);
             if (podcastDto.SuccessResult == SuccessResult.Success)
             {
                 await _repository.Add(podcastDto);
@@ -35,7 +35,7 @@ namespace DevPodcasts.ServiceLayer
         
         public void AddPodcastEpisodes(int podcastId)
         {
-            _parser.AddPodcastEpisodes(podcastId);
+            _service.AddPodcastEpisodes(podcastId);
         }
     }
 }
