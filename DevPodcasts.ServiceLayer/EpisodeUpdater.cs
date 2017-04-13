@@ -1,4 +1,5 @@
 ﻿using DevPodcasts.Repositories;
+using System.Threading.Tasks;
 
 namespace DevPodcasts.ServiceLayer
 {
@@ -15,14 +16,14 @@ namespace DevPodcasts.ServiceLayer
             _parser = new RssParser();
         }
 
-        public void Update()
+        public async Task Update()
         {
             var podcasts = _podcastRepository.GetDistinctPodcasts();
 
             foreach (var podcast in podcasts)
             {
                 var newEpisodes = _parser.GetNewEpisodes(podcast);
-                _episodeRepository.AddRange(newEpisodes);
+                await _episodeRepository.AddRange(newEpisodes);
             }
         }
     }

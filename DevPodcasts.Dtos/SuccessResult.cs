@@ -1,4 +1,4 @@
-﻿namespace DevPodcasts.ViewModels.Podcast
+﻿namespace DevPodcasts.Dtos
 {
     public enum SuccessResult
     {

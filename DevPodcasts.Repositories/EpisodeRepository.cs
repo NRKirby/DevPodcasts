@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using DevPodcasts.Dtos;
 
 namespace DevPodcasts.Repositories
@@ -20,7 +21,7 @@ namespace DevPodcasts.Repositories
             return _context.Episodes.Where(i => i.PodcastId == podcastId).Select(i => i.DatePublished).Max();
         }
 
-        public void AddRange(IEnumerable<EpisodeDto> dtos)
+        public async Task AddRange(IEnumerable<EpisodeDto> dtos)
         {
             foreach (var dto in dtos)
             {
@@ -36,10 +37,11 @@ namespace DevPodcasts.Repositories
                     DatePublished = dto.DatePublished,
                     DateCreated = DateTime.Now
                 };
-                podcast.Episodes.Add(episode);
 
-                _context.SaveChanges();
+                podcast.Episodes.Add(episode);
             }
+
+            await _context.SaveChangesAsync();
         }
     }
 }

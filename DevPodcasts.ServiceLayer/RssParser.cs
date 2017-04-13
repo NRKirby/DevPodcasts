@@ -11,10 +11,12 @@ namespace DevPodcasts.ServiceLayer
     public class RssParser
     {
         private readonly EpisodeRepository _episodeRepository;
+        private readonly PodcastRepository _podcastRepository;
 
         public RssParser()
         {
             _episodeRepository = new EpisodeRepository();
+            _podcastRepository = new PodcastRepository();
         }
 
         public IEnumerable<EpisodeDto> GetNewEpisodes(PodcastDto dto)
@@ -55,6 +57,56 @@ namespace DevPodcasts.ServiceLayer
             }
 
             return episodes;
+        }
+
+        public PodcastDto GetPodcastForReview(string rssFeedUrl)
+        {
+            //if (!IsValidUrl(model.RssFeedUrl)) // TODO NK - returning false for https://fivejs.codeschool.com/feed.rss
+            //{
+            //    dto.SuccessResult = SuccessResult.InvalidUrl;
+            //    return dto;
+            //}
+
+            var dto = new PodcastDto{ FeedUrl = rssFeedUrl };
+
+            SyndicationFeed feed = null;
+            try
+            {
+                var reader = XmlReader.Create(rssFeedUrl);
+                feed = SyndicationFeed.Load(reader);
+            }
+            catch (Exception ex)
+            {
+                dto.SuccessResult = SuccessResult.Error;
+            }
+
+            if (feed != null)
+            {
+                if (_podcastRepository.PodcastExists(feed.Title.Text))
+                {
+                    dto.SuccessResult = SuccessResult.AlreadyExists;
+                    return dto;
+                }
+
+                var siteUrl = feed.Links.FirstOrDefault(i => i.RelationshipType == "alternate")?.Uri.ToString();
+                dto.Title = feed.Title?.Text;
+                dto.Description = feed.Description?.Text;
+                dto.ImageUrl = feed.ImageUrl?.AbsoluteUri;
+                dto.FeedUrl = rssFeedUrl;
+                dto.SiteUrl = siteUrl;
+                dto.SuccessResult = SuccessResult.Success;
+
+                return dto;
+            }
+
+            return null;
+        }
+
+        // TODO
+        private static bool IsValidUrl(string source)
+        {
+            Uri uriResult;
+            return Uri.TryCreate(source, UriKind.Absolute, out uriResult) && uriResult.Scheme == Uri.UriSchemeHttp;
         }
     }
 }

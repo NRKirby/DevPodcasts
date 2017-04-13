@@ -99,13 +99,17 @@
     <Compile Include="Manage\SetPasswordViewModel.cs" />
     <Compile Include="Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="Podcast\AddPodcastViewModel.cs" />
-    <Compile Include="Podcast\SuccessResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DevPodcasts.Dtos\DevPodcasts.Dtos.csproj">
+      <Project>{4ecc6970-f931-4d33-b125-c58954d93917}</Project>
+      <Name>DevPodcasts.Dtos</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -16,6 +16,8 @@ namespace DevPodcasts.Dtos
 
         public string SiteUrl { get; set; }
 
+        public SuccessResult SuccessResult { get; set; }
+
         public IEnumerable<EpisodeDto> Episodes { get; set; }
     }
 }

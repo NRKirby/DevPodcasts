@@ -13,66 +13,31 @@ namespace DevPodcasts.ServiceLayer
     public class PodcastService
     {
         private readonly PodcastRepository _repository;
+        private readonly RssParser _parser;
 
         public PodcastService()
         {
             _repository = new PodcastRepository();
+            _parser = new RssParser();
         }
 
         public async Task<AddPodcastViewModel> AddPodcastForReview(AddPodcastViewModel model)
         {
-            //if (!IsValidUrl(model.RssFeedUrl)) // TODO NK - returning false for https://fivejs.codeschool.com/feed.rss
-            //{
-            //    model.Result = SuccessResult.InvalidUrl;
-            //    return model;
-            //}
-
-            SyndicationFeed feed = null;
-            try
+            var podcastDto = _parser.GetPodcastForReview(model.RssFeedUrl);
+            if (podcastDto.SuccessResult == SuccessResult.Success)
             {
-                var reader = XmlReader.Create(model.RssFeedUrl);
-                feed = SyndicationFeed.Load(reader);
-            }
-            catch (Exception ex)
-            {
-                model.Result = SuccessResult.Error;
+                await _repository.Add(podcastDto);
             }
 
-            if (feed != null)
+            var viewModel = new AddPodcastViewModel
             {
-                if (_repository.PodcastExists(feed.Title.Text))
-                {
-                    model.Result = SuccessResult.AlreadyExists;
-                    return model;
-                }
-
-                model.Result = SuccessResult.Success;
-                await AddPodcastForReview(feed, model.RssFeedUrl);
-            }
-
-            return model;
-        }
-
-        private static bool IsValidUrl(string source)
-        {
-            Uri uriResult;
-            return Uri.TryCreate(source, UriKind.Absolute, out uriResult) && uriResult.Scheme == Uri.UriSchemeHttp;
-        }
-
-        private async Task AddPodcastForReview(SyndicationFeed feed, string rssFeedUrl)
-        {
-            var siteUrl = feed.Links.FirstOrDefault(i => i.RelationshipType == "alternate")?.Uri.ToString();
-            var dto = new PodcastDto
-            {
-                Title = feed.Title?.Text,
-                Description = feed.Description?.Text,
-                ImageUrl = feed.ImageUrl?.AbsoluteUri,
-                FeedUrl = rssFeedUrl,
-                SiteUrl = siteUrl
+                RssFeedUrl = podcastDto.FeedUrl,
+                SuccessResult = podcastDto.SuccessResult
             };
-            await _repository.Add(dto);
-        }
 
+            return viewModel;
+        }
+        
         public void AddPodcastEpisodes(int podcastId)
         {
             var dto = _repository.GetPodcast(podcastId);
