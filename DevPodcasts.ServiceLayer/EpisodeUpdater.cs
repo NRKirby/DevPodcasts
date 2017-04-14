@@ -1,4 +1,6 @@
-﻿using DevPodcasts.Repositories;
+﻿using DevPodcasts.Dtos;
+using DevPodcasts.Repositories;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace DevPodcasts.ServiceLayer
@@ -16,10 +18,17 @@ namespace DevPodcasts.ServiceLayer
             _parser = new RssService();
         }
 
-        public async Task Update()
+        public void Update()
         {
-            var podcasts = _podcastRepository.GetDistinctPodcasts();
+            Task.Run(async () =>
+            {
+                var podcasts = _podcastRepository.GetDistinctPodcasts();
+                await UpdatePodcasts(podcasts);
+            });
+        }
 
+        private async Task UpdatePodcasts(IEnumerable<PodcastDto> podcasts)
+        {
             foreach (var podcast in podcasts)
             {
                 var newEpisodes = _parser.GetNewEpisodes(podcast);

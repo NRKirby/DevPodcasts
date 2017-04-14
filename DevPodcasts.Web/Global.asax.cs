@@ -14,7 +14,7 @@ namespace DevPodcasts.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            //UpdaterTest();
+            UpdaterTest();
         }
 
         private void UpdaterTest()

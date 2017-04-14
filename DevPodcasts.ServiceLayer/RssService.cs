@@ -1,10 +1,10 @@
 ﻿using DevPodcasts.Dtos;
 using DevPodcasts.Repositories;
+using DevPodcasts.ServiceLayer.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel.Syndication;
-using DevPodcasts.ServiceLayer.Logging;
 
 namespace DevPodcasts.ServiceLayer
 {
