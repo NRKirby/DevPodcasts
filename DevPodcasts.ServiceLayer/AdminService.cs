@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace DevPodcasts.ServiceLayer
 {
-    public class AdminService
+    public class AdminService : IAdminService
     {
         private readonly PodcastRepository _repository;
         private readonly PodcastService _podcastService;

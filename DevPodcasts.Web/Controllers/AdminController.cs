@@ -1,6 +1,5 @@
-﻿using System.Threading.Tasks;
-using DevPodcasts.ServiceLayer;
-using DevPodcasts.ViewModels.Admin;
+﻿using DevPodcasts.ServiceLayer;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace DevPodcasts.Web.Controllers
@@ -8,11 +7,11 @@ namespace DevPodcasts.Web.Controllers
     [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
-        private readonly AdminService _service;
+        private readonly IAdminService _service;
 
-        public AdminController()
+        public AdminController(IAdminService service)
         {
-            _service = new AdminService();
+            _service = service;
         }
 
         public ActionResult Index()
