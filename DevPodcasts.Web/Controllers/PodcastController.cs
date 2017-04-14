@@ -7,11 +7,11 @@ namespace DevPodcasts.Web.Controllers
 {
     public class PodcastController : Controller
     {
-        private readonly PodcastService _service;
+        private readonly IPodcastService _podcastService;
 
-        public PodcastController()
+        public PodcastController(IPodcastService podcastService)
         {
-            _service = new PodcastService();
+            _podcastService = podcastService;
         }
 
         public ActionResult Index()
@@ -29,7 +29,7 @@ namespace DevPodcasts.Web.Controllers
         [Authorize]
         public async Task<ActionResult> Add(AddPodcastViewModel model)
         {
-            var result = await _service.AddPodcastForReview(model);
+            var result = await _podcastService.AddPodcastForReview(model);
             return View();
         }
     }

@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EpisodeRepository.cs" />
+    <Compile Include="IPodcastRepository.cs" />
     <Compile Include="PodcastRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

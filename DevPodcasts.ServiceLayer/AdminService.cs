@@ -6,20 +6,20 @@ namespace DevPodcasts.ServiceLayer
 {
     public class AdminService : IAdminService
     {
-        private readonly PodcastRepository _repository;
-        private readonly PodcastService _podcastService;
+        private readonly IPodcastRepository _podcastRepository;
+        private readonly IPodcastService _podcastService;
 
-        public AdminService()
+        public AdminService(IPodcastRepository podcastRepository, IPodcastService podcastService)
         {
-            _repository = new PodcastRepository();
-            _podcastService = new PodcastService();
+            _podcastRepository = podcastRepository;
+            _podcastService = podcastService;
         }
 
         public AdminIndexViewModel GetIndexViewModel()
         {
             var viewModel = new AdminIndexViewModel
             {
-                UnapprovedPodcasts = _repository.GetUnapprovedPodcasts()
+                UnapprovedPodcasts = _podcastRepository.GetUnapprovedPodcasts()
             };
             return viewModel;
         }
@@ -31,7 +31,7 @@ namespace DevPodcasts.ServiceLayer
 
         public async Task Reject(int podcastId)
         {
-            await _repository.Reject(podcastId);
+            await _podcastRepository.Reject(podcastId);
         }
     }
 }

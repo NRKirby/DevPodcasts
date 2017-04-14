@@ -263,6 +263,10 @@
       <Project>{4ecc6970-f931-4d33-b125-c58954d93917}</Project>
       <Name>DevPodcasts.Dtos</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DevPodcasts.Repositories\DevPodcasts.Repositories.csproj">
+      <Project>{d4a10b8a-464f-4b49-99a5-33e6ee757852}</Project>
+      <Name>DevPodcasts.Repositories</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DevPodcasts.ServiceLayer\DevPodcasts.ServiceLayer.csproj">
       <Project>{3a347680-db28-4ab0-99cf-7636eeac7515}</Project>
       <Name>DevPodcasts.ServiceLayer</Name>

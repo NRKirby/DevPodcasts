@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DevPodcasts.Repositories
 {
-    public class PodcastRepository
+    public class PodcastRepository : IPodcastRepository
     {
         private readonly ApplicationDbContext _context;
 
