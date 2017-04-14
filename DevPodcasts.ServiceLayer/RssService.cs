@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel.Syndication;
+using DevPodcasts.ServiceLayer.Logging;
 
 namespace DevPodcasts.ServiceLayer
 {
@@ -12,12 +13,14 @@ namespace DevPodcasts.ServiceLayer
         private readonly EpisodeRepository _episodeRepository;
         private readonly PodcastRepository _podcastRepository;
         private readonly RssParser _rssParser;
+        private readonly FileLogger _logger;
 
         public RssService()
         {
             _episodeRepository = new EpisodeRepository();
             _podcastRepository = new PodcastRepository();
             _rssParser = new RssParser();
+            _logger = new FileLogger();
         }
 
         public IEnumerable<EpisodeDto> GetNewEpisodes(PodcastDto podcastDto)
@@ -67,7 +70,11 @@ namespace DevPodcasts.ServiceLayer
             //    return podcastDto;
             //}
 
-            var dto = new PodcastDto { FeedUrl = rssFeedUrl };
+            var dto = new PodcastDto
+            {
+                FeedUrl = rssFeedUrl,
+                SuccessResult = SuccessResult.NotSet
+            };
 
             if (_podcastRepository.PodcastExists(rssFeedUrl))
             {
@@ -83,22 +90,19 @@ namespace DevPodcasts.ServiceLayer
             catch (Exception ex)
             {
                 dto.SuccessResult = SuccessResult.Error;
+                _logger.Error(rssFeedUrl, ex);
             }
 
-            if (feed != null)
-            {
-                var siteUrl = GetSiteUrl(feed);
-                dto.Title = feed.Title?.Text;
-                dto.Description = feed.Description?.Text;
-                dto.ImageUrl = feed.ImageUrl?.AbsoluteUri;
-                dto.FeedUrl = rssFeedUrl;
-                dto.SiteUrl = siteUrl;
-                dto.SuccessResult = SuccessResult.Success;
+            if (feed == null) return dto;
+            var siteUrl = GetSiteUrl(feed);
+            dto.Title = feed.Title?.Text;
+            dto.Description = feed.Description?.Text;
+            dto.ImageUrl = feed.ImageUrl?.AbsoluteUri;
+            dto.FeedUrl = rssFeedUrl;
+            dto.SiteUrl = siteUrl;
+            dto.SuccessResult = SuccessResult.Success;
 
-                return dto;
-            }
-
-            return null;
+            return dto;
         }
 
         public void AddPodcastEpisodes(int podcastId)

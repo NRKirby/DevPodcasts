@@ -44,6 +44,8 @@
   <ItemGroup>
     <Compile Include="AdminService.cs" />
     <Compile Include="EpisodeUpdater.cs" />
+    <Compile Include="Logging\FileLogger.cs" />
+    <Compile Include="Logging\ILogger.cs" />
     <Compile Include="IRssService.cs" />
     <Compile Include="PodcastService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,6 +65,10 @@
       <Project>{fc0b0eff-2753-4f05-977d-e4f0fbc589f9}</Project>
       <Name>DevPodcasts.ViewModels</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Logging\Data\Log.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

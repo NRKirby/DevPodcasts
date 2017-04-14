@@ -14,13 +14,13 @@ namespace DevPodcasts.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            UpdaterTest();
+            //UpdaterTest();
         }
 
-        public void UpdaterTest()
+        private void UpdaterTest()
         {
             var updater = new EpisodeUpdater();
-            //updater.Update();
+            updater.Update();
         }
     }
 }
