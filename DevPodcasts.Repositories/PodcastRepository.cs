@@ -81,6 +81,7 @@ namespace DevPodcasts.Repositories
             {
                 var episode = new Episode
                 {
+                    EpisodeId = episodeDto.EpisodeId,
                     Title = episodeDto.Title,
                     Summary = episodeDto.Summary,
                     AudioUrl = episodeDto.AudioUrl,
