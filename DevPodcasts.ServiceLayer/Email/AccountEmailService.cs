@@ -5,27 +5,21 @@ using System.Threading.Tasks;
 
 namespace DevPodcasts.ServiceLayer.Email
 {
-    public class EmailService : IIdentityMessageService
+    public class AccountEmailService : IIdentityMessageService
     {
         public async Task SendAsync(IdentityMessage message)
         {
-            await SendWithSendGridAsync(message);
-        }
-
-        private async Task SendWithSendGridAsync(IdentityMessage message)
-        {
-            var apiKey = "";
-            var client = new SendGridClient(apiKey);
-            var from = new EmailAddress("no-reply@devpodcasts.net", "Dev Podcasts");
-            var bcc = new EmailAddress("nrkirb@gmail.com");
-            var msg = new SendGridMessage()
+            var client = new SendGridClient(EmailConstants.ApiKey);
+            var from = new EmailAddress(EmailConstants.AdminNoReplyAddress, EmailConstants.DevPodcasts);
+            var bcc = new EmailAddress(EmailConstants.AdminEmailAddress);
+            var msg = new SendGridMessage
             {
                 From = from,
                 Subject = message.Subject,
                 HtmlContent = message.Body
             };
             msg.AddTo(new EmailAddress(message.Destination));
-            //msg.AddBcc(bcc);
+            msg.AddBcc(bcc);
             var response = await client.SendEmailAsync(msg);
         }
     }

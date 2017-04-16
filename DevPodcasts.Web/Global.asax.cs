@@ -2,6 +2,7 @@
 using Autofac.Integration.Mvc;
 using DevPodcasts.Repositories;
 using DevPodcasts.ServiceLayer;
+using DevPodcasts.ServiceLayer.Email;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -28,7 +29,8 @@ namespace DevPodcasts.Web
             builder.RegisterType<AdminService>().As<IAdminService>();
             builder.RegisterType<PodcastRepository>().As<IPodcastRepository>();
             builder.RegisterType<PodcastService>().As<IPodcastService>();
-            builder.RegisterType<RssService>().As<IRssService>();
+            builder.RegisterType<RssService>().As<IRssService>(); 
+            builder.RegisterType<PodcastEmailService>().As<IPodcastEmailService>();
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }

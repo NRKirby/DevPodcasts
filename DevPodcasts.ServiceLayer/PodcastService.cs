@@ -1,5 +1,6 @@
 ﻿using DevPodcasts.Dtos;
 using DevPodcasts.Repositories;
+using DevPodcasts.ServiceLayer.Email;
 using DevPodcasts.ViewModels.Podcast;
 using System.Threading.Tasks;
 
@@ -9,11 +10,16 @@ namespace DevPodcasts.ServiceLayer
     {
         private readonly IPodcastRepository _podcastRepository;
         private readonly IRssService _rssService;
+        private readonly IPodcastEmailService _podcastEmailService;
 
-        public PodcastService(IPodcastRepository podcastRepository, IRssService rssService)
+        public PodcastService(
+            IPodcastRepository podcastRepository, 
+            IRssService rssService, 
+            IPodcastEmailService podcastEmailService)
         {
             _podcastRepository = podcastRepository;
             _rssService = rssService;
+            _podcastEmailService = podcastEmailService;
         }
 
         public async Task<AddPodcastViewModel> AddPodcastForReview(AddPodcastViewModel model)
@@ -22,6 +28,7 @@ namespace DevPodcasts.ServiceLayer
             if (podcastDto.SuccessResult == SuccessResult.Success)
             {
                 await _podcastRepository.Add(podcastDto);
+                await _podcastEmailService.SendPodcastSubmittedEmailAsync(podcastDto.Title);
             }
 
             var viewModel = new AddPodcastViewModel
