@@ -20,16 +20,16 @@ namespace DevPodcasts.Web.Controllers
         }
 
         [Authorize]
-        public ActionResult Add()
+        public ActionResult Submit()
         {
             return View();
         }
 
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult> Add(AddPodcastViewModel model)
+        public async Task<ActionResult> Submit(SubmitPodcastViewModel model)
         {
-            var result = await _podcastService.AddPodcastForReview(model);
+            var result = await _podcastService.SubmitPodcastForReview(model);
             return View();
         }
     }

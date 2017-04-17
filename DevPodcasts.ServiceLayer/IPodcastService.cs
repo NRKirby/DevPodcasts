@@ -7,6 +7,6 @@ namespace DevPodcasts.ServiceLayer
     {
         void AddPodcastEpisodes(int podcastId);
 
-        Task<AddPodcastViewModel> AddPodcastForReview(AddPodcastViewModel model);
+        Task<SubmitPodcastViewModel> SubmitPodcastForReview(SubmitPodcastViewModel model);
     }
 }

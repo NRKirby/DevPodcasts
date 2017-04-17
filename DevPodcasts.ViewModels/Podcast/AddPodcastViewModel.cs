@@ -2,7 +2,7 @@
 
 namespace DevPodcasts.ViewModels.Podcast
 {
-    public class AddPodcastViewModel
+    public class SubmitPodcastViewModel
     {
         public string RssFeedUrl { get; set; }
 

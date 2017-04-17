@@ -22,7 +22,7 @@ namespace DevPodcasts.ServiceLayer
             _podcastEmailService = podcastEmailService;
         }
 
-        public async Task<AddPodcastViewModel> AddPodcastForReview(AddPodcastViewModel model)
+        public async Task<SubmitPodcastViewModel> SubmitPodcastForReview(SubmitPodcastViewModel model)
         {
             var podcastDto = _rssService.GetPodcastForReview(model.RssFeedUrl);
             if (podcastDto.SuccessResult == SuccessResult.Success)
@@ -31,7 +31,7 @@ namespace DevPodcasts.ServiceLayer
                 await _podcastEmailService.SendPodcastSubmittedEmailAsync(podcastDto.Title);
             }
 
-            var viewModel = new AddPodcastViewModel
+            var viewModel = new SubmitPodcastViewModel
             {
                 RssFeedUrl = podcastDto.FeedUrl,
                 SuccessResult = podcastDto.SuccessResult

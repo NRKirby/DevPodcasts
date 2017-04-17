@@ -1,12 +1,12 @@
-﻿@model DevPodcasts.ViewModels.Podcast.AddPodcastViewModel
+﻿@model DevPodcasts.ViewModels.Podcast.SubmitPodcastViewModel
 @{
-    ViewBag.Title = "AddPodcastForReview";
+    ViewBag.Title = "Submit a podcast";
 }
 
-<h2>AddPodcastForReview Podcast</h2>
+<h2>Submit a podcast</h2>
 
 
-@using (Html.BeginForm("Add", "Podcast", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Submit", "Podcast", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <h4>Enter podcast RSS feed URL.</h4>
@@ -21,7 +21,7 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="AddPodcastForReview" />
+            <input type="submit" class="btn btn-default" value="Submit" />
         </div>
     </div>
 }
