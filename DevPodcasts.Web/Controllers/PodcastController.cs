@@ -31,13 +31,7 @@ namespace DevPodcasts.Web.Controllers
         public async Task<ActionResult> Submit(SubmitPodcastViewModel model)
         {
             var result = await _podcastService.SubmitPodcastForReview(model);
-            return RedirectToAction("SubmitResult", result);
-        }
-
-        [Authorize]
-        public ActionResult SubmitResult(SubmitPodcastViewModel model)
-        {
-            return View(model);
+            return View(result);
         }
     }
 }
