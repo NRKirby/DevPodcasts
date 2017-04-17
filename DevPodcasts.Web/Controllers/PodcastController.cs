@@ -2,6 +2,7 @@
 using DevPodcasts.ServiceLayer;
 using System.Web.Mvc;
 using System.Threading.Tasks;
+using DevPodcasts.Dtos;
 
 namespace DevPodcasts.Web.Controllers
 {
@@ -30,7 +31,13 @@ namespace DevPodcasts.Web.Controllers
         public async Task<ActionResult> Submit(SubmitPodcastViewModel model)
         {
             var result = await _podcastService.SubmitPodcastForReview(model);
-            return View();
+            return RedirectToAction("SubmitResult", result);
+        }
+
+        [Authorize]
+        public ActionResult SubmitResult(SubmitPodcastViewModel model)
+        {
+            return View(model);
         }
     }
 }
