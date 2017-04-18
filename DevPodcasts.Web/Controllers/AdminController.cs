@@ -31,5 +31,11 @@ namespace DevPodcasts.Web.Controllers
             await _service.Reject(podcastId);
             return RedirectToAction("Index");
         }
+
+        public ActionResult ReviewSubmission(int podcastId)
+        {
+            var viewModel = _service.GetPodcastForReview(podcastId);
+            return View(viewModel);
+        }
     }
 }

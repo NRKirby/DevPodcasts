@@ -10,5 +10,7 @@ namespace DevPodcasts.ServiceLayer
         void Approve(int podcastId);
 
         Task Reject(int podcastId);
+
+        ReviewPodcastViewModel GetPodcastForReview(int podcastId);
     }
 }

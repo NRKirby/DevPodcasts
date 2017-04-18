@@ -13,7 +13,7 @@
             <th>Title</th>
             <th>Site Url</th>
             <th>Date added</th>
-            <th>Approval</th>
+            <th></th>
         </tr> 
         </thead> 
         <tbody>
@@ -26,8 +26,7 @@
                     <td>@item.SiteUrl</td> 
                     <td>@item.DateAdded</td> 
                     <td>
-                        <a href="@Url.Action("Approve", "Admin", new { podcastId = @item.Id })"><i class="fa fa-check fa-lg" aria-hidden="true" style="color: #228B22;" title="Approve"></i></a>
-                        <a href="@Url.Action("Reject", "Admin", new { podcastId = @item.Id })"><i class="fa fa-times fa-lg" aria-hidden="true" style="color: red; position: relative; left: 15px" title="Reject"></i></a>
+                        <a href="@Url.Action("ReviewSubmission", "Admin", new { podcastId = @item.Id })"><i class="fa fa-pencil-square-o" aria-hidden="true" title="Review submission"></i></a>
                     </td>
                 </tr>
             }

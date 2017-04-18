@@ -90,6 +90,7 @@
     <Compile Include="Account\VerifyCodeViewModel.cs" />
     <Compile Include="Admin\AdminIndexViewModel.cs" />
     <Compile Include="Admin\PodcastViewModel.cs" />
+    <Compile Include="Admin\ReviewPodcastViewModel.cs" />
     <Compile Include="Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="Manage\ChangePasswordViewModel.cs" />
     <Compile Include="Manage\ConfigureTwoFactorViewModel.cs" />

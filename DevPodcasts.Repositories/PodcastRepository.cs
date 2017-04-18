@@ -63,13 +63,15 @@ namespace DevPodcasts.Repositories
         {
             var obj = _context.Podcasts
                 .Where(i => i.Id == podcastId)
-                .Select(i => new {i.Id, i.FeedUrl})
+                .Select(i => new {i.Id, i.FeedUrl, i.Title, i.SiteUrl})
                 .Single();
 
             return new PodcastDto
             {
                 Id = obj.Id,
-                FeedUrl = obj.FeedUrl
+                FeedUrl = obj.FeedUrl,
+                Title = obj.Title,
+                SiteUrl = obj.SiteUrl
             };
         }
 

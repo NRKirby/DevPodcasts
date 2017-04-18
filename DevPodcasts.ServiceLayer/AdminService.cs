@@ -1,4 +1,5 @@
-﻿using DevPodcasts.Repositories;
+﻿using System.Runtime.Remoting.Messaging;
+using DevPodcasts.Repositories;
 using DevPodcasts.ViewModels.Admin;
 using System.Threading.Tasks;
 
@@ -32,6 +33,16 @@ namespace DevPodcasts.ServiceLayer
         public async Task Reject(int podcastId)
         {
             await _podcastRepository.Reject(podcastId);
+        }
+
+        public ReviewPodcastViewModel GetPodcastForReview(int podcastId)
+        {
+            var podcast = _podcastRepository.GetPodcast(podcastId);
+            return new ReviewPodcastViewModel
+            {
+                Title = podcast.Title,
+                SiteUrl = podcast.SiteUrl
+            };
         }
     }
 }
