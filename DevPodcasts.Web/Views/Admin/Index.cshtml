@@ -6,7 +6,6 @@
 <h2>Admin</h2>
 @using (Html.BeginForm("Index", "Admin", FormMethod.Post))
 {
-    <button type="submit" class="btn btn-primary pull-right">Save</button>
     <table class="table table-striped">
         <thead> 
         <tr>
@@ -17,7 +16,7 @@
         </tr> 
         </thead> 
         <tbody>
-        @if (Model != null && Model.UnapprovedPodcasts != null)
+        @if (Model?.UnapprovedPodcasts != null)
         {
             foreach (var item in Model.UnapprovedPodcasts)
             {
