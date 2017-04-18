@@ -22,7 +22,7 @@
             {
                 <tr> 
                     <td>@item.Title</td> 
-                    <td>@item.SiteUrl</td> 
+                    <td><a href="@item.SiteUrl" target="_blank">@item.SiteUrl</a></td>
                     <td>@item.DateAdded</td> 
                     <td>
                         <a href="@Url.Action("ReviewSubmission", "Admin", new { podcastId = @item.Id })"><i class="fa fa-check fa-lg" aria-hidden="true" style="color: #228B22;" title="Review submission & approve"></i></a>

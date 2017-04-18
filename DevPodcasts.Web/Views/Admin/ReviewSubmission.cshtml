@@ -12,10 +12,10 @@
         <strong>Title:</strong> @Html.DisplayFor(m => m.Title)
     </div>
     <div class="row">
-        <strong>Website:</strong> @Html.DisplayFor(m => m.SiteUrl)
+        <strong>Website:</strong> <a href="@Model.SiteUrl" target="_blank">@Model.SiteUrl</a>
     </div>
     <div>
-        <h3>Categories</h3>
+        <h4>Categories</h4>
     </div>
     <div>
         @Html.EditorFor(m => m.Categories)
