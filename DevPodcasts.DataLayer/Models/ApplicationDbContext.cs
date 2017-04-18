@@ -22,10 +22,22 @@ namespace DevPodcasts.DataLayer.Models
             base.OnModelCreating(modelBuilder);
             var conventions = new List<PluralizingTableNameConvention>().ToArray();
             modelBuilder.Conventions.Remove(conventions);
+
+            modelBuilder.Entity<Podcast>()
+                .HasMany(p => p.Categories)
+                .WithMany(c => c.Podcasts)
+                .Map(pc =>
+                {
+                    pc.MapLeftKey("PodcastId");
+                    pc.MapRightKey("CategoryId");
+                    pc.ToTable("PodcastCategory");
+                });
         }
 
         public DbSet<Podcast> Podcasts { get; set; }
 
         public DbSet<Episode> Episodes { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
     }
 }

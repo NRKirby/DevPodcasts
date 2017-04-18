@@ -29,5 +29,7 @@ namespace DevPodcasts.DataLayer.Models
         public string SiteUrl { get; set; }
 
         public ICollection<Episode> Episodes { get; set; }
+
+        public ICollection<Category> Categories { get; set; }
     }
 }
