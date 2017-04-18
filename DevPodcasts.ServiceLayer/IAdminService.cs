@@ -1,4 +1,5 @@
 ﻿using DevPodcasts.ViewModels.Admin;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace DevPodcasts.ServiceLayer
@@ -7,7 +8,7 @@ namespace DevPodcasts.ServiceLayer
     {
         AdminIndexViewModel GetIndexViewModel();
 
-        void Approve(int podcastId);
+        Task Save(int podcastId, IEnumerable<int> selectedCategoryIds);
 
         Task Reject(int podcastId);
 

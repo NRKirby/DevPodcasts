@@ -69,6 +69,10 @@
     <Compile Include="RssService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DevPodcasts.DataLayer\DevPodcasts.DataLayer.csproj">
+      <Project>{4AE9EE14-21C0-4DB6-AF8A-0AB2D4356470}</Project>
+      <Name>DevPodcasts.DataLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DevPodcasts.Dtos\DevPodcasts.Dtos.csproj">
       <Project>{4ecc6970-f931-4d33-b125-c58954d93917}</Project>
       <Name>DevPodcasts.Dtos</Name>

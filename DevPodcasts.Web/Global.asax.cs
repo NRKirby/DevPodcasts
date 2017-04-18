@@ -31,6 +31,7 @@ namespace DevPodcasts.Web
             builder.RegisterType<PodcastService>().As<IPodcastService>();
             builder.RegisterType<RssService>().As<IRssService>(); 
             builder.RegisterType<PodcastEmailService>().As<IPodcastEmailService>();
+            builder.RegisterType<CategoriesRepository>().As<ICategoriesRepository>();
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }

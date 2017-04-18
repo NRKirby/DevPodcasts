@@ -26,7 +26,8 @@
                     <td>@item.SiteUrl</td> 
                     <td>@item.DateAdded</td> 
                     <td>
-                        <a href="@Url.Action("ReviewSubmission", "Admin", new { podcastId = @item.Id })"><i class="fa fa-pencil-square-o" aria-hidden="true" title="Review submission"></i></a>
+                        <a href="@Url.Action("ReviewSubmission", "Admin", new { podcastId = @item.Id })"><i class="fa fa-check fa-lg" aria-hidden="true" style="color: #228B22;" title="Review submission & approve"></i></a>
+                        <a href="@Url.Action("Reject", "Admin", new { podcastId = @item.Id })"><i class="fa fa-times fa-lg" aria-hidden="true" style="color: red; position: relative; left: 15px" title="Reject"></i></a>
                     </td>
                 </tr>
             }

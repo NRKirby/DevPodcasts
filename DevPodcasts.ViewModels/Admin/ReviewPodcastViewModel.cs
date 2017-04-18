@@ -1,4 +1,7 @@
-﻿namespace DevPodcasts.ViewModels.Admin
+﻿using DevPodcasts.DataLayer.Models;
+using System.Collections.Generic;
+
+namespace DevPodcasts.ViewModels.Admin
 {
     public class ReviewPodcastViewModel
     {
@@ -7,5 +10,12 @@
         public string Title { get; set; }
 
         public string SiteUrl { get; set; }
+
+        public List<CheckBoxListItem> Categories { get; set; }
+
+        public ReviewPodcastViewModel()
+        {
+            Categories = new List<CheckBoxListItem>();
+        }
     }
 }

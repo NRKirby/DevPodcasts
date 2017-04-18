@@ -59,6 +59,17 @@ namespace DevPodcasts.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public async Task SaveCategories(int podcastId, IEnumerable<int> categoryIds)
+        {
+            var podcast = _context.Podcasts.Include("Categories").Single(i => i.Id == podcastId);
+            foreach (var categoryId in categoryIds)
+            {
+                var category = _context.Categories.Find(categoryId);
+                podcast.Categories.Add(category);
+            }
+            await _context.SaveChangesAsync();
+        }
+
         public PodcastDto GetPodcast(int podcastId)
         {
             var obj = _context.Podcasts
