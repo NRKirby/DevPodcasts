@@ -17,7 +17,7 @@ namespace DevPodcasts.ServiceLayer
             return new HomeIndexViewModel
             {
                 TotalPodcasts = _podcastService.GetTotalPodcasts(),
-                PodcastPicks = _podcastService.GetPodcastPicks().ToArray()
+                FeaturedPodcasts = _podcastService.GetPodcastPicks().ToArray()
             };
         }
     }
