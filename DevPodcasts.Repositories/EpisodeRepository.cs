@@ -29,6 +29,19 @@ namespace DevPodcasts.Repositories
                 });
         }
 
+        public EpisodeDto GetEpisode(int episodeId)
+        {
+            var episode = _context.Episodes.Single(i => i.Id == episodeId);
+            return new EpisodeDto
+            {
+                Title = episode.Title,
+                Summary = episode.Summary,
+                AudioUrl = episode.AudioUrl,
+                EpisodeUrl = episode.EpisodeUrl,
+                DatePublished = episode.DatePublished
+            };
+        }
+
         public DateTime? GetMostRecentEpisodeDate(int podcastId)
         {
             return _context.Episodes.Where(i => i.PodcastId == podcastId).Select(i => i.DatePublished).Max();

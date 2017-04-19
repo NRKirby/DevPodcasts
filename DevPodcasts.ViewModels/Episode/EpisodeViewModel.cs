@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DevPodcasts.ViewModels.Episode
+﻿namespace DevPodcasts.ViewModels.Episode
 {
     public class EpisodeViewModel
     {

@@ -14,11 +14,6 @@ namespace DevPodcasts.Web.Controllers
             _podcastService = podcastService;
         }
 
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         [Authorize]
         public ActionResult Submit()
         {

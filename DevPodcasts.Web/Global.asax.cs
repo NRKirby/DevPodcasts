@@ -26,14 +26,20 @@ namespace DevPodcasts.Web
         {
             var builder = new ContainerBuilder();
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
+
+            // Services
             builder.RegisterType<AdminService>().As<IAdminService>();
-            builder.RegisterType<PodcastRepository>().As<IPodcastRepository>();
-            builder.RegisterType<PodcastService>().As<IPodcastService>();
-            builder.RegisterType<RssService>().As<IRssService>(); 
-            builder.RegisterType<PodcastEmailService>().As<IPodcastEmailService>();
-            builder.RegisterType<CategoriesRepository>().As<ICategoriesRepository>();
+            builder.RegisterType<EpisodeService>().As<IEpisodeService>();
             builder.RegisterType<HomeService>().As<IHomeService>();
+            builder.RegisterType<PodcastService>().As<IPodcastService>();
+            builder.RegisterType<PodcastEmailService>().As<IPodcastEmailService>();
+            builder.RegisterType<RssService>().As<IRssService>();
+
+            // Repositories
+            builder.RegisterType<CategoriesRepository>().As<ICategoriesRepository>();
             builder.RegisterType<EpisodeRepository>().As<IEpisodeRepository>();
+            builder.RegisterType<PodcastRepository>().As<IPodcastRepository>();
+            
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }

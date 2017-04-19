@@ -11,6 +11,8 @@ namespace DevPodcasts.Repositories
 
         IEnumerable<EpisodeDto> GetAllEpisodes(int podcastId);
 
+        EpisodeDto GetEpisode(int episodeId);
+
         DateTime? GetMostRecentEpisodeDate(int podcastId);
     }
 }

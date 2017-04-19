@@ -22,7 +22,7 @@
         foreach (var item in Model.Episodes)
         {
             <tr> 
-                <td>@item.Title</td> 
+                <td>@Html.ActionLink(item.Title, "Detail", "Episode", new { id = item.Id }, null)</td> 
                 <td>@item.DatePublished</td> 
             </tr>
         }

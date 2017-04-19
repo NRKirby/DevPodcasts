@@ -1,0 +1,16 @@
+﻿@model DevPodcasts.ViewModels.Episode.EpisodeDetailViewModel
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>@Model.Title</h2>
+
+@*<p>@Model.Summary</p> TODO - either render or strip HTML *@
+
+<p><a href="@Model.EpisodeUrl" rel="noopener noreferrer" target="_blank">@Model.EpisodeUrl</a></p>
+
+<audio controls>
+    <source src=@Model.AudioUrl type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
