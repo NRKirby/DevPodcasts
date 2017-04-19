@@ -32,6 +32,19 @@ namespace DevPodcasts.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public IEnumerable<PodcastDto> GetPodcastPicks()
+        {
+            return _context.Podcasts
+                .OrderBy(i => Guid.NewGuid())
+                .Take(3)
+                .Select(i => new PodcastDto
+                {
+                    Id = i.Id,
+                    Title = i.Title,
+                    Description = i.Description
+                });
+        }
+
         public bool PodcastExists(string rssFeedUrl)
         {
             return _context.Podcasts.Any(i => i.FeedUrl == rssFeedUrl);
@@ -48,13 +61,13 @@ namespace DevPodcasts.Repositories
                 .Where(i => i.IsApproved == null)
                 .OrderBy(i => i.DateCreated)
                 .Select(i => new PodcastViewModel
-            {
-                Id = i.Id,
-                ImageUrl = i.ImageUrl,
-                Title = i.Title,
-                SiteUrl = i.SiteUrl,
-                DateAdded = i.DateCreated,
-            });
+                {
+                    Id = i.Id,
+                    ImageUrl = i.ImageUrl,
+                    Title = i.Title,
+                    SiteUrl = i.SiteUrl,
+                    DateAdded = i.DateCreated,
+                });
         }
 
         public async Task Reject(int podcastId)
@@ -79,7 +92,7 @@ namespace DevPodcasts.Repositories
         {
             var obj = _context.Podcasts
                 .Where(i => i.Id == podcastId)
-                .Select(i => new {i.Id, i.FeedUrl, i.Title, i.SiteUrl})
+                .Select(i => new { i.Id, i.FeedUrl, i.Title, i.SiteUrl })
                 .Single();
 
             return new PodcastDto

@@ -1,4 +1,5 @@
-﻿using DevPodcasts.ViewModels.Home;
+﻿using System.Linq;
+using DevPodcasts.ViewModels.Home;
 
 namespace DevPodcasts.ServiceLayer
 {
@@ -15,7 +16,8 @@ namespace DevPodcasts.ServiceLayer
         {
             return new HomeIndexViewModel
             {
-                TotalPodcasts = _podcastService.GetTotalPodcasts()
+                TotalPodcasts = _podcastService.GetTotalPodcasts(),
+                PodcastPicks = _podcastService.GetPodcastPicks().ToArray()
             };
         }
     }

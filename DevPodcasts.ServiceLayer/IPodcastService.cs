@@ -1,4 +1,6 @@
-﻿using DevPodcasts.ViewModels.Podcast;
+﻿using DevPodcasts.Dtos;
+using DevPodcasts.ViewModels.Podcast;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace DevPodcasts.ServiceLayer
@@ -10,5 +12,7 @@ namespace DevPodcasts.ServiceLayer
         int GetTotalPodcasts();
 
         Task<SubmitPodcastViewModel> SubmitPodcastForReview(SubmitPodcastViewModel model);
+
+        IEnumerable<PodcastPick> GetPodcastPicks();
     }
 }

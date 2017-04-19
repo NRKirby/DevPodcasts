@@ -2,6 +2,7 @@
 using DevPodcasts.Repositories;
 using DevPodcasts.ServiceLayer.Email;
 using DevPodcasts.ViewModels.Podcast;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace DevPodcasts.ServiceLayer
@@ -44,7 +45,26 @@ namespace DevPodcasts.ServiceLayer
 
             return viewModel;
         }
-        
+
+        public IEnumerable<PodcastPick> GetPodcastPicks()
+        {
+            var picks = _podcastRepository.GetPodcastPicks();
+
+            var podcastPicks = new List<PodcastPick>();
+
+            foreach (var pick in picks)
+            {
+                podcastPicks.Add(new PodcastPick
+                {
+                    PodcastId = pick.Id,
+                    Title = pick.Title,
+                    Description = pick.Description
+                });
+            }
+
+            return podcastPicks;
+        }
+
         public void AddPodcastEpisodes(int podcastId)
         {
             _rssService.AddPodcastEpisodes(podcastId);
