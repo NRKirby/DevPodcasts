@@ -4,11 +4,10 @@
 }
 
 <h2>@Model.Title</h2>
-
-@*<p>@Model.Summary</p> TODO - either render or strip HTML *@
-
 <p><a href="@Model.EpisodeUrl" rel="noopener noreferrer" target="_blank">@Model.EpisodeUrl</a></p>
-
+<br/>
+<p>Summary:</p>
+<p>@Html.TextAreaFor(m => m.Summary, 10, 40, htmlAttributes: new { style = "width: 75%; max-width: 75%; resize: none; border: none" })</p> @* TODO - either render or strip HTML *@
 <audio controls>
     <source src=@Model.AudioUrl type="audio/mpeg">
     Your browser does not support the audio element.
