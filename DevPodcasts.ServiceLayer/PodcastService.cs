@@ -22,6 +22,11 @@ namespace DevPodcasts.ServiceLayer
             _podcastEmailService = podcastEmailService;
         }
 
+        public int GetTotalPodcasts()
+        {
+            return _podcastRepository.GetTotalPodcasts();
+        }
+
         public async Task<SubmitPodcastViewModel> SubmitPodcastForReview(SubmitPodcastViewModel model)
         {
             var podcastDto = _rssService.GetPodcastForReview(model.RssFeedUrl);

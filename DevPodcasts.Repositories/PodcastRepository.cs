@@ -37,6 +37,11 @@ namespace DevPodcasts.Repositories
             return _context.Podcasts.Any(i => i.FeedUrl == rssFeedUrl);
         }
 
+        public int GetTotalPodcasts()
+        {
+            return _context.Podcasts.Count();
+        }
+
         public IEnumerable<PodcastViewModel> GetUnapprovedPodcasts()
         {
             return _context.Podcasts
