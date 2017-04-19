@@ -32,11 +32,11 @@ namespace DevPodcasts.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public IEnumerable<PodcastDto> GetPodcastPicks()
+        public IEnumerable<PodcastDto> GetFeaturedPodcasts(int numberOfPodcasts)
         {
             return _context.Podcasts
                 .OrderBy(i => Guid.NewGuid())
-                .Take(3)
+                .Take(numberOfPodcasts)
                 .Select(i => new PodcastDto
                 {
                     Id = i.Id,

@@ -19,7 +19,7 @@ namespace DevPodcasts.Repositories
 
         IEnumerable<PodcastViewModel> GetUnapprovedPodcasts();
 
-        IEnumerable<PodcastDto> GetPodcastPicks();
+        IEnumerable<PodcastDto> GetFeaturedPodcasts(int numberOfPodcasts);
 
         bool PodcastExists(string rssFeedUrl);
 

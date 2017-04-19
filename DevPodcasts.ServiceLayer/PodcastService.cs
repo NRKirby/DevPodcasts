@@ -53,7 +53,7 @@ namespace DevPodcasts.ServiceLayer
 
         public IEnumerable<PodcastPick> GetPodcastPicks()
         {
-            var picks = _podcastRepository.GetPodcastPicks();
+            var picks = _podcastRepository.GetFeaturedPodcasts(3);
 
             var podcastPicks = new List<PodcastPick>();
 
