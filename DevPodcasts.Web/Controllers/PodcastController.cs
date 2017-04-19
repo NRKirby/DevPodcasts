@@ -30,6 +30,10 @@ namespace DevPodcasts.Web.Controllers
 
         public ActionResult Detail(int id)
         {
+            var podcastExists = _podcastService.PodcastExists(id);
+            if (!podcastExists)
+                return RedirectToAction("Index", "Home"); // TODO: redirect to error page
+
             var viewModel = _podcastService.GetPodcastDetail(id);
             return View(viewModel);
         }

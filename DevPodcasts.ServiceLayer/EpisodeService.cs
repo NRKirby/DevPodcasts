@@ -1,6 +1,5 @@
 ﻿using DevPodcasts.Repositories;
 using DevPodcasts.ViewModels.Episode;
-using System;
 using System.Text.RegularExpressions;
 
 namespace DevPodcasts.ServiceLayer
@@ -26,6 +25,11 @@ namespace DevPodcasts.ServiceLayer
                 EpisodeUrl = episode.EpisodeUrl,
                 DatePublished = episode.DatePublished?.ToShortDateString()
             };
+        }
+
+        public bool EpisodeExists(int episodeId)
+        {
+            return _episodeRepository.EpisodeExists(episodeId);
         }
 
         public static string StripHtml(string input)

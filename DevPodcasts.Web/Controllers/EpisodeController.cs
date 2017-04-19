@@ -14,6 +14,10 @@ namespace DevPodcasts.Web.Controllers
 
         public ActionResult Detail(int id)
         {
+            var episodeExists = _episodeService.EpisodeExists(id);
+            if (!episodeExists)
+                return RedirectToAction("Index", "Home"); // TODO: redirect to error page
+
             var viewModel = _episodeService.GetEpisodeDetail(id);
             return View(viewModel);
         }

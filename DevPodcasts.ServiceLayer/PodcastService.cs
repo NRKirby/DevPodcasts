@@ -89,6 +89,11 @@ namespace DevPodcasts.ServiceLayer
             };
         }
 
+        public bool PodcastExists(int podcastId)
+        {
+            return _podcastRepository.PodcastExists(podcastId);
+        }
+
         public void AddPodcastEpisodes(int podcastId)
         {
             _rssService.AddPodcastEpisodes(podcastId);

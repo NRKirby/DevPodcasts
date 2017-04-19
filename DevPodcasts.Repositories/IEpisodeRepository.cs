@@ -14,5 +14,7 @@ namespace DevPodcasts.Repositories
         EpisodeDto GetEpisode(int episodeId);
 
         DateTime? GetMostRecentEpisodeDate(int podcastId);
+
+        bool EpisodeExists(int episodeId);
     }
 }

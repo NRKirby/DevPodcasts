@@ -88,6 +88,11 @@ namespace DevPodcasts.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public bool PodcastExists(int podcastId)
+        {
+            return _context.Podcasts.Any(i => i.Id == podcastId);
+        }
+
         public PodcastDto GetPodcast(int podcastId)
         {
             var obj = _context.Podcasts

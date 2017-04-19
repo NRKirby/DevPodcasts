@@ -16,5 +16,7 @@ namespace DevPodcasts.ServiceLayer
         IEnumerable<PodcastPick> GetPodcastPicks();
 
         PodcastDetailViewModel GetPodcastDetail(int podcastId);
+
+        bool PodcastExists(int podcastId);
     }
 }
