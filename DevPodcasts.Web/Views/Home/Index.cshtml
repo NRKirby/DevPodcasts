@@ -16,8 +16,7 @@
             <h2>@pick.Title</h2>
             <p>@pick.Description
             </p>
-            <p><a class="btn btn-default">More &raquo;</a>
-            </p>
+        <p><a href="@Url.Action("Detail", "Podcast", new { Id = pick.PodcastId })" class="btn btn-default">More &raquo;</a></p>
         </div>    
     }
 </div>
