@@ -1,15 +1,18 @@
 ﻿@model DevPodcasts.ViewModels.Episode.EpisodeDetailViewModel
 @{
-    ViewBag.Title = "Detail";
+    ViewBag.Title = "Episode Detail";
 }
 
 <h2>@Model.Title</h2>
 <p><a href="@Model.EpisodeUrl" rel="noopener noreferrer" target="_blank">@Model.EpisodeUrl</a></p>
-<br/>
-<p>Summary:</p>
-<p>@Html.TextAreaFor(m => m.Summary, 10, 40, htmlAttributes: new { style = "width: 75%; max-width: 75%; resize: none; border: none" })</p> @* TODO - either render or strip HTML *@
 <audio controls>
     <source src=@Model.AudioUrl type="audio/mpeg">
     Your browser does not support the audio element.
 </audio>
+<br/>
+<div style="border: 1px solid #005cb9; background-color: #f1f5f9; overflow: auto; margin-bottom: 1.7em; margin-top: 3em; padding: 1em !important;">
+    <h3 style="margin-top: 0">Summary:</h3>
+    @Model.Summary
+</div>
+
 

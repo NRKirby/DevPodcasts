@@ -1,4 +1,6 @@
-﻿using DevPodcasts.Repositories;
+﻿using System;
+using System.Text.RegularExpressions;
+using DevPodcasts.Repositories;
 using DevPodcasts.ViewModels.Episode;
 
 namespace DevPodcasts.ServiceLayer
@@ -18,12 +20,16 @@ namespace DevPodcasts.ServiceLayer
             return new EpisodeDetailViewModel
             {
                 Title = episode.Title,
-                Summary = episode.Summary,
+                Summary = StripHtml(episode.Summary),
                 AudioUrl = episode.AudioUrl,
                 EpisodeUrl = episode.EpisodeUrl,
                 DatePublished = episode.DatePublished?.ToShortDateString()
             };
+        }
 
+        public static string StripHtml(string input)
+        {
+            return Regex.Replace(input, "<.*?>", String.Empty);
         }
     }
 }
