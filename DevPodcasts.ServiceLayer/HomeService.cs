@@ -1,5 +1,5 @@
-﻿using System.Linq;
-using DevPodcasts.ViewModels.Home;
+﻿using DevPodcasts.ViewModels.Home;
+using System.Linq;
 
 namespace DevPodcasts.ServiceLayer
 {

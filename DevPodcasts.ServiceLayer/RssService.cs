@@ -25,7 +25,7 @@ namespace DevPodcasts.ServiceLayer
 
         public IEnumerable<EpisodeDto> GetNewEpisodes(PodcastDto podcastDto)
         {
-            var mostRecentEpisodeDate = _episodeRepository.GetMostRecentDate(podcastDto.Id);
+            var mostRecentEpisodeDate = _episodeRepository.GetMostRecentEpisodeDate(podcastDto.Id);
 
             if (mostRecentEpisodeDate == null)
                 return null;

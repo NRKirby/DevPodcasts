@@ -4,6 +4,8 @@ namespace DevPodcasts.Dtos
 {
     public class EpisodeDto
     {
+        public int Id { get; set; }
+
         public string Title { get; set; }
 
         public string Summary { get; set; }
@@ -16,7 +18,7 @@ namespace DevPodcasts.Dtos
 
         public string EpisodeId { get; set; }
 
-        public DateTime DatePublished { get; set; }
+        public DateTime? DatePublished { get; set; }
 
         public DateTime DateCreated { get; set; }       
     }

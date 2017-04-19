@@ -1,8 +1,10 @@
 ﻿using DevPodcasts.Dtos;
 using DevPodcasts.Repositories;
 using DevPodcasts.ServiceLayer.Email;
+using DevPodcasts.ViewModels.Episode;
 using DevPodcasts.ViewModels.Podcast;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace DevPodcasts.ServiceLayer
@@ -10,15 +12,18 @@ namespace DevPodcasts.ServiceLayer
     public class PodcastService : IPodcastService
     {
         private readonly IPodcastRepository _podcastRepository;
+        private readonly IEpisodeRepository _episodeRepository;
         private readonly IRssService _rssService;
         private readonly IPodcastEmailService _podcastEmailService;
 
         public PodcastService(
             IPodcastRepository podcastRepository, 
+            IEpisodeRepository episodeRepository,
             IRssService rssService, 
             IPodcastEmailService podcastEmailService)
         {
             _podcastRepository = podcastRepository;
+            _episodeRepository = episodeRepository;
             _rssService = rssService;
             _podcastEmailService = podcastEmailService;
         }
@@ -63,6 +68,26 @@ namespace DevPodcasts.ServiceLayer
             }
 
             return podcastPicks;
+        }
+
+        public PodcastDetailViewModel GetPodcastDetail(int podcastId)
+        {
+            var podcast = _podcastRepository.GetPodcast(podcastId);
+            return new PodcastDetailViewModel
+            {
+                Id = podcast.Id,
+                Title = podcast.Title,
+                Description = podcast.Description,
+                FeedUrl = podcast.FeedUrl,
+                SiteUrl = podcast.SiteUrl,
+                Episodes = _episodeRepository.GetAllEpisodes(podcastId)
+                    .Select(i => new EpisodeViewModel
+                    {
+                        Id = i.Id,
+                        Title = i.Title,
+                        DatePublished = i.DatePublished
+                    })
+            };
         }
 
         public void AddPodcastEpisodes(int podcastId)

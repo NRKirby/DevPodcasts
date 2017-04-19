@@ -1,13 +1,13 @@
 ﻿using DevPodcasts.DataLayer.Models;
+using DevPodcasts.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DevPodcasts.Dtos;
 
 namespace DevPodcasts.Repositories
 {
-    public class EpisodeRepository
+    public class EpisodeRepository : IEpisodeRepository
     {
         private readonly ApplicationDbContext _context;
 
@@ -16,7 +16,20 @@ namespace DevPodcasts.Repositories
             _context = new ApplicationDbContext();
         }
 
-        public DateTime? GetMostRecentDate(int podcastId)
+        public IEnumerable<EpisodeDto> GetAllEpisodes(int podcastId)
+        {
+            return _context.Episodes
+                .Where(i => i.PodcastId == podcastId)
+                .OrderByDescending(i => i.DatePublished)
+                .Select(i => new EpisodeDto
+                {
+                    Id = i.Id,
+                    Title = i.Title,
+                    DatePublished = i.DatePublished
+                });
+        }
+
+        public DateTime? GetMostRecentEpisodeDate(int podcastId)
         {
             return _context.Episodes.Where(i => i.PodcastId == podcastId).Select(i => i.DatePublished).Max();
         }

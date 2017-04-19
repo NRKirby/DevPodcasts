@@ -1,8 +1,7 @@
-﻿using DevPodcasts.ViewModels.Podcast;
-using DevPodcasts.ServiceLayer;
-using System.Web.Mvc;
+﻿using DevPodcasts.ServiceLayer;
+using DevPodcasts.ViewModels.Podcast;
 using System.Threading.Tasks;
-using DevPodcasts.Dtos;
+using System.Web.Mvc;
 
 namespace DevPodcasts.Web.Controllers
 {
@@ -32,6 +31,12 @@ namespace DevPodcasts.Web.Controllers
         {
             var result = await _podcastService.SubmitPodcastForReview(model);
             return View(result);
+        }
+
+        public ActionResult Detail(int id)
+        {
+            var viewModel = _podcastService.GetPodcastDetail(id);
+            return View(viewModel);
         }
     }
 }

@@ -1,0 +1,36 @@
+﻿@model DevPodcasts.ViewModels.Podcast.PodcastDetailViewModel
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>@Model.Title</h2>
+
+<p>@Model.Description</p>
+<p>@Model.SiteUrl</p>
+<p>@Model.FeedUrl</p>
+
+<table class="table table-striped">
+    <thead> 
+    <tr>
+        <th>Title</th>
+        <th>Date Published</th>
+        <th></th>
+    </tr> 
+    </thead> 
+    <tbody>
+    @if (Model?.Episodes != null)
+    {
+        foreach (var item in Model.Episodes)
+        {
+            <tr> 
+                <td>@item.Title</td> 
+                <td>@item.DatePublished</td> 
+            </tr>
+        }
+    }
+    </tbody>
+</table>
+
+
+
+

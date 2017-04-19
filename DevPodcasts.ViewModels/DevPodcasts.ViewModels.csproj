@@ -91,6 +91,7 @@
     <Compile Include="Admin\AdminIndexViewModel.cs" />
     <Compile Include="Admin\PodcastViewModel.cs" />
     <Compile Include="Admin\ReviewPodcastViewModel.cs" />
+    <Compile Include="Episode\EpisodeViewModel.cs" />
     <Compile Include="Home\HomeIndexViewModel.cs" />
     <Compile Include="Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="Manage\ChangePasswordViewModel.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="Manage\ManageLoginsViewModel.cs" />
     <Compile Include="Manage\SetPasswordViewModel.cs" />
     <Compile Include="Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="Podcast\PodcastDetailViewModel.cs" />
     <Compile Include="Podcast\SubmitPodcastViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
