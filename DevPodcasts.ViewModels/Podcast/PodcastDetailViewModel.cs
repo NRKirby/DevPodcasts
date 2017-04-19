@@ -11,8 +11,6 @@ namespace DevPodcasts.ViewModels.Podcast
 
         public string Description { get; set; }
 
-        public string FeedUrl { get; set; }
-
         public string SiteUrl { get; set; }
 
         public IEnumerable<EpisodeViewModel> Episodes { get; set; }
