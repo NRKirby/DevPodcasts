@@ -7,15 +7,17 @@ namespace DevPodcasts.ServiceLayer
 {
     public class EpisodeUpdater
     {
-        private readonly PodcastRepository _podcastRepository;
-        private readonly EpisodeRepository _episodeRepository;
-        private readonly RssService _parser;
+        private readonly IPodcastRepository _podcastRepository;
+        private readonly IEpisodeRepository _episodeRepository;
+        private readonly IRssService _rssService;
 
-        public EpisodeUpdater()
+        public EpisodeUpdater(IPodcastRepository podcastRepository,
+            IEpisodeRepository episodeRepository,
+            IRssService rssService)
         {
-            _podcastRepository = new PodcastRepository();
-            _episodeRepository = new EpisodeRepository();
-            _parser = new RssService();
+            _podcastRepository = podcastRepository;
+            _episodeRepository = episodeRepository;
+            _rssService = rssService;
         }
 
         public void Update()
@@ -31,7 +33,7 @@ namespace DevPodcasts.ServiceLayer
         {
             foreach (var podcast in podcasts)
             {
-                var newEpisodes = _parser.GetNewEpisodes(podcast);
+                var newEpisodes = _rssService.GetNewEpisodes(podcast);
                 await _episodeRepository.AddRange(newEpisodes);
             }
         }

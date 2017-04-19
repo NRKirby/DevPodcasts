@@ -10,17 +10,20 @@ namespace DevPodcasts.ServiceLayer
 {
     public class RssService : IRssService
     {
-        private readonly EpisodeRepository _episodeRepository;
-        private readonly PodcastRepository _podcastRepository;
-        private readonly RssParser _rssParser;
-        private readonly FileLogger _logger;
+        private readonly IEpisodeRepository _episodeRepository;
+        private readonly IPodcastRepository _podcastRepository;
+        private readonly IRssParser _rssParser;
+        private readonly ILogger _logger;
 
-        public RssService()
+        public RssService(IEpisodeRepository episodeRepository,
+            IPodcastRepository podcastRepository,
+            IRssParser rssParser,
+            ILogger logger)
         {
-            _episodeRepository = new EpisodeRepository();
-            _podcastRepository = new PodcastRepository();
-            _rssParser = new RssParser();
-            _logger = new FileLogger();
+            _episodeRepository = episodeRepository;
+            _podcastRepository = podcastRepository;
+            _rssParser = rssParser;
+            _logger = logger;
         }
 
         public IEnumerable<EpisodeDto> GetNewEpisodes(PodcastDto podcastDto)
@@ -88,10 +91,10 @@ namespace DevPodcasts.ServiceLayer
             {
                 feed = _rssParser.ParseRssFeed(rssFeedUrl);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 dto.SuccessResult = SuccessResult.Error;
-                _logger.Error(rssFeedUrl, ex);
+                // Error should be logged in RssParser
             }
 
             if (feed == null) return dto;

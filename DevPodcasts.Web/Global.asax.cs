@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using DevPodcasts.ServiceLayer.Logging;
 
 namespace DevPodcasts.Web
 {
@@ -34,6 +35,9 @@ namespace DevPodcasts.Web
             builder.RegisterType<PodcastService>().As<IPodcastService>();
             builder.RegisterType<PodcastEmailService>().As<IPodcastEmailService>();
             builder.RegisterType<RssService>().As<IRssService>();
+            builder.RegisterType<RssParser>().As<IRssParser>();
+            builder.RegisterType<FileLogger>().As<ILogger>();
+
 
             // Repositories
             builder.RegisterType<CategoriesRepository>().As<ICategoriesRepository>();
@@ -46,8 +50,8 @@ namespace DevPodcasts.Web
 
         private void UpdatePodcastEpisodes()
         {
-            var updater = new EpisodeUpdater();
-            updater.Update();
+            //var updater = new EpisodeUpdater(); TODO 
+            //updater.Update();
         }
     }
 }

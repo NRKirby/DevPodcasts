@@ -64,6 +64,7 @@
     <Compile Include="IEpisodeService.cs" />
     <Compile Include="IHomeService.cs" />
     <Compile Include="IPodcastService.cs" />
+    <Compile Include="IRssParser.cs" />
     <Compile Include="Logging\FileLogger.cs" />
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="IRssService.cs" />
