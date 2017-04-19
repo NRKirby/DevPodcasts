@@ -1,7 +1,7 @@
-﻿using System;
-using System.Text.RegularExpressions;
-using DevPodcasts.Repositories;
+﻿using DevPodcasts.Repositories;
 using DevPodcasts.ViewModels.Episode;
+using System;
+using System.Text.RegularExpressions;
 
 namespace DevPodcasts.ServiceLayer
 {
@@ -19,6 +19,7 @@ namespace DevPodcasts.ServiceLayer
             var episode = _episodeRepository.GetEpisode(id);
             return new EpisodeDetailViewModel
             {
+                Id = episode.Id,
                 Title = episode.Title,
                 Summary = StripHtml(episode.Summary),
                 AudioUrl = episode.AudioUrl,

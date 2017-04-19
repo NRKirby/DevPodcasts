@@ -34,6 +34,7 @@ namespace DevPodcasts.Repositories
             var episode = _context.Episodes.Single(i => i.Id == episodeId);
             return new EpisodeDto
             {
+                Id = episode.Id,
                 Title = episode.Title,
                 Summary = episode.Summary,
                 AudioUrl = episode.AudioUrl,
