@@ -8,6 +8,6 @@ namespace DevPodcasts.ViewModels.Episode
 
         public string Title { get; set; }
 
-        public DateTime? DatePublished { get; set; }
+        public string DatePublished { get; set; }
     }
 }
