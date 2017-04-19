@@ -16,15 +16,19 @@ namespace DevPodcasts.ServiceLayer
         public EpisodeDetailViewModel GetEpisodeDetail(int id)
         {
             var episode = _episodeRepository.GetEpisode(id);
-            return new EpisodeDetailViewModel
+            var summary = episode.Summary;
+            var viewModel = new EpisodeDetailViewModel
             {
                 Id = episode.Id,
                 Title = episode.Title,
-                Summary = StripHtml(episode.Summary),
                 AudioUrl = episode.AudioUrl,
                 EpisodeUrl = episode.EpisodeUrl,
                 DatePublished = episode.DatePublished?.ToShortDateString()
             };
+            if (summary != null)
+                viewModel.Summary = StripHtml(summary);
+
+            return viewModel;
         }
 
         public bool EpisodeExists(int episodeId)
