@@ -19,7 +19,7 @@ namespace DevPodcasts.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             RegisterComponents();
-            //UpdaterTest();
+            UpdatePodcastEpisodes();
         }
 
         private void RegisterComponents()
@@ -44,7 +44,7 @@ namespace DevPodcasts.Web
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
 
-        private void UpdaterTest()
+        private void UpdatePodcastEpisodes()
         {
             var updater = new EpisodeUpdater();
             updater.Update();
