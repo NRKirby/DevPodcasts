@@ -30,7 +30,9 @@ namespace DevPodcasts.ServiceLayer
 
         public static string StripHtml(string input)
         {
-            return Regex.Replace(input, "<.*?>", String.Empty);
+            var replace = Regex.Replace(input, "<.*?>", string.Empty);
+            replace = Regex.Replace(replace, "&nbsp;", " ");
+            return replace;
         }
     }
 }
