@@ -37,6 +37,7 @@ namespace DevPodcasts.Web
             builder.RegisterType<RssService>().As<IRssService>();
             builder.RegisterType<RssParser>().As<IRssParser>();
             builder.RegisterType<FileLogger>().As<ILogger>();
+            builder.RegisterType<EpisodeUpdater>().PropertiesAutowired();
 
 
             // Repositories
@@ -50,8 +51,8 @@ namespace DevPodcasts.Web
 
         private void UpdatePodcastEpisodes()
         {
-            //var updater = new EpisodeUpdater(); TODO 
-            //updater.Update();
+            var updater = DependencyResolver.Current.GetService<EpisodeUpdater>();
+            updater.Update();
         }
     }
 }
