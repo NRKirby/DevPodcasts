@@ -30,14 +30,16 @@ namespace DevPodcasts.ServiceLayer
         {
             Task.Run(async () =>
             {
+                var sw = Stopwatch.StartNew();
                 var podcasts = _podcastRepository.GetDistinctPodcasts();
                 await UpdatePodcasts(podcasts);
+                sw.Stop();
+                _logger.Info("Update took " + sw.ElapsedMilliseconds / 1000 + " seconds");
             });
         }
 
         private async Task UpdatePodcasts(IEnumerable<PodcastDto> podcasts)
         {
-            var sw = Stopwatch.StartNew();
             foreach (var podcast in podcasts)
             {
                 var newEpisodes = _rssService.GetNewEpisodes(podcast).ToList();
@@ -47,8 +49,6 @@ namespace DevPodcasts.ServiceLayer
                 }
                 await _episodeRepository.AddRange(newEpisodes);
             }
-            sw.Stop();
-            _logger.Info("Update took " + sw.ElapsedMilliseconds/1000 + " seconds");
         }
     }
 }
