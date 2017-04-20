@@ -1,6 +1,8 @@
 ﻿using DevPodcasts.Dtos;
 using DevPodcasts.Repositories;
+using DevPodcasts.ServiceLayer.Logging;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace DevPodcasts.ServiceLayer
@@ -10,14 +12,17 @@ namespace DevPodcasts.ServiceLayer
         private readonly IPodcastRepository _podcastRepository;
         private readonly IEpisodeRepository _episodeRepository;
         private readonly IRssService _rssService;
+        private readonly ILogger _logger;
 
         public EpisodeUpdater(IPodcastRepository podcastRepository,
             IEpisodeRepository episodeRepository,
-            IRssService rssService)
+            IRssService rssService,
+            ILogger logger)
         {
             _podcastRepository = podcastRepository;
             _episodeRepository = episodeRepository;
             _rssService = rssService;
+            _logger = logger;
         }
 
         public void Update()
@@ -33,7 +38,11 @@ namespace DevPodcasts.ServiceLayer
         {
             foreach (var podcast in podcasts)
             {
-                var newEpisodes = _rssService.GetNewEpisodes(podcast);
+                var newEpisodes = _rssService.GetNewEpisodes(podcast).ToList();
+                foreach (var episode in newEpisodes)
+                {
+                    _logger.Info(podcast.Title + " \"" + episode.Title + "\" added");
+                }
                 await _episodeRepository.AddRange(newEpisodes);
             }
         }

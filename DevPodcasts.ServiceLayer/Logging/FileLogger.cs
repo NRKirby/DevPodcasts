@@ -14,7 +14,7 @@ namespace DevPodcasts.ServiceLayer.Logging
         {
             using (var sw = new StreamWriter(@"C:\Users\Nick\Desktop\projects\DevPodcasts\DevPodcasts.ServiceLayer\Logging\Data\Log.txt", true))
             {
-                sw.WriteLine(DateTime.Now + " : " + msg);
+                sw.WriteLine(DateTime.Now + " Info: " + msg);
             }
         }
 
@@ -27,7 +27,7 @@ namespace DevPodcasts.ServiceLayer.Logging
         {
             using (var sw = new StreamWriter(@"C:\Users\Nick\Desktop\projects\DevPodcasts\DevPodcasts.ServiceLayer\Logging\Data\Log.txt", true))
             {
-                sw.WriteLine(DateTime.Now + " : "+ msg + " : " + ex.Message);
+                sw.WriteLine(DateTime.Now + " Error: "+ msg + " : " + ex.Message);
             }
         }
     }

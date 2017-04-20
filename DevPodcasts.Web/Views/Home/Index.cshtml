@@ -9,15 +9,29 @@
     <p>@Model.TotalPodcasts podcasts listed</p>
 </div>
 
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-sm-3">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for...">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Go!</button>
+            </span>
+        </div><!-- /input-group -->
+    </div>
+    <div class="col-md-4"></div>
+</div>
+
 <h2>Featured podcasts:</h2>
 <div class="row">
     @foreach (var pick in Model.FeaturedPodcasts)
     {
         <div class="col-md-5">
             <h3>@pick.Title</h3>
-            <p>@pick.Description
-            </p>
+            <p>
+                @pick.Description
+        </p>
         <p><a href="@Url.Action("Detail", "Podcast", new { Id = pick.PodcastId })" class="btn btn-default">More &raquo;</a></p>
-        </div>    
+    </div>
     }
 </div>

@@ -140,7 +140,8 @@ namespace DevPodcasts.Repositories
                 .Select(i => new PodcastDto
                 {
                     Id = i.Id,
-                    FeedUrl = i.FeedUrl
+                    FeedUrl = i.FeedUrl,
+                    Title = i.Title
                 });
         }
     }
