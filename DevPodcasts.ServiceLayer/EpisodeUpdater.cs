@@ -2,6 +2,7 @@
 using DevPodcasts.Repositories;
 using DevPodcasts.ServiceLayer.Logging;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -36,6 +37,7 @@ namespace DevPodcasts.ServiceLayer
 
         private async Task UpdatePodcasts(IEnumerable<PodcastDto> podcasts)
         {
+            var sw = Stopwatch.StartNew();
             foreach (var podcast in podcasts)
             {
                 var newEpisodes = _rssService.GetNewEpisodes(podcast).ToList();
@@ -45,6 +47,8 @@ namespace DevPodcasts.ServiceLayer
                 }
                 await _episodeRepository.AddRange(newEpisodes);
             }
+            sw.Stop();
+            _logger.Info("Update took " + sw.ElapsedMilliseconds/1000 + " seconds");
         }
     }
 }
