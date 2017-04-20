@@ -5,18 +5,19 @@
 
 <h2>@Model.Title</h2>
 <p><a href="@Model.EpisodeUrl" rel="noopener noreferrer" target="_blank">@Model.EpisodeUrl</a></p>
+
+<div style="border: 1px solid #005cb9; background-color: #f1f5f9; overflow: auto; margin-bottom: 1.7em; margin-top: 3em; padding: 1em !important;">
+    <h4 style="margin-top: 0">Summary:</h4>
+    @Model.Summary
+</div>
+
 <audio controls>
     <source src=@Model.AudioUrl type="audio/mpeg">
     Your browser does not support the audio element.
 </audio>
+
 <br/>
-<div style="border: 1px solid #005cb9; background-color: #f1f5f9; overflow: auto; margin-bottom: 1.7em; margin-top: 3em; padding: 1em !important;">
-    <h3 style="margin-top: 0">Summary:</h3>
-    @Model.Summary
-</div>
-
-
-<div id="disqus_thread"></div>
+<div id="disqus_thread" style="position: relative; top: 100px"></div>
 <script>
 
 var disqus_config = function () {
