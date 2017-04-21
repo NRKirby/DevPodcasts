@@ -20,7 +20,10 @@ namespace DevPodcasts.ServiceLayer.Logging
 
         public void Debug(string msg)
         {
-            throw new NotImplementedException();
+            using (var sw = new StreamWriter(@"C:\Users\Nick\Desktop\projects\DevPodcasts\DevPodcasts.ServiceLayer\Logging\Data\Log.txt", true))
+            {
+                sw.WriteLine(DateTime.Now + " Debug: " + msg);
+            }
         }
 
         public void Error(string msg, Exception ex)
