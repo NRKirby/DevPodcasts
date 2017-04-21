@@ -34,7 +34,9 @@ namespace DevPodcasts.Repositories
 
         public IEnumerable<PodcastDto> GetFeaturedPodcasts(int numberOfPodcasts)
         {
-            return _context.Podcasts
+            return _context
+                .Podcasts
+                .Where(i => i.IsApproved == true)
                 .OrderBy(i => Guid.NewGuid())
                 .Take(numberOfPodcasts)
                 .Select(i => new PodcastDto
@@ -47,17 +49,23 @@ namespace DevPodcasts.Repositories
 
         public bool PodcastExists(string rssFeedUrl)
         {
-            return _context.Podcasts.Any(i => i.FeedUrl == rssFeedUrl);
+            return _context
+                .Podcasts
+                .Where(i => i.IsApproved == true)
+                .Any(i => i.FeedUrl == rssFeedUrl);
         }
 
         public int GetTotalPodcasts()
         {
-            return _context.Podcasts.Count();
+            return _context
+                .Podcasts
+                .Count(i => i.IsApproved == true);
         }
 
         public IEnumerable<PodcastViewModel> GetUnapprovedPodcasts()
         {
-            return _context.Podcasts
+            return _context
+                .Podcasts
                 .Where(i => i.IsApproved == null)
                 .OrderBy(i => i.DateCreated)
                 .Select(i => new PodcastViewModel
@@ -90,12 +98,16 @@ namespace DevPodcasts.Repositories
 
         public bool PodcastExists(int podcastId)
         {
-            return _context.Podcasts.Any(i => i.Id == podcastId);
+            return _context
+                .Podcasts
+                .Where(i => i.IsApproved == true)
+                .Any(i => i.Id == podcastId);
         }
 
         public PodcastDto GetPodcast(int podcastId)
         {
-            var obj = _context.Podcasts
+            var obj = _context
+                .Podcasts
                 .Where(i => i.Id == podcastId)
                 .Select(i => new { i.Id, i.FeedUrl, i.Title, i.SiteUrl, i.Description })
                 .Single();
@@ -135,7 +147,9 @@ namespace DevPodcasts.Repositories
 
         public IEnumerable<PodcastDto> GetDistinctPodcasts()
         {
-            return _context.Podcasts
+            return _context
+                .Podcasts
+                .Where(i => i.IsApproved == true)
                 .Distinct()
                 .Select(i => new PodcastDto
                 {
