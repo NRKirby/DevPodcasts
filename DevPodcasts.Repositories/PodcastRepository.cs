@@ -115,7 +115,8 @@ namespace DevPodcasts.Repositories
                     Id = i.Id,
                     Title = i.Title,
                     NumberOfEpisodes = i.Episodes.Count,
-                    Description = i.Description
+                    Description = i.Description,
+                    ImageUrl = i.ImageUrl
                 });
         }
 

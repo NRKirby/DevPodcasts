@@ -9,5 +9,7 @@
         public string Description { get; set; }
 
         public int NumberOfEpisodes { get; set; }
+
+        public string ImageUrl { get; set; }
     }
 }

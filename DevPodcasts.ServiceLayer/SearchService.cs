@@ -23,7 +23,8 @@ namespace DevPodcasts.ServiceLayer
                         Id = i.Id,
                         Title = i.Title,
                         NumberOfEpisodes = i.NumberOfEpisodes,
-                        Description = i.Description
+                        Description = i.Description,
+                        ImageUrl = i.ImageUrl
                     }).ToList()
             };
             return viewModel;
