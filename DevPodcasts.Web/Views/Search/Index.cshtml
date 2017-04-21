@@ -11,11 +11,11 @@
         <div class="input-group">
             @if (searchQuery != null)
             {
-                <input type="text" class="form-control" placeholder="Search" name="q" value=@searchQuery>
+                <input type="text" class="form-control" placeholder="Search podcasts..." name="q" value=@searchQuery>
             }
             else
             {
-                <input type="text" class="form-control" placeholder="Search" name="q">
+                <input type="text" class="form-control" placeholder="Search podcasts..." name="q">
             }
             <div class="input-group-btn">
                 <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
@@ -26,7 +26,7 @@
 <div style="clear:both; position: relative; top: 12px; left: 15px">
     <h4>@Model.PodcastSearchResults.Count() results</h4>
 </div>
-<div id="search_results" style="position: relative; top: 20px">
+<div id="search_results" style="position: relative; top: 20px; border-top: 1px solid #e4e6e8;">
     <ul style="list-style-type:none">
         @foreach (var result in Model.PodcastSearchResults)
         {
@@ -43,7 +43,7 @@
                         </p>
                         <p>@result.Description</p>
                     </div>
-                    <p class="pull-right" align="right" style="position: relative; right: 30px; font-size: 12px"><strong>(@result.NumberOfEpisodes episodes)</strong></p>
+                    <p class="pull-right" align="right" style="position: relative; right: 15px; font-size: 12px"><strong>(@result.NumberOfEpisodes episodes)</strong></p>
                 </div>
             </li>
         }
