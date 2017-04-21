@@ -12,6 +12,11 @@ namespace DevPodcasts.Web.Controllers
             _episodeService = episodeService;
         }
 
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         public ActionResult Detail(int id)
         {
             var episodeExists = _episodeService.EpisodeExists(id);
