@@ -37,6 +37,7 @@ namespace DevPodcasts.Web
             builder.RegisterType<RssService>().As<IRssService>();
             builder.RegisterType<RssParser>().As<IRssParser>();
             builder.RegisterType<FileLogger>().As<ILogger>();
+            builder.RegisterType<SearchService>().As<ISearchService>();
             builder.RegisterType<EpisodeUpdater>().PropertiesAutowired();
 
 

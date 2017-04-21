@@ -28,5 +28,7 @@ namespace DevPodcasts.Repositories
         Task SaveCategories(int podcastId, IEnumerable<int> categoryIds);
 
         bool PodcastExists(int podcastId);
+
+        IEnumerable<PodcastSearchResultDto> Search(string query);
     }
 }

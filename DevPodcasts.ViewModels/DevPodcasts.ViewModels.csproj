@@ -105,6 +105,7 @@
     <Compile Include="Podcast\PodcastDetailViewModel.cs" />
     <Compile Include="Podcast\SubmitPodcastViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Search\SearchIndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

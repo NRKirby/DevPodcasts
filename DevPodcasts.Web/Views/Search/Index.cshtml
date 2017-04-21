@@ -1,7 +1,18 @@
-﻿
+﻿@model DevPodcasts.ViewModels.Search.SearchIndexViewModel
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Search</h2>
 
+<div id="search_results">
+    <ul style="list-style-type:none">
+        @foreach (var result in Model.PodcastSearchResults)
+        {
+            <li>
+                <p>@Html.ActionLink(result.Title, "Detail", "Podcast", new { id = result.Id }, null)   <strong>(@result.NumberOfEpisodes episodes)</strong></p>
+                <p>@result.Description</p>
+            </li>
+        }
+    </ul>
+</div>

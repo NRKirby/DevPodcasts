@@ -104,6 +104,21 @@ namespace DevPodcasts.Repositories
                 .Any(i => i.Id == podcastId);
         }
 
+        public IEnumerable<PodcastSearchResultDto> Search(string query)
+        {
+            return _context
+                .Podcasts
+                .Where(i => i.IsApproved == true && i.Title.Contains(query) || i.Description.Contains(query))
+                .OrderBy(i => i.Title)
+                .Select(i => new PodcastSearchResultDto
+                {
+                    Id = i.Id,
+                    Title = i.Title,
+                    NumberOfEpisodes = i.Episodes.Count,
+                    Description = i.Description
+                });
+        }
+
         public PodcastDto GetPodcast(int podcastId)
         {
             var obj = _context

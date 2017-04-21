@@ -1,12 +1,22 @@
-﻿using System.Web.Mvc;
+﻿using DevPodcasts.ServiceLayer;
+using System.Web.Mvc;
 
 namespace DevPodcasts.Web.Controllers
 {
     public class SearchController : Controller
     {
-        public ActionResult Index(string query)
+        private readonly ISearchService _searchService;
+
+        public SearchController(ISearchService searchService)
         {
-            return View();
+            _searchService = searchService;
+        }
+
+        public ActionResult Index(string q)
+        {
+            ViewBag.SearchQuery = q;
+            var viewModel = _searchService.Search(q);
+            return View(viewModel);
         }
     }
 }

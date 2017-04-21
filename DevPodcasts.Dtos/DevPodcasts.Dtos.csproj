@@ -43,6 +43,7 @@
     <Compile Include="EpisodeDto.cs" />
     <Compile Include="PodcastDto.cs" />
     <Compile Include="PodcastPick.cs" />
+    <Compile Include="PodcastSearchResultDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SuccessResult.cs" />
   </ItemGroup>
