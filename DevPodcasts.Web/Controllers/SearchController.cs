@@ -14,6 +14,9 @@ namespace DevPodcasts.Web.Controllers
 
         public ActionResult Index(string q)
         {
+            if (q.Equals(string.Empty))
+                return View();
+
             ViewBag.SearchQuery = q;
             var viewModel = _searchService.Search(q);
             return View(viewModel);

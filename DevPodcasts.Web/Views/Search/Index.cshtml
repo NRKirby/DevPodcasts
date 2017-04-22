@@ -1,43 +1,52 @@
 ﻿@model DevPodcasts.ViewModels.Search.SearchIndexViewModel
 @{
     ViewBag.Title = "Search";
-    var searchCount = Model.PodcastSearchResults.Count();
 }
 
 <h1>Search</h1>
 
 @Html.Partial("_SearchBar")
 
+
 <div id="search-count">
-    @if (searchCount == 1)
+    @if (Model == null)
     {
-        <h4>@searchCount result</h4>
+        <h4>0 results</h4>
+    }
+    else if (Model.PodcastSearchResults.Count() == 1)
+    {
+        <h4>1 result</h4>
     }
     else
     {
-        <h4>@searchCount results</h4>
+        <h4>@Model.PodcastSearchResults.Count() results</h4>
     }
 </div>
 <div id="search-results">
     <ul id="search-list">
-        @foreach (var result in Model.PodcastSearchResults)
+        @if (Model != null)
         {
-            <li class="podcast-list-item">
-                <div class="search-result">
-                    <div class="podcast-image">
-                        <a href='@Url.Action("Detail", "Podcast", new { id = result.Id })'>
-                            <img class="img-thumb" src="@result.ImageUrl"/>
-                        </a>
-                    </div>
-                    <div class="podcast-summary">
-                        <p>
-                            @Html.ActionLink(result.Title, "Detail", "Podcast", new { id = result.Id }, null) 
+            foreach (var result in Model.PodcastSearchResults)
+            {
+                <li class="podcast-list-item">
+                    <div class="search-result">
+                        <div class="podcast-image">
+                            <a href='@Url.Action("Detail", "Podcast", new {id = result.Id})'>
+                                <img class="img-thumb" src="@result.ImageUrl" />
+                            </a>
+                        </div>
+                        <div class="podcast-summary">
+                            <p>
+                                @Html.ActionLink(result.Title, "Detail", "Podcast", new { id = result.Id }, null)
+                            </p>
+                            <p>@result.Description</p>
+                        </div>
+                        <p class="episode-count pull-right" align="right">
+                            <strong>(@result.NumberOfEpisodes episodes)</strong>
                         </p>
-                        <p>@result.Description</p>
                     </div>
-                    <p class="episode-count pull-right" align="right"><strong>(@result.NumberOfEpisodes episodes)</strong></p>
-                </div>
-            </li>
+                </li>
+            }
         }
     </ul>
 </div>
