@@ -28,3 +28,16 @@ textarea {
 .fa-check {
     color: chartreuse
 }
+
+.search-result {
+    overflow: hidden;
+}
+.podcast-image {
+    width: 75px;
+    float:left;
+}
+.podcast-summary {
+    overflow: hidden;
+    position: relative;
+    left: 10px
+}
