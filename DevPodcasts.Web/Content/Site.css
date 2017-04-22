@@ -1,4 +1,21 @@
-﻿body {
+﻿.navbar-inverse {
+    background-color: #B9CDDF;
+    border-color: #B9CDDF;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #000;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #000;
+}
+
+.navbar-brand {
+    font-weight: 700;
+}
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
