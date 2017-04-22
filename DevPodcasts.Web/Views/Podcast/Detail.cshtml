@@ -3,12 +3,19 @@
     ViewBag.Title = "Podcast Detail";
 }
 
-<h2>@Model.Title</h2>
+<div style="overflow: hidden; position: relative; top: 20px">
+    <div style="width: 400px; float: left;">
+        <h2>@Model.Title</h2>
+        <p><a href="@Model.SiteUrl" rel="noopener noreferrer" target="_blank">@Model.SiteUrl</a></p>
+        <p>@Model.Description</p>
+        
+    </div>
+    <div style="overflow: hidden; width: 200px; float: right; position: relative; right: 20px;">
+        <img class="img-thumb" src="@Model.ImageUrl"/>
+    </div>
+</div>
 
-<p>@Model.Description</p>
-<p><a href="@Model.SiteUrl" rel="noopener noreferrer" target="_blank">@Model.SiteUrl</a></p>
-
-<table class="table table-striped">
+<table class="table table-striped" style="position: relative; top:100px">
     <thead> 
     <tr>
         <th>Title</th>

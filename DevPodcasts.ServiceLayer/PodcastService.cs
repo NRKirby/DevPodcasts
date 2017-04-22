@@ -79,6 +79,7 @@ namespace DevPodcasts.ServiceLayer
                 Title = podcast.Title,
                 Description = podcast.Description,
                 SiteUrl = podcast.SiteUrl,
+                ImageUrl = podcast.ImageUrl,
                 Episodes = _episodeRepository.GetAllEpisodes(podcastId)
                     .Select(i => new EpisodeViewModel
                     {

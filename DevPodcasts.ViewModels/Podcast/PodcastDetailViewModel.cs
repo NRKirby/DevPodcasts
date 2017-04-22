@@ -13,6 +13,8 @@ namespace DevPodcasts.ViewModels.Podcast
 
         public string SiteUrl { get; set; }
 
+        public string ImageUrl { get; set; }
+
         public IEnumerable<EpisodeViewModel> Episodes { get; set; }
     }
 }

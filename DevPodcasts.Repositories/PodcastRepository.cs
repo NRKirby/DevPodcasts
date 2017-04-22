@@ -125,7 +125,7 @@ namespace DevPodcasts.Repositories
             var obj = _context
                 .Podcasts
                 .Where(i => i.Id == podcastId)
-                .Select(i => new { i.Id, i.FeedUrl, i.Title, i.SiteUrl, i.Description })
+                .Select(i => new { i.Id, i.FeedUrl, i.Title, i.SiteUrl, i.Description, i.ImageUrl })
                 .Single();
 
             return new PodcastDto
@@ -134,7 +134,8 @@ namespace DevPodcasts.Repositories
                 FeedUrl = obj.FeedUrl,
                 Title = obj.Title,
                 SiteUrl = obj.SiteUrl,
-                Description = obj.Description
+                Description = obj.Description,
+                ImageUrl = obj.ImageUrl
             };
         }
 
