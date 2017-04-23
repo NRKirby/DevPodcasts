@@ -42,19 +42,17 @@ namespace DevPodcasts.ServiceLayer
         {
             var podcastList = podcasts.ToList();
             _logger.Debug("Total number podcasts: " + podcastList.Count);
-            var count = 1;
+            //var count = 1;
             foreach (var podcast in podcastList)
             {
-                var newEpisodes = _rssService.GetNewEpisodes(podcast).ToList();
-                if (newEpisodes == null)
-                    continue;
+                var newEpisodes = _rssService.GetNewEpisodes(podcast).ToList();                   
                 foreach (var episode in newEpisodes)
                 {
                     _logger.Info(podcast.Title + " \"" + episode.Title + "\" added");
                 }
                 await _episodeRepository.AddRange(newEpisodes);
-                _logger.Debug("Podcast updater count: " + count);
-                count++;
+                //_logger.Debug("Podcast updater count: " + count);
+                //count++;
             }
         }
     }
