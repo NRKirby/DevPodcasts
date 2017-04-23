@@ -24,13 +24,13 @@ namespace DevPodcasts.DataLayer.Models
             modelBuilder.Conventions.Remove(conventions);
 
             modelBuilder.Entity<Podcast>()
-                .HasMany(p => p.Categories)
+                .HasMany(p => p.Tags)
                 .WithMany(c => c.Podcasts)
                 .Map(pc =>
                 {
                     pc.MapLeftKey("PodcastId");
-                    pc.MapRightKey("CategoryId");
-                    pc.ToTable("PodcastCategory");
+                    pc.MapRightKey("TagId");
+                    pc.ToTable("PodcastTag");
                 });
         }
 
@@ -38,6 +38,6 @@ namespace DevPodcasts.DataLayer.Models
 
         public DbSet<Episode> Episodes { get; set; }
 
-        public DbSet<Category> Categories { get; set; }
+        public DbSet<Tag> Tags { get; set; }
     }
 }

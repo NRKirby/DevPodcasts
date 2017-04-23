@@ -2,14 +2,14 @@
 
 namespace DevPodcasts.DataLayer.Models
 {
-    public class Category
+    public class Tag
     {
-        public Category()
+        public Tag()
         {
             Podcasts = new List<Podcast>();
         }
 
-        public int CategoryId { get; set; }
+        public int TagId { get; set; }
 
         public string Name { get; set; }
 

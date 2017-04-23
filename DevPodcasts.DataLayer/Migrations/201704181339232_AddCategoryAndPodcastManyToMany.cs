@@ -7,7 +7,7 @@ namespace DevPodcasts.DataLayer.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.Categories",
+                "dbo.Tags",
                 c => new
                     {
                         CategoryId = c.Int(nullable: false, identity: true),
@@ -24,7 +24,7 @@ namespace DevPodcasts.DataLayer.Migrations
                     })
                 .PrimaryKey(t => new { t.PodcastId, t.CategoryId })
                 .ForeignKey("dbo.Podcasts", t => t.PodcastId, cascadeDelete: true)
-                .ForeignKey("dbo.Categories", t => t.CategoryId, cascadeDelete: true)
+                .ForeignKey("dbo.Tags", t => t.CategoryId, cascadeDelete: true)
                 .Index(t => t.PodcastId)
                 .Index(t => t.CategoryId);
             
@@ -32,12 +32,12 @@ namespace DevPodcasts.DataLayer.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.PodcastCategory", "CategoryId", "dbo.Categories");
+            DropForeignKey("dbo.PodcastCategory", "TagId", "dbo.Tags");
             DropForeignKey("dbo.PodcastCategory", "PodcastId", "dbo.Podcasts");
-            DropIndex("dbo.PodcastCategory", new[] { "CategoryId" });
+            DropIndex("dbo.PodcastCategory", new[] { "TagId" });
             DropIndex("dbo.PodcastCategory", new[] { "PodcastId" });
             DropTable("dbo.PodcastCategory");
-            DropTable("dbo.Categories");
+            DropTable("dbo.Tags");
         }
     }
 }

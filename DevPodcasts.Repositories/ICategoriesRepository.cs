@@ -5,6 +5,6 @@ namespace DevPodcasts.Repositories
 {
     public interface ICategoriesRepository
     {
-        IEnumerable<Category> GetAll();
+        IEnumerable<Tag> GetAll();
     }
 }

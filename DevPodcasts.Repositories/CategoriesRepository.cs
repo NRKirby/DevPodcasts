@@ -13,9 +13,9 @@ namespace DevPodcasts.Repositories
             _context = new ApplicationDbContext();
         }
 
-        public IEnumerable<Category> GetAll()
+        public IEnumerable<Tag> GetAll()
         {
-            return _context.Categories.OrderBy(i => i.Name);
+            return _context.Tags.OrderBy(i => i.Name);
         }
     }
 }

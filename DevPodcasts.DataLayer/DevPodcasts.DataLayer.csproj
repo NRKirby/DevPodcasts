@@ -96,10 +96,14 @@
     <Compile Include="Migrations\201704181339232_AddCategoryAndPodcastManyToMany.Designer.cs">
       <DependentUpon>201704181339232_AddCategoryAndPodcastManyToMany.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704231639338_RenameCategoryToTag.cs" />
+    <Compile Include="Migrations\201704231639338_RenameCategoryToTag.Designer.cs">
+      <DependentUpon>201704231639338_RenameCategoryToTag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
-    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\CheckBoxListItem.cs" />
     <Compile Include="Models\Episode.cs" />
     <Compile Include="Models\Podcast.cs" />
@@ -142,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704181339232_AddCategoryAndPodcastManyToMany.resx">
       <DependentUpon>201704181339232_AddCategoryAndPodcastManyToMany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704231639338_RenameCategoryToTag.resx">
+      <DependentUpon>201704231639338_RenameCategoryToTag.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

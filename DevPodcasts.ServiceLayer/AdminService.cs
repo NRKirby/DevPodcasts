@@ -56,7 +56,7 @@ namespace DevPodcasts.ServiceLayer
             {
                 viewModel.Categories.Add(new CheckBoxListItem
                 {
-                    Id = category.CategoryId,
+                    Id = category.TagId,
                     Display = category.Name
                 });
             }

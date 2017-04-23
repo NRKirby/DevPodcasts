@@ -87,11 +87,11 @@ namespace DevPodcasts.Repositories
 
         public async Task SaveCategories(int podcastId, IEnumerable<int> categoryIds)
         {
-            var podcast = _context.Podcasts.Include("Categories").Single(i => i.Id == podcastId);
+            var podcast = _context.Podcasts.Include("Tags").Single(i => i.Id == podcastId);
             foreach (var categoryId in categoryIds)
             {
-                var category = _context.Categories.Find(categoryId);
-                podcast.Categories.Add(category);
+                var category = _context.Tags.Find(categoryId);
+                podcast.Tags.Add(category);
             }
             await _context.SaveChangesAsync();
         }

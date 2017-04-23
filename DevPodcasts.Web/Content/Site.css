@@ -143,9 +143,10 @@ textarea {
 }
 
 .search-btn {
-    font-size: 22px;
+    font-size: 18px;
     -ms-border-radius: 8px;
     border-radius: 8px;
+    height: 42px
 }
 
 .btn {
@@ -153,6 +154,10 @@ textarea {
     padding: 7px 20px;
     -ms-border-radius: 8px;
     border-radius: 8px;
+}
+
+.search-box {
+    /*width: 400px;*/
 }
 
 
