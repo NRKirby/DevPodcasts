@@ -1,0 +1,26 @@
+﻿@model DevPodcasts.ViewModels.Admin.AdminManagePodcastsViewModel
+@{
+    ViewBag.Title = "Manage Podcasts";
+}
+
+<h2>Manage Podcasts</h2>
+
+<table class="table table-striped" style="position: relative; top:100px">
+    <thead> 
+    <tr>
+        <th>Title</th>
+    </tr> 
+    </thead> 
+    <tbody>
+    @if (Model?.Items != null)
+    {
+        foreach (var item in Model.Items)
+        {
+            <tr>
+                <td>@Html.ActionLink(item.Title, "Edit", "Podcast", new { id = item.Id }, null)</td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>
+

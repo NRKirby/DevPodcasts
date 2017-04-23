@@ -6,6 +6,7 @@ using DevPodcasts.ViewModels.Podcast;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DevPodcasts.DataLayer.Models;
 
 namespace DevPodcasts.ServiceLayer
 {
@@ -15,17 +16,20 @@ namespace DevPodcasts.ServiceLayer
         private readonly IEpisodeRepository _episodeRepository;
         private readonly IRssService _rssService;
         private readonly IPodcastEmailService _podcastEmailService;
+        private readonly ITagsRepository _tagsRepository;
 
         public PodcastService(
-            IPodcastRepository podcastRepository, 
+            IPodcastRepository podcastRepository,
             IEpisodeRepository episodeRepository,
-            IRssService rssService, 
-            IPodcastEmailService podcastEmailService)
+            IRssService rssService,
+            IPodcastEmailService podcastEmailService,
+            ITagsRepository tagsRepository)
         {
             _podcastRepository = podcastRepository;
             _episodeRepository = episodeRepository;
             _rssService = rssService;
             _podcastEmailService = podcastEmailService;
+            _tagsRepository = tagsRepository;
         }
 
         public int GetTotalPodcasts()
@@ -93,6 +97,32 @@ namespace DevPodcasts.ServiceLayer
         public bool PodcastExists(int podcastId)
         {
             return _podcastRepository.PodcastExists(podcastId);
+        }
+
+        public EditPodcastViewModel Edit(int podcastId)
+        {
+            var podcast = _podcastRepository.GetPodcastForEdit(podcastId);
+            var viewModel = new EditPodcastViewModel
+            {
+                Id = podcast.Id,
+                Title = podcast.Title,
+                Description = podcast.Description,
+                ImageUrl = podcast.ImageUrl,
+                FeedUrl = podcast.FeedUrl,
+                SiteUrl = podcast.SiteUrl
+            };
+
+            var tags = _tagsRepository.GetAll();
+            foreach (var tag in tags)
+            {
+                viewModel.Tags.Add(new CheckBoxListItem
+                {
+                    Id = tag.TagId,
+                    Display = tag.Name
+                });
+            }
+
+            return viewModel;
         }
 
         public void AddPodcastEpisodes(int podcastId)

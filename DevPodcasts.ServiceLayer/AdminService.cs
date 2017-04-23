@@ -2,6 +2,7 @@
 using DevPodcasts.Repositories;
 using DevPodcasts.ViewModels.Admin;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace DevPodcasts.ServiceLayer
@@ -9,15 +10,15 @@ namespace DevPodcasts.ServiceLayer
     public class AdminService : IAdminService
     {
         private readonly IPodcastRepository _podcastRepository;
-        private readonly ICategoriesRepository _categoriesRepository;
+        private readonly ITagsRepository _tagsRepository;
         private readonly IPodcastService _podcastService;
 
         public AdminService(IPodcastRepository podcastRepository, 
-            ICategoriesRepository categoriesRepository,
+            ITagsRepository tagsRepository,
             IPodcastService podcastService)
         {
             _podcastRepository = podcastRepository;
-            _categoriesRepository = categoriesRepository;
+            _tagsRepository = tagsRepository;
             _podcastService = podcastService;
         }
 
@@ -44,7 +45,7 @@ namespace DevPodcasts.ServiceLayer
         public ReviewPodcastViewModel GetPodcastForReview(int podcastId)
         {
             var podcast = _podcastRepository.GetPodcast(podcastId);
-            var categories = _categoriesRepository.GetAll();
+            var tags = _tagsRepository.GetAll();
             var viewModel = new ReviewPodcastViewModel
             {
                 Id = podcast.Id,
@@ -52,15 +53,30 @@ namespace DevPodcasts.ServiceLayer
                 SiteUrl = podcast.SiteUrl
             };
 
-            foreach (var category in categories)
+            foreach (var tag in tags)
             {
-                viewModel.Categories.Add(new CheckBoxListItem
+                viewModel.Tags.Add(new CheckBoxListItem
                 {
-                    Id = category.TagId,
-                    Display = category.Name
+                    Id = tag.TagId,
+                    Display = tag.Name
                 });
             }
 
+            return viewModel;
+        }
+
+        public AdminManagePodcastsViewModel GetPodcastList()
+        {
+            var viewModel = new AdminManagePodcastsViewModel
+            {
+                Items = _podcastRepository
+                    .GetAllPodcasts()
+                    .Select(i => new AdminManagePodcastItemViewModel
+                    {
+                        Id = i.Id,
+                        Title = i.Title
+                    })
+            };
             return viewModel;
         }
     }

@@ -31,7 +31,7 @@ namespace DevPodcasts.Web.Controllers
         [HttpPost]
         public ActionResult ReviewSubmission(ReviewPodcastViewModel model)
         {
-            var selectedCategories = model.Categories.Where(x => x.IsChecked).Select(x => x.Id).ToList();
+            var selectedCategories = model.Tags.Where(x => x.IsChecked).Select(x => x.Id).ToList();
             _adminService.Save(model.Id, selectedCategories);
             return RedirectToAction("Index");
         }
@@ -41,6 +41,12 @@ namespace DevPodcasts.Web.Controllers
         {
             await _adminService.Reject(podcastId);
             return RedirectToAction("Index");
+        }
+
+        public ActionResult ManagePodcasts()
+        {
+            var viewModel = _adminService.GetPodcastList();
+            return View(viewModel);
         }
     }
 }

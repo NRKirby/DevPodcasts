@@ -30,5 +30,9 @@ namespace DevPodcasts.Repositories
         bool PodcastExists(int podcastId);
 
         IEnumerable<PodcastSearchResultDto> Search(string query);
+
+        IEnumerable<PodcastDto> GetAllPodcasts();
+
+        PodcastDto GetPodcastForEdit(int podcastId);
     }
 }

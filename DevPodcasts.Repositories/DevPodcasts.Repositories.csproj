@@ -53,9 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CategoriesRepository.cs" />
+    <Compile Include="TagsRepository.cs" />
     <Compile Include="EpisodeRepository.cs" />
-    <Compile Include="ICategoriesRepository.cs" />
+    <Compile Include="ITagsRepository.cs" />
     <Compile Include="IEpisodeRepository.cs" />
     <Compile Include="IPodcastRepository.cs" />
     <Compile Include="PodcastRepository.cs" />

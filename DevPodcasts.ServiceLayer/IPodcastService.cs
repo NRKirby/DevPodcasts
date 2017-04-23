@@ -18,5 +18,7 @@ namespace DevPodcasts.ServiceLayer
         PodcastDetailViewModel GetPodcastDetail(int podcastId);
 
         bool PodcastExists(int podcastId);
+
+        EditPodcastViewModel Edit(int podcastId);
     }
 }

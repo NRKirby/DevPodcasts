@@ -254,6 +254,8 @@
     <Content Include="Views\Episode\Index.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Search\_SearchBar.cshtml" />
+    <Content Include="Views\Podcast\Edit.cshtml" />
+    <Content Include="Views\Admin\ManagePodcasts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

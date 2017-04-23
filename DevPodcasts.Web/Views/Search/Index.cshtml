@@ -37,13 +37,14 @@
                         </div>
                         <div class="podcast-summary">
                             <p>
-                                @Html.ActionLink(result.Title, "Detail", "Podcast", new { id = result.Id }, null)
+                                @Html.ActionLink(result.Title, "Detail", "Podcast", new { id = result.Id }, null) 
                             </p>
                             <p>@result.Description</p>
                         </div>
                         <p class="episode-count pull-right" align="right">
                             <strong>(@result.NumberOfEpisodes episodes)</strong>
                         </p>
+                        
                     </div>
                 </li>
             }

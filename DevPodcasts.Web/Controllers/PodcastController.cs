@@ -2,6 +2,7 @@
 using DevPodcasts.ViewModels.Podcast;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using DevPodcasts.ViewModels.Admin;
 
 namespace DevPodcasts.Web.Controllers
 {
@@ -41,6 +42,20 @@ namespace DevPodcasts.Web.Controllers
 
             var viewModel = _podcastService.GetPodcastDetail(id);
             return View(viewModel);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult Edit(int id)
+        {
+            var viewModel = _podcastService.Edit(id);
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public ActionResult Edit(AdminManagePodcastItemViewModel model)
+        {
+            return View();
         }
     }
 }

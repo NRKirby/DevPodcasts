@@ -19,5 +19,7 @@ namespace DevPodcasts.Dtos
         public SuccessResult SuccessResult { get; set; }
 
         public IEnumerable<EpisodeDto> Episodes { get; set; }
+
+        public IEnumerable<TagDto> Tags { get; set; }
     }
 }

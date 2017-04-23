@@ -120,22 +120,51 @@ namespace DevPodcasts.Repositories
                 });
         }
 
-        public PodcastDto GetPodcast(int podcastId)
+        public IEnumerable<PodcastDto> GetAllPodcasts()
         {
-            var obj = _context
+            return _context.Podcasts.Select(i => new PodcastDto
+            {
+                Id = i.Id,
+                Title = i.Title
+            }).OrderBy(i => i.Title);
+        }
+
+        public PodcastDto GetPodcastForEdit(int podcastId)
+        {
+            return _context
                 .Podcasts
                 .Where(i => i.Id == podcastId)
-                .Select(i => new { i.Id, i.FeedUrl, i.Title, i.SiteUrl, i.Description, i.ImageUrl })
+                .Select(i => new PodcastDto
+                {
+                    Id = i.Id,
+                    Title = i.Title,
+                    Description = i.Description,
+                    ImageUrl = i.ImageUrl,
+                    FeedUrl = i.FeedUrl,
+                    SiteUrl = i.SiteUrl,
+                    Tags = i.Tags.Select(t => new TagDto
+                    {
+                        Id = t.TagId,
+                        Name = t.Name  
+                    })
+                })
                 .Single();
+        }
+
+        public PodcastDto GetPodcast(int podcastId)
+        {
+            var podcast = _context
+                .Podcasts
+                .Single(i => i.Id == podcastId);
 
             return new PodcastDto
             {
-                Id = obj.Id,
-                FeedUrl = obj.FeedUrl,
-                Title = obj.Title,
-                SiteUrl = obj.SiteUrl,
-                Description = obj.Description,
-                ImageUrl = obj.ImageUrl
+                Id = podcast.Id,
+                FeedUrl = podcast.FeedUrl,
+                Title = podcast.Title,
+                SiteUrl = podcast.SiteUrl,
+                Description = podcast.Description,
+                ImageUrl = podcast.ImageUrl
             };
         }
 

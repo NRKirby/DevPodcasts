@@ -11,11 +11,11 @@ namespace DevPodcasts.ViewModels.Admin
 
         public string SiteUrl { get; set; }
 
-        public List<CheckBoxListItem> Categories { get; set; }
+        public List<CheckBoxListItem> Tags { get; set; }
 
         public ReviewPodcastViewModel()
         {
-            Categories = new List<CheckBoxListItem>();
+            Tags = new List<CheckBoxListItem>();
         }
     }
 }

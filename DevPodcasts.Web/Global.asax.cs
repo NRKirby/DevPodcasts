@@ -42,7 +42,7 @@ namespace DevPodcasts.Web
 
 
             // Repositories
-            builder.RegisterType<CategoriesRepository>().As<ICategoriesRepository>();
+            builder.RegisterType<TagsRepository>().As<ITagsRepository>();
             builder.RegisterType<EpisodeRepository>().As<IEpisodeRepository>();
             builder.RegisterType<PodcastRepository>().As<IPodcastRepository>();
             

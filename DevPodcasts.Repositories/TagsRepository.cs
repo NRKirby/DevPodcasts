@@ -4,11 +4,11 @@ using System.Linq;
 
 namespace DevPodcasts.Repositories
 {
-    public class CategoriesRepository : ICategoriesRepository
+    public class TagsRepository : ITagsRepository
     {
         private readonly ApplicationDbContext _context;
 
-        public CategoriesRepository()
+        public TagsRepository()
         {
             _context = new ApplicationDbContext();
         }
