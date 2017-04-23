@@ -3,8 +3,17 @@
     border-color: #B9CDDF;
 }
 
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: rgba(51, 122, 183, 0.14);
+}
+
 .navbar-inverse .navbar-brand {
     color: #000;
+}
+
+.dropdown-menu {
+    box-shadow: none;
+    -webkit-box-shadow: none;
 }
 
 .navbar-inverse .navbar-nav > li > a {
@@ -18,6 +27,23 @@
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-size: 17px;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -101,5 +127,33 @@ textarea {
     right: 15px;
     font-size: 12px;
 }
+
+
+/* bootstrap overrides */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    font-size: 17px;
+    padding: 20px 15px;
+    -ms-border-radius: 8px;
+    border-radius: 8px;
+}
+
+.search-btn {
+    font-size: 22px;
+    -ms-border-radius: 8px;
+    border-radius: 8px;
+}
+
+.btn {
+    font-size: 17px;
+    padding: 7px 20px;
+    -ms-border-radius: 8px;
+    border-radius: 8px;
+}
+
 
 
