@@ -1,4 +1,5 @@
-﻿using DevPodcasts.Dtos;
+﻿using DevPodcasts.DataLayer.Models;
+using DevPodcasts.Dtos;
 using DevPodcasts.Repositories;
 using DevPodcasts.ServiceLayer.Email;
 using DevPodcasts.ViewModels.Episode;
@@ -6,7 +7,6 @@ using DevPodcasts.ViewModels.Podcast;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DevPodcasts.DataLayer.Models;
 
 namespace DevPodcasts.ServiceLayer
 {
@@ -99,7 +99,8 @@ namespace DevPodcasts.ServiceLayer
             return _podcastRepository.PodcastExists(podcastId);
         }
 
-        public EditPodcastViewModel Edit(int podcastId)
+        // TODO: rewrite this method
+        public EditPodcastViewModel Edit(int podcastId) 
         {
             var podcast = _podcastRepository.GetPodcastForEdit(podcastId);
             var viewModel = new EditPodcastViewModel
@@ -112,7 +113,10 @@ namespace DevPodcasts.ServiceLayer
                 SiteUrl = podcast.SiteUrl
             };
 
-            var tags = _tagsRepository.GetAll();
+            var tags = _tagsRepository
+                .GetAll()
+                .ToList();
+
             foreach (var tag in tags)
             {
                 viewModel.Tags.Add(new CheckBoxListItem
@@ -122,7 +126,36 @@ namespace DevPodcasts.ServiceLayer
                 });
             }
 
+            foreach (var tag in podcast.Tags)
+            {
+                var t = viewModel.Tags.Single(i => i.Id == tag.Id);
+                t.IsChecked = true;
+            }
+
             return viewModel;
+        }
+
+        public async Task UpdatePodcast(EditPodcastViewModel model)
+        {
+            var selectedTags = model
+                .Tags
+                .Where(i => i.IsChecked)
+                .Select(i => new TagDto
+            {
+                Id = i.Id,
+            });
+
+            var dto = new PodcastDto
+            {
+                Id = model.Id,
+                Title = model.Title,
+                Description = model.Description,
+                ImageUrl = model.ImageUrl,
+                FeedUrl = model.FeedUrl,
+                SiteUrl = model.SiteUrl,
+                Tags = selectedTags
+            };
+            await _podcastRepository.UpdatePodcast(dto);
         }
 
         public void AddPodcastEpisodes(int podcastId)

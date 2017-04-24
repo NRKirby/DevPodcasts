@@ -34,5 +34,7 @@ namespace DevPodcasts.Repositories
         IEnumerable<PodcastDto> GetAllPodcasts();
 
         PodcastDto GetPodcastForEdit(int podcastId);
+
+        Task UpdatePodcast(PodcastDto dto);
     }
 }

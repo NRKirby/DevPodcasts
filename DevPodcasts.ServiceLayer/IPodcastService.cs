@@ -20,5 +20,7 @@ namespace DevPodcasts.ServiceLayer
         bool PodcastExists(int podcastId);
 
         EditPodcastViewModel Edit(int podcastId);
+
+        Task UpdatePodcast(EditPodcastViewModel model);
     }
 }

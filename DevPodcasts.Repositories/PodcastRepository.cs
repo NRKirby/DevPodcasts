@@ -3,6 +3,7 @@ using DevPodcasts.Dtos;
 using DevPodcasts.ViewModels.Admin;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -149,6 +150,33 @@ namespace DevPodcasts.Repositories
                     })
                 })
                 .Single();
+        }
+
+        public async Task UpdatePodcast(PodcastDto dto)
+        {
+            var podcast = _context.Podcasts.Include("Tags").FirstOrDefault(i => i.Id == dto.Id);
+
+            if (podcast != null)
+            {
+                podcast.Title = dto.Title;
+                podcast.Description = dto.Description;
+                podcast.ImageUrl = dto.ImageUrl;
+                podcast.FeedUrl = dto.FeedUrl;
+                podcast.SiteUrl = dto.SiteUrl;
+
+                var selectedTagIds = dto
+                    .Tags
+                    .Select(i => i.Id);
+                await _context.Entry(podcast).Collection(p => p.Tags).LoadAsync();
+
+                var newTags = _context
+                    .Tags
+                    .Where(t => selectedTagIds.Contains(t.TagId))
+                    .ToList();
+                podcast.Tags = newTags;
+            }
+
+            await _context.SaveChangesAsync();
         }
 
         public PodcastDto GetPodcast(int podcastId)

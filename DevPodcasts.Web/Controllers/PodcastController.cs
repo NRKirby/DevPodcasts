@@ -2,7 +2,6 @@
 using DevPodcasts.ViewModels.Podcast;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using DevPodcasts.ViewModels.Admin;
 
 namespace DevPodcasts.Web.Controllers
 {
@@ -53,9 +52,10 @@ namespace DevPodcasts.Web.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public ActionResult Edit(AdminManagePodcastItemViewModel model)
+        public ActionResult Edit(EditPodcastViewModel model)
         {
-            return View();
+            _podcastService.UpdatePodcast(model);
+            return RedirectToAction("ManagePodcasts", "Admin");
         }
     }
 }
