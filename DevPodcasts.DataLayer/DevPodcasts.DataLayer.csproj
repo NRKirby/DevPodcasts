@@ -100,6 +100,10 @@
     <Compile Include="Migrations\201704231639338_RenameCategoryToTag.Designer.cs">
       <DependentUpon>201704231639338_RenameCategoryToTag.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704241137550_ApplicationUserPodcastManyToMany.cs" />
+    <Compile Include="Migrations\201704241137550_ApplicationUserPodcastManyToMany.Designer.cs">
+      <DependentUpon>201704241137550_ApplicationUserPodcastManyToMany.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -149,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704231639338_RenameCategoryToTag.resx">
       <DependentUpon>201704231639338_RenameCategoryToTag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704241137550_ApplicationUserPodcastManyToMany.resx">
+      <DependentUpon>201704241137550_ApplicationUserPodcastManyToMany.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

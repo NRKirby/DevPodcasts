@@ -32,6 +32,16 @@ namespace DevPodcasts.DataLayer.Models
                     pc.MapRightKey("TagId");
                     pc.ToTable("PodcastTag");
                 });
+
+            modelBuilder.Entity<ApplicationUser>()
+                .HasMany(user => user.SubscribedPodcasts)
+                .WithMany(podcast => podcast.SubscribedUsers)
+                .Map(userPodcast =>
+                {
+                    userPodcast.MapLeftKey("UserId");
+                    userPodcast.MapRightKey("PodcastId");
+                    userPodcast.ToTable("UserPodcast");
+                });
         }
 
         public DbSet<Podcast> Podcasts { get; set; }

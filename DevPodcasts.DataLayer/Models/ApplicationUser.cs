@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -7,10 +8,6 @@ namespace DevPodcasts.DataLayer.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        public string FirstName { get; set; }
-
-        public string LastName { get; set; }
-
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -18,5 +15,11 @@ namespace DevPodcasts.DataLayer.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public ICollection<Podcast> SubscribedPodcasts { get; set; }
     }
 }

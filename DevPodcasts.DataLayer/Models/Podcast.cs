@@ -31,5 +31,7 @@ namespace DevPodcasts.DataLayer.Models
         public ICollection<Episode> Episodes { get; set; }
 
         public ICollection<Tag> Tags { get; set; }
+
+        public ICollection<ApplicationUser> SubscribedUsers { get; set; }
     }
 }
