@@ -28,10 +28,10 @@ namespace DevPodcasts.DataLayer.Models
 
         public string SiteUrl { get; set; }
 
-        public ICollection<Episode> Episodes { get; set; }
+        public virtual ICollection<Episode> Episodes { get; set; }
 
-        public ICollection<Tag> Tags { get; set; }
+        public virtual ICollection<Tag> Tags { get; set; }
 
-        public ICollection<ApplicationUser> SubscribedUsers { get; set; }
+        public virtual ICollection<ApplicationUser> SubscribedUsers { get; set; }
     }
 }
