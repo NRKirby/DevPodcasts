@@ -3,7 +3,7 @@ using DevPodcasts.Dtos;
 using DevPodcasts.ViewModels.Admin;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.Migrations;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -88,7 +88,12 @@ namespace DevPodcasts.Repositories
 
         public async Task SaveCategories(int podcastId, IEnumerable<int> categoryIds)
         {
-            var podcast = _context.Podcasts.Include("Tags").Single(i => i.Id == podcastId);
+            var podcast = _context
+                .Podcasts
+                .Where(i => i.Id == podcastId)
+                .Include(i => i.Tags)
+                .Single();
+
             foreach (var categoryId in categoryIds)
             {
                 var category = _context.Tags.Find(categoryId);
@@ -123,11 +128,15 @@ namespace DevPodcasts.Repositories
 
         public IEnumerable<PodcastDto> GetAllPodcasts()
         {
-            return _context.Podcasts.Select(i => new PodcastDto
+            return _context
+                .Podcasts
+                .Where(i => i.IsApproved == true)
+                .Select(i => new PodcastDto
             {
                 Id = i.Id,
                 Title = i.Title
-            }).OrderBy(i => i.Title);
+            })
+            .OrderBy(i => i.Title);
         }
 
         public PodcastDto GetPodcastForEdit(int podcastId)
@@ -154,7 +163,11 @@ namespace DevPodcasts.Repositories
 
         public async Task UpdatePodcast(PodcastDto dto)
         {
-            var podcast = _context.Podcasts.Include("Tags").FirstOrDefault(i => i.Id == dto.Id);
+            var podcast = _context
+                .Podcasts
+                .Where(i => i.Id == dto.Id)
+                .Include(i => i.Tags)
+                .FirstOrDefault();
 
             if (podcast != null)
             {
