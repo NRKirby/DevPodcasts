@@ -13,6 +13,8 @@ namespace DevPodcasts.ServiceLayer
 
         Task<SubmitPodcastViewModel> SubmitPodcastForReview(SubmitPodcastViewModel model);
 
+        PodcastIndexViewModel Search(string query = null);
+
         IEnumerable<PodcastPick> GetPodcastPicks();
 
         PodcastDetailViewModel GetPodcastDetail(int podcastId);

@@ -1,7 +1,52 @@
-﻿
+﻿@model DevPodcasts.ViewModels.Podcast.PodcastIndexViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Podcasts";
+    var episodeCount = Model.EpisodeCount;
 }
 
-<h2>Index</h2>
+<h2 style="position: relative; top: 20px">Podcasts</h2>
 
+<div style="position: relative; top: 25px">
+    @if (Model == null)
+    {
+        <h4>0 podcasts</h4>
+    }
+    else if (Model.Items.Count() == 1)
+    {
+        <h4>1 podcast</h4>
+    }
+    else
+    {
+        <h4>@Model.Items.Count() podcasts</h4>
+    }
+    <h4>@episodeCount episodes</h4>
+</div>
+<div style="position: relative; top: 50px; border-top: 1px solid #e4e6e8;">
+    <ul id="search-list">
+        @if (Model != null)
+        {
+            foreach (var result in Model.Items)
+            {
+                <li class="podcast-list-item">
+                    <div class="search-result">
+                        <div class="podcast-image">
+                            <a href='@Url.Action("Detail", "Podcast", new {id = result.Id})'>
+                                <img class="img-thumb" src="@result.ImageUrl" />
+                            </a>
+                        </div>
+                        <div class="podcast-summary">
+                            <p>
+                                @Html.ActionLink(result.Title, "Detail", "Podcast", new { id = result.Id }, null) 
+                            </p>
+                            <p>@result.Description</p>
+                        </div>
+                        <p class="episode-count pull-right" align="right">
+                            <strong>(@result.NumberOfEpisodes episodes)</strong>
+                        </p>
+                        
+                    </div>
+                </li>
+            }
+        }
+    </ul>
+</div>

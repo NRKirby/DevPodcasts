@@ -16,7 +16,8 @@ namespace DevPodcasts.Web.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var viewModel = _podcastService.Search();
+            return View(viewModel);
         }
 
         [Authorize]

@@ -112,10 +112,23 @@ namespace DevPodcasts.Repositories
 
         public IEnumerable<PodcastSearchResultDto> Search(string query)
         {
-            return _context
-                .Podcasts
-                .Where(i => i.IsApproved == true && i.Title.Contains(query) || i.Description.Contains(query))
-                .OrderBy(i => i.Title)
+            IOrderedQueryable<Podcast> podcastQuery;
+            if (query == null) // return all approved podcasts
+            {
+                podcastQuery = _context
+                    .Podcasts
+                    .Where(i => i.IsApproved == true)
+                    .OrderBy(i => i.Title);
+            }
+            else
+            {
+                podcastQuery = _context
+                    .Podcasts
+                    .Where(i => i.IsApproved == true && i.Title.Contains(query) || i.Description.Contains(query))
+                    .OrderBy(i => i.Title);
+            }
+
+            return podcastQuery
                 .Select(i => new PodcastSearchResultDto
                 {
                     Id = i.Id,

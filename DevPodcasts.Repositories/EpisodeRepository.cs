@@ -53,6 +53,11 @@ namespace DevPodcasts.Repositories
             return _context.Episodes.Any(i => i.Id == episodeId);
         }
 
+        public int EpisodeCount()
+        {
+            return _context.Episodes.Count();
+        }
+
         public async Task AddRange(IEnumerable<EpisodeDto> dtos)
         {
             foreach (var dto in dtos)

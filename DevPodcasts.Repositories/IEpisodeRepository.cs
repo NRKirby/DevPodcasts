@@ -16,5 +16,7 @@ namespace DevPodcasts.Repositories
         DateTime? GetMostRecentEpisodeDate(int podcastId);
 
         bool EpisodeExists(int episodeId);
+
+        int EpisodeCount();
     }
 }

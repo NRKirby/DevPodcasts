@@ -55,6 +55,26 @@ namespace DevPodcasts.ServiceLayer
             return viewModel;
         }
 
+        public PodcastIndexViewModel Search(string query)
+        {
+            var podcasts = _podcastRepository.Search(query);
+            var viewModel = new PodcastIndexViewModel
+            {
+                Items = podcasts
+                .Select(i => new PodcastIndexItemViewModel
+                {
+                    Id = i.Id,
+                    Title = i.Title,
+                    ImageUrl = i.ImageUrl,
+                    Description = i.Description,
+                    NumberOfEpisodes = i.NumberOfEpisodes
+                }),
+                EpisodeCount = _episodeRepository.EpisodeCount()
+            };
+
+            return viewModel;
+        }
+
         public IEnumerable<PodcastPick> GetPodcastPicks()
         {
             var picks = _podcastRepository.GetFeaturedPodcasts(3);
