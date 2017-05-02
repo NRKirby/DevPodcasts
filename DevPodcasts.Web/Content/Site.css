@@ -160,5 +160,10 @@ textarea {
     /*width: 400px;*/
 }
 
+.footer {
+    position: relative;
+    top: 200px;
+}
+
 
 
