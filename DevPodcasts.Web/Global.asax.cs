@@ -3,11 +3,11 @@ using Autofac.Integration.Mvc;
 using DevPodcasts.Repositories;
 using DevPodcasts.ServiceLayer;
 using DevPodcasts.ServiceLayer.Email;
+using DevPodcasts.ServiceLayer.Logging;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using DevPodcasts.ServiceLayer.Logging;
 
 namespace DevPodcasts.Web
 {
@@ -19,6 +19,7 @@ namespace DevPodcasts.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            MvcHandler.DisableMvcResponseHeader = true;
             RegisterComponents();
             UpdatePodcastEpisodes();
         }
