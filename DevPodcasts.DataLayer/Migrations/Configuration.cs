@@ -1,14 +1,13 @@
 namespace DevPodcasts.DataLayer.Migrations
 {
-    using DevPodcasts.DataLayer.Models;
+    using Models;
     using System.Data.Entity.Migrations;
 
     internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            ContextKey = "DevPodcasts.DataLayer.Models.ApplicationDbContext";
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(ApplicationDbContext context)

@@ -7,13 +7,13 @@ namespace DevPodcasts.DataLayer.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class RenameCategoryToTag : IMigrationMetadata
+    public sealed partial class InitialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(RenameCategoryToTag));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201704231639338_RenameCategoryToTag"; }
+            get { return "201705031829439_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

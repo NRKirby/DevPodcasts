@@ -52,57 +52,9 @@
     <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201704101334372_InitialCreate.cs" />
-    <Compile Include="Migrations\201704101334372_InitialCreate.Designer.cs">
-      <DependentUpon>201704101334372_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704101414580_InitialAdd.cs" />
-    <Compile Include="Migrations\201704101414580_InitialAdd.Designer.cs">
-      <DependentUpon>201704101414580_InitialAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704101431536_RemoveSeparateUserEntityAddPropertiesToAspNetUser.cs" />
-    <Compile Include="Migrations\201704101431536_RemoveSeparateUserEntityAddPropertiesToAspNetUser.Designer.cs">
-      <DependentUpon>201704101431536_RemoveSeparateUserEntityAddPropertiesToAspNetUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704101757169_AddApprovedPropertiesToPodcastEntity.cs" />
-    <Compile Include="Migrations\201704101757169_AddApprovedPropertiesToPodcastEntity.Designer.cs">
-      <DependentUpon>201704101757169_AddApprovedPropertiesToPodcastEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704101758575_AddFeedUrlToPodcast.cs" />
-    <Compile Include="Migrations\201704101758575_AddFeedUrlToPodcast.Designer.cs">
-      <DependentUpon>201704101758575_AddFeedUrlToPodcast.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704110911046_AddEpisodesPropertyToPodcast.cs" />
-    <Compile Include="Migrations\201704110911046_AddEpisodesPropertyToPodcast.Designer.cs">
-      <DependentUpon>201704110911046_AddEpisodesPropertyToPodcast.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704111201085_AddSiteUrlToPodcast.cs" />
-    <Compile Include="Migrations\201704111201085_AddSiteUrlToPodcast.Designer.cs">
-      <DependentUpon>201704111201085_AddSiteUrlToPodcast.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704111258181_MakeDateCreatedNotNull.cs" />
-    <Compile Include="Migrations\201704111258181_MakeDateCreatedNotNull.Designer.cs">
-      <DependentUpon>201704111258181_MakeDateCreatedNotNull.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704121307107_AddEpisodeUrl.cs" />
-    <Compile Include="Migrations\201704121307107_AddEpisodeUrl.Designer.cs">
-      <DependentUpon>201704121307107_AddEpisodeUrl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704131001260_AddEpisodeIdToEpisode.cs" />
-    <Compile Include="Migrations\201704131001260_AddEpisodeIdToEpisode.Designer.cs">
-      <DependentUpon>201704131001260_AddEpisodeIdToEpisode.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704181339232_AddCategoryAndPodcastManyToMany.cs" />
-    <Compile Include="Migrations\201704181339232_AddCategoryAndPodcastManyToMany.Designer.cs">
-      <DependentUpon>201704181339232_AddCategoryAndPodcastManyToMany.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704231639338_RenameCategoryToTag.cs" />
-    <Compile Include="Migrations\201704231639338_RenameCategoryToTag.Designer.cs">
-      <DependentUpon>201704231639338_RenameCategoryToTag.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704241137550_ApplicationUserPodcastManyToMany.cs" />
-    <Compile Include="Migrations\201704241137550_ApplicationUserPodcastManyToMany.Designer.cs">
-      <DependentUpon>201704241137550_ApplicationUserPodcastManyToMany.cs</DependentUpon>
+    <Compile Include="Migrations\201705031829439_InitialCreate.cs" />
+    <Compile Include="Migrations\201705031829439_InitialCreate.Designer.cs">
+      <DependentUpon>201705031829439_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -118,44 +70,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704101334372_InitialCreate.resx">
-      <DependentUpon>201704101334372_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704101414580_InitialAdd.resx">
-      <DependentUpon>201704101414580_InitialAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704101431536_RemoveSeparateUserEntityAddPropertiesToAspNetUser.resx">
-      <DependentUpon>201704101431536_RemoveSeparateUserEntityAddPropertiesToAspNetUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704101757169_AddApprovedPropertiesToPodcastEntity.resx">
-      <DependentUpon>201704101757169_AddApprovedPropertiesToPodcastEntity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704101758575_AddFeedUrlToPodcast.resx">
-      <DependentUpon>201704101758575_AddFeedUrlToPodcast.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704110911046_AddEpisodesPropertyToPodcast.resx">
-      <DependentUpon>201704110911046_AddEpisodesPropertyToPodcast.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704111201085_AddSiteUrlToPodcast.resx">
-      <DependentUpon>201704111201085_AddSiteUrlToPodcast.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704111258181_MakeDateCreatedNotNull.resx">
-      <DependentUpon>201704111258181_MakeDateCreatedNotNull.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704121307107_AddEpisodeUrl.resx">
-      <DependentUpon>201704121307107_AddEpisodeUrl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704131001260_AddEpisodeIdToEpisode.resx">
-      <DependentUpon>201704131001260_AddEpisodeIdToEpisode.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704181339232_AddCategoryAndPodcastManyToMany.resx">
-      <DependentUpon>201704181339232_AddCategoryAndPodcastManyToMany.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704231639338_RenameCategoryToTag.resx">
-      <DependentUpon>201704231639338_RenameCategoryToTag.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704241137550_ApplicationUserPodcastManyToMany.resx">
-      <DependentUpon>201704241137550_ApplicationUserPodcastManyToMany.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705031829439_InitialCreate.resx">
+      <DependentUpon>201705031829439_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
