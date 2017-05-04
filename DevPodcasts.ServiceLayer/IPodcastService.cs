@@ -15,7 +15,7 @@ namespace DevPodcasts.ServiceLayer
 
         PodcastIndexViewModel Search(string query = null);
 
-        IEnumerable<PodcastPick> GetPodcastPicks();
+        IEnumerable<FeaturedPodcast> GetFeaturedPodcasts();
 
         PodcastDetailViewModel GetPodcastDetail(int podcastId);
 

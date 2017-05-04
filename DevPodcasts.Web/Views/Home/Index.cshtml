@@ -9,8 +9,12 @@
     <p>@Model.TotalPodcasts podcasts listed</p>
 </div>
 
-<h2>Featured podcasts:</h2>
 <div class="row">
+    <h2>Most recent episodes:</h2>
+</div>
+
+<div class="row">
+    <h2>Featured podcasts:</h2>
     @foreach (var pick in Model.FeaturedPodcasts)
     {
         <div class="col-md-5">

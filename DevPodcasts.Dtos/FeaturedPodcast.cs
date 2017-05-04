@@ -1,6 +1,6 @@
 ﻿namespace DevPodcasts.Dtos
 {
-    public class PodcastPick
+    public class FeaturedPodcast
     {
         public int PodcastId { get; set; }
 

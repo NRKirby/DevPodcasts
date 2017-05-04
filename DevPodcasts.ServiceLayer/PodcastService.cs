@@ -75,23 +75,17 @@ namespace DevPodcasts.ServiceLayer
             return viewModel;
         }
 
-        public IEnumerable<PodcastPick> GetPodcastPicks()
+        public IEnumerable<FeaturedPodcast> GetFeaturedPodcasts()
         {
-            var picks = _podcastRepository.GetFeaturedPodcasts(3);
+            var featured = _podcastRepository.GetFeaturedPodcasts(3);
 
-            var podcastPicks = new List<PodcastPick>();
-
-            foreach (var pick in picks)
+            return featured
+                .Select(i => new FeaturedPodcast
             {
-                podcastPicks.Add(new PodcastPick
-                {
-                    PodcastId = pick.Id,
-                    Title = pick.Title,
-                    Description = pick.Description
-                });
-            }
-
-            return podcastPicks;
+                PodcastId = i.Id,
+                Title = i.Title,
+                Description = i.Description
+            });
         }
 
         public PodcastDetailViewModel GetPodcastDetail(int podcastId)
