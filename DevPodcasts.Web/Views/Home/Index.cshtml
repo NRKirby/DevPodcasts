@@ -11,6 +11,15 @@
 
 <div class="row">
     <h2>Most recent episodes:</h2>
+    <table>
+        @foreach (var episode in Model.RecentEpisodes)
+        {
+            <tr>
+                <td>@episode.Title</td>
+                <td>@episode.PodcastTitle</td>  
+            </tr>
+        }
+    </table>
 </div>
 
 <div class="row">
@@ -21,8 +30,8 @@
             <h3>@pick.Title</h3>
             <p>
                 @pick.Description
-        </p>
-        <p><a href="@Url.Action("Detail", "Podcast", new { Id = pick.PodcastId })" class="btn btn-default">More &raquo;</a></p>
-    </div>
+            </p>
+            <p><a href="@Url.Action("Detail", "Podcast", new { Id = pick.PodcastId })" class="btn btn-default">More &raquo;</a></p>
+        </div>
     }
 </div>

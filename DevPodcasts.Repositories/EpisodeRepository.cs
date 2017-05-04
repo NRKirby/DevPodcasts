@@ -1,5 +1,6 @@
 ﻿using DevPodcasts.DataLayer.Models;
 using DevPodcasts.Dtos;
+using DevPodcasts.ViewModels.Home;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -79,6 +80,29 @@ namespace DevPodcasts.Repositories
             }
 
             await _context.SaveChangesAsync();
+        }
+
+        public IEnumerable<RecentEpisode> GetMostRecentEpisodes(int numberOfEpisodes)
+        {
+            var recentEpisodes = _context
+                .Episodes
+                .OrderByDescending(i => i.Id)
+                .Take(numberOfEpisodes)
+                .ToList();
+
+            var recentEpisodesList = new List<RecentEpisode>();
+
+            foreach (var episode in recentEpisodes)
+            {
+                recentEpisodesList.Add(new RecentEpisode
+                {
+                    Id = episode.Id,
+                    Title = episode.Title,
+                    PodcastTitle = episode.Podcast.Title
+                });
+            }
+
+            return recentEpisodesList;
         }
     }
 }

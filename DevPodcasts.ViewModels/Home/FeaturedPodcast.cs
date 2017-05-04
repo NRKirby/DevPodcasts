@@ -1,4 +1,4 @@
-﻿namespace DevPodcasts.Dtos
+﻿namespace DevPodcasts.ViewModels.Home
 {
     public class FeaturedPodcast
     {

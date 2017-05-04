@@ -3,7 +3,9 @@ using DevPodcasts.Dtos;
 using DevPodcasts.Repositories;
 using DevPodcasts.ServiceLayer.Email;
 using DevPodcasts.ViewModels.Episode;
+using DevPodcasts.ViewModels.Home;
 using DevPodcasts.ViewModels.Podcast;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -77,15 +79,7 @@ namespace DevPodcasts.ServiceLayer
 
         public IEnumerable<FeaturedPodcast> GetFeaturedPodcasts()
         {
-            var featured = _podcastRepository.GetFeaturedPodcasts(3);
-
-            return featured
-                .Select(i => new FeaturedPodcast
-            {
-                PodcastId = i.Id,
-                Title = i.Title,
-                Description = i.Description
-            });
+            return _podcastRepository.GetFeaturedPodcasts(3);
         }
 
         public PodcastDetailViewModel GetPodcastDetail(int podcastId)
@@ -175,6 +169,20 @@ namespace DevPodcasts.ServiceLayer
         public void AddPodcastEpisodes(int podcastId)
         {
             _rssService.AddPodcastEpisodes(podcastId);
+        }
+
+        public HomeIndexViewModel GetHomePageViewModel()
+        {
+            var totalPodcasts = _podcastRepository.GetTotalPodcasts();
+            var featured = _podcastRepository.GetFeaturedPodcasts(3);
+            var recent = _episodeRepository.GetMostRecentEpisodes(10);
+
+            return new HomeIndexViewModel
+            {
+                TotalPodcasts = totalPodcasts,
+                FeaturedPodcasts = featured,
+                RecentEpisodes = recent
+            };
         }
     }
 }

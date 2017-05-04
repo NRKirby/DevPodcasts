@@ -1,4 +1,4 @@
-﻿using DevPodcasts.Dtos;
+﻿using DevPodcasts.ViewModels.Home;
 using DevPodcasts.ViewModels.Podcast;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -10,6 +10,8 @@ namespace DevPodcasts.ServiceLayer
         void AddPodcastEpisodes(int podcastId);
 
         int GetTotalPodcasts();
+
+        HomeIndexViewModel GetHomePageViewModel();
 
         Task<SubmitPodcastViewModel> SubmitPodcastForReview(SubmitPodcastViewModel model);
 

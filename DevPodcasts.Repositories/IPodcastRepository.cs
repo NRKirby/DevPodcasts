@@ -1,5 +1,6 @@
 ﻿using DevPodcasts.Dtos;
 using DevPodcasts.ViewModels.Admin;
+using DevPodcasts.ViewModels.Home;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -19,7 +20,7 @@ namespace DevPodcasts.Repositories
 
         IEnumerable<PodcastViewModel> GetUnapprovedPodcasts();
 
-        IEnumerable<PodcastDto> GetFeaturedPodcasts(int numberOfPodcasts);
+        IEnumerable<FeaturedPodcast> GetFeaturedPodcasts(int numberOfPodcasts);
 
         bool PodcastExists(string rssFeedUrl);
 

@@ -8,5 +8,7 @@ namespace DevPodcasts.ViewModels.Home
         public int TotalPodcasts { get; set; }
 
         public IEnumerable<FeaturedPodcast> FeaturedPodcasts { get; set; }
+
+        public IEnumerable<RecentEpisode> RecentEpisodes { get; set; }
     }
 }

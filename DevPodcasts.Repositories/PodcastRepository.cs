@@ -2,6 +2,7 @@
 using DevPodcasts.Dtos;
 using DevPodcasts.ViewModels.Admin;
 using System;
+using DevPodcasts.ViewModels.Home;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -33,16 +34,16 @@ namespace DevPodcasts.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public IEnumerable<PodcastDto> GetFeaturedPodcasts(int numberOfPodcasts)
+        public IEnumerable<FeaturedPodcast> GetFeaturedPodcasts(int numberOfPodcasts)
         {
             return _context
                 .Podcasts
                 .Where(i => i.IsApproved == true)
                 .OrderBy(i => Guid.NewGuid())
                 .Take(numberOfPodcasts)
-                .Select(i => new PodcastDto
+                .Select(i => new FeaturedPodcast
                 {
-                    Id = i.Id,
+                    PodcastId = i.Id,
                     Title = i.Title,
                     Description = i.Description
                 });
