@@ -1,4 +1,4 @@
-﻿using DevPodcasts.ServiceLayer;
+﻿using DevPodcasts.ServiceLayer.Episode;
 using System.Web.Mvc;
 
 namespace DevPodcasts.Web.Controllers

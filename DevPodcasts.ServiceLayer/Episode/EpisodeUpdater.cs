@@ -1,13 +1,13 @@
-﻿using DevPodcasts.Dtos;
-using DevPodcasts.Repositories;
-using DevPodcasts.ServiceLayer.Logging;
-using DevPodcasts.ServiceLayer.RSS;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using DevPodcasts.Dtos;
+using DevPodcasts.Repositories;
+using DevPodcasts.ServiceLayer.Logging;
+using DevPodcasts.ServiceLayer.RSS;
 
-namespace DevPodcasts.ServiceLayer
+namespace DevPodcasts.ServiceLayer.Episode
 {
     public class EpisodeUpdater
     {
@@ -15,7 +15,7 @@ namespace DevPodcasts.ServiceLayer
         private readonly IEpisodeRepository _episodeRepository;
         private readonly IRssService _rssService;
         private readonly ILogger _logger;
-        private int EpisodesAddedCount;
+        private int _episodesAddedCount;
 
         public EpisodeUpdater(IPodcastRepository podcastRepository,
             IEpisodeRepository episodeRepository,
@@ -26,7 +26,7 @@ namespace DevPodcasts.ServiceLayer
             _episodeRepository = episodeRepository;
             _rssService = rssService;
             _logger = logger;
-            EpisodesAddedCount = 0;
+            _episodesAddedCount = 0;
         }
 
         public void Update()
@@ -37,7 +37,7 @@ namespace DevPodcasts.ServiceLayer
                 var podcasts = _podcastRepository.GetDistinctPodcasts();
                 await UpdatePodcasts(podcasts);
                 sw.Stop();
-                _logger.Info(EpisodesAddedCount + " episodes added");
+                _logger.Info(_episodesAddedCount + " episodes added");
                 _logger.Debug("Update took " + sw.ElapsedMilliseconds / 1000 + " seconds");
             });
         }
@@ -53,7 +53,7 @@ namespace DevPodcasts.ServiceLayer
                 foreach (var episode in newEpisodes)
                 {
                     _logger.Info(podcast.Title + " \"" + episode.Title + "\" added");
-                    EpisodesAddedCount++;
+                    _episodesAddedCount++;
                 }
                 await _episodeRepository.AddRange(newEpisodes);
                 //_logger.Debug("Podcast updater count: " + count);

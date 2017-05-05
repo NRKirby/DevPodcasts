@@ -3,6 +3,7 @@ using Autofac.Integration.Mvc;
 using DevPodcasts.Repositories;
 using DevPodcasts.ServiceLayer;
 using DevPodcasts.ServiceLayer.Email;
+using DevPodcasts.ServiceLayer.Episode;
 using DevPodcasts.ServiceLayer.Logging;
 using DevPodcasts.ServiceLayer.RSS;
 using System.Web;

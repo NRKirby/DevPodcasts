@@ -1,6 +1,6 @@
 ﻿using DevPodcasts.ViewModels.Episode;
 
-namespace DevPodcasts.ServiceLayer
+namespace DevPodcasts.ServiceLayer.Episode
 {
     public interface IEpisodeService
     {

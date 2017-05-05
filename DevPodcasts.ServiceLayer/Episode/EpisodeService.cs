@@ -2,7 +2,7 @@
 using DevPodcasts.ViewModels.Episode;
 using System.Text.RegularExpressions;
 
-namespace DevPodcasts.ServiceLayer
+namespace DevPodcasts.ServiceLayer.Episode
 {
     public class EpisodeService : IEpisodeService
     {
