@@ -3,7 +3,7 @@ using DevPodcasts.ViewModels.Podcast;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace DevPodcasts.ServiceLayer
+namespace DevPodcasts.ServiceLayer.Podcast
 {
     public interface IPodcastService
     {

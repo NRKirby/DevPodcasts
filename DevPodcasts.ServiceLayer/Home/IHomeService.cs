@@ -1,6 +1,6 @@
 ﻿using DevPodcasts.ViewModels.Home;
 
-namespace DevPodcasts.ServiceLayer
+namespace DevPodcasts.ServiceLayer.Home
 {
     public interface IHomeService
     {

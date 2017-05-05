@@ -1,8 +1,8 @@
-﻿using DevPodcasts.Repositories;
+﻿using System.Linq;
+using DevPodcasts.Repositories;
 using DevPodcasts.ViewModels.Search;
-using System.Linq;
 
-namespace DevPodcasts.ServiceLayer
+namespace DevPodcasts.ServiceLayer.Search
 {
     public class SearchService : ISearchService
     {

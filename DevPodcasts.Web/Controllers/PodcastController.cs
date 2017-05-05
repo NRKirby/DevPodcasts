@@ -1,4 +1,4 @@
-﻿using DevPodcasts.ServiceLayer;
+﻿using DevPodcasts.ServiceLayer.Podcast;
 using DevPodcasts.ViewModels.Podcast;
 using System.Threading.Tasks;
 using System.Web.Mvc;

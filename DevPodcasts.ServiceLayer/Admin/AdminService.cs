@@ -4,8 +4,9 @@ using DevPodcasts.ViewModels.Admin;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DevPodcasts.ServiceLayer.Podcast;
 
-namespace DevPodcasts.ServiceLayer
+namespace DevPodcasts.ServiceLayer.Admin
 {
     public class AdminService : IAdminService
     {

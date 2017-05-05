@@ -1,6 +1,6 @@
 ﻿using DevPodcasts.ViewModels.Search;
 
-namespace DevPodcasts.ServiceLayer
+namespace DevPodcasts.ServiceLayer.Search
 {
     public interface ISearchService
     {

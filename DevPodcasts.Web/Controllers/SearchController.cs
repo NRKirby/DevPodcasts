@@ -1,5 +1,6 @@
 ﻿using DevPodcasts.ServiceLayer;
 using System.Web.Mvc;
+using DevPodcasts.ServiceLayer.Search;
 
 namespace DevPodcasts.Web.Controllers
 {

@@ -1,7 +1,7 @@
-﻿using DevPodcasts.ViewModels.Home;
-using System.Linq;
+﻿using DevPodcasts.ServiceLayer.Podcast;
+using DevPodcasts.ViewModels.Home;
 
-namespace DevPodcasts.ServiceLayer
+namespace DevPodcasts.ServiceLayer.Home
 {
     public class HomeService : IHomeService
     {

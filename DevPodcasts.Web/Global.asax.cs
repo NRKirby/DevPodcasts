@@ -1,11 +1,14 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using DevPodcasts.Repositories;
-using DevPodcasts.ServiceLayer;
+using DevPodcasts.ServiceLayer.Admin;
 using DevPodcasts.ServiceLayer.Email;
 using DevPodcasts.ServiceLayer.Episode;
+using DevPodcasts.ServiceLayer.Home;
 using DevPodcasts.ServiceLayer.Logging;
+using DevPodcasts.ServiceLayer.Podcast;
 using DevPodcasts.ServiceLayer.RSS;
+using DevPodcasts.ServiceLayer.Search;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
