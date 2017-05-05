@@ -3,7 +3,7 @@ using System;
 using System.ServiceModel.Syndication;
 using System.Xml;
 
-namespace DevPodcasts.ServiceLayer
+namespace DevPodcasts.ServiceLayer.RSS
 {
     public class RssParser : IRssParser
     {

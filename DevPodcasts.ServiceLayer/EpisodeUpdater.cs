@@ -1,6 +1,7 @@
 ﻿using DevPodcasts.Dtos;
 using DevPodcasts.Repositories;
 using DevPodcasts.ServiceLayer.Logging;
+using DevPodcasts.ServiceLayer.RSS;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;

@@ -1,7 +1,7 @@
 ﻿using DevPodcasts.Dtos;
 using System.Collections.Generic;
 
-namespace DevPodcasts.ServiceLayer
+namespace DevPodcasts.ServiceLayer.RSS
 {
     public interface IRssService
     {

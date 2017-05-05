@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel.Syndication;
 
-namespace DevPodcasts.ServiceLayer
+namespace DevPodcasts.ServiceLayer.RSS
 {
     public class RssService : IRssService
     {

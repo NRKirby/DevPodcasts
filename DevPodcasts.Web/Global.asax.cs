@@ -4,6 +4,7 @@ using DevPodcasts.Repositories;
 using DevPodcasts.ServiceLayer;
 using DevPodcasts.ServiceLayer.Email;
 using DevPodcasts.ServiceLayer.Logging;
+using DevPodcasts.ServiceLayer.RSS;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;

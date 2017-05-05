@@ -1,6 +1,6 @@
 ﻿using System.ServiceModel.Syndication;
 
-namespace DevPodcasts.ServiceLayer
+namespace DevPodcasts.ServiceLayer.RSS
 {
     public interface IRssParser
     {

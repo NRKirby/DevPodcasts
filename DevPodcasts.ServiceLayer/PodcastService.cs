@@ -2,10 +2,10 @@
 using DevPodcasts.Dtos;
 using DevPodcasts.Repositories;
 using DevPodcasts.ServiceLayer.Email;
+using DevPodcasts.ServiceLayer.RSS;
 using DevPodcasts.ViewModels.Episode;
 using DevPodcasts.ViewModels.Home;
 using DevPodcasts.ViewModels.Podcast;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
