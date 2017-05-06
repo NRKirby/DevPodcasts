@@ -82,7 +82,7 @@ namespace DevPodcasts.ServiceLayer.RSS
             if (_podcastRepository.PodcastExists(rssFeedUrl))
             {
                 dto.SuccessResult = SuccessResult.AlreadyExists;
-                _logger.Info(rssFeedUrl + " : Already exists");
+                _logger.Error(rssFeedUrl + " : Already exists", null);
                 return dto;
             }
 
