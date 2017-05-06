@@ -81,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\AdminService.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Email\EmailConstants.cs" />
     <Compile Include="Email\AccountEmailService.cs" />
     <Compile Include="Email\PodcastEmailService.cs" />

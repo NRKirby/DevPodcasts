@@ -12,9 +12,13 @@ namespace DevPodcasts.ServiceLayer.Logging
 
         public AzureTableLogger()
         {
-            var storage = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["AzureStorageConnectionString"]);
+            var storage = CloudStorageAccount
+                .Parse(ConfigurationManager.AppSettings["AzureStorageConnectionString"]);
+
+            string tableName = Constants.AzureLogTableName;
+
             _log = new LoggerConfiguration()
-               .WriteTo.AzureTableStorageWithProperties(storage, storageTableName: "LogDev")
+               .WriteTo.AzureTableStorageWithProperties(storage, storageTableName: tableName)
                .MinimumLevel.Debug()
                .CreateLogger();
         }
