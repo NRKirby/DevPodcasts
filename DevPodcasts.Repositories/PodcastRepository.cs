@@ -125,7 +125,8 @@ namespace DevPodcasts.Repositories
             {
                 podcastQuery = _context
                     .Podcasts
-                    .Where(i => i.IsApproved == true && i.Title.Contains(query) || i.Description.Contains(query))
+                    .Where(i => i.IsApproved == true && i.Title.Contains(query) || 
+                                i.IsApproved == true && i.Description.Contains(query))
                     .OrderBy(i => i.Title);
             }
 
