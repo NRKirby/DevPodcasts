@@ -168,7 +168,7 @@ namespace DevPodcasts.ServiceLayer.Podcast
 
         public void AddPodcastEpisodes(int podcastId)
         {
-            _rssService.AddPodcastEpisodes(podcastId);
+            Task.Run(() => _rssService.AddPodcastEpisodes(podcastId));
         }
 
         public HomeIndexViewModel GetHomePageViewModel()
