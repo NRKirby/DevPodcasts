@@ -1,9 +1,8 @@
-﻿using DevPodcasts.ServiceLayer;
+﻿using DevPodcasts.ServiceLayer.Admin;
 using DevPodcasts.ViewModels.Admin;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using DevPodcasts.ServiceLayer.Admin;
 
 namespace DevPodcasts.Web.Controllers
 {

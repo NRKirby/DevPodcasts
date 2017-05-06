@@ -34,24 +34,25 @@ namespace DevPodcasts.Web
             var builder = new ContainerBuilder();
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
 
-            // Services
-            builder.RegisterType<AdminService>().As<IAdminService>();
-            builder.RegisterType<EpisodeService>().As<IEpisodeService>();
-            builder.RegisterType<HomeService>().As<IHomeService>();
-            builder.RegisterType<PodcastService>().As<IPodcastService>();
-            builder.RegisterType<PodcastEmailService>().As<IPodcastEmailService>();
-            builder.RegisterType<RssService>().As<IRssService>();
-            builder.RegisterType<RssParser>().As<IRssParser>();
-            builder.RegisterType<FileLogger>().As<ILogger>();
-            builder.RegisterType<SearchService>().As<ISearchService>();
-            builder.RegisterType<EpisodeUpdater>().PropertiesAutowired();
-
+            // Logging
+            builder.RegisterType<AzureTableLogger>().As<ILogger>(); builder.RegisterType<AzureTableLogger>().As<ILogger>();
 
             // Repositories
             builder.RegisterType<TagsRepository>().As<ITagsRepository>();
             builder.RegisterType<EpisodeRepository>().As<IEpisodeRepository>();
             builder.RegisterType<PodcastRepository>().As<IPodcastRepository>();
-            
+
+            // Services
+            builder.RegisterType<AdminService>().As<IAdminService>();
+            builder.RegisterType<EpisodeService>().As<IEpisodeService>();
+            builder.RegisterType<EpisodeUpdater>().PropertiesAutowired();
+            builder.RegisterType<HomeService>().As<IHomeService>();
+            builder.RegisterType<PodcastEmailService>().As<IPodcastEmailService>();
+            builder.RegisterType<PodcastService>().As<IPodcastService>();
+            builder.RegisterType<RssParser>().As<IRssParser>();
+            builder.RegisterType<RssService>().As<IRssService>();
+            builder.RegisterType<SearchService>().As<ISearchService>();
+
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
