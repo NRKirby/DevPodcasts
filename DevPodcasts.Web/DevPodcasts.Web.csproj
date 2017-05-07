@@ -104,6 +104,9 @@
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="X.PagedList, Version=5.3.0.21888, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\X.PagedList.5.3.0.5300\lib\portable-net45+wp8+win8\X.PagedList.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
@@ -162,6 +165,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\EpisodeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LogsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PodcastController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
@@ -258,6 +262,7 @@
     <Content Include="Views\Podcast\Edit.cshtml" />
     <Content Include="Views\Admin\ManagePodcasts.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Logs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
