@@ -2,10 +2,8 @@
 
 namespace DevPodcasts.DataLayer.Models
 {
-    public class Episode
+    public class Episode : ModelBase<int>
     {
-        public int Id { get; set; }
-
         public string EpisodeId { get; set; }
 
         public string Title { get; set; }

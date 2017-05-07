@@ -59,6 +59,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\CheckBoxListItem.cs" />
     <Compile Include="Models\Episode.cs" />
