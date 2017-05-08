@@ -93,6 +93,7 @@
     <Compile Include="Episode\IEpisodeService.cs" />
     <Compile Include="Home\IHomeService.cs" />
     <Compile Include="Logging\AzureTableLogger.cs" />
+    <Compile Include="Logging\LogEntity.cs" />
     <Compile Include="Logging\LogService.cs" />
     <Compile Include="Podcast\IPodcastService.cs" />
     <Compile Include="RSS\IRssParser.cs" />

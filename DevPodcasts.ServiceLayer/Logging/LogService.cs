@@ -1,13 +1,15 @@
 ﻿using Microsoft.WindowsAzure.Storage;
-using Serilog;
-using Serilog.Core;
+using Microsoft.WindowsAzure.Storage.Table;
+using System;
+using System.Collections.Generic;
 using System.Configuration;
+using System.Linq;
 
 namespace DevPodcasts.ServiceLayer.Logging
 {
     public class LogService
     {
-        private readonly Logger _log;
+        private readonly CloudTable _table;
 
         public LogService()
         {
@@ -16,10 +18,15 @@ namespace DevPodcasts.ServiceLayer.Logging
 
             string tableName = Constants.AzureLogTableName;
 
-            _log = new LoggerConfiguration()
-                .WriteTo.AzureTableStorageWithProperties(storage, storageTableName: tableName)
-                .MinimumLevel.Debug()
-                .CreateLogger();
+            CloudTableClient tableClient = storage.CreateCloudTableClient();
+
+            _table = tableClient.GetTableReference(tableName);
+        }
+
+        public IEnumerable<LogEntity> GetAllLogs()
+        {
+            var query = new TableQuery<LogEntity>();
+            return _table.ExecuteQuery(query).ToList();
         }
     }
 }
