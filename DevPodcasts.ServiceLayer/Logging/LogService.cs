@@ -1,11 +1,11 @@
-﻿using System;
+﻿using DevPodcasts.ViewModels;
 using DevPodcasts.ViewModels.Logs;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
-using DevPodcasts.ViewModels;
 
 namespace DevPodcasts.ServiceLayer.Logging
 {
@@ -17,11 +17,8 @@ namespace DevPodcasts.ServiceLayer.Logging
         {
             var storage = CloudStorageAccount
                 .Parse(ConfigurationManager.AppSettings["AzureStorageConnectionString"]);
-
-            string tableName = Constants.AzureLogTableName;
-
-            CloudTableClient tableClient = storage.CreateCloudTableClient();
-
+            var tableName = Constants.AzureLogTableName;
+            var tableClient = storage.CreateCloudTableClient();
             _table = tableClient.GetTableReference(tableName);
         }
 
@@ -31,28 +28,40 @@ namespace DevPodcasts.ServiceLayer.Logging
             var logs = _table.ExecuteQuery(query);
             return logs
                 .Select(i => new LogItemViewModel
-            {
-                Level = i.Level,
-                TimeStamp = i.Timestamp.DateTime,
-                LogMessage = i.RenderedMessage
-            });
+                {
+                    Level = i.Level,
+                    TimeStamp = i.Timestamp.DateTime,
+                    LogMessage = i.RenderedMessage
+                });
         }
 
-        public LogsViewModel GetLogs(int pageIndex, int itemsPerPage)
+        public LogsViewModel GetLogs(int pageIndex, int itemsPerPage, string levelFilter)
         {
             var query = new TableQuery<LogEntity>();
-
             var allLogs = _table.ExecuteQuery(query).ToList();
 
-            var logs = allLogs
-                .OrderByDescending(i => i.Timestamp.DateTime)
+            IOrderedEnumerable<LogEntity> logsEnumerable;
+
+            if (levelFilter == null) // Don't filter logs by level, return all
+            {
+                logsEnumerable = allLogs
+                    .OrderByDescending(i => i.Timestamp.DateTime);
+            }
+            else
+            {
+                logsEnumerable = allLogs
+                    .Where(i => i.Level == levelFilter)
+                    .OrderByDescending(i => i.Timestamp.DateTime);
+            }
+
+            var logs = logsEnumerable
                 .Skip(itemsPerPage * pageIndex)
-                .Take(itemsPerPage)
-                .ToList();
+                .Take(itemsPerPage);
 
             var viewModel = new LogsViewModel
             {
-                Items = logs.Select(i => new LogItemViewModel
+                Items = logs
+                .Select(i => new LogItemViewModel
                 {
                     Level = i.Level,
                     TimeStamp = i.Timestamp.DateTime.ToLocalTime(),

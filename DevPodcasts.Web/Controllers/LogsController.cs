@@ -13,10 +13,10 @@ namespace DevPodcasts.Web.Controllers
             _logService = logService;
         }
 
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string levelFilter)
         {
             const int itemsPerPage = 100;
-            var viewModel = _logService.GetLogs(page ?? 0, itemsPerPage);
+            var viewModel = _logService.GetLogs(page ?? 0, itemsPerPage, levelFilter);
 
             return View(viewModel);
         }

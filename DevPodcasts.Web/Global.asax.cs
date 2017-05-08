@@ -27,7 +27,6 @@ namespace DevPodcasts.Web
             MvcHandler.DisableMvcResponseHeader = true;
             RegisterComponents();
             UpdatePodcastEpisodes();
-            UpdatePodcastEpisodes();
         }
 
         private void RegisterComponents()

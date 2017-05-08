@@ -241,7 +241,7 @@ namespace DevPodcasts.Repositories
                     DateCreated = episodeDto.DateCreated
                 };
 
-                var episodeAlreadyExists = podcast.Episodes.Any(i => i.Title == episode.Title);
+                var episodeAlreadyExists = _context.Episodes.Any(i => i.Title == episode.Title);
                 if (!episodeAlreadyExists)
                 {
                     podcast.Episodes.Add(episode);
