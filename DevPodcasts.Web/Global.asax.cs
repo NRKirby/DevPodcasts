@@ -27,6 +27,7 @@ namespace DevPodcasts.Web
             MvcHandler.DisableMvcResponseHeader = true;
             RegisterComponents();
             UpdatePodcastEpisodes();
+            UpdatePodcastEpisodes();
         }
 
         private void RegisterComponents()
@@ -52,6 +53,7 @@ namespace DevPodcasts.Web
             builder.RegisterType<RssParser>().As<IRssParser>();
             builder.RegisterType<RssService>().As<IRssService>();
             builder.RegisterType<SearchService>().As<ISearchService>();
+            builder.RegisterType<LogService>().As<LogService>();
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

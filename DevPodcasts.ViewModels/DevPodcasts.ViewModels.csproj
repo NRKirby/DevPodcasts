@@ -98,7 +98,7 @@
     <Compile Include="Home\FeaturedPodcast.cs" />
     <Compile Include="Home\HomeIndexViewModel.cs" />
     <Compile Include="Home\RecentEpisode.cs" />
-    <Compile Include="Logs\LogViewModel.cs" />
+    <Compile Include="Logs\LogsViewModel.cs" />
     <Compile Include="Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="Manage\ChangePasswordViewModel.cs" />
     <Compile Include="Manage\ConfigureTwoFactorViewModel.cs" />
@@ -107,6 +107,7 @@
     <Compile Include="Manage\ManageLoginsViewModel.cs" />
     <Compile Include="Manage\SetPasswordViewModel.cs" />
     <Compile Include="Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="PaginationInfo.cs" />
     <Compile Include="Podcast\EditPodcastViewModel.cs" />
     <Compile Include="Podcast\PodcastDetailViewModel.cs" />
     <Compile Include="Podcast\PodcastIndexItemViewModel.cs" />
