@@ -15,7 +15,7 @@ namespace DevPodcasts.Web.Controllers
 
         public ActionResult Index(int? page, string levelFilter)
         {
-            const int itemsPerPage = 100;
+            const int itemsPerPage = 50;
             var viewModel = _logService.GetLogs(page ?? 0, itemsPerPage, levelFilter);
 
             return View(viewModel);
