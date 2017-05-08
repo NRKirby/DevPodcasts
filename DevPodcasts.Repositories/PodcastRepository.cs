@@ -240,7 +240,16 @@ namespace DevPodcasts.Repositories
                     DatePublished = episodeDto.DatePublished,
                     DateCreated = episodeDto.DateCreated
                 };
-                podcast.Episodes.Add(episode);
+
+                var episodeAlreadyExists = podcast.Episodes.Any(i => i.Title == episode.Title);
+                if (!episodeAlreadyExists)
+                {
+                    podcast.Episodes.Add(episode);
+                }
+                else
+                {
+                    Console.Write("Episode already exists");
+                }
             }
             podcast.IsApproved = true;
             podcast.DateApproved = DateTime.Now;
