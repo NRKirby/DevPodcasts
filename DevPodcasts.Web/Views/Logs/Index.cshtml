@@ -3,32 +3,38 @@
     ViewBag.Title = "Index";
 }
 
-<div class="container">
-    @Html.DropDownListFor(x => x.ErrorLevels, Model.ErrorLevels)
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>Date</th>
-            <th>Level</th>
-            <th>Message</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var item in Model.Items)
-        {
-            <tr>
-                <td>@item.TimeStamp</td>
-                <td>@item.Level</td>
-                <td>@item.LogMessage</td>
-            </tr>
-        }
-        </tbody>
-    </table>
-</div>
-<div class="container">
-    <div class="pagination-div">
-        @(Model.PaginationInfo.Previous!= "is-disabled" ? Html.ActionLink("Previous", "Index", "Logs", new { page = Model.PaginationInfo.ActualPage - 1, filter = Model.ErrorLevels.SelectedValue }, null) : Html.Raw("Previous"))
-        @(Model.PaginationInfo.Next != "is-disabled" ? Html.ActionLink("Next", "Index", "Logs", new { page = Model.PaginationInfo.ActualPage + 1, filter = Model.ErrorLevels.SelectedValue }, null) : Html.Raw("Next"))
+<div class="container" style="position: relative; top: 20px;">
+    @Html.EnumDropDownListFor(model => model.Level, "")
+    @Html.Partial("_LogResultsTable", Model.Items)
+    <div class="container" style="position: relative; top: 40px; margin-bottom: 50px;">
+        <div class="pagination-div">
+            @(Model.PaginationInfo.Previous != "is-disabled" ? Html.ActionLink("Previous", "Index", "Logs", new { page = Model.PaginationInfo.ActualPage - 1, filter = ViewBag.Filter ?? "" }, null) : Html.Raw("Previous"))
+            @(Model.PaginationInfo.Next != "is-disabled" ? Html.ActionLink("Next", "Index", "Logs", new { page = Model.PaginationInfo.ActualPage + 1, filter = ViewBag.Filter ?? "" }, null) : Html.Raw("Next"))
+        </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('#Level').on('change',
+            function () {
+                var level = $("#Level option:selected").text();
+                var pageIndex = '@Model.PaginationInfo.ActualPage';
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("Query", "Logs")',
+                    data: { page: pageIndex, filter: level },
+                    dataType: "json",
+                    success: response => updateTable(response)
+                });
+            });
+    });
+
+    function updateTable(response) {
+        $('#LogResults').empty();
+        $("#Level").value = response.filter;
+        $('#LogResults').html(response.html.Model);
+        console.log(response);
+    }
+</script>
 
