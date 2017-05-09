@@ -37,7 +37,8 @@ namespace DevPodcasts.ServiceLayer.Episode
                 var podcasts = _podcastRepository.GetDistinctPodcasts();
                 await UpdatePodcasts(podcasts);
                 sw.Stop();
-                _logger.Info(_episodesAddedCount + " episodes added");
+                if (_episodesAddedCount > 0)
+                    _logger.Info(_episodesAddedCount + " episodes added");
                 _logger.Debug("Update took " + sw.ElapsedMilliseconds / 1000 + " seconds");
             });
         }
@@ -45,7 +46,7 @@ namespace DevPodcasts.ServiceLayer.Episode
         private async Task UpdatePodcasts(IEnumerable<PodcastDto> podcasts)
         {
             var podcastList = podcasts.ToList();
-            _logger.Debug("Total number podcasts: " + podcastList.Count);
+            _logger.Debug($"Begin update of {podcastList.Count} podcasts");
             //var count = 1;
             foreach (var podcast in podcastList)
             {
