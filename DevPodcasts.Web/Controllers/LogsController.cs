@@ -15,17 +15,27 @@ namespace DevPodcasts.Web.Controllers
 
         public ActionResult Index(int? page, string filter)
         {
-            const int itemsPerPage = 10;
-            var viewModel = _logService.GetLogs(page ?? 0, itemsPerPage, filter);
-            viewModel.ErrorLevels = new SelectList(new[]
-            {
-                new SelectListItem {Text = "Debug", Value = "Debug"},
-                new SelectListItem {Text = "Error", Value = "Error"},
-                new SelectListItem {Text = "Information", Value = "Information"},
-                new SelectListItem {Text = "Warning", Value = "Warning"}
-            }, "Text", "Value");
+            if (filter == "Select a level")
+                filter = null;
 
+            const int itemsPerPage = 10;
+            var viewModel = _logService.GetIndexViewModel(page ?? 0, itemsPerPage, filter);
+            ViewBag.Filter = filter;
+            
             return View(viewModel);
+        }
+
+        [HttpPost]
+        public PartialViewResult Query(int? page, string filter)
+        {
+            if (filter == "Select a level")
+                filter = null;
+
+            const int itemsPerPage = 10;
+            var logs = _logService.GetLogs(page ?? 0, itemsPerPage, filter);
+            ViewBag.Filter = filter;
+
+            return PartialView("_LogResultsTable", logs);
         }
     }
 }

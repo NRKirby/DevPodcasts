@@ -22,27 +22,14 @@ namespace DevPodcasts.ServiceLayer.Logging
             _table = tableClient.GetTableReference(tableName);
         }
 
-        public IEnumerable<LogItemViewModel> GetAllLogs()
-        {
-            var query = new TableQuery<LogEntity>();
-            var logs = _table.ExecuteQuery(query);
-            return logs
-                .Select(i => new LogItemViewModel
-                {
-                    Level = i.Level,
-                    TimeStamp = i.Timestamp.DateTime,
-                    LogMessage = i.RenderedMessage
-                });
-        }
-
-        public LogsViewModel GetLogs(int pageIndex, int itemsPerPage, string levelFilter)
+        public LogsViewModel GetIndexViewModel(int pageIndex, int itemsPerPage, string filter)
         {
             var query = new TableQuery<LogEntity>();
 
-            if (levelFilter != null)
+            if (filter != null)
             {
                 query = query
-                    .Where(TableQuery.GenerateFilterCondition("Level", QueryComparisons.Equal, levelFilter));
+                    .Where(TableQuery.GenerateFilterCondition("Level", QueryComparisons.Equal, filter));
             }
 
             var tableQueryResult = _table
@@ -50,7 +37,7 @@ namespace DevPodcasts.ServiceLayer.Logging
                 .ToList();
 
             var logs = tableQueryResult
-                .OrderByDescending(i =>i.Timestamp.DateTime)
+                .OrderByDescending(i => i.Timestamp.DateTime)
                 .Skip(itemsPerPage * pageIndex)
                 .Take(itemsPerPage);
 
@@ -63,10 +50,37 @@ namespace DevPodcasts.ServiceLayer.Logging
                     TimeStamp = i.Timestamp.DateTime.ToLocalTime(),
                     LogMessage = i.RenderedMessage
                 }),
-                PaginationInfo = new PaginationInfo(pageIndex, itemsPerPage, tableQueryResult.Count())
+                PaginationInfo = new PaginationInfo(pageIndex, itemsPerPage, tableQueryResult.Count),
+                Filter = filter
             };
 
             return viewModel;
+        }
+
+        public IEnumerable<LogItemViewModel> GetLogs(int pageIndex, int itemsPerPage, string filter)
+        {
+            var query = new TableQuery<LogEntity>();
+
+            if (filter != null)
+            {
+                query = query
+                    .Where(TableQuery.GenerateFilterCondition("Level", QueryComparisons.Equal, filter));
+            }
+
+            var tableQueryResult = _table
+                .ExecuteQuery(query)
+                .ToList();
+
+            return tableQueryResult
+                .OrderByDescending(i => i.Timestamp.DateTime)
+                .Skip(itemsPerPage * pageIndex)
+                .Take(itemsPerPage)
+                .Select(i => new LogItemViewModel
+                {
+                    Level = i.Level,
+                    TimeStamp = i.Timestamp.DateTime.ToLocalTime(),
+                    LogMessage = i.RenderedMessage
+                });
         }
     }
 }

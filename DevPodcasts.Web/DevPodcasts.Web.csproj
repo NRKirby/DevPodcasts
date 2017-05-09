@@ -263,6 +263,7 @@
     <Content Include="Views\Admin\ManagePodcasts.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Logs\Index.cshtml" />
+    <Content Include="Views\Logs\_LogResultsTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
