@@ -63,17 +63,8 @@ namespace DevPodcasts.ServiceLayer.Logging
                     TimeStamp = i.Timestamp.DateTime.ToLocalTime(),
                     LogMessage = i.RenderedMessage
                 }),
-                PaginationInfo = new PaginationInfo
-                {
-                    ActualPage = pageIndex,
-                    ItemsPerPage = itemsPerPage,
-                    TotalItems = allLogs.Count,
-                    TotalPages = int.Parse(Math.Ceiling((decimal)allLogs.Count / itemsPerPage).ToString())
-                }
+                PaginationInfo = new PaginationInfo(pageIndex, itemsPerPage, tableQueryResult.Count())
             };
-
-            viewModel.PaginationInfo.Next = viewModel.PaginationInfo.ActualPage == viewModel.PaginationInfo.TotalPages - 1 ? "is-disabled" : "";
-            viewModel.PaginationInfo.Previous = viewModel.PaginationInfo.ActualPage == 0 ? "is-disabled" : "";
 
             return viewModel;
         }

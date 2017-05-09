@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace DevPodcasts.ViewModels.Logs
 {
@@ -8,6 +9,10 @@ namespace DevPodcasts.ViewModels.Logs
         public IEnumerable<LogItemViewModel> Items { get; set; }
 
         public PaginationInfo PaginationInfo { get; set; }
+
+        public SelectList ErrorLevels { get; set; }
+
+        public string SelectedErrorLevel { get; set; }
     }
 
     public class LogItemViewModel

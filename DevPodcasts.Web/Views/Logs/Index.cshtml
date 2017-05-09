@@ -4,6 +4,7 @@
 }
 
 <div class="container">
+    @Html.DropDownListFor(x => x.ErrorLevels, Model.ErrorLevels)
     <table class="table table-striped">
         <thead>
         <tr>
@@ -26,8 +27,8 @@
 </div>
 <div class="container">
     <div class="pagination-div">
-        @(Model.PaginationInfo.Previous!= "is-disabled" ? Html.ActionLink("Previous", "Index", "Logs", new {page = Model.PaginationInfo.ActualPage - 1}, null) : Html.Raw("Previous Off"))
-        @(Model.PaginationInfo.Next != "is-disabled" ? Html.ActionLink("Next", "Index", "Logs", new {page = Model.PaginationInfo.ActualPage + 1}, null) : Html.Raw("Next Off"))
+        @(Model.PaginationInfo.Previous!= "is-disabled" ? Html.ActionLink("Previous", "Index", "Logs", new { page = Model.PaginationInfo.ActualPage - 1, filter = Model.ErrorLevels.SelectedValue }, null) : Html.Raw("Previous"))
+        @(Model.PaginationInfo.Next != "is-disabled" ? Html.ActionLink("Next", "Index", "Logs", new { page = Model.PaginationInfo.ActualPage + 1, filter = Model.ErrorLevels.SelectedValue }, null) : Html.Raw("Next"))
     </div>
 </div>
 

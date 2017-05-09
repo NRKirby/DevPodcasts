@@ -13,10 +13,17 @@ namespace DevPodcasts.Web.Controllers
             _logService = logService;
         }
 
-        public ActionResult Index(int? page, string levelFilter)
+        public ActionResult Index(int? page, string filter)
         {
-            const int itemsPerPage = 50;
-            var viewModel = _logService.GetLogs(page ?? 0, itemsPerPage, levelFilter);
+            const int itemsPerPage = 10;
+            var viewModel = _logService.GetLogs(page ?? 0, itemsPerPage, filter);
+            viewModel.ErrorLevels = new SelectList(new[]
+            {
+                new SelectListItem {Text = "Debug", Value = "Debug"},
+                new SelectListItem {Text = "Error", Value = "Error"},
+                new SelectListItem {Text = "Information", Value = "Information"},
+                new SelectListItem {Text = "Warning", Value = "Warning"}
+            }, "Text", "Value");
 
             return View(viewModel);
         }
