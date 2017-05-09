@@ -38,8 +38,8 @@ namespace DevPodcasts.ServiceLayer.Episode
                 await UpdatePodcasts(podcasts);
                 sw.Stop();
                 if (_episodesAddedCount > 0)
-                    _logger.Info(_episodesAddedCount + " episodes added");
-                _logger.Debug("Update took " + sw.ElapsedMilliseconds / 1000 + " seconds");
+                    _logger.Info($"{_episodesAddedCount} episodes added");
+                _logger.Debug($"Update took {sw.ElapsedMilliseconds / 1000} seconds");
             });
         }
 
@@ -53,7 +53,7 @@ namespace DevPodcasts.ServiceLayer.Episode
                 var newEpisodes = _rssService.GetNewEpisodes(podcast).ToList();                   
                 foreach (var episode in newEpisodes)
                 {
-                    _logger.Info(podcast.Title + " \"" + episode.Title + "\" added");
+                    _logger.Info($"{podcast.Title} - {episode.Title} added");
                     _episodesAddedCount++;
                 }
                 await _episodeRepository.AddRange(newEpisodes);

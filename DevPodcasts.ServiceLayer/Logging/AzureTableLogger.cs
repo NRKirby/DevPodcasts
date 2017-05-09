@@ -40,7 +40,7 @@ namespace DevPodcasts.ServiceLayer.Logging
 
         public void Error(string msg, Exception ex)
         {
-            _log.Error(msg + " " + ex?.Message);
+            _log.Error($"msg {ex?.Message}");
         }
     }
 }
