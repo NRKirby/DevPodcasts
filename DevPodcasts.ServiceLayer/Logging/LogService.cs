@@ -38,23 +38,19 @@ namespace DevPodcasts.ServiceLayer.Logging
         public LogsViewModel GetLogs(int pageIndex, int itemsPerPage, string levelFilter)
         {
             var query = new TableQuery<LogEntity>();
-            var allLogs = _table.ExecuteQuery(query).ToList();
 
-            IOrderedEnumerable<LogEntity> logsEnumerable;
-
-            if (levelFilter == null) // Don't filter logs by level, return all
+            if (levelFilter != null)
             {
-                logsEnumerable = allLogs
-                    .OrderByDescending(i => i.Timestamp.DateTime);
-            }
-            else
-            {
-                logsEnumerable = allLogs
-                    .Where(i => i.Level == levelFilter)
-                    .OrderByDescending(i => i.Timestamp.DateTime);
+                query = query
+                    .Where(TableQuery.GenerateFilterCondition("Level", QueryComparisons.Equal, levelFilter));
             }
 
-            var logs = logsEnumerable
+            var tableQueryResult = _table
+                .ExecuteQuery(query)
+                .ToList();
+
+            var logs = tableQueryResult
+                .OrderByDescending(i =>i.Timestamp.DateTime)
                 .Skip(itemsPerPage * pageIndex)
                 .Take(itemsPerPage);
 
