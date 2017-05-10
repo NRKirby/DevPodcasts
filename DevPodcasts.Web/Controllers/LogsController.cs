@@ -7,6 +7,7 @@ namespace DevPodcasts.Web.Controllers
     public class LogsController : Controller
     {
         private readonly LogService _logService;
+        private const int ItemsPerPage = 50;
 
         public LogsController(LogService logService)
         {
@@ -18,8 +19,7 @@ namespace DevPodcasts.Web.Controllers
             if (filter == "Select a level")
                 filter = null;
 
-            const int itemsPerPage = 50;
-            var viewModel = _logService.GetIndexViewModel(page ?? 0, itemsPerPage, filter);
+            var viewModel = _logService.GetIndexViewModel(page ?? 0, ItemsPerPage, filter);
             ViewBag.Filter = filter;
             
             return View(viewModel);
@@ -31,8 +31,7 @@ namespace DevPodcasts.Web.Controllers
             if (filter == "Select a level")
                 filter = null;
 
-            const int itemsPerPage = 50;
-            var logs = _logService.GetLogs(page ?? 0, itemsPerPage, filter);
+            var logs = _logService.GetLogs(page ?? 0, ItemsPerPage, filter);
             ViewBag.Filter = filter;
 
             return Json(new { filter = filter, html = PartialView("_LogResultsTable", logs) });

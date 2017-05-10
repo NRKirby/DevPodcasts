@@ -18,8 +18,10 @@
     $(document).ready(function () {
         $('#Level').on('change',
             function () {
-                var level = $("#Level option:selected").text();
-                var pageIndex = '@Model.PaginationInfo.ActualPage';
+        var level = $("#Level option:selected").text();
+        var pageIndex = '@Model.PaginationInfo.ActualPage';
+        $('#Level').on('change',
+            function() {
                 $.ajax({
                     type: "POST",
                     url: '@Url.Action("Query", "Logs")',
