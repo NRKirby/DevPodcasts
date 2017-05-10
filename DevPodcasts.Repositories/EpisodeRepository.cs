@@ -76,7 +76,15 @@ namespace DevPodcasts.Repositories
                     DateCreated = DateTime.Now
                 };
 
-                podcast.Episodes.Add(episode);
+                var episodeExistsForPodcast = _context.Podcasts
+                    .Single(i => i.Id == dto.PodcastId)
+                    .Episodes
+                    .Any(i => i.Title == episode.Title);
+
+                if (!episodeExistsForPodcast)
+                {
+                    podcast.Episodes.Add(episode);
+                }
             }
 
             await _context.SaveChangesAsync();
