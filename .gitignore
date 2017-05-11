@@ -243,4 +243,4 @@ ModelManifest.xml
 .fake/
 
 Data*
-secrets.txt
+secrets/*
