@@ -86,7 +86,6 @@
     <Compile Include="Email\AccountEmailService.cs" />
     <Compile Include="Email\PodcastEmailService.cs" />
     <Compile Include="Episode\EpisodeService.cs" />
-    <Compile Include="Episode\EpisodeUpdater.cs" />
     <Compile Include="Home\HomeService.cs" />
     <Compile Include="Admin\IAdminService.cs" />
     <Compile Include="Email\IPodcastEmailService.cs" />

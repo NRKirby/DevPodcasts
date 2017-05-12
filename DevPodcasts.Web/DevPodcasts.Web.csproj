@@ -283,6 +283,10 @@
       <Project>{4ecc6970-f931-4d33-b125-c58954d93917}</Project>
       <Name>DevPodcasts.Dtos</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DevPodcasts.EpisodeUpdater\DevPodcasts.EpisodeUpdater.csproj">
+      <Project>{543121c2-2eac-4bfc-a616-43d198e9c4a3}</Project>
+      <Name>DevPodcasts.EpisodeUpdater</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DevPodcasts.Repositories\DevPodcasts.Repositories.csproj">
       <Project>{d4a10b8a-464f-4b49-99a5-33e6ee757852}</Project>
       <Name>DevPodcasts.Repositories</Name>
