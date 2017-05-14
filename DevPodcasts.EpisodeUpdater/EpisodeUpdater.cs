@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DevPodcasts.ServiceLayer.Episode
+namespace DevPodcasts.EpisodeUpdater
 {
     public class EpisodeUpdater
     {

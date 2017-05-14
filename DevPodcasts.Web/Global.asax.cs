@@ -26,7 +26,7 @@ namespace DevPodcasts.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             MvcHandler.DisableMvcResponseHeader = true;
             RegisterComponents();
-            UpdatePodcastEpisodes();
+            //UpdatePodcastEpisodes(); TODO
         }
 
         private void RegisterComponents()
@@ -45,7 +45,7 @@ namespace DevPodcasts.Web
             // Services
             builder.RegisterType<AdminService>().As<IAdminService>();
             builder.RegisterType<EpisodeService>().As<IEpisodeService>();
-            builder.RegisterType<EpisodeUpdater>().PropertiesAutowired();
+            builder.RegisterType<EpisodeUpdater.EpisodeUpdater>().PropertiesAutowired(); 
             builder.RegisterType<HomeService>().As<IHomeService>();
             builder.RegisterType<PodcastEmailService>().As<IPodcastEmailService>();
             builder.RegisterType<PodcastService>().As<IPodcastService>();
@@ -58,10 +58,10 @@ namespace DevPodcasts.Web
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
 
-        private void UpdatePodcastEpisodes()
-        {
-            var updater = DependencyResolver.Current.GetService<EpisodeUpdater>();
-            updater.Update();
-        }
-    }
+        //private void UpdatePodcastEpisodes() TODO
+        //{
+        //    var updater = DependencyResolver.Current.GetService<EpisodeUpdater>();
+        //    updater.Update();
+        //}
+}
 }
