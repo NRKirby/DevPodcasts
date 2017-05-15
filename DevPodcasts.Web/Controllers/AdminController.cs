@@ -29,10 +29,10 @@ namespace DevPodcasts.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult ReviewSubmission(ReviewPodcastViewModel model)
+        public async Task<ActionResult> ReviewSubmission(ReviewPodcastViewModel model)
         {
             var selectedCategories = model.Tags.Where(x => x.IsChecked).Select(x => x.Id).ToList();
-            _adminService.Save(model.Id, selectedCategories);
+            await _adminService.Save(model.Id, selectedCategories);
             return RedirectToAction("Index");
         }
 

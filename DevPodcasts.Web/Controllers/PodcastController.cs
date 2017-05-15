@@ -53,9 +53,9 @@ namespace DevPodcasts.Web.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public ActionResult Edit(EditPodcastViewModel model)
+        public async Task<ActionResult> Edit(EditPodcastViewModel model)
         {
-            _podcastService.UpdatePodcast(model);
+            await _podcastService.UpdatePodcast(model);
             return RedirectToAction("ManagePodcasts", "Admin");
         }
     }
