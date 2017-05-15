@@ -7,9 +7,9 @@ namespace DevPodcasts.Web.Controllers
 {
     public class PodcastController : Controller
     {
-        private readonly IPodcastService _podcastService;
+        private readonly PodcastService _podcastService;
 
-        public PodcastController(IPodcastService podcastService)
+        public PodcastController(PodcastService podcastService)
         {
             _podcastService = podcastService;
         }

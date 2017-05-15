@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace DevPodcasts.ServiceLayer.Search
 {
-    public class SearchService : ISearchService
+    public class SearchService
     {
         private readonly IPodcastRepository _podcastRepository; 
 

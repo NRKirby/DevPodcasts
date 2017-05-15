@@ -5,9 +5,9 @@ namespace DevPodcasts.Web.Controllers
 {
     public class SearchController : Controller
     {
-        private readonly ISearchService _searchService;
+        private readonly SearchService _searchService;
 
-        public SearchController(ISearchService searchService)
+        public SearchController(SearchService searchService)
         {
             _searchService = searchService;
         }

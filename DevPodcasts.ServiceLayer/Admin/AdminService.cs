@@ -12,11 +12,11 @@ namespace DevPodcasts.ServiceLayer.Admin
     {
         private readonly IPodcastRepository _podcastRepository;
         private readonly ITagsRepository _tagsRepository;
-        private readonly IPodcastService _podcastService;
+        private readonly PodcastService _podcastService;
 
         public AdminService(IPodcastRepository podcastRepository, 
             ITagsRepository tagsRepository,
-            IPodcastService podcastService)
+            PodcastService podcastService)
         {
             _podcastRepository = podcastRepository;
             _tagsRepository = tagsRepository;

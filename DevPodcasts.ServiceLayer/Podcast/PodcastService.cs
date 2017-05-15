@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace DevPodcasts.ServiceLayer.Podcast
 {
-    public class PodcastService : IPodcastService
+    public class PodcastService
     {
         private readonly IPodcastRepository _podcastRepository;
         private readonly IEpisodeRepository _episodeRepository;
@@ -57,7 +57,7 @@ namespace DevPodcasts.ServiceLayer.Podcast
             return viewModel;
         }
 
-        public PodcastIndexViewModel Search(string query)
+        public PodcastIndexViewModel Search(string query = null)
         {
             var podcasts = _podcastRepository.Search(query);
             var viewModel = new PodcastIndexViewModel

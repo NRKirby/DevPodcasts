@@ -5,9 +5,9 @@ namespace DevPodcasts.ServiceLayer.Home
 {
     public class HomeService : IHomeService
     {
-        private readonly IPodcastService _podcastService;
+        private readonly PodcastService _podcastService;
 
-        public HomeService(IPodcastService podcastService)
+        public HomeService(PodcastService podcastService)
         {
             _podcastService = podcastService;
         }
