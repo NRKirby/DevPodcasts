@@ -12,7 +12,7 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td class="col-md-2">@item.TimeStamp</td>
+            <td class="col-md-2">@item.TimeStamp.Date.ToLocalTime()</td>
             <td class="col-md-2">@item.Level</td>
             <td class="col-md-8">@item.LogMessage</td>
         </tr>
