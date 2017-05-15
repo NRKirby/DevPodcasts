@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace DevPodcasts.ServiceLayer.Episode
 {
-    public class EpisodeService : IEpisodeService
+    public class EpisodeService
     {
         private readonly IEpisodeRepository _episodeRepository;
 

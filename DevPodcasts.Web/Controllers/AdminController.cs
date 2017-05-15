@@ -9,9 +9,9 @@ namespace DevPodcasts.Web.Controllers
     [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
-        private readonly IAdminService _adminService;
+        private readonly AdminService _adminService;
 
-        public AdminController(IAdminService adminService)
+        public AdminController(AdminService adminService)
         {
             _adminService = adminService;
         }

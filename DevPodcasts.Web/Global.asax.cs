@@ -54,8 +54,8 @@ namespace DevPodcasts.Web
             //builder.RegisterType<SearchService>().As<ISearchService>();
             //builder.RegisterType<LogService>().As<LogService>();
 
-            builder.RegisterType<AdminService>().As<IAdminService>();
-            builder.RegisterType<EpisodeService>().As<IEpisodeService>();
+            builder.RegisterType<AdminService>();
+            builder.RegisterType<EpisodeService>();
             builder.RegisterType<EpisodeUpdater.EpisodeUpdater>().PropertiesAutowired();
             builder.RegisterType<HomeService>().As<IHomeService>();
             builder.RegisterType<PodcastEmailService>().As<IPodcastEmailService>();

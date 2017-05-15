@@ -5,9 +5,9 @@ namespace DevPodcasts.Web.Controllers
 {
     public class EpisodeController : Controller
     {
-        private readonly IEpisodeService _episodeService;
+        private readonly EpisodeService _episodeService;
 
-        public EpisodeController(IEpisodeService episodeService)
+        public EpisodeController(EpisodeService episodeService)
         {
             _episodeService = episodeService;
         }

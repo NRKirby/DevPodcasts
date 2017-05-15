@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DevPodcasts.ServiceLayer.Admin
 {
-    public class AdminService : IAdminService
+    public class AdminService
     {
         private readonly IPodcastRepository _podcastRepository;
         private readonly ITagsRepository _tagsRepository;
