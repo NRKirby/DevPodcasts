@@ -97,7 +97,7 @@ namespace DevPodcasts.ServiceLayer.Podcast
                     {
                         Id = i.Id,
                         Title = i.Title,
-                        DatePublished = i.DatePublished?.ToShortDateString()
+                        DatePublished = i.DatePublished?.ToLocalTime().ToShortDateString()
                     })
             };
         }
