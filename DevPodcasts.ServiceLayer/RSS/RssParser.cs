@@ -5,7 +5,7 @@ using System.Xml;
 
 namespace DevPodcasts.ServiceLayer.RSS
 {
-    public class RssParser : IRssParser
+    public class RssParser
     {
         private readonly ILogger _logger;
 

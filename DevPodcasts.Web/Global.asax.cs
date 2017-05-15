@@ -60,8 +60,8 @@ namespace DevPodcasts.Web
             builder.RegisterType<HomeService>().As<IHomeService>();
             builder.RegisterType<PodcastEmailService>().As<IPodcastEmailService>();
             builder.RegisterType<PodcastService>();
-            builder.RegisterType<RssParser>().As<IRssParser>();
-            builder.RegisterType<RssService>().As<IRssService>();
+            builder.RegisterType<RssParser>();
+            builder.RegisterType<RssService>();
             builder.RegisterType<SearchService>();
             builder.RegisterType<LogService>().As<LogService>();
 

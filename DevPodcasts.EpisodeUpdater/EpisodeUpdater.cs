@@ -13,13 +13,13 @@ namespace DevPodcasts.EpisodeUpdater
     {
         private readonly IPodcastRepository _podcastRepository;
         private readonly IEpisodeRepository _episodeRepository;
-        private readonly IRssService _rssService;
+        private readonly RssService _rssService;
         private readonly ILogger _logger;
         private int _episodesAddedCount;
 
         public EpisodeUpdater(IPodcastRepository podcastRepository,
             IEpisodeRepository episodeRepository,
-            IRssService rssService,
+            RssService rssService,
             ILogger logger)
         {
             _podcastRepository = podcastRepository;

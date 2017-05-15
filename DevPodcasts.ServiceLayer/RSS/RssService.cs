@@ -8,16 +8,16 @@ using System.ServiceModel.Syndication;
 
 namespace DevPodcasts.ServiceLayer.RSS
 {
-    public class RssService : IRssService
+    public class RssService
     {
         private readonly IEpisodeRepository _episodeRepository;
         private readonly IPodcastRepository _podcastRepository;
-        private readonly IRssParser _rssParser;
+        private readonly RssParser _rssParser;
         private readonly ILogger _logger;
 
         public RssService(IEpisodeRepository episodeRepository,
             IPodcastRepository podcastRepository,
-            IRssParser rssParser,
+            RssParser rssParser,
             ILogger logger)
         {
             _episodeRepository = episodeRepository;
