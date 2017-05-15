@@ -6,9 +6,9 @@ namespace DevPodcasts.ServiceLayer.Search
 {
     public class SearchService
     {
-        private readonly IPodcastRepository _podcastRepository; 
+        private readonly PodcastRepository _podcastRepository; 
 
-        public SearchService(IPodcastRepository podcastRepository)
+        public SearchService(PodcastRepository podcastRepository)
         {
             _podcastRepository = podcastRepository;
         }

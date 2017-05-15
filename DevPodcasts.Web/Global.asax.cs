@@ -35,25 +35,14 @@ namespace DevPodcasts.Web
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
 
             // Logging
-            builder.RegisterType<AzureTableLogger>().As<ILogger>(); builder.RegisterType<AzureTableLogger>().As<ILogger>();
+            builder.RegisterType<AzureTableLogger>().As<ILogger>();
 
             // Repositories
-            builder.RegisterType<TagsRepository>().As<ITagsRepository>();
-            builder.RegisterType<EpisodeRepository>().As<IEpisodeRepository>();
-            builder.RegisterType<PodcastRepository>().As<IPodcastRepository>();
+            builder.RegisterType<TagsRepository>();
+            builder.RegisterType<EpisodeRepository>();
+            builder.RegisterType<PodcastRepository>();
 
             // Services
-            //builder.RegisterType<AdminService>().As<IAdminService>();
-            //builder.RegisterType<EpisodeService>().As<IEpisodeService>();
-            //builder.RegisterType<EpisodeUpdater.EpisodeUpdater>().PropertiesAutowired();
-            //builder.RegisterType<HomeService>().As<IHomeService>();
-            //builder.RegisterType<PodcastEmailService>().As<IPodcastEmailService>();
-            //builder.RegisterType<PodcastService>().As<IPodcastService>();
-            //builder.RegisterType<RssParser>().As<IRssParser>();
-            //builder.RegisterType<RssService>().As<IRssService>();
-            //builder.RegisterType<SearchService>().As<ISearchService>();
-            //builder.RegisterType<LogService>().As<LogService>();
-
             builder.RegisterType<AdminService>();
             builder.RegisterType<EpisodeService>();
             builder.RegisterType<EpisodeUpdater.EpisodeUpdater>().PropertiesAutowired();

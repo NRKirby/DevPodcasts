@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace DevPodcasts.Repositories
 {
-    public class TagsRepository : ITagsRepository
+    public class TagsRepository
     {
         private readonly ApplicationDbContext _context;
 

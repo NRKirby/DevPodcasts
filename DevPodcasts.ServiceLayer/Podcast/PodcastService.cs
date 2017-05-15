@@ -14,18 +14,18 @@ namespace DevPodcasts.ServiceLayer.Podcast
 {
     public class PodcastService
     {
-        private readonly IPodcastRepository _podcastRepository;
-        private readonly IEpisodeRepository _episodeRepository;
+        private readonly PodcastRepository _podcastRepository;
+        private readonly EpisodeRepository _episodeRepository;
         private readonly RssService _rssService;
         private readonly PodcastEmailService _podcastEmailService;
-        private readonly ITagsRepository _tagsRepository;
+        private readonly TagsRepository _tagsRepository;
 
         public PodcastService(
-            IPodcastRepository podcastRepository,
-            IEpisodeRepository episodeRepository,
+            PodcastRepository podcastRepository,
+            EpisodeRepository episodeRepository,
             RssService rssService,
             PodcastEmailService podcastEmailService,
-            ITagsRepository tagsRepository)
+            TagsRepository tagsRepository)
         {
             _podcastRepository = podcastRepository;
             _episodeRepository = episodeRepository;

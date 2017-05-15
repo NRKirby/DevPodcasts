@@ -10,13 +10,13 @@ namespace DevPodcasts.ServiceLayer.RSS
 {
     public class RssService
     {
-        private readonly IEpisodeRepository _episodeRepository;
-        private readonly IPodcastRepository _podcastRepository;
+        private readonly EpisodeRepository _episodeRepository;
+        private readonly PodcastRepository _podcastRepository;
         private readonly RssParser _rssParser;
         private readonly ILogger _logger;
 
-        public RssService(IEpisodeRepository episodeRepository,
-            IPodcastRepository podcastRepository,
+        public RssService(EpisodeRepository episodeRepository,
+            PodcastRepository podcastRepository,
             RssParser rssParser,
             ILogger logger)
         {

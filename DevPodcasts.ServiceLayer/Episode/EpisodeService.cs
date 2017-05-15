@@ -6,9 +6,9 @@ namespace DevPodcasts.ServiceLayer.Episode
 {
     public class EpisodeService
     {
-        private readonly IEpisodeRepository _episodeRepository;
+        private readonly EpisodeRepository _episodeRepository;
 
-        public EpisodeService(IEpisodeRepository episodeRepository)
+        public EpisodeService(EpisodeRepository episodeRepository)
         {
             _episodeRepository = episodeRepository;
         }
