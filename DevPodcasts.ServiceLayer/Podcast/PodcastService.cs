@@ -17,14 +17,14 @@ namespace DevPodcasts.ServiceLayer.Podcast
         private readonly IPodcastRepository _podcastRepository;
         private readonly IEpisodeRepository _episodeRepository;
         private readonly RssService _rssService;
-        private readonly IPodcastEmailService _podcastEmailService;
+        private readonly PodcastEmailService _podcastEmailService;
         private readonly ITagsRepository _tagsRepository;
 
         public PodcastService(
             IPodcastRepository podcastRepository,
             IEpisodeRepository episodeRepository,
             RssService rssService,
-            IPodcastEmailService podcastEmailService,
+            PodcastEmailService podcastEmailService,
             ITagsRepository tagsRepository)
         {
             _podcastRepository = podcastRepository;

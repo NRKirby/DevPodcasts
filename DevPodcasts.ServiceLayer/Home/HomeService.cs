@@ -3,7 +3,7 @@ using DevPodcasts.ViewModels.Home;
 
 namespace DevPodcasts.ServiceLayer.Home
 {
-    public class HomeService : IHomeService
+    public class HomeService
     {
         private readonly PodcastService _podcastService;
 

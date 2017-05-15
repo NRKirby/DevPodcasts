@@ -87,8 +87,6 @@
     <Compile Include="Email\PodcastEmailService.cs" />
     <Compile Include="Episode\EpisodeService.cs" />
     <Compile Include="Home\HomeService.cs" />
-    <Compile Include="Email\IPodcastEmailService.cs" />
-    <Compile Include="Home\IHomeService.cs" />
     <Compile Include="Logging\AzureTableLogger.cs" />
     <Compile Include="Logging\LogEntity.cs" />
     <Compile Include="Logging\LogService.cs" />

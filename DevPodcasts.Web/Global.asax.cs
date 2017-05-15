@@ -57,8 +57,8 @@ namespace DevPodcasts.Web
             builder.RegisterType<AdminService>();
             builder.RegisterType<EpisodeService>();
             builder.RegisterType<EpisodeUpdater.EpisodeUpdater>().PropertiesAutowired();
-            builder.RegisterType<HomeService>().As<IHomeService>();
-            builder.RegisterType<PodcastEmailService>().As<IPodcastEmailService>();
+            builder.RegisterType<HomeService>();
+            builder.RegisterType<PodcastEmailService>();
             builder.RegisterType<PodcastService>();
             builder.RegisterType<RssParser>();
             builder.RegisterType<RssService>();

@@ -6,9 +6,9 @@ namespace DevPodcasts.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IHomeService _homeService;
+        private readonly HomeService _homeService;
 
-        public HomeController(IHomeService homeService)
+        public HomeController(HomeService homeService)
         {
             _homeService = homeService;
         }

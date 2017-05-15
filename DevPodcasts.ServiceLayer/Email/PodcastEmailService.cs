@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace DevPodcasts.ServiceLayer.Email
 {
-    public class PodcastEmailService : IPodcastEmailService
+    public class PodcastEmailService
     {
         public async Task SendPodcastSubmittedEmailAsync(string podcastTitle)
         {
