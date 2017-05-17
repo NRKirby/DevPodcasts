@@ -1,4 +1,4 @@
-﻿using DevPodcasts.ServiceLayer.Logging;
+﻿using DevPodcasts.Logging;
 using System;
 using System.ServiceModel.Syndication;
 using System.Xml;

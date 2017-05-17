@@ -4,7 +4,7 @@ using Serilog.Core;
 using System;
 using System.Configuration;
 
-namespace DevPodcasts.ServiceLayer.Logging
+namespace DevPodcasts.Logging
 {
     public class AzureTableLogger : ILogger
     {
@@ -15,7 +15,7 @@ namespace DevPodcasts.ServiceLayer.Logging
             var storage = CloudStorageAccount
                 .Parse(ConfigurationManager.AppSettings["AzureStorageConnectionString"]);
 
-            string tableName = Constants.AzureLogTableName;
+            string tableName = LoggingConstants.AzureLogTableName;
 
             _log = new LoggerConfiguration()
                .WriteTo.AzureTableStorageWithProperties(storage, storageTableName: tableName)
@@ -28,7 +28,7 @@ namespace DevPodcasts.ServiceLayer.Logging
             var storage = CloudStorageAccount
                 .Parse(connectionString);
 
-            string tableName = Constants.AzureLogTableName;
+            string tableName = LoggingConstants.AzureLogTableName;
 
             _log = new LoggerConfiguration()
                 .WriteTo.AzureTableStorageWithProperties(storage, storageTableName: tableName)

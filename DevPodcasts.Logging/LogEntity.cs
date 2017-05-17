@@ -1,7 +1,6 @@
-﻿using System;
-using Microsoft.WindowsAzure.Storage.Table;
+﻿using Microsoft.WindowsAzure.Storage.Table;
 
-namespace DevPodcasts.ServiceLayer.Logging
+namespace DevPodcasts.Logging
 {
     public class LogEntity : TableEntity
     {

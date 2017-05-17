@@ -1,8 +1,8 @@
-﻿using DevPodcasts.ViewModels;
+﻿using DevPodcasts.Logging;
+using DevPodcasts.ViewModels;
 using DevPodcasts.ViewModels.Logs;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
-using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -44,12 +44,12 @@ namespace DevPodcasts.ServiceLayer.Logging
             var viewModel = new LogsViewModel
             {
                 Items = logs
-                .Select(i => new LogItemViewModel
-                {
-                    Level = i.Level,
-                    TimeStamp = i.Timestamp.DateTime.ToLocalTime(),
-                    LogMessage = i.RenderedMessage
-                }),
+                    .Select(i => new LogItemViewModel
+                    {
+                        Level = i.Level,
+                        TimeStamp = i.Timestamp.DateTime.ToLocalTime(),
+                        LogMessage = i.RenderedMessage
+                    }),
                 PaginationInfo = new PaginationInfo(pageIndex, itemsPerPage, tableQueryResult.Count),
                 Filter = filter
             };

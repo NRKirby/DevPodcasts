@@ -1,5 +1,6 @@
 ﻿using DevPodcasts.DataLayer.Models;
 using DevPodcasts.Dtos;
+using DevPodcasts.Logging;
 using DevPodcasts.ViewModels.Home;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,12 @@ namespace DevPodcasts.Repositories
     public class EpisodeRepository
     {
         private readonly ApplicationDbContext _context;
+        private readonly ILogger _logger;
 
-        public EpisodeRepository()
+        public EpisodeRepository(ILogger logger)
         {
             _context = new ApplicationDbContext();
+            _logger = logger;
         }
 
         public IEnumerable<EpisodeDto> GetAllEpisodes(int podcastId)
@@ -59,8 +62,9 @@ namespace DevPodcasts.Repositories
             return _context.Episodes.Count();
         }
 
-        public async Task AddRange(IEnumerable<EpisodeDto> dtos)
+        public async Task<int> AddRange(IEnumerable<EpisodeDto> dtos)
         {
+            int addedCount = 0;
             foreach (var dto in dtos)
             {
                 var podcast = _context.Podcasts.Single(i => i.Id == dto.PodcastId);
@@ -84,10 +88,13 @@ namespace DevPodcasts.Repositories
                 if (!episodeExistsForPodcast)
                 {
                     podcast.Episodes.Add(episode);
+                    _logger.Info($"{podcast.Title} - {episode.Title} added");
+                    addedCount++;
                 }
             }
 
             await _context.SaveChangesAsync();
+            return addedCount;
         }
 
         public void AddRangeSync(IEnumerable<EpisodeDto> dtos)

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DevPodcasts.ServiceLayer.Logging
+namespace DevPodcasts.Logging
 {
     public interface ILogger
     {

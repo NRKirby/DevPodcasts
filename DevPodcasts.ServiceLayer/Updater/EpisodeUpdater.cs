@@ -1,13 +1,13 @@
-﻿using DevPodcasts.Dtos;
-using DevPodcasts.Logging;
-using DevPodcasts.Repositories;
-using DevPodcasts.ServiceLayer.RSS;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using DevPodcasts.Dtos;
+using DevPodcasts.Logging;
+using DevPodcasts.Repositories;
+using DevPodcasts.ServiceLayer.RSS;
 
-namespace DevPodcasts.EpisodeUpdater
+namespace DevPodcasts.ServiceLayer.Updater
 {
     public class EpisodeUpdater
     {

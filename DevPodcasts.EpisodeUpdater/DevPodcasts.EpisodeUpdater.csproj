@@ -85,6 +85,10 @@
       <Project>{4ecc6970-f931-4d33-b125-c58954d93917}</Project>
       <Name>DevPodcasts.Dtos</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DevPodcasts.Logging\DevPodcasts.Logging.csproj">
+      <Project>{dadd403f-5df9-48be-9d19-68847b9767aa}</Project>
+      <Name>DevPodcasts.Logging</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DevPodcasts.Repositories\DevPodcasts.Repositories.csproj">
       <Project>{d4a10b8a-464f-4b49-99a5-33e6ee757852}</Project>
       <Name>DevPodcasts.Repositories</Name>
