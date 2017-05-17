@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using DevPodcasts.Logging;
 using DevPodcasts.Repositories;
 using DevPodcasts.ServiceLayer.Admin;
 using DevPodcasts.ServiceLayer.Email;
@@ -13,8 +14,6 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using DevPodcasts.Logging;
-using DevPodcasts.ServiceLayer.Updater;
 
 namespace DevPodcasts.Web
 {
@@ -47,7 +46,7 @@ namespace DevPodcasts.Web
             // Services
             builder.RegisterType<AdminService>();
             builder.RegisterType<EpisodeService>();
-            builder.RegisterType<EpisodeUpdater>().PropertiesAutowired();
+            builder.RegisterType<EpisodeUpdater.EpisodeUpdater>().PropertiesAutowired();
             builder.RegisterType<HomeService>();
             builder.RegisterType<PodcastEmailService>();
             builder.RegisterType<PodcastService>();
@@ -70,7 +69,7 @@ namespace DevPodcasts.Web
 
             if (!updateEpisodes.Equals("true")) return;
 
-            var updater = DependencyResolver.Current.GetService<EpisodeUpdater>();
+            var updater = DependencyResolver.Current.GetService<EpisodeUpdater.EpisodeUpdater>();
             updater.Update();
         }
     }

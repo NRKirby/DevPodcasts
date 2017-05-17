@@ -1,9 +1,0 @@
-﻿{
-  "$schema": "http://schemastore.org/schemas/json/webjob-publish-settings.json",
-  "webJobName": "EpisodeUpdater",
-  "startTime": "2017-05-01T00:00:00-08:00",
-  "endTime": "2020-06-01T00:00:00-08:00",
-  "jobRecurrenceFrequency": "Hour",
-  "interval": 1,
-  "runMode": "Scheduled"
-}

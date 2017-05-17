@@ -94,7 +94,6 @@
     <Compile Include="RSS\RssService.cs" />
     <Compile Include="RSS\SyndicationFeedXmlReader.cs" />
     <Compile Include="Search\SearchService.cs" />
-    <Compile Include="Updater\EpisodeUpdater.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DevPodcasts.DataLayer\DevPodcasts.DataLayer.csproj">

@@ -23,12 +23,10 @@ namespace DevPodcasts.Logging
                .CreateLogger();
         }
 
-        public AzureTableLogger(string connectionString)
+        public AzureTableLogger(string connectionString, string tableName)
         {
             var storage = CloudStorageAccount
                 .Parse(connectionString);
-
-            string tableName = LoggingConstants.AzureLogTableName;
 
             _log = new LoggerConfiguration()
                 .WriteTo.AzureTableStorageWithProperties(storage, storageTableName: tableName)
