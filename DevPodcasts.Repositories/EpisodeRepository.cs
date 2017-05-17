@@ -90,6 +90,37 @@ namespace DevPodcasts.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public void AddRangeSync(IEnumerable<EpisodeDto> dtos)
+        {
+            foreach (var dto in dtos)
+            {
+                var podcast = _context.Podcasts.Single(i => i.Id == dto.PodcastId);
+
+                var episode = new Episode
+                {
+                    EpisodeId = dto.EpisodeId,
+                    Title = dto.Title,
+                    Summary = dto.Summary,
+                    AudioUrl = dto.AudioUrl,
+                    EpisodeUrl = dto.EpisodeUrl,
+                    DatePublished = dto.DatePublished,
+                    DateCreated = DateTime.Now
+                };
+
+                var episodeExistsForPodcast = _context.Podcasts
+                    .Single(i => i.Id == dto.PodcastId)
+                    .Episodes
+                    .Any(i => i.Title == episode.Title);
+
+                if (!episodeExistsForPodcast)
+                {
+                    podcast.Episodes.Add(episode);
+                }
+            }
+
+            _context.SaveChanges();
+        }
+
         public IEnumerable<RecentEpisode> GetMostRecentEpisodes(int numberOfEpisodes)
         {
             var recentEpisodes = _context
