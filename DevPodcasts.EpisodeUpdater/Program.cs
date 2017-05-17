@@ -23,6 +23,7 @@ namespace DevPodcasts.EpisodeUpdater
             {
                 Console.WriteLine("Begin update: " + DateTime.Now);
                 updater.UpdateSync();
+                Console.WriteLine("Finish update: " + DateTime.Now);
                 const int minutes = 60;
                 Thread.Sleep(1000 * 60 * minutes); // 1000ms * 60s * minutes
             }
