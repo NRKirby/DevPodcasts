@@ -24,10 +24,9 @@ namespace DevPodcasts.ServiceLayer.RSS
             }
             catch (Exception ex)
             {
+                feed = null;
                 _logger.Error(rssFeedUrl, ex);
-                throw;
             }
-            
 
             return feed;
         }

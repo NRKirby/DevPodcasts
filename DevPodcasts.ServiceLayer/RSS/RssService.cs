@@ -35,10 +35,10 @@ namespace DevPodcasts.ServiceLayer.RSS
 
             var feed = _rssParser.ParseRssFeed(podcastDto.FeedUrl);
 
-            var episodes = new List<EpisodeDto>();
-
             if (feed == null)
                 return null;
+
+            var episodes = new List<EpisodeDto>();
 
             var newEpisodes = feed.Items
                 .Where(i => i.PublishDate.DateTime > mostRecentEpisodeDate);
@@ -94,7 +94,6 @@ namespace DevPodcasts.ServiceLayer.RSS
             catch (Exception)
             {
                 dto.SuccessResult = SuccessResult.Error;
-                // Error should be logged in RssParser
             }
 
             if (feed == null) return dto;

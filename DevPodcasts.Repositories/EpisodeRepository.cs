@@ -97,8 +97,9 @@ namespace DevPodcasts.Repositories
             return addedCount;
         }
 
-        public void AddRangeSync(IEnumerable<EpisodeDto> dtos)
+        public int AddRangeSync(IEnumerable<EpisodeDto> dtos)
         {
+            int addedCount = 0;
             foreach (var dto in dtos)
             {
                 var podcast = _context.Podcasts.Single(i => i.Id == dto.PodcastId);
@@ -122,10 +123,13 @@ namespace DevPodcasts.Repositories
                 if (!episodeExistsForPodcast)
                 {
                     podcast.Episodes.Add(episode);
+                    _logger.Info($"{podcast.Title} - {episode.Title} added");
+                    addedCount++;
                 }
             }
 
             _context.SaveChanges();
+            return addedCount;
         }
 
         public IEnumerable<RecentEpisode> GetMostRecentEpisodes(int numberOfEpisodes)

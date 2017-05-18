@@ -78,12 +78,9 @@ namespace DevPodcasts.EpisodeUpdater
             foreach (var podcast in podcastList)
             {
                 var newEpisodes = _rssService.GetNewEpisodes(podcast).ToList();
-                foreach (var episode in newEpisodes)
-                {
-                    _logger.Info($"{podcast.Title} - {episode.Title} added");
-                    _episodesAddedCount++;
-                }
-                _episodeRepository.AddRangeSync(newEpisodes);
+
+                var addedCount = _episodeRepository.AddRangeSync(newEpisodes);
+                _episodesAddedCount += addedCount;
                 //_logger.Debug("Podcast updater count: " + count);
                 //count++;
             }
