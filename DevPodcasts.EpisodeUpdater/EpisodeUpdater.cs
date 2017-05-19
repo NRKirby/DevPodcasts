@@ -26,7 +26,6 @@ namespace DevPodcasts.EpisodeUpdater
             _episodeRepository = episodeRepository;
             _rssService = rssService;
             _logger = logger;
-            _episodesAddedCount = 0;
         }
 
         public void Update()
@@ -45,17 +44,15 @@ namespace DevPodcasts.EpisodeUpdater
 
         private async Task UpdatePodcasts(IEnumerable<PodcastDto> podcasts)
         {
+            _episodesAddedCount = 0;
             var podcastList = podcasts.ToList();
             _logger.Debug($"Begin update of {podcastList.Count} podcasts");
-            //var count = 1;
             foreach (var podcast in podcastList)
             {
                 var newEpisodes = _rssService.GetNewEpisodes(podcast).ToList();
 
                 var addedCount = await _episodeRepository.AddRange(newEpisodes);
                 _episodesAddedCount += addedCount;
-                //_logger.Debug("Podcast updater count: " + count);
-                //count++;
             }
         }
 
@@ -72,17 +69,15 @@ namespace DevPodcasts.EpisodeUpdater
 
         private void UpdatePodcastsSync(IEnumerable<PodcastDto> podcasts)
         {
+            _episodesAddedCount = 0;
             var podcastList = podcasts.ToList();
             _logger.Debug($"Begin update of {podcastList.Count} podcasts");
-            //var count = 1;
             foreach (var podcast in podcastList)
             {
                 var newEpisodes = _rssService.GetNewEpisodes(podcast).ToList();
 
                 var addedCount = _episodeRepository.AddRangeSync(newEpisodes);
                 _episodesAddedCount += addedCount;
-                //_logger.Debug("Podcast updater count: " + count);
-                //count++;
             }
         }
     }
