@@ -1,4 +1,5 @@
-﻿@model DevPodcasts.ViewModels.Podcast.PodcastDetailViewModel
+﻿@using DevPodcasts.Web.Extensions
+@model DevPodcasts.ViewModels.Podcast.PodcastDetailViewModel
 @{
     ViewBag.Title = "Podcast Detail";
 }
@@ -30,7 +31,7 @@
         {
             <tr> 
                 <td>@Html.ActionLink(item.Title, "Detail", "Episode", new { id = item.Id }, null)</td> 
-                <td>@item.DatePublished.ToString("dd/MM/yyyy")</td> 
+                <td>@item.DatePublished.ToShortUkDate()</td> 
             </tr>
         }
     }

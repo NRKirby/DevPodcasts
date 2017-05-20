@@ -1,4 +1,5 @@
-﻿@model IEnumerable<DevPodcasts.ViewModels.Logs.LogItemViewModel>
+﻿@using DevPodcasts.Web.Extensions
+@model IEnumerable<DevPodcasts.ViewModels.Logs.LogItemViewModel>
 @{
     ViewBag.Title = "_LogResultsTable";
 }
@@ -12,7 +13,7 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td class="col-md-2">@item.TimeStamp.ToString("dd/MM/yyyy")</td>
+            <td class="col-md-2">@item.TimeStamp.ToUkDateAndTime()</td>
             <td class="col-md-2">@item.Level</td>
             <td class="col-md-8">@item.LogMessage</td>
         </tr>
