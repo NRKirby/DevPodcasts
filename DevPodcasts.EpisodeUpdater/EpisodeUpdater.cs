@@ -49,7 +49,10 @@ namespace DevPodcasts.EpisodeUpdater
             _logger.Debug($"Begin update of {podcastList.Count} podcasts");
             foreach (var podcast in podcastList)
             {
-                var newEpisodes = _rssService.GetNewEpisodes(podcast).ToList();
+                var newEpisodes = _rssService.GetNewEpisodes(podcast);
+
+                if (newEpisodes == null)
+                    continue;
 
                 var addedCount = await _episodeRepository.AddRange(newEpisodes);
                 _episodesAddedCount += addedCount;
@@ -74,7 +77,10 @@ namespace DevPodcasts.EpisodeUpdater
             _logger.Debug($"Begin update of {podcastList.Count} podcasts");
             foreach (var podcast in podcastList)
             {
-                var newEpisodes = _rssService.GetNewEpisodes(podcast).ToList();
+                var newEpisodes = _rssService.GetNewEpisodes(podcast);
+
+                if (newEpisodes == null)
+                    continue;
 
                 var addedCount = _episodeRepository.AddRangeSync(newEpisodes);
                 _episodesAddedCount += addedCount;
