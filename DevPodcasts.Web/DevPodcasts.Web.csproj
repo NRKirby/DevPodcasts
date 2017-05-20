@@ -104,9 +104,6 @@
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="X.PagedList, Version=5.3.0.21888, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\X.PagedList.5.3.0.5300\lib\portable-net45+wp8+win8\X.PagedList.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
@@ -281,10 +278,6 @@
       <Project>{4ae9ee14-21c0-4db6-af8a-0ab2d4356470}</Project>
       <Name>DevPodcasts.DataLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DevPodcasts.Dtos\DevPodcasts.Dtos.csproj">
-      <Project>{4ecc6970-f931-4d33-b125-c58954d93917}</Project>
-      <Name>DevPodcasts.Dtos</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DevPodcasts.EpisodeUpdater\DevPodcasts.EpisodeUpdater.csproj">
       <Project>{d1db0004-d056-401c-b503-e7706f55fd40}</Project>
       <Name>DevPodcasts.EpisodeUpdater</Name>
@@ -341,7 +334,6 @@
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.0.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.0.1\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
-  <Import Project="..\packages\Microsoft.Web.WebJobs.Publish.1.0.12\tools\webjobs.targets" Condition="Exists('..\packages\Microsoft.Web.WebJobs.Publish.1.0.12\tools\webjobs.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
