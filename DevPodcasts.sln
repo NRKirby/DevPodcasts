@@ -15,8 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevPodcasts.Repositories", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevPodcasts.Dtos", "DevPodcasts.Dtos\DevPodcasts.Dtos.csproj", "{4ECC6970-F931-4D33-B125-C58954D93917}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevPodcasts.Tests", "DevPodcasts.Tests\DevPodcasts.Tests.csproj", "{1CD01FC3-C8C7-4E9C-8F36-4B6EF41DC825}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevPodcasts.Logging", "DevPodcasts.Logging\DevPodcasts.Logging.csproj", "{DADD403F-5DF9-48BE-9D19-68847B9767AA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevPodcasts.EpisodeUpdater", "DevPodcasts.EpisodeUpdater\DevPodcasts.EpisodeUpdater.csproj", "{D1DB0004-D056-401C-B503-E7706F55FD40}"
@@ -51,10 +49,6 @@ Global
 		{4ECC6970-F931-4D33-B125-C58954D93917}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4ECC6970-F931-4D33-B125-C58954D93917}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4ECC6970-F931-4D33-B125-C58954D93917}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1CD01FC3-C8C7-4E9C-8F36-4B6EF41DC825}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1CD01FC3-C8C7-4E9C-8F36-4B6EF41DC825}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1CD01FC3-C8C7-4E9C-8F36-4B6EF41DC825}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1CD01FC3-C8C7-4E9C-8F36-4B6EF41DC825}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DADD403F-5DF9-48BE-9D19-68847B9767AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DADD403F-5DF9-48BE-9D19-68847B9767AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DADD403F-5DF9-48BE-9D19-68847B9767AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
