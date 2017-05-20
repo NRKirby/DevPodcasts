@@ -1,4 +1,5 @@
-﻿using DevPodcasts.DataLayer.Models;
+﻿using System;
+using DevPodcasts.DataLayer.Models;
 using DevPodcasts.Dtos;
 using DevPodcasts.Repositories;
 using DevPodcasts.ServiceLayer.Email;
@@ -85,21 +86,35 @@ namespace DevPodcasts.ServiceLayer.Podcast
         public PodcastDetailViewModel GetPodcastDetail(int podcastId)
         {
             var podcast = _podcastRepository.GetPodcast(podcastId);
-            return new PodcastDetailViewModel
+            var viewModel = new PodcastDetailViewModel
             {
                 Id = podcast.Id,
                 Title = podcast.Title,
                 Description = podcast.Description,
                 SiteUrl = podcast.SiteUrl,
-                ImageUrl = podcast.ImageUrl,
-                Episodes = _episodeRepository.GetAllEpisodes(podcastId)
-                    .Select(i => new EpisodeViewModel
-                    {
-                        Id = i.Id,
-                        Title = i.Title,
-                        DatePublished = i.DatePublished?.ToLocalTime().ToShortDateString()
-                    })
+                ImageUrl = podcast.ImageUrl
             };
+
+            var episodes = _episodeRepository.GetAllEpisodes(podcastId);
+
+            var episodeList = new List<EpisodeViewModel>();
+            foreach (var episode in episodes)
+            {
+                var episodeViewModel = new EpisodeViewModel
+                {
+                    Id = episode.Id,
+                    Title = episode.Title
+                };
+
+                if (episode.DatePublished != null)
+                    episodeViewModel.DatePublished = (DateTime)episode.DatePublished;
+
+                episodeList.Add(episodeViewModel);
+            }
+
+            viewModel.Episodes = episodeList;
+
+            return viewModel;
         }
 
         public bool PodcastExists(int podcastId)

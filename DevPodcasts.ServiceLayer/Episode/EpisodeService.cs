@@ -1,4 +1,5 @@
-﻿using DevPodcasts.Repositories;
+﻿using System;
+using DevPodcasts.Repositories;
 using DevPodcasts.ViewModels.Episode;
 using System.Text.RegularExpressions;
 
@@ -23,8 +24,11 @@ namespace DevPodcasts.ServiceLayer.Episode
                 Title = episode.Title,
                 AudioUrl = episode.AudioUrl,
                 EpisodeUrl = episode.EpisodeUrl,
-                DatePublished = episode.DatePublished?.ToShortDateString()
             };
+
+            if (episode.DatePublished != null)
+                viewModel.DatePublished = (DateTime) episode.DatePublished;
+
             if (summary != null)
                 viewModel.Summary = StripHtml(summary);
 

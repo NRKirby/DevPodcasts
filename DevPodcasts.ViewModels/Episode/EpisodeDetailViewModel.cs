@@ -1,4 +1,6 @@
-﻿namespace DevPodcasts.ViewModels.Episode
+﻿using System;
+
+namespace DevPodcasts.ViewModels.Episode
 {
     public class EpisodeDetailViewModel
     {
@@ -12,6 +14,6 @@
 
         public string EpisodeUrl { get; set; }
 
-        public string DatePublished { get; set; }
+        public DateTime DatePublished { get; set; }
     }
 }

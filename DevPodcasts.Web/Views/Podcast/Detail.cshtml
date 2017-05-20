@@ -30,7 +30,7 @@
         {
             <tr> 
                 <td>@Html.ActionLink(item.Title, "Detail", "Episode", new { id = item.Id }, null)</td> 
-                <td>@item.DatePublished</td> 
+                <td>@item.DatePublished.ToString("dd/MM/yyyy")</td> 
             </tr>
         }
     }
