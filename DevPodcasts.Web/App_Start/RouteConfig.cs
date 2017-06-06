@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace DevPodcasts.Web
@@ -14,6 +10,12 @@ namespace DevPodcasts.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.LowercaseUrls = true;
+
+            routes.MapRoute(
+                "Tag",
+                "{Tag}/{*tagValue}",
+                new { controller = "Tag", action = "Index" }
+            );
 
             routes.MapRoute(
                 name: "Default",

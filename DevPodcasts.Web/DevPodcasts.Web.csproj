@@ -166,6 +166,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PodcastController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\TagController.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -267,6 +268,7 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Logs\Index.cshtml" />
     <Content Include="Views\Logs\_LogResultsTable.cshtml" />
+    <Content Include="Views\Tag\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
