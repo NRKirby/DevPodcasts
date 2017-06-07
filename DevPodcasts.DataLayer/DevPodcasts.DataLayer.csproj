@@ -59,6 +59,10 @@
     <Compile Include="Migrations\201706061502338_AddValuePropertyToTagEntity.Designer.cs">
       <DependentUpon>201706061502338_AddValuePropertyToTagEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706070619479_TagRenameValuePropertyToSlug.cs" />
+    <Compile Include="Migrations\201706070619479_TagRenameValuePropertyToSlug.Designer.cs">
+      <DependentUpon>201706070619479_TagRenameValuePropertyToSlug.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -79,6 +83,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706061502338_AddValuePropertyToTagEntity.resx">
       <DependentUpon>201706061502338_AddValuePropertyToTagEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706070619479_TagRenameValuePropertyToSlug.resx">
+      <DependentUpon>201706070619479_TagRenameValuePropertyToSlug.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

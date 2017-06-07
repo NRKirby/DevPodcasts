@@ -13,7 +13,7 @@ namespace DevPodcasts.DataLayer.Models
 
         public string Name { get; set; }
 
-        public string Value { get; set; }
+        public string Slug { get; set; }
 
         public virtual ICollection<Podcast> Podcasts { get; set; }
     }
