@@ -4,7 +4,7 @@ namespace DevPodcasts.Web.Controllers
 {
     public class TagController : Controller
     { 
-        public ActionResult Index(string tagValue = null)
+        public ActionResult Index(string tagSlug)
         {
             return View();
         }

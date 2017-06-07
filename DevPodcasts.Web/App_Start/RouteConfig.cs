@@ -13,14 +13,14 @@ namespace DevPodcasts.Web
 
             routes.MapRoute(
                 "Tag",
-                "{Tag}/{*tagValue}",
+                "Tag/{tagSlug}",
                 new { controller = "Tag", action = "Index" }
             );
 
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                "Default",
+                "{controller}/{action}/{id}",
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
