@@ -10,6 +10,7 @@ using DevPodcasts.ServiceLayer.Logging;
 using DevPodcasts.ServiceLayer.Podcast;
 using DevPodcasts.ServiceLayer.RSS;
 using DevPodcasts.ServiceLayer.Search;
+using DevPodcasts.ServiceLayer.Tag;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -53,6 +54,7 @@ namespace DevPodcasts.Web
             builder.RegisterType<RssParser>();
             builder.RegisterType<RssService>();
             builder.RegisterType<SearchService>();
+            builder.RegisterType<TagService>();
             builder.RegisterType<LogService>().As<LogService>();
 
             var container = builder.Build();
