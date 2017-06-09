@@ -111,7 +111,7 @@
     <Compile Include="PaginationInfo.cs" />
     <Compile Include="Podcast\EditPodcastViewModel.cs" />
     <Compile Include="Podcast\PodcastDetailViewModel.cs" />
-    <Compile Include="Podcast\PodcastIndexItemViewModel.cs" />
+    <Compile Include="Podcast\PodcastSearchResultItemViewModel.cs" />
     <Compile Include="Podcast\PodcastIndexViewModel.cs" />
     <Compile Include="Podcast\SubmitPodcastViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

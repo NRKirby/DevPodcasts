@@ -1,16 +1,20 @@
-﻿using DevPodcasts.ServiceLayer.Podcast;
+﻿using System.Linq;
+using DevPodcasts.ServiceLayer.Podcast;
 using DevPodcasts.ViewModels.Podcast;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using DevPodcasts.ServiceLayer.Tag;
 
 namespace DevPodcasts.Web.Controllers
 {
     public class PodcastsController : Controller
     {
         private readonly PodcastService _podcastService;
+        private readonly TagService _tagService;
 
-        public PodcastsController(PodcastService podcastService)
+        public PodcastsController(PodcastService podcastService, TagService tagService)
         {
+            _tagService = tagService;
             _podcastService = podcastService;
         }
 
@@ -18,6 +22,15 @@ namespace DevPodcasts.Web.Controllers
         {
             var viewModel = _podcastService.Search();
             return View(viewModel);
+        }
+
+        public ActionResult Tagged(string tagSlug)
+        {
+            if (!string.IsNullOrEmpty(tagSlug))
+            {
+                var podcasts = _tagService.GetTaggedPodcasts(tagSlug);
+            }
+            return View();
         }
 
         [Authorize]

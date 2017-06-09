@@ -4,7 +4,7 @@ namespace DevPodcasts.ViewModels.Podcast
 {
     public class PodcastIndexViewModel
     {
-        public IEnumerable<PodcastIndexItemViewModel> Items { get; set; }
+        public IEnumerable<PodcastSearchResultItemViewModel> Items { get; set; }
 
         public int EpisodeCount { get; set; }
     }

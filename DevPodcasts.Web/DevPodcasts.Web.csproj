@@ -269,6 +269,7 @@
     <Content Include="Views\Logs\Index.cshtml" />
     <Content Include="Views\Logs\_LogResultsTable.cshtml" />
     <Content Include="Views\Tags\Index.cshtml" />
+    <Content Include="Views\Podcasts\Tagged.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
+using DevPodcasts.Web.Controllers;
 
 namespace DevPodcasts.Web
 {
@@ -12,9 +13,15 @@ namespace DevPodcasts.Web
             routes.LowercaseUrls = true;
 
             routes.MapRoute(
-                "Tag",
-                "Tag/{tagSlug}",
-                new { controller = "Tag", action = "Index" }
+                "Tags",
+                "Tags/{tagSlug}",
+                new { controller = "Tags", action = "Index" }
+            );
+
+            routes.MapRoute(
+                "Podcasts",
+                "Podcasts/Tagged/{tagSlug}",
+                new { controller = "Podcasts", action = "Tagged", tagSlug = UrlParameter.Optional }
             );
 
             routes.MapRoute(

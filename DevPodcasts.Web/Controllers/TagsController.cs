@@ -14,8 +14,12 @@ namespace DevPodcasts.Web.Controllers
 
         public ActionResult Index(string tagSlug)
         {
-            var viewModel = _tagService.GetTags();
+            if (!string.IsNullOrEmpty(tagSlug))
+            {
+                return RedirectToAction("Tagged", "Podcasts", new { tagSlug = tagSlug });
+            }
 
+            var viewModel = _tagService.GetTags();
             return View(viewModel);
         }
     }

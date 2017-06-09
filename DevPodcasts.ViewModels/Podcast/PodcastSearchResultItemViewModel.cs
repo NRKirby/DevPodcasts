@@ -1,6 +1,6 @@
 ﻿namespace DevPodcasts.ViewModels.Podcast
 {
-    public class PodcastIndexItemViewModel
+    public class PodcastSearchResultItemViewModel
     {
         public int Id { get; set; }
 

@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using DevPodcasts.DataLayer.Models;
+using DevPodcasts.ViewModels.Podcast;
+using System.Collections.Generic;
 using System.Linq;
-using DevPodcasts.DataLayer.Models;
 
 namespace DevPodcasts.ServiceLayer.Tag
 {
@@ -22,6 +23,22 @@ namespace DevPodcasts.ServiceLayer.Tag
                 {
                     Name = i.Name,
                     Slug = i.Slug
+                });
+        }
+
+        public IEnumerable<PodcastSearchResultItemViewModel> GetTaggedPodcasts(string tagSlug)
+        {
+            return _context
+                .Podcasts
+                .Where(p => p.Tags.Any(t => t.Slug == tagSlug))
+                .OrderBy(p => p.Title)
+                .Select(i => new PodcastSearchResultItemViewModel
+                {
+                    Id = i.Id,
+                    Title = i.Title,
+                    ImageUrl = i.ImageUrl,
+                    Description = i.Description,
+                    NumberOfEpisodes = i.Episodes.Count
                 });
         }
     }

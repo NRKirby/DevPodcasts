@@ -64,7 +64,7 @@ namespace DevPodcasts.ServiceLayer.Podcast
             var viewModel = new PodcastIndexViewModel
             {
                 Items = podcasts
-                .Select(i => new PodcastIndexItemViewModel
+                .Select(i => new PodcastSearchResultItemViewModel
                 {
                     Id = i.Id,
                     Title = i.Title,
