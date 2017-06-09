@@ -3,11 +3,11 @@ using DevPodcasts.ServiceLayer.Tag;
 
 namespace DevPodcasts.Web.Controllers
 {
-    public class TagController : Controller
+    public class TagsController : Controller
     {
         private readonly TagService _tagService;
 
-        public TagController(TagService tagService)
+        public TagsController(TagService tagService)
         {
             _tagService = tagService;
         }
