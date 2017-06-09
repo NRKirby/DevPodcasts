@@ -5,11 +5,11 @@ using System.Web.Mvc;
 
 namespace DevPodcasts.Web.Controllers
 {
-    public class PodcastController : Controller
+    public class PodcastsController : Controller
     {
         private readonly PodcastService _podcastService;
 
-        public PodcastController(PodcastService podcastService)
+        public PodcastsController(PodcastService podcastService)
         {
             _podcastService = podcastService;
         }

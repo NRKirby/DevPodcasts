@@ -30,13 +30,13 @@
                 <li class="podcast-list-item">
                     <div class="search-result">
                         <div class="podcast-image">
-                            <a href='@Url.Action("Detail", "Podcast", new {id = result.Id})'>
+                            <a href='@Url.Action("Detail", "Podcasts", new {id = result.Id})'>
                                 <img class="img-thumb" src="@result.ImageUrl" />
                             </a>
                         </div>
                         <div class="podcast-summary">
                             <p>
-                                @Html.ActionLink(result.Title, "Detail", "Podcast", new { id = result.Id }, null) 
+                                @Html.ActionLink(result.Title, "Detail", "Podcasts", new { id = result.Id }, null) 
                             </p>
                             <p>@result.Description</p>
                         </div>

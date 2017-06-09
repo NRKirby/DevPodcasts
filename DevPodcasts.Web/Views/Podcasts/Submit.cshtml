@@ -6,7 +6,7 @@
 <h2>Submit a podcast</h2>
 
 
-@using (Html.BeginForm("Submit", "Podcast", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Submit", "Podcasts", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <h4>Enter podcast RSS feed URL.</h4>
