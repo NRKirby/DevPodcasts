@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D1DB0004-D056-401C-B503-E7706F55FD40}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>DevPodcasts.EpisodeUpdater</RootNamespace>
-    <AssemblyName>DevPodcasts.EpisodeUpdater</AssemblyName>
+    <ProjectGuid>{D4A10B8A-464F-4B49-99A5-33E6EE757852}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DevPodcasts.Repositories</RootNamespace>
+    <AssemblyName>DevPodcasts.Repositories</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,24 +31,31 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EpisodeUpdater.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="TagsRepository.cs" />
+    <Compile Include="EpisodeRepository.cs" />
+    <Compile Include="PodcastRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\DevPodcasts.DataLayer\DevPodcasts.DataLayer.csproj">
+      <Project>{4ae9ee14-21c0-4db6-af8a-0ab2d4356470}</Project>
+      <Name>DevPodcasts.DataLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DevPodcasts.Dtos\DevPodcasts.Dtos.csproj">
       <Project>{4ecc6970-f931-4d33-b125-c58954d93917}</Project>
       <Name>DevPodcasts.Dtos</Name>
@@ -59,14 +64,14 @@
       <Project>{dadd403f-5df9-48be-9d19-68847b9767aa}</Project>
       <Name>DevPodcasts.Logging</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DevPodcasts.Repositories\DevPodcasts.Repositories.csproj">
-      <Project>{d4a10b8a-464f-4b49-99a5-33e6ee757852}</Project>
-      <Name>DevPodcasts.Repositories</Name>
+    <ProjectReference Include="..\DevPodcasts.ViewModels\DevPodcasts.ViewModels.csproj">
+      <Project>{fc0b0eff-2753-4f05-977d-e4f0fbc589f9}</Project>
+      <Name>DevPodcasts.ViewModels</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DevPodcasts.ServiceLayer\DevPodcasts.ServiceLayer.csproj">
-      <Project>{3a347680-db28-4ab0-99cf-7636eeac7515}</Project>
-      <Name>DevPodcasts.ServiceLayer</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
