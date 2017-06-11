@@ -4,13 +4,13 @@
     margin-bottom: 30px;
 }
 
-    .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
-        background-color: rgba(51, 122, 183, 0.14);
-    }
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: rgba(51, 122, 183, 0.14);
+}
 
-    .navbar-inverse .navbar-brand {
-        color: #000;
-    }
+.navbar-inverse .navbar-brand {
+    color: #000;
+}
 
 .dropdown-menu {
     box-shadow: none;
