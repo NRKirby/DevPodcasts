@@ -1,9 +1,8 @@
-﻿using System.Linq;
-using DevPodcasts.ServiceLayer.Podcast;
+﻿using DevPodcasts.ServiceLayer.Podcast;
+using DevPodcasts.ServiceLayer.Tag;
 using DevPodcasts.ViewModels.Podcast;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using DevPodcasts.ServiceLayer.Tag;
 
 namespace DevPodcasts.Web.Controllers
 {
@@ -20,8 +19,7 @@ namespace DevPodcasts.Web.Controllers
 
         public ActionResult Index(int? page)
         {
-            var viewModel = _podcastService.GetPodcasts();
-            //var viewModel = _podcastService.Search();
+            var viewModel = _podcastService.Search();
             return View(viewModel);
         }
 
