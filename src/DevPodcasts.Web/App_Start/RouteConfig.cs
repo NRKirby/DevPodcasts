@@ -13,6 +13,12 @@ namespace DevPodcasts.Web
             routes.LowercaseUrls = true;
 
             routes.MapRoute(
+                "TagsIndex",
+                "Tags/Index",
+                new { controller = "Tags", action = "Index" }
+            );
+
+            routes.MapRoute(
                 "Tags",
                 "Tags/{tagSlug}",
                 new { controller = "Tags", action = "Index" }
