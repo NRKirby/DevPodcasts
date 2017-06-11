@@ -18,9 +18,10 @@ namespace DevPodcasts.Web.Controllers
             _podcastService = podcastService;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var viewModel = _podcastService.Search();
+            var viewModel = _podcastService.GetPodcasts();
+            //var viewModel = _podcastService.Search();
             return View(viewModel);
         }
 

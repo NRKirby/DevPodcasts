@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
+using DevPodcasts.ViewModels.Podcast;
 
 namespace DevPodcasts.Repositories
 {
@@ -111,7 +112,7 @@ namespace DevPodcasts.Repositories
                 .Any(i => i.Id == podcastId);
         }
 
-        public IEnumerable<PodcastSearchResultDto> Search(string query)
+        public IEnumerable<PodcastSearchResultViewModel> Search(string query)
         {
             IOrderedQueryable<Podcast> podcastQuery;
             if (query == null) // return all approved podcasts
@@ -131,7 +132,7 @@ namespace DevPodcasts.Repositories
             }
 
             return podcastQuery
-                .Select(i => new PodcastSearchResultDto
+                .Select(i => new PodcastSearchResultViewModel
                 {
                     Id = i.Id,
                     Title = i.Title,

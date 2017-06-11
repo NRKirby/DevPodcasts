@@ -58,20 +58,18 @@ namespace DevPodcasts.ServiceLayer.Podcast
             return viewModel;
         }
 
+        public PodcastIndexViewModel GetPodcasts(int? page = 0)
+        {
+            //var 
+
+            return null;
+        }
+
         public PodcastIndexViewModel Search(string query = null)
         {
-            var podcasts = _podcastRepository.Search(query);
             var viewModel = new PodcastIndexViewModel
             {
-                Items = podcasts
-                .Select(i => new PodcastSearchResultItemViewModel
-                {
-                    Id = i.Id,
-                    Title = i.Title,
-                    ImageUrl = i.ImageUrl,
-                    Description = i.Description,
-                    NumberOfEpisodes = i.NumberOfEpisodes
-                }),
+                Items = _podcastRepository.Search(query),
                 EpisodeCount = _episodeRepository.EpisodeCount()
             };
 

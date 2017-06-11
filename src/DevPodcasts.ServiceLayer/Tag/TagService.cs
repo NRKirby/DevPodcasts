@@ -26,13 +26,13 @@ namespace DevPodcasts.ServiceLayer.Tag
                 });
         }
 
-        public IEnumerable<PodcastSearchResultItemViewModel> GetTaggedPodcasts(string tagSlug)
+        public IEnumerable<PodcastSearchResultViewModel> GetTaggedPodcasts(string tagSlug)
         {
             return _context
                 .Podcasts
                 .Where(p => p.Tags.Any(t => t.Slug == tagSlug))
                 .OrderBy(p => p.Title)
-                .Select(i => new PodcastSearchResultItemViewModel
+                .Select(i => new PodcastSearchResultViewModel
                 {
                     Id = i.Id,
                     Title = i.Title,
