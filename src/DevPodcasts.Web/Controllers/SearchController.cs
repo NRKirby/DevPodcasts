@@ -14,7 +14,7 @@ namespace DevPodcasts.Web.Controllers
 
         public ActionResult Index(string q)
         {
-            if (q.Equals(string.Empty))
+            if (string.IsNullOrEmpty(q))
                 return View();
 
             ViewBag.SearchQuery = q;
