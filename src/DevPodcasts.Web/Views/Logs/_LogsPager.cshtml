@@ -1,0 +1,32 @@
+﻿@model DevPodcasts.ViewModels.PaginationInfo 
+
+<nav aria-label="Page navigation">
+    <ul class="pager">
+        @if (Model.Previous != "is-disabled")
+        {
+            <li>
+                @Html.ActionLink("Previous", "Index", "Logs", new { page = Model.ActualPage - 1, filter = ViewBag.Filter ?? "" }, null)
+            </li>
+        }
+        else
+        {
+            <li class="disabled">
+                <a href="#">Previous</a>
+            </li>
+        }
+
+        @if (Model.Next != "is-disabled")
+        {
+            <li>
+                @Html.ActionLink("Next", "Index", "Logs", new { page = Model.ActualPage + 1, filter = ViewBag.Filter ?? "" }, null)
+            </li>
+        }
+        else
+        {
+            <li class="disabled">
+                <a href="#">Next</a>
+            </li>
+        }
+    </ul>
+</nav>
+

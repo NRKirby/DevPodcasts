@@ -1,6 +1,7 @@
 ﻿.navbar-inverse {
     background-color: #B9CDDF;
     border-color: #B9CDDF;
+    margin-bottom: 30px;
 }
 
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
@@ -49,6 +50,14 @@ h6,
 .h5,
 .h6 {
     font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Footer */
+
+#footer {
+    margin-top: 40px;
+    padding: 40px 0;
+    background-color: #232F3E
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -161,9 +170,16 @@ textarea {
     border-radius: 8px;
 }
 
-.search-box {
-    /*width: 400px;*/
+#LogResults {
+    margin-bottom: 80px;
 }
+
+#manage-podcasts-table {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
 
 
 
