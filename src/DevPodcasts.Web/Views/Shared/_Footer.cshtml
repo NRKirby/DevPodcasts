@@ -4,11 +4,11 @@
             <div class="column">
                 <h4>Site Map</h4>
                 <ul>
-                    <li>@Html.ActionLink("Podcasts", "Index", "Podcasts")</li>
-                    <li>@Html.ActionLink("Search", "Index", "Search")</li>
-                    <li>@Html.ActionLink("Tags", "Index", "Tags")</li>
-                    <li>@Html.ActionLink("Login", "Login", "Account")</li>
-                    <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                    <li>@Html.ActionLink("Podcasts", "Index", "Podcasts", null, new { style = "color: azure;" })</li>
+                    <li>@Html.ActionLink("Search", "Index", "Search", null, new { style = "color: azure;" })</li>
+                    <li>@Html.ActionLink("Tags", "Index", "Tags", null, new { style = "color: azure;" })</li>
+                    <li>@Html.ActionLink("Login", "Login", "Account", null, new { style = "color: azure;" })</li>
+                    <li>@Html.ActionLink("Register", "Register", "Account", null, new { style = "color: azure;" })</li>
                     <li>@Html.ActionLink("Submit a podcast", "Submit", "Podcasts", null, new { style = "color: azure;" })</li>
                 </ul>
             </div>
@@ -17,13 +17,9 @@
             <div class="column">
                 <h4>Contact</h4>
                 <ul>
-                    <li><a href="https:twitter.com/nrkirby">Twitter</a></li>
+                    <li><a style="color: azure" href="https:twitter.com/nrkirby">Twitter</a></li>
                 </ul>
             </div>
         </div>
-        @*<p class="text-center">
-                <a href="https://twitter.com/nrkirby" target="_blank"><i class="fa fa-twitter fa-2x" aria-hidden="true" style="margin: 5px"></i></a>
-                <a href="https://www.linkedin.com/in/nrkirby/" target="_blank"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true" style="margin: 5px"></i></a>
-            </p>*@
     </div>
 </footer>
