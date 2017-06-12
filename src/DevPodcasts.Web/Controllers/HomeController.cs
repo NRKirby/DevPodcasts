@@ -1,6 +1,7 @@
 ﻿using DevPodcasts.ServiceLayer;
 using System.Web.Mvc;
 using DevPodcasts.ServiceLayer.Home;
+using DevPodcasts.ViewModels.Home;
 
 namespace DevPodcasts.Web.Controllers
 {
@@ -29,6 +30,13 @@ namespace DevPodcasts.Web.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Contact(ContactViewModel model)
+        {
 
             return View();
         }

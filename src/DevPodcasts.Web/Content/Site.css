@@ -4,13 +4,13 @@
     margin-bottom: 30px;
 }
 
-.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
-    background-color: rgba(51, 122, 183, 0.14);
-}
+    .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+        background-color: rgba(51, 122, 183, 0.14);
+    }
 
-.navbar-inverse .navbar-brand {
-    color: #000;
-}
+    .navbar-inverse .navbar-brand {
+        color: #000;
+    }
 
 .dropdown-menu {
     box-shadow: none;
@@ -61,25 +61,25 @@ h6,
     color: azure;
 }
 
-#footer h4 {
-    border-bottom: 1px solid #5d5d5d;
-    padding: 10px 0;
-}
+    #footer h4 {
+        border-bottom: 1px solid #5d5d5d;
+        padding: 10px 0;
+    }
 
-#footer .column ul {
-    font-size: 13px;
-    list-style: none;
-    padding: 0;
-    line-height: 22px;
-}
+    #footer .column ul {
+        font-size: 13px;
+        list-style: none;
+        padding: 0;
+        line-height: 22px;
+    }
 
-#footer .footer-2-col {
-    padding-left: 0;
-}
+    #footer .footer-2-col {
+        padding-left: 0;
+    }
 
-#footer .footer-a {
-    color: azure;
-}
+    #footer .footer-a {
+        color: azure;
+    }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -203,3 +203,15 @@ textarea {
 .tag {
     padding: 10px 10px;
 }
+
+/* Forms */
+
+.contact-form {
+    display: block;
+    margin: 0 auto;
+    width: 600px;
+}
+
+    .contact-form .form-control {
+        width: auto;
+    }

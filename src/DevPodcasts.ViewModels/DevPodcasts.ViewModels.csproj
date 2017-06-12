@@ -84,6 +84,7 @@
     <Compile Include="Admin\ReviewPodcastViewModel.cs" />
     <Compile Include="Episode\EpisodeDetailViewModel.cs" />
     <Compile Include="Episode\EpisodeViewModel.cs" />
+    <Compile Include="Home\ContactViewModel.cs" />
     <Compile Include="Home\FeaturedPodcast.cs" />
     <Compile Include="Home\HomeIndexViewModel.cs" />
     <Compile Include="Home\RecentEpisode.cs" />

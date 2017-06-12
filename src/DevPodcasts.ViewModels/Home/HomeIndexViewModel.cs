@@ -1,5 +1,4 @@
-﻿using DevPodcasts.Dtos;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace DevPodcasts.ViewModels.Home
 {

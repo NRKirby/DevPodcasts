@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DevPodcasts.ViewModels.Home
+﻿namespace DevPodcasts.ViewModels.Home
 {
     public class RecentEpisode
     {
