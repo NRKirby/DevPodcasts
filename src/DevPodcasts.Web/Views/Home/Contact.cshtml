@@ -13,6 +13,7 @@
 
         @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
         {
+            @Html.AntiForgeryToken()
             <div class="form-group">
                 @Html.LabelFor(m => m.EmailAddress)
                 @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control" })
@@ -27,7 +28,14 @@
                 @Html.TextAreaFor(m => m.Message, new { @class = "form-control" })
             </div>
 
+            <div class="g-recaptcha" data-sitekey="6LeAoA8UAAAAAB3XM8s7rbC57ENuuh5SfGnaDLos">
+                
+            </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         }
     </div>
 </div>
+
+@section AddToHead{
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+}

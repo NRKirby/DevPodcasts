@@ -1,17 +1,20 @@
-﻿using DevPodcasts.ServiceLayer;
-using System.Web.Mvc;
+﻿using DevPodcasts.ServiceLayer.Email;
 using DevPodcasts.ServiceLayer.Home;
 using DevPodcasts.ViewModels.Home;
+using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace DevPodcasts.Web.Controllers
 {
     public class HomeController : Controller
     {
         private readonly HomeService _homeService;
+        private readonly ContactEmailService _emailService;
 
-        public HomeController(HomeService homeService)
+        public HomeController(HomeService homeService, ContactEmailService emailService)
         {
             _homeService = homeService;
+            _emailService = emailService;
         }
 
         public ActionResult Index()
@@ -35,8 +38,11 @@ namespace DevPodcasts.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Contact(ContactViewModel model)
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Contact(ContactViewModel model)
         {
+            model.GCaptchaResponse = Request["g-recaptcha-response"];
+            await _emailService.SendAsync(model);
 
             return View();
         }

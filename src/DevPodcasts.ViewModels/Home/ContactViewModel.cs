@@ -12,5 +12,7 @@ namespace DevPodcasts.ViewModels.Home
 
         [Display(Name = "Message")]
         public string Message { get; set; }
+
+        public string GCaptchaResponse { get; set; }
     }
 }
