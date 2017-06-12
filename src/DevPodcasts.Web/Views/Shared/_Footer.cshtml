@@ -3,21 +3,30 @@
         <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="column">
                 <h4>Site Map</h4>
-                <ul>
-                    <li>@Html.ActionLink("Podcasts", "Index", "Podcasts", null, new { style = "color: azure;" })</li>
-                    <li>@Html.ActionLink("Search", "Index", "Search", null, new { style = "color: azure;" })</li>
-                    <li>@Html.ActionLink("Tags", "Index", "Tags", null, new { style = "color: azure;" })</li>
-                    <li>@Html.ActionLink("Login", "Login", "Account", null, new { style = "color: azure;" })</li>
-                    <li>@Html.ActionLink("Register", "Register", "Account", null, new { style = "color: azure;" })</li>
-                    <li>@Html.ActionLink("Submit a podcast", "Submit", "Podcasts", null, new { style = "color: azure;" })</li>
-                </ul>
+                <div class="footer-2-col col-lg-6 col-md-6 col-sm-6">
+                    <ul>
+                        <li>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "footer-a" })</li>
+                        <li>@Html.ActionLink("Podcasts", "Index", "Podcasts", null, new { @class = "footer-a" })</li>
+                        <li>@Html.ActionLink("Tags", "Index", "Tags", null, new { @class = "footer-a" })</li>
+                        <li>@Html.ActionLink("Search", "Index", "Search", null, new { @class = "footer-a" })</li>
+                    </ul>
+                </div>
+                <div class="footer-2-col col-lg-6 col-md-6 col-sm-6">
+                    <ul>
+                        <li>@Html.ActionLink("Submit a podcast", "Submit", "Podcasts", null, new { @class = "footer-a" })</li>
+                        <li>@Html.ActionLink("Login", "Login", "Account", null, new { @class = "footer-a" })</li>
+                        <li>@Html.ActionLink("Register", "Register", "Account", null, new { @class = "footer-a"} )</li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="column">
                 <h4>Contact</h4>
                 <ul>
-                    <li><a style="color: azure" href="https:twitter.com/nrkirby">Twitter</a></li>
+                    <li><a class="footer-a" href="#">Report a bug</a></li>
+                    <li><a class="footer-a" href="#">Suggest a feature</a></li>
+                    <li><a class="footer-a" href="https:twitter.com/nrkirby">Twitter</a></li>
                 </ul>
             </div>
         </div>

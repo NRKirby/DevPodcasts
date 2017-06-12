@@ -73,7 +73,11 @@ h6,
     line-height: 22px;
 }
 
-#footer .column ul a:visited {
+#footer .footer-2-col {
+    padding-left: 0;
+}
+
+#footer .footer-a {
     color: azure;
 }
 
