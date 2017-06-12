@@ -1,7 +1,9 @@
-﻿using DevPodcasts.ViewModels.Home;
+﻿using DevPodcasts.Models;
+using DevPodcasts.ViewModels.Home;
 using Newtonsoft.Json;
 using SendGrid;
 using SendGrid.Helpers.Mail;
+using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -9,22 +11,22 @@ namespace DevPodcasts.ServiceLayer.Email
 {
     public class ContactEmailService
     {
-        public async Task<string> SendAsync(ContactViewModel model)
+        public async Task<ContactViewModel> SendAsync(ContactViewModel model)
         {
             var captchaResponse = await ValidateCaptchaResponse(model.GCaptchaResponse);
 
-            string captchaMessage;
             if (captchaResponse.Success)
             {
                 await SendEmailAsync(model);
-                captchaMessage = "Valid";
+                model.IsSuccess = true;
+                model.SuccessMessage = GetSuccessMessage(model.Subject);
             }
             else
             {
-                captchaMessage = "An error occured. Please try again";
+                model.IsSuccess = false;
             }
 
-            return captchaMessage;
+            return model;
         }
 
         private async Task<CaptchaResponse> ValidateCaptchaResponse(string gCaptchaResponse)
@@ -39,14 +41,41 @@ namespace DevPodcasts.ServiceLayer.Email
         {
             var client = new SendGridClient(EmailConstants.ApiKey);
             var from = new EmailAddress(model.EmailAddress, EmailConstants.DevPodcasts);
+            var subject = model.Subject.GetAttribute<DisplayAttribute>().Name;
             var msg = new SendGridMessage
             {
                 From = from,
-                Subject = model.Subject,
+                Subject = $"Contact form: {subject}",
                 HtmlContent = model.Message
             };
             msg.AddTo(new EmailAddress(EmailConstants.AdminEmailAddress));
             var response = await client.SendEmailAsync(msg);
+        }
+
+        private string GetSuccessMessage(ContactSubject subject)
+        {
+            string result;
+            switch (subject)
+            {
+                case ContactSubject.Feedback:
+                    result = "Thanks for your feedback!";
+                    break;
+                case ContactSubject.ReportAnIssue:
+                    result = "Thanks for contacting us, we will get back to you as soon as we can.";
+                    break;
+                case ContactSubject.ReportABug:
+                    result = "Thanks for letting us know, we will contact you if we need more information.";
+                    break;
+                case ContactSubject.SuggestAFeature:
+                    result = "Thanks for the suggestion, we are always trying to improve the site!";
+                    break;
+
+                default:
+                    result = string.Empty;
+                    break;
+
+            }
+            return result;
         }
     }
 }

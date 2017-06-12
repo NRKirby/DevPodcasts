@@ -34,7 +34,9 @@ namespace DevPodcasts.Web.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
-            return View();
+            var viewModel = new ContactViewModel();
+
+            return View(viewModel);
         }
 
         [HttpPost]
@@ -42,9 +44,9 @@ namespace DevPodcasts.Web.Controllers
         public async Task<ActionResult> Contact(ContactViewModel model)
         {
             model.GCaptchaResponse = Request["g-recaptcha-response"];
-            await _emailService.SendAsync(model);
+            var viewModel = await _emailService.SendAsync(model);
 
-            return View();
+            return View(viewModel);
         }
     }
 }

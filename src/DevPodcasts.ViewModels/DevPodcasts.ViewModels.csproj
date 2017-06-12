@@ -108,6 +108,10 @@
     <Compile Include="Search\SearchResultsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\DevPodcasts.Models\DevPodcasts.Models.csproj">
+      <Project>{b57cd494-1622-44fd-b8af-c3504d57b7cc}</Project>
+      <Name>DevPodcasts.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DevPodcasts.DataLayer\DevPodcasts.DataLayer.csproj">
       <Project>{4ae9ee14-21c0-4db6-af8a-0ab2d4356470}</Project>
       <Name>DevPodcasts.DataLayer</Name>

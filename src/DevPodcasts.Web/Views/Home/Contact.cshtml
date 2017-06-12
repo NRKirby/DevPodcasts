@@ -1,6 +1,7 @@
 ﻿@model DevPodcasts.ViewModels.Home.ContactViewModel
 @{
     ViewBag.Title = "Contact";
+    var success = Model.IsSuccess;
 }
 
 <div class="contact-form">
@@ -21,19 +22,29 @@
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.Subject)
-                @Html.TextBoxFor(m => m.Subject, new { @class = "form-control" })
+                @Html.EnumDropDownListFor(m => m.Subject, "Please select", new { @class = "form-control" })
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.Message)
                 @Html.TextAreaFor(m => m.Message, new { @class = "form-control" })
             </div>
-
             <div class="g-recaptcha" data-sitekey="6LeAoA8UAAAAAB3XM8s7rbC57ENuuh5SfGnaDLos">
-                
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         }
     </div>
+    @if (success != null && success == true)
+    {
+        <div class="alert alert-success">
+            <h4>@Model.SuccessMessage</h4>
+        </div>
+    }
+    else if (success != null && success == false)
+    {
+        <div class="alert alert-danger" role="alert">
+            <h4>An error occurred, please try again.</h4>
+        </div>
+    }
 </div>
 
 @section AddToHead{
