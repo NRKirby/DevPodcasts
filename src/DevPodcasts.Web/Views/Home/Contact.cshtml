@@ -35,13 +35,13 @@
     </div>
     @if (success != null && success == true)
     {
-        <div class="alert alert-success">
+        <div id="alert" class="alert alert-success">
             <h4>@Model.SuccessMessage</h4>
         </div>
     }
     else if (success != null && success == false)
     {
-        <div class="alert alert-danger" role="alert">
+        <div id="alert" class="alert alert-danger" role="alert">
             <h4>An error occurred, please try again.</h4>
         </div>
     }
@@ -49,4 +49,11 @@
 
 @section AddToHead{
     <script src="https://www.google.com/recaptcha/api.js"></script>
+}
+
+@if (success != null)
+{
+    <script>
+        $('#alert').delay(4000).fadeOut('slow');
+    </script>
 }
