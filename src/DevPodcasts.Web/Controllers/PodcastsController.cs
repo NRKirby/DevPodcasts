@@ -1,4 +1,5 @@
-﻿using DevPodcasts.ServiceLayer.Podcast;
+﻿using DevPodcasts.Models;
+using DevPodcasts.ServiceLayer.Podcast;
 using DevPodcasts.ServiceLayer.Tag;
 using DevPodcasts.ViewModels.Podcast;
 using DevPodcasts.ViewModels.Search;
@@ -37,7 +38,8 @@ namespace DevPodcasts.Web.Controllers
         [Authorize]
         public ActionResult Submit()
         {
-            return View();
+            var viewModel = new SubmitPodcastViewModel{ SuccessResult = SuccessResult.NotSet };
+            return View(viewModel);
         }
 
         [HttpPost]

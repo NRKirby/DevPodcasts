@@ -1,4 +1,4 @@
-﻿using DevPodcasts.Dtos;
+﻿using DevPodcasts.Models;
 
 namespace DevPodcasts.ViewModels.Podcast
 {

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using DevPodcasts.Models;
+using System.Collections.Generic;
 
 namespace DevPodcasts.Dtos
 {

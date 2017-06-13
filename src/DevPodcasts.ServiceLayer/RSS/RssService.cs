@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel.Syndication;
+using DevPodcasts.Models;
 
 namespace DevPodcasts.ServiceLayer.RSS
 {
@@ -67,22 +68,22 @@ namespace DevPodcasts.ServiceLayer.RSS
 
         public PodcastDto GetPodcastForReview(string rssFeedUrl)
         {
-            //if (!IsValidUrl(model.RssFeedUrl)) // TODO NK - returning false for https://fivejs.codeschool.com/feed.rss
-            //{
-            //    podcastDto.SuccessResult = SuccessResult.InvalidUrl;
-            //    return podcastDto;
-            //}
-
             var dto = new PodcastDto
             {
-                FeedUrl = rssFeedUrl,
-                SuccessResult = SuccessResult.NotSet
+                FeedUrl = rssFeedUrl
             };
+
+            if (!IsValidUrl(rssFeedUrl))
+            {
+                dto.SuccessResult = SuccessResult.InvalidUrl;
+                _logger.Error(rssFeedUrl + " : Invalid URL", null);
+                return dto;
+            }
 
             if (_podcastRepository.PodcastExists(rssFeedUrl))
             {
                 dto.SuccessResult = SuccessResult.AlreadyExists;
-                _logger.Error(rssFeedUrl + " : Already exists", null);
+                _logger.Info(rssFeedUrl + " :: Podcast feed already exists");
                 return dto;
             }
 
@@ -150,11 +151,12 @@ namespace DevPodcasts.ServiceLayer.RSS
             return item.Links.FirstOrDefault(i => i.RelationshipType == "enclosure")?.Uri.ToString();
         }
 
-        // TODO
-        private static bool IsValidUrl(string source)
+        private static bool IsValidUrl(string url)
         {
             Uri uriResult;
-            return Uri.TryCreate(source, UriKind.Absolute, out uriResult) && uriResult.Scheme == Uri.UriSchemeHttp;
+            bool result = Uri.TryCreate(url, UriKind.Absolute, out uriResult)
+                          && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
+            return result;
         }
     }
 }

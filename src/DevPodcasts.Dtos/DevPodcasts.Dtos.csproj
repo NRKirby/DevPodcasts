@@ -37,8 +37,13 @@
     <Compile Include="EpisodeDto.cs" />
     <Compile Include="PodcastDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SuccessResult.cs" />
     <Compile Include="TagDto.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DevPodcasts.Models\DevPodcasts.Models.csproj">
+      <Project>{b57cd494-1622-44fd-b8af-c3504d57b7cc}</Project>
+      <Name>DevPodcasts.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

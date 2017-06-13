@@ -1,6 +1,8 @@
-﻿@model DevPodcasts.ViewModels.Podcast.SubmitPodcastViewModel
+﻿@using DevPodcasts.Models
+@model DevPodcasts.ViewModels.Podcast.SubmitPodcastViewModel
 @{
     ViewBag.Title = "Submit a podcast";
+    var successResult = Model.SuccessResult;
 }
 
 <h2>Submit a podcast</h2>
@@ -25,4 +27,43 @@
         </div>
     </div>
 }
+
+@if (successResult == SuccessResult.InvalidUrl)
+{
+    <div id="alert" class="alert alert-danger">
+        <h4>Invalid URL, please try again.</h4>
+    </div>
+}
+else if (successResult == SuccessResult.AlreadyExists)
+{
+    <div id="alert" class="alert alert-warning">
+        <h4>Podcast already exists in the database</h4>
+    </div>
+}
+else if (successResult == SuccessResult.Error)
+{
+    <div id="alert" class="alert alert-danger">
+        <h4>An error occurred, please try again.</h4>
+    </div>
+}
+else if (successResult == SuccessResult.Success)
+{
+    <div id="alert" class="alert alert-success">
+        <h4>Thank you for submitting, we will email you once the podcast has been reviewed by admin.</h4>
+    </div>
+}
+else
+{
+    <div id="alert">
+        
+    </div>
+}
+
+@if (successResult != SuccessResult.NotSet)
+{
+    <script>
+        $('#alert').delay(4000).fadeOut('slow');
+    </script>
+}
+
 
