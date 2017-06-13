@@ -58,22 +58,21 @@ namespace DevPodcasts.ServiceLayer.Email
             switch (subject)
             {
                 case ContactSubject.Feedback:
-                    result = "Thanks for your feedback!";
+                    result = EmailConstants.FeedbackResponseMessage;
                     break;
                 case ContactSubject.ReportAnIssue:
-                    result = "Thanks for contacting us, we will get back to you as soon as we can.";
+                    result = EmailConstants.ReportAnIssueResponseMessage;
                     break;
                 case ContactSubject.ReportABug:
-                    result = "Thanks for letting us know, we will contact you if we need more information.";
+                    result = EmailConstants.ReportABugResponseMessage;
                     break;
                 case ContactSubject.SuggestAFeature:
-                    result = "Thanks for the suggestion, we are always trying to improve the site!";
+                    result = EmailConstants.SuggestAFeatureResponseMessage;
                     break;
 
                 default:
                     result = string.Empty;
                     break;
-
             }
             return result;
         }

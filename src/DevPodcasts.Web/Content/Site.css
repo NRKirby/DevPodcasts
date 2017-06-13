@@ -177,6 +177,10 @@ textarea {
     border-radius: 8px;
 }
 
+.form-control:focus {
+    box-shadow: none;
+}
+
 .search-btn {
     font-size: 18px;
     -ms-border-radius: 8px;
@@ -191,7 +195,7 @@ textarea {
     border-radius: 8px;
 }
 
-#LogResults {
+#log-results {
     margin-bottom: 80px;
 }
 
@@ -203,15 +207,3 @@ textarea {
 .tag {
     padding: 10px 10px;
 }
-
-/* Forms */
-
-.contact-form {
-    display: block;
-    margin: 0 auto;
-    width: 600px;
-}
-
-    .contact-form .form-control {
-        width: auto;
-    }
