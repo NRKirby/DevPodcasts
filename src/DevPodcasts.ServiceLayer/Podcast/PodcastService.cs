@@ -1,5 +1,6 @@
 ﻿using DevPodcasts.DataLayer.Models;
 using DevPodcasts.Dtos;
+using DevPodcasts.Models;
 using DevPodcasts.Repositories;
 using DevPodcasts.ServiceLayer.Email;
 using DevPodcasts.ServiceLayer.RSS;
@@ -10,7 +11,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DevPodcasts.Models;
 
 namespace DevPodcasts.ServiceLayer.Podcast
 {
@@ -187,12 +187,14 @@ namespace DevPodcasts.ServiceLayer.Podcast
 
         public HomeIndexViewModel GetHomePageViewModel()
         {
+            var totalEpisodes = _episodeRepository.EpisodeCount();
             var totalPodcasts = _podcastRepository.GetTotalPodcasts();
             var featured = _podcastRepository.GetFeaturedPodcasts(3);
             var recent = _episodeRepository.GetMostRecentEpisodes(10);
 
             return new HomeIndexViewModel
             {
+                TotalEpisodes = totalEpisodes,
                 TotalPodcasts = totalPodcasts,
                 FeaturedPodcasts = featured,
                 RecentEpisodes = recent

@@ -3,35 +3,42 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>Dev Podcasts</h1>
-    <p class="lead">Directory for software-related podcasts.</p>
-    <p>@Model.TotalPodcasts podcasts listed</p>
-</div>
+<div class="home-container">
+    <div class="row">
+        <img src="~/img/podcast-logo.png"/>
+        <h1>Dev Podcasts</h1>
+        <p class="lead">Directory of software-related podcasts.</p>
+    </div>
+    
+    <div class="row" style="text-align: center; font-size: 1.5em">
+        <p>@Html.ActionLink(Model.TotalPodcasts + " podcasts listed", "Index", "Podcasts")</p>
+        <p>@Model.TotalEpisodes episodes</p>
+    </div>
 
-<div class="row">
-    <h2>Most recent episodes:</h2>
-    <table>
-        @foreach (var episode in Model.RecentEpisodes)
+    <div class="row">
+        <h2>Most recent episodes:</h2>
+        <table>
+            @foreach (var episode in Model.RecentEpisodes)
+            {
+                <tr>
+                    <td>@episode.Title</td>
+                    <td>@episode.PodcastTitle</td>
+                </tr>
+            }
+        </table>
+    </div>
+
+    <div class="row">
+        <h2>Featured podcasts:</h2>
+        @foreach (var pick in Model.FeaturedPodcasts)
         {
-            <tr>
-                <td>@episode.Title</td>
-                <td>@episode.PodcastTitle</td>  
-            </tr>
+            <div class="col-md-5">
+                <h3>@pick.Title</h3>
+                <p>
+                    @pick.Description
+                </p>
+                <p><a href="@Url.Action("Detail", "Podcasts", new { Id = pick.PodcastId })" class="btn btn-default">More &raquo;</a></p>
+            </div>
         }
-    </table>
-</div>
-
-<div class="row">
-    <h2>Featured podcasts:</h2>
-    @foreach (var pick in Model.FeaturedPodcasts)
-    {
-        <div class="col-md-5">
-            <h3>@pick.Title</h3>
-            <p>
-                @pick.Description
-            </p>
-            <p><a href="@Url.Action("Detail", "Podcast", new { Id = pick.PodcastId })" class="btn btn-default">More &raquo;</a></p>
-        </div>
-    }
+    </div>
 </div>
