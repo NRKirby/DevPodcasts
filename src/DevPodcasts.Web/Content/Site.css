@@ -95,6 +95,20 @@ h6,
     
 }
 
+/* Tags */
+
+.tags-container h2 {
+    margin: 40px 0;
+}
+
+.tags-container p {
+    margin-bottom: 30px;
+}
+
+.tags-row {
+    margin-bottom: 75px;
+}
+
 /* Footer */
 
 #footer {
