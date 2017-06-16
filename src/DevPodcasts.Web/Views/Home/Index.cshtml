@@ -12,32 +12,31 @@
     
     <div class="row" style="text-align: center; font-size: 1.5em">
         <p>@Html.ActionLink(Model.TotalPodcasts + " podcasts listed", "Index", "Podcasts")</p>
-        <p>@Model.TotalEpisodes episodes</p>
+        <p style="color: #337ab7">@Model.TotalEpisodes episodes</p>
     </div>
 
-    <div class="row">
-        <h2>Most recent episodes:</h2>
-        <table>
+    <div class="row recent-episodes">
+        <h2>Recently added episodes</h2>
+        <ul>
             @foreach (var episode in Model.RecentEpisodes)
             {
-                <tr>
-                    <td>@episode.Title</td>
-                    <td>@episode.PodcastTitle</td>
-                </tr>
+                <li>
+                    <p title="@episode.PodcastTitle"><a href="~/episode/detail/@episode.Id">@episode.Title</a></p>
+                </li>
             }
-        </table>
+
+        </ul>
     </div>
 
     <div class="row">
         <h2>Featured podcasts:</h2>
-        @foreach (var pick in Model.FeaturedPodcasts)
+        @foreach (var podcast in Model.FeaturedPodcasts)
         {
             <div class="col-md-5">
-                <h3>@pick.Title</h3>
+                <h3><a href="~/podcasts/detail/@podcast.PodcastId">@podcast.Title</a></h3>
                 <p>
-                    @pick.Description
+                    @podcast.Description
                 </p>
-                <p><a href="@Url.Action("Detail", "Podcasts", new { Id = pick.PodcastId })" class="btn btn-default">More &raquo;</a></p>
             </div>
         }
     </div>

@@ -1,11 +1,11 @@
 ﻿.navbar-inverse {
-    background-color: #B9CDDF;
-    border-color: #B9CDDF;
+    background-color: #78a6ce;
+    border-color: #78a6ce;
     margin-bottom: 30px;
 }
 
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
-    background-color: rgba(51, 122, 183, 0.14);
+    background-color: #78a6ce;
     margin-bottom: 20px;
 }
 
@@ -78,6 +78,21 @@ h6,
     display: block;
     width: 250px;
     height: auto;
+}
+
+.recent-episodes p {
+    display: inline;
+    font-size: 1.3em;   
+}
+
+.recent-episodes li {
+    margin: 10px 0;
+}
+
+.recent-episodes ul {
+    list-style-type: none;
+    padding: 10px;
+    
 }
 
 /* Footer */
