@@ -39,6 +39,7 @@ namespace DevPodcasts.Repositories
         {
             return _context
                 .Podcasts
+                .AsNoTracking()
                 .Where(i => i.IsApproved == true)
                 .OrderBy(i => Guid.NewGuid())
                 .Take(numberOfPodcasts)
@@ -54,6 +55,7 @@ namespace DevPodcasts.Repositories
         {
             return _context
                 .Podcasts
+                .AsNoTracking()
                 .Where(i => i.IsApproved == true)
                 .Any(i => i.FeedUrl == rssFeedUrl);
         }
@@ -62,6 +64,7 @@ namespace DevPodcasts.Repositories
         {
             return _context
                 .Podcasts
+                .AsNoTracking()
                 .Count(i => i.IsApproved == true);
         }
 
@@ -69,6 +72,7 @@ namespace DevPodcasts.Repositories
         {
             return _context
                 .Podcasts
+                .AsNoTracking()
                 .Where(i => i.IsApproved == null)
                 .OrderBy(i => i.DateCreated)
                 .Select(i => new PodcastViewModel
@@ -108,6 +112,7 @@ namespace DevPodcasts.Repositories
         {
             return _context
                 .Podcasts
+                .AsNoTracking()
                 .Where(i => i.IsApproved == true)
                 .Any(i => i.Id == podcastId);
         }
@@ -119,6 +124,7 @@ namespace DevPodcasts.Repositories
             {
                 podcastQuery = _context
                     .Podcasts
+                    .AsNoTracking()
                     .Where(i => i.IsApproved == true)
                     .OrderBy(i => i.Title);
             }
@@ -126,6 +132,7 @@ namespace DevPodcasts.Repositories
             {
                 podcastQuery = _context
                     .Podcasts
+                    .AsNoTracking()
                     .Where(i => i.IsApproved == true && i.Title.Contains(query) || 
                                 i.IsApproved == true && i.Description.Contains(query))
                     .OrderBy(i => i.Title);
@@ -146,6 +153,7 @@ namespace DevPodcasts.Repositories
         {
             return _context
                 .Podcasts
+                .AsNoTracking()
                 .Where(i => i.IsApproved == true)
                 .Select(i => new PodcastDto
             {
@@ -261,6 +269,7 @@ namespace DevPodcasts.Repositories
         {
             return _context
                 .Podcasts
+                .AsNoTracking()
                 .Where(i => i.IsApproved == true)
                 .Distinct()
                 .Select(i => new PodcastDto

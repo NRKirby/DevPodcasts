@@ -22,7 +22,9 @@ namespace DevPodcasts.Repositories
 
         public IEnumerable<EpisodeDto> GetAllEpisodes(int podcastId)
         {
-            return _context.Episodes
+            return _context
+                .Episodes
+                .AsNoTracking()
                 .Where(i => i.PodcastId == podcastId)
                 .OrderByDescending(i => i.DatePublished)
                 .Select(i => new EpisodeDto
@@ -35,7 +37,7 @@ namespace DevPodcasts.Repositories
 
         public EpisodeDto GetEpisode(int episodeId)
         {
-            var episode = _context.Episodes.Single(i => i.Id == episodeId);
+            var episode = _context.Episodes.AsNoTracking().Single(i => i.Id == episodeId);
             return new EpisodeDto
             {
                 Id = episode.Id,
@@ -50,17 +52,26 @@ namespace DevPodcasts.Repositories
 
         public DateTime? GetMostRecentEpisodeDate(int podcastId)
         {
-            return _context.Episodes.Where(i => i.PodcastId == podcastId).Select(i => i.DatePublished).Max();
+            return _context
+                .Episodes
+                .AsNoTracking()
+                .Where(i => i.PodcastId == podcastId)
+                .Select(i => i.DatePublished).Max();
         }
 
         public bool EpisodeExists(int episodeId)
         {
-            return _context.Episodes.Any(i => i.Id == episodeId);
+            return _context.Episodes
+                .AsNoTracking()
+                .Any(i => i.Id == episodeId);
         }
 
         public int EpisodeCount()
         {
-            return _context.Episodes.Count();
+            return _context
+                .Episodes
+                .AsNoTracking()
+                .Count();
         }
 
         public async Task<int> AddRange(IEnumerable<EpisodeDto> dtos)
@@ -137,6 +148,7 @@ namespace DevPodcasts.Repositories
         {
             var recentEpisodes = _context
                 .Episodes
+                .AsNoTracking()
                 .OrderByDescending(i => i.Id)
                 .Take(numberOfEpisodes)
                 .ToList();
