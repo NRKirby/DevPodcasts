@@ -1,0 +1,30 @@
+﻿@model IEnumerable<DevPodcasts.ViewModels.Podcast.PodcastSearchResultViewModel>
+
+<div id="search-results">
+    <ul id="search-list">
+        @if (Model != null)
+        {
+            foreach (var result in Model)
+            {
+                <li class="podcast-list-item">
+                    <div class="search-result">
+                        <div class="podcast-image">
+                            <a href='@Url.Action("Detail", "Podcasts", new {id = result.Id})'>
+                                <img class="img-thumb" src="@result.ImageUrl" />
+                            </a>
+                        </div>
+                        <div class="podcast-summary">
+                            <p>
+                                @Html.ActionLink(result.Title, "Detail", "Podcasts", new { id = result.Id }, null) 
+                            </p>
+                            <p>@result.Description</p>
+                        </div>
+                        <p class="episode-count pull-right" align="right">
+                            <strong>(@result.NumberOfEpisodes episodes)</strong>
+                        </p>
+                    </div>
+                </li>
+            }
+        }
+    </ul>
+</div>
