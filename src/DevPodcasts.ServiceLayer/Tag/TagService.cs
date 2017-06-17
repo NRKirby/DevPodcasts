@@ -2,6 +2,7 @@
 using DevPodcasts.ViewModels.Podcast;
 using System.Collections.Generic;
 using System.Linq;
+using DevPodcasts.ViewModels.Tags;
 
 namespace DevPodcasts.ServiceLayer.Tag
 {
@@ -26,9 +27,15 @@ namespace DevPodcasts.ServiceLayer.Tag
                 });
         }
 
-        public IEnumerable<PodcastSearchResultViewModel> GetTaggedPodcasts(string tagSlug)
+        public TagResultViewModel GetTaggedPodcasts(string tagSlug)
         {
-            return _context
+            var tagName = _context
+                .Tags
+                .Where(t => t.Slug == tagSlug)
+                .Select(i => i.Name)
+                .First();
+            
+            var podcasts = _context
                 .Podcasts
                 .Where(p => p.Tags.Any(t => t.Slug == tagSlug))
                 .OrderBy(p => p.Title)
@@ -40,6 +47,12 @@ namespace DevPodcasts.ServiceLayer.Tag
                     Description = i.Description,
                     NumberOfEpisodes = i.Episodes.Count
                 });
+
+            return new TagResultViewModel
+            {
+                TagName = tagName,
+                SearchResults = podcasts
+            };
         }
     }
 

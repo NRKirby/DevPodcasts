@@ -1,36 +1,11 @@
-﻿@model DevPodcasts.ViewModels.Search.SearchResultsViewModel
+﻿@model DevPodcasts.ViewModels.Tags.TagResultViewModel
 @{
     ViewBag.Title = "Tagged";
 }
 
-<h2>Tagged Podcasts</h2>
+<div class="tag-results-container">
+    <h2>Podcasts tagged @Model.TagName</h2>
 
-<div style="position: relative; top: 50px; border-top: 1px solid #e4e6e8; margin-bottom: 75px">
-    <ul id="search-list">
-        @if (Model != null)
-        {
-            foreach (var result in Model.PodcastSearchResults)
-            {
-                <li class="podcast-list-item">
-                    <div class="search-result">
-                        <div class="podcast-image">
-                            <a href='@Url.Action("Detail", "Podcasts", new {id = result.Id})'>
-                                <img class="img-thumb" src="@result.ImageUrl" />
-                            </a>
-                        </div>
-                        <div class="podcast-summary">
-                            <p>
-                                @Html.ActionLink(result.Title, "Detail", "Podcasts", new { id = result.Id }, null) 
-                            </p>
-                            <p>@result.Description</p>
-                        </div>
-                        <p class="episode-count pull-right" align="right">
-                            <strong>(@result.NumberOfEpisodes episodes)</strong>
-                        </p>
-                    </div>
-                </li>
-            }
-        }
-    </ul>
+    @Html.Partial("_SearchResults", Model.SearchResults)
 </div>
 

@@ -2,7 +2,6 @@
 using DevPodcasts.ServiceLayer.Podcast;
 using DevPodcasts.ServiceLayer.Tag;
 using DevPodcasts.ViewModels.Podcast;
-using DevPodcasts.ViewModels.Search;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -29,8 +28,8 @@ namespace DevPodcasts.Web.Controllers
         {
             if (!string.IsNullOrEmpty(tagSlug))
             {
-                var podcasts = _tagService.GetTaggedPodcasts(tagSlug);
-                return View(new SearchResultsViewModel { PodcastSearchResults = podcasts });
+                var viewModel = _tagService.GetTaggedPodcasts(tagSlug);
+                return View(viewModel);
             }
             return View();
         }
