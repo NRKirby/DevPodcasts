@@ -40,7 +40,7 @@
     <Compile Include="TagDto.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\DevPodcasts.Models\DevPodcasts.Models.csproj">
+    <ProjectReference Include="..\DevPodcasts.Models\DevPodcasts.Models.csproj">
       <Project>{b57cd494-1622-44fd-b8af-c3504d57b7cc}</Project>
       <Name>DevPodcasts.Models</Name>
     </ProjectReference>

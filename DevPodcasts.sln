@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevPodcasts.Dtos", "src\Dev
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevPodcasts.DataLayer", "src\DevPodcasts.DataLayer\DevPodcasts.DataLayer.csproj", "{4AE9EE14-21C0-4DB6-AF8A-0AB2D4356470}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevPodcasts.Models", "DevPodcasts.Models\DevPodcasts.Models.csproj", "{B57CD494-1622-44FD-B8AF-C3504D57B7CC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevPodcasts.Models", "src\DevPodcasts.Models\DevPodcasts.Models.csproj", "{B57CD494-1622-44FD-B8AF-C3504D57B7CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
