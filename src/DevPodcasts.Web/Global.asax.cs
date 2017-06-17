@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using DevPodcasts.DataLayer.Models;
 using DevPodcasts.Logging;
 using DevPodcasts.Repositories;
 using DevPodcasts.ServiceLayer.Admin;
@@ -11,6 +12,10 @@ using DevPodcasts.ServiceLayer.Podcast;
 using DevPodcasts.ServiceLayer.RSS;
 using DevPodcasts.ServiceLayer.Search;
 using DevPodcasts.ServiceLayer.Tag;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
+using System.Configuration;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -29,6 +34,35 @@ namespace DevPodcasts.Web
             MvcHandler.DisableMvcResponseHeader = true;
             RegisterComponents();
             UpdatePodcastEpisodes();
+            CreateRolesIfNotPresentInDatabase();
+        }
+
+        private static void CreateRolesIfNotPresentInDatabase()
+        {
+            var createRoles = ConfigurationManager.AppSettings["CreateRoles"];
+
+            if (createRoles.ToLower().Equals("true"))
+            {
+                var context = new ApplicationDbContext();
+                var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+                var roleNames = GetRoleNameList();
+
+                foreach (var roleName in roleNames)
+                {
+                    if (!roleManager.RoleExists(roleName))
+                    {
+                        roleManager.Create(new IdentityRole(roleName));
+                    }
+                }
+            }           
+        }
+
+        private static IEnumerable<string> GetRoleNameList()
+        {
+            return new List<string>
+            {
+                "Admin"
+            };
         }
 
         private void RegisterComponents()
@@ -45,7 +79,7 @@ namespace DevPodcasts.Web
             builder.RegisterType<PodcastRepository>();
 
             // Services
-            builder.RegisterType<AdminService>(); 
+            builder.RegisterType<AdminService>();
             builder.RegisterType<ContactEmailService>();
             builder.RegisterType<EpisodeService>();
             builder.RegisterType<EpisodeUpdater.EpisodeUpdater>().PropertiesAutowired();
