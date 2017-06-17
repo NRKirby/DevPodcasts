@@ -74,5 +74,14 @@ namespace DevPodcasts.Web.Controllers
             await _podcastService.UpdatePodcast(model);
             return RedirectToAction("ManagePodcasts", "Admin");
         }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult> Delete(int Id)
+        {
+            await _podcastService.DeletePodcast(Id);
+
+            return RedirectToAction("ManagePodcasts", "Admin");
+        }
     }
 }

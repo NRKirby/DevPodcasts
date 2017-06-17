@@ -200,5 +200,10 @@ namespace DevPodcasts.ServiceLayer.Podcast
                 RecentEpisodes = recent
             };
         }
+
+        public async Task DeletePodcast(int podcastId)
+        {
+            await _podcastRepository.DeletePodcast(podcastId);
+        }
     }
 }

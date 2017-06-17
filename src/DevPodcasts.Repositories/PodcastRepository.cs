@@ -270,5 +270,21 @@ namespace DevPodcasts.Repositories
                     Title = i.Title
                 });
         }
+
+        public async Task DeletePodcast(int podcastId)
+        {
+            var podcastToDelete = _context
+                .Podcasts
+                .AsNoTracking()
+                .SingleOrDefault(p => p.Id == podcastId);
+
+            // delete in disconnected state 
+            using (var ctx = new ApplicationDbContext())
+            {
+                ctx.Entry(podcastToDelete).State = EntityState.Deleted;
+
+                await ctx.SaveChangesAsync();
+            }
+        }
     }
 }

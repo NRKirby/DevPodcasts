@@ -116,6 +116,16 @@ h6,
     margin-bottom: 75px;
 }
 
+/* Podcasts */
+
+.edit-podcast-container .btn-primary {
+    margin-top: 20px;
+}
+
+.edit-podcast-container .btn-danger {
+    margin-top: 20px;
+}
+
 /* Footer */
 
 #footer {
