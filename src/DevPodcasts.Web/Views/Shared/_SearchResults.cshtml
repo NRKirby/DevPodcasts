@@ -20,7 +20,7 @@
                             <p>@result.Description</p>
                         </div>
                         <p class="episode-count pull-right" align="right">
-                            <strong>(@result.NumberOfEpisodes episodes)</strong>
+                            <strong>@Html.ActionLink(result.NumberOfEpisodes + " episodes", "Detail", "Podcasts", new { id = result.Id }, null) </strong>
                         </p>
                     </div>
                 </li>
