@@ -95,6 +95,13 @@ h6,
     
 }
 
+/* Episodes */
+
+.episode-detail-container {
+    margin-bottom: 100px;
+    margin-top: 50px;
+}
+
 /* Tags */
 
 .tags-container h2 {
