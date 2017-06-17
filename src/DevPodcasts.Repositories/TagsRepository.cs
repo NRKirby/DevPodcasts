@@ -15,7 +15,10 @@ namespace DevPodcasts.Repositories
 
         public IEnumerable<Tag> GetAll()
         {
-            return _context.Tags.OrderBy(i => i.Name);
+            return _context
+                .Tags
+                .AsNoTracking()
+                .OrderBy(i => i.Name);
         }
     }
 }
