@@ -43,7 +43,8 @@ namespace DevPodcasts.Repositories
                 Summary = episode.Summary,
                 AudioUrl = episode.AudioUrl,
                 EpisodeUrl = episode.EpisodeUrl,
-                DatePublished = episode.DatePublished
+                DatePublished = episode.DatePublished,
+                PodcastTitle = episode.Podcast.Title
             };
         }
 

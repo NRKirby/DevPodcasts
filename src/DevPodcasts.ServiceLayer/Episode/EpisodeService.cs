@@ -24,13 +24,18 @@ namespace DevPodcasts.ServiceLayer.Episode
                 Title = episode.Title,
                 AudioUrl = episode.AudioUrl,
                 EpisodeUrl = episode.EpisodeUrl,
+                PodcastTitle = episode.PodcastTitle
             };
 
             if (episode.DatePublished != null)
-                viewModel.DatePublished = (DateTime) episode.DatePublished;
+            {
+                viewModel.DatePublished = (DateTime)episode.DatePublished;
+            }
 
             if (summary != null)
+            {
                 viewModel.Summary = StripHtml(summary);
+            }
 
             return viewModel;
         }

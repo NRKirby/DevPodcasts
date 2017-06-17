@@ -14,6 +14,8 @@ namespace DevPodcasts.ViewModels.Episode
 
         public string EpisodeUrl { get; set; }
 
+        public string PodcastTitle { get; set; }
+
         public DateTime DatePublished { get; set; }
     }
 }

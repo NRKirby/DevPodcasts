@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.AccessControl;
 
 namespace DevPodcasts.Dtos
 {
@@ -15,6 +16,8 @@ namespace DevPodcasts.Dtos
         public string EpisodeUrl { get; set; }
 
         public int PodcastId { get; set; }
+
+        public string PodcastTitle { get; set; }    
 
         public string EpisodeId { get; set; }
 
