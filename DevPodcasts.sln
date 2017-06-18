@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.13
+VisualStudioVersion = 15.0.26403.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevPodcasts.Web", "src\DevPodcasts.Web\DevPodcasts.Web.csproj", "{3B8BC306-1DCB-4CFB-83C9-511A6E95F455}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevPodcasts.DataLayer", "src\DevPodcasts.DataLayer\DevPodcasts.DataLayer.csproj", "{4AE9EE14-21C0-4DB6-AF8A-0AB2D4356470}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevPodcasts.Models", "src\DevPodcasts.Models\DevPodcasts.Models.csproj", "{B57CD494-1622-44FD-B8AF-C3504D57B7CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevPodcasts.AzureFunctions", "DevPodcasts.AzureFunctions\DevPodcasts.AzureFunctions.csproj", "{FF064A8F-8A16-4210-8D34-DAD7BC05A31E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{B57CD494-1622-44FD-B8AF-C3504D57B7CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B57CD494-1622-44FD-B8AF-C3504D57B7CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B57CD494-1622-44FD-B8AF-C3504D57B7CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF064A8F-8A16-4210-8D34-DAD7BC05A31E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF064A8F-8A16-4210-8D34-DAD7BC05A31E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF064A8F-8A16-4210-8D34-DAD7BC05A31E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF064A8F-8A16-4210-8D34-DAD7BC05A31E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
