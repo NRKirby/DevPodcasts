@@ -26,6 +26,7 @@ public static void Run(TimerInfo myTimer, TraceWriter log)
                .CreateLogger();
 
     const string connection = "Data Source=devpodcasts.database.windows.net;Initial Catalog=devpodcasts;Integrated Security=False;User ID=whiffwhaff9238;Password=mtisaIr2ESthVS64Kx7z;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
     var context = new ApplicationDbContext(connection);
 
     var podcasts = context
@@ -38,6 +39,7 @@ public static void Run(TimerInfo myTimer, TraceWriter log)
     int episodesAddedCount = 0;
     var sw = Stopwatch.StartNew();
     logger.Debug($"Begin update of {podcasts.Count} podcasts");
+
     foreach (var podcast in podcasts)
     {
         var mostRecentEpisodeDate = context
@@ -57,7 +59,7 @@ public static void Run(TimerInfo myTimer, TraceWriter log)
         }
         catch (Exception ex)
         {
-            // Log error
+            logger.Error(ex.Message);
         }
 
         if (feed != null)
@@ -68,6 +70,8 @@ public static void Run(TimerInfo myTimer, TraceWriter log)
 
             if (newEpisodes.Count() > 0)
             {
+                var podcastToAddEpisodesTo = context.Podcasts.Single(p => p.Id == podcast.Id);
+
                 foreach (var episode in newEpisodes)
                 {
                     var e = new Episode
@@ -87,13 +91,12 @@ public static void Run(TimerInfo myTimer, TraceWriter log)
 
                     if (!episodeExistsForPodcast)
                     {
-                        podcast.Episodes.Add(e);
+                        podcastToAddEpisodesTo.Episodes.Add(e);
                         episodesAddedCount++;
-                        logger.Information(episode.Title + " added");
+                        logger.Information($"{podcast.Title} {e.Title} added");
+                        context.SaveChanges();
                     }
                 }
-
-                context.SaveChanges();
             }
         }
 
@@ -103,8 +106,10 @@ public static void Run(TimerInfo myTimer, TraceWriter log)
     {
         logger.Information($"Number of episodes added: {episodesAddedCount}");
     }
+
     sw.Stop();
     logger.Debug($"Update took {sw.ElapsedMilliseconds / 1000} seconds");
+
     log.Info($"Number of episodes added: {episodesAddedCount}");
 }
 
