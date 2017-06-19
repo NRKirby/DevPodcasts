@@ -12,6 +12,11 @@ namespace DevPodcasts.DataLayer.Models
         {
         }
 
+        public ApplicationDbContext(string connection)
+            : base(connection, throwIfV1Schema: false)
+        {
+        }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
