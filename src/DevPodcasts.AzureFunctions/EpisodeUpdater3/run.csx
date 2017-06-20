@@ -59,7 +59,7 @@ public static void Run(TimerInfo myTimer, TraceWriter log)
         }
         catch (Exception ex)
         {
-            logger.Error(ex.Message);
+            logger.Error($"{podcast.Title} - {ex.Message}");
         }
 
         if (feed != null)
@@ -104,7 +104,7 @@ public static void Run(TimerInfo myTimer, TraceWriter log)
                 }
                 catch (Exception ex)
                 {
-                    logger.Error(ex.Message);
+                    logger.Error($"{podcast.Title} - {ex.Message}");
                 }
             }
         }
