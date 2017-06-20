@@ -70,32 +70,41 @@ public static void Run(TimerInfo myTimer, TraceWriter log)
 
             if (newEpisodes.Count() > 0)
             {
-                var podcastToAddEpisodesTo = context.Podcasts.Single(p => p.Id == podcast.Id);
-
-                foreach (var episode in newEpisodes)
+                try
                 {
-                    var e = new Episode
-                    {
-                        Title = episode.Title.Text,
-                        Summary = episode.Summary.Text,
-                        AudioUrl = GetAudioUrl(episode),
-                        EpisodeUrl = GetEpisodeUrl(episode),
-                        DatePublished = episode.PublishDate.DateTime,
-                        DateCreated = DateTime.Now
-                    };
 
-                    var episodeExistsForPodcast = context.Podcasts
-                        .Single(i => i.Id == podcast.Id)
-                        .Episodes
-                        .Any(i => i.Title == e.Title);
+                    var podcastToAddEpisodesTo = context.Podcasts.Single(p => p.Id == podcast.Id);
 
-                    if (!episodeExistsForPodcast)
+                    foreach (var episode in newEpisodes)
                     {
-                        podcastToAddEpisodesTo.Episodes.Add(e);
-                        episodesAddedCount++;
-                        logger.Information($"{podcast.Title} {e.Title} added");
-                        context.SaveChanges();
+                        var e = new Episode
+                        {
+                            Title = episode.Title.Text,
+                            Summary = episode.Summary.Text,
+                            AudioUrl = GetAudioUrl(episode),
+                            EpisodeUrl = GetEpisodeUrl(episode),
+                            DatePublished = episode.PublishDate.DateTime,
+                            DateCreated = DateTime.Now
+                        };
+
+                        var episodeExistsForPodcast = context.Podcasts
+                            .Single(i => i.Id == podcast.Id)
+                            .Episodes
+                            .Any(i => i.Title == e.Title);
+
+                        if (!episodeExistsForPodcast)
+                        {
+                            podcastToAddEpisodesTo.Episodes.Add(e);
+                            episodesAddedCount++;
+                            logger.Information($"{podcast.Title} {e.Title} added");
+                            context.SaveChanges();
+                        }
                     }
+
+                }
+                catch (Exception ex)
+                {
+                    logger.Error(ex.Message);
                 }
             }
         }
