@@ -4,35 +4,36 @@
 }
 
 <div class="container" style="margin-top: 30px;">
-    @Html.EnumDropDownListFor(model => model.Level, "")
+    @Html.EnumDropDownListFor(model => model.Level, "All")
     @Html.Partial("_LogsPager", Model.PaginationInfo)
     @Html.Partial("_LogResultsTable", Model.Items)
     @Html.Partial("_LogsPager", Model.PaginationInfo)
 </div>
 
 <script>
-    $(document).ready(function () {
-        $('#Level').on('change',
-            function () {
-        var level = $("#Level option:selected").text();
-        var pageIndex = '@Model.PaginationInfo.ActualPage';
+    $(document).ready(function() {
         $('#Level').on('change',
             function() {
-                $.ajax({
-                    type: "POST",
-                    url: '@Url.Action("Query", "Logs")',
-                    data: { page: pageIndex, filter: level },
-                    dataType: "json",
-                    success: response => updateTable(response)
-                });
+                var level = $("#Level option:selected").text();
+                var pageIndex = '@Model.PaginationInfo.ActualPage';
+                $('#Level').on('change',
+                    function() {
+                        $.ajax({
+                            type: "POST",
+                            url: '@Url.Action("Query", "Logs")',
+                            data: { page: pageIndex, filter: level },
+                            dataType: "json",
+                            success: response => updateTable(response)
+                        });
+                    });
             });
-    });
 
-    function updateTable(response) {
-        $('#LogResults').empty();
-        $("#Level").value = response.filter;
-        $('#LogResults').html(response.html.Model);
-        console.log(response);
-    }
+        function updateTable(response) {
+            $('#LogResults').empty();
+            $("#Level").value = response.filter;
+            $('#LogResults').html(response.html.Model);
+            console.log(response);
+        }
+    });
 </script>
 

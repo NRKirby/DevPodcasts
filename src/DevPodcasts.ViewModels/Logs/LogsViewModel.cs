@@ -9,7 +9,7 @@ namespace DevPodcasts.ViewModels.Logs
 
         public PaginationInfo PaginationInfo { get; set; }
 
-        public ErrorLevel Level { get; set; }
+        public ErrorLevel? Level { get; set; }
 
         public string Filter { get; set; }
     }
