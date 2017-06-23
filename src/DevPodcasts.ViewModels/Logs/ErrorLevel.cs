@@ -4,11 +4,16 @@ namespace DevPodcasts.ViewModels.Logs
 {
     public enum ErrorLevel
     {
+        [Description("All")]
+        All = 0,
+
         [Description("Debug")]
-        Debug = 0,
+        Debug = 1,
+
         [Description("Error")]
-        Error = 1,
+        Error = 2,
+
         [Description("Info")]
-        Info = 2
+        Info = 3
     }
 }

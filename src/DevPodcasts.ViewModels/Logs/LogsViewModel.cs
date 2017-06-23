@@ -5,6 +5,11 @@ namespace DevPodcasts.ViewModels.Logs
 {
     public class LogsViewModel
     {
+        public LogsViewModel()
+        {
+            Level = ErrorLevel.All;
+        }
+
         public IEnumerable<LogItemViewModel> Items { get; set; }
 
         public PaginationInfo PaginationInfo { get; set; }

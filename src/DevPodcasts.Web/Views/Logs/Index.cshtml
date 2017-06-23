@@ -4,7 +4,7 @@
 }
 
 <div class="container" style="margin-top: 30px;">
-    @Html.EnumDropDownListFor(model => model.Level, "All")
+    @Html.EnumDropDownListFor(model => model.Level)
     @Html.Partial("_LogsPager", Model.PaginationInfo)
     @Html.Partial("_LogResultsTable", Model.Items)
     @Html.Partial("_LogsPager", Model.PaginationInfo)
