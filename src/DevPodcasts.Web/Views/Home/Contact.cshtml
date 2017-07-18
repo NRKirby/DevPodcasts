@@ -22,7 +22,7 @@
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.Subject)
-                @Html.EnumDropDownListFor(m => m.Subject, "Please select", new { @class = "form-control" })
+                @Html.TextBoxFor(m => m.Subject, new { @class = "form-control" })
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.Message)

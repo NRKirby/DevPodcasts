@@ -9,7 +9,7 @@ namespace DevPodcasts.ViewModels.Home
         public string EmailAddress { get; set; }
 
         [Display(Name = "Subject")]
-        public ContactSubject Subject { get; set; }
+        public string Subject { get; set; }
 
         [Display(Name = "Message")]
         public string Message { get; set; }

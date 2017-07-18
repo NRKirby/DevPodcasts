@@ -1,9 +1,7 @@
-﻿using DevPodcasts.Models;
-using DevPodcasts.ViewModels.Home;
+﻿using DevPodcasts.ViewModels.Home;
 using Newtonsoft.Json;
 using SendGrid;
 using SendGrid.Helpers.Mail;
-using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -19,7 +17,7 @@ namespace DevPodcasts.ServiceLayer.Email
             {
                 await SendEmailAsync(model);
                 model.IsSuccess = true;
-                model.SuccessMessage = GetSuccessMessage(model.Subject);
+                model.SuccessMessage = EmailConstants.ContactResponseMessage;
             }
             else
             {
@@ -41,7 +39,7 @@ namespace DevPodcasts.ServiceLayer.Email
         {
             var client = new SendGridClient(EmailConstants.ApiKey);
             var from = new EmailAddress(model.EmailAddress, EmailConstants.DevPodcasts);
-            var subject = model.Subject.GetAttribute<DisplayAttribute>().Name;
+            var subject = model.Subject;
             var msg = new SendGridMessage
             {
                 From = from,
@@ -50,31 +48,6 @@ namespace DevPodcasts.ServiceLayer.Email
             };
             msg.AddTo(new EmailAddress(EmailConstants.AdminEmailAddress));
             var response = await client.SendEmailAsync(msg);
-        }
-
-        private string GetSuccessMessage(ContactSubject subject)
-        {
-            string result;
-            switch (subject)
-            {
-                case ContactSubject.Feedback:
-                    result = EmailConstants.FeedbackResponseMessage;
-                    break;
-                case ContactSubject.ReportAnIssue:
-                    result = EmailConstants.ReportAnIssueResponseMessage;
-                    break;
-                case ContactSubject.ReportABug:
-                    result = EmailConstants.ReportABugResponseMessage;
-                    break;
-                case ContactSubject.SuggestAFeature:
-                    result = EmailConstants.SuggestAFeatureResponseMessage;
-                    break;
-
-                default:
-                    result = string.Empty;
-                    break;
-            }
-            return result;
         }
     }
 }
