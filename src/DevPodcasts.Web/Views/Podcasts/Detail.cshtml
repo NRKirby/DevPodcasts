@@ -4,40 +4,38 @@
     ViewBag.Title = Model.Title;
 }
 
-<div style="overflow: hidden; margin-top: 60px">
-    <div style="width: 400px; float: left;">
-        <h2>@Model.Title</h2>
-        <p><a href="@Model.SiteUrl" rel="noopener noreferrer" target="_blank">@Model.SiteUrl</a></p>
-        <p>@Model.Description</p>
-        
-    </div>
-    <div style="overflow: hidden; width: 200px; float: right; position: relative; right: 20px;">
-        <img class="img-thumb" src="@Model.ImageUrl"/>
-    </div>
-</div>
+<div class="podcasts-detail-container">
+    <div style="overflow: hidden; margin-top: 60px">
+        <div style="width: 400px; float: left;">
+            <h2>@Model.Title</h2>
+            <p><a href="@Model.SiteUrl" rel="noopener noreferrer" target="_blank">@Model.SiteUrl</a></p>
+            <p>@Model.Description</p>
 
-<table class="table table-striped" style="margin: 40px 0">
-    <thead> 
-    <tr>
-        <th>Title</th>
-        <th>Date Published</th>
-        <th></th>
-    </tr> 
-    </thead> 
-    <tbody>
-    @if (Model?.Episodes != null)
-    {
-        foreach (var item in Model.Episodes)
-        {
-            <tr> 
-                <td>@Html.ActionLink(item.Title, "Detail", "Episode", new { id = item.Id }, null)</td> 
-                <td>@item.DatePublished.ToShortUkDate()</td> 
+        </div>
+        <div style="overflow: hidden; width: 200px; float: right; position: relative; right: 20px;">
+            <img class="img-thumb" src="@Model.ImageUrl" />
+        </div>
+    </div>
+
+    <table class="table table-striped" style="margin: 40px 0">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date Published</th>
+                <th></th>
             </tr>
-        }
-    }
-    </tbody>
-</table>
-
-
-
-
+        </thead>
+        <tbody>
+            @if (Model?.Episodes != null)
+            {
+                foreach (var item in Model.Episodes)
+                {
+                    <tr>
+                        <td>@Html.ActionLink(item.Title, "Detail", "Episode", new { id = item.Id }, null)</td>
+                        <td>@item.DatePublished.ToShortUkDate()</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

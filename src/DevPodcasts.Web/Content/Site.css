@@ -135,12 +135,24 @@ h6,
     margin-top: 30px;
 }
 
+.podcasts-container p {
+    word-wrap: break-word;
+}
+
 .edit-podcast-container .btn-primary {
     margin-top: 20px;
 }
 
 .edit-podcast-container .btn-danger {
     margin-top: 20px;
+}
+
+.podcasts-detail-container p {
+    word-wrap: break-word;
+}
+
+.podcasts-detail-container h2 {
+    word-wrap: break-word;
 }
 
 /* Footer */
