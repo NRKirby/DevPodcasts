@@ -35,6 +35,13 @@ namespace DevPodcasts.Web
             RegisterComponents();
             UpdatePodcastEpisodes();
             CreateRolesIfNotPresentInDatabase();
+            WarmUpEntityFrameworkQueries();
+        }
+
+        private void WarmUpEntityFrameworkQueries()
+        {
+            new SearchService(new PodcastRepository()).Search("test");
+            new TagService().GetTaggedPodcasts("test");
         }
 
         private static void CreateRolesIfNotPresentInDatabase()

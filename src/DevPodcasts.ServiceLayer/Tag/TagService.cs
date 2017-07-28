@@ -33,7 +33,7 @@ namespace DevPodcasts.ServiceLayer.Tag
                 .Tags
                 .Where(t => t.Slug == tagSlug)
                 .Select(i => i.Name)
-                .First();
+                .FirstOrDefault();
             
             var podcasts = _context
                 .Podcasts
