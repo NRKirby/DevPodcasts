@@ -21,6 +21,7 @@ namespace DevPodcasts.ServiceLayer.Episode
             var viewModel = new EpisodeDetailViewModel
             {
                 Id = episode.Id,
+                PodcastId = episode.PodcastId,
                 Title = episode.Title,
                 AudioUrl = episode.AudioUrl,
                 EpisodeUrl = episode.EpisodeUrl,

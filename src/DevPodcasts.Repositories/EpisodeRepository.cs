@@ -41,6 +41,7 @@ namespace DevPodcasts.Repositories
             return new EpisodeDto
             {
                 Id = episode.Id,
+                PodcastId = episode.PodcastId,
                 Title = episode.Title,
                 Summary = episode.Summary,
                 AudioUrl = episode.AudioUrl,

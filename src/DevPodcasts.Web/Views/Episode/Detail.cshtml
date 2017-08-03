@@ -4,7 +4,7 @@
 }
 
 <div class="episode-detail-container">
-    <h1>@Model.PodcastTitle</h1>
+    <h1><a href="~/podcasts/detail/@Model.PodcastId">@Model.PodcastTitle</a></h1>
     <h2>@Model.Title</h2>
     <p>
         <a href="@Model.EpisodeUrl" rel="noopener noreferrer" target="_blank">@Model.EpisodeUrl</a>
