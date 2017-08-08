@@ -1,6 +1,7 @@
 ﻿@model DevPodcasts.ViewModels.Episode.EpisodeDetailViewModel
 @{
     ViewBag.Title = Model.Title + " - " + Model.PodcastTitle;
+    ViewBag.MetaDescriptionText = Model.Summary;
 }
 
 <div class="episode-detail-container">
