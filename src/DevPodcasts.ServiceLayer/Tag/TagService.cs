@@ -23,7 +23,8 @@ namespace DevPodcasts.ServiceLayer.Tag
                 .Select(i => new TagItemViewModel
                 {
                     Name = i.Name,
-                    Slug = i.Slug
+                    Slug = i.Slug,
+                    NumberOfPodcasts = i.Podcasts.Count
                 });
         }
 
@@ -61,5 +62,7 @@ namespace DevPodcasts.ServiceLayer.Tag
         public string Name { get; set; }
 
         public string Slug { get; set; }
+
+        public int NumberOfPodcasts { get; set; }
     }
 }

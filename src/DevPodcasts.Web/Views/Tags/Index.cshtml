@@ -6,14 +6,15 @@
 <div class="container tags-container">
     <div class="row">
         <h2>Tags</h2>
-        <p>Tags are a way of associating podcasts with different technologies. Each podcast is associated with at least one tag.</p>
+        <p>Tags are a way of associating podcasts with different technologies - a podcast is associated with at least one tag.</p>
+        <p>Click a tag below:</p>
     </div>
 
     <div class="row tags-row">
         @foreach (var item in Model)
         {
             <div class="tag col-sm-3 col-xs-6">
-                <a href="~/tags/@item.Slug">@item.Name</a>
+                <a href="~/tags/@item.Slug">@item.Name (@item.NumberOfPodcasts)</a>
             </div>
         }
         </div>
