@@ -189,15 +189,15 @@ namespace DevPodcasts.ServiceLayer.Podcast
         {
             var totalEpisodes = _episodeRepository.EpisodeCount();
             var totalPodcasts = _podcastRepository.GetTotalPodcasts();
-            var featured = _podcastRepository.GetFeaturedPodcasts(3);
-            var recent = _episodeRepository.GetMostRecentEpisodes(10);
+            var recentEpisodes = _episodeRepository.GetMostRecentEpisodes(10);
+            var featuredPodcasts = _podcastRepository.GetFeaturedPodcasts(5);
 
             return new HomeIndexViewModel
             {
                 TotalEpisodes = totalEpisodes,
                 TotalPodcasts = totalPodcasts,
-                FeaturedPodcasts = featured,
-                RecentEpisodes = recent
+                FeaturedPodcasts = featuredPodcasts,
+                RecentEpisodes = recentEpisodes
             };
         }
 
