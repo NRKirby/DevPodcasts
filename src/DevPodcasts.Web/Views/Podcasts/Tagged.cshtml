@@ -4,7 +4,7 @@
 }
 
 <div class="tag-results-container">
-    <h2>Podcasts tagged @Model.TagName</h2>
+    <h2>Podcasts tagged <span style="color: rgba(4, 59, 127, 0.95); margin-left: 5px">@Model.TagName</span></h2>
 
     @Html.Partial("_SearchResults", Model.SearchResults)
 </div>
