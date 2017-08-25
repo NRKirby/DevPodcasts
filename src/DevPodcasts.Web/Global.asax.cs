@@ -33,7 +33,6 @@ namespace DevPodcasts.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             MvcHandler.DisableMvcResponseHeader = true;
             RegisterComponents();
-            UpdatePodcastEpisodes();
             CreateRolesIfNotPresentInDatabase();
             WarmUpEntityFrameworkQueries();
         }
@@ -89,7 +88,6 @@ namespace DevPodcasts.Web
             builder.RegisterType<AdminService>();
             builder.RegisterType<ContactEmailService>();
             builder.RegisterType<EpisodeService>();
-            builder.RegisterType<EpisodeUpdater.EpisodeUpdater>().PropertiesAutowired();
             builder.RegisterType<HomeService>();
             builder.RegisterType<PodcastEmailService>();
             builder.RegisterType<PodcastService>();
@@ -101,20 +99,6 @@ namespace DevPodcasts.Web
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
-        }
-
-        private void UpdatePodcastEpisodes()
-        {
-            var updateEpisodes = System
-                .Configuration
-                .ConfigurationManager
-                .AppSettings["UpdateOnStartup"]
-                .ToLower();
-
-            if (!updateEpisodes.Equals("true")) return;
-
-            var updater = DependencyResolver.Current.GetService<EpisodeUpdater.EpisodeUpdater>();
-            updater.Update();
         }
     }
 }
