@@ -1,7 +1,7 @@
 ﻿.navbar-inverse {
     background-color: #78a6ce;
     border-color: #78a6ce;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
@@ -56,7 +56,7 @@ h6,
 /* Homepage */
 
 .home-container {
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .home-container .row {
