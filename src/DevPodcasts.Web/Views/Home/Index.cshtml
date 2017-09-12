@@ -11,8 +11,8 @@
     </div>
     
     <div class="row" style="text-align: center; font-size: 1.5em">
-        <p>@Html.ActionLink(Model.TotalPodcasts + " podcasts listed", "Index", "Podcasts")</p>
-        <p style="color: #337ab7">@Model.TotalEpisodes episodes</p>
+        <p>@Html.ActionLink(Model.TotalPodcasts + " podcasts", "Index", "Podcasts")</p>
+        <p style="color: #337ab7">@Model.TotalEpisodes.ToString("#,##0") episodes</p>
     </div>
 
     <div class="row recent-episodes">
