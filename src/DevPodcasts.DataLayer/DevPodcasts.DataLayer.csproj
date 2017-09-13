@@ -60,9 +60,14 @@
     <Compile Include="Migrations\201706070619479_TagRenameValuePropertyToSlug.Designer.cs">
       <DependentUpon>201706070619479_TagRenameValuePropertyToSlug.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709131508099_AddListenLaterTable.cs" />
+    <Compile Include="Migrations\201709131508099_AddListenLaterTable.Designer.cs">
+      <DependentUpon>201709131508099_AddListenLaterTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\ListenLater.cs" />
     <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\CheckBoxListItem.cs" />
@@ -83,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706070619479_TagRenameValuePropertyToSlug.resx">
       <DependentUpon>201706070619479_TagRenameValuePropertyToSlug.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709131508099_AddListenLaterTable.resx">
+      <DependentUpon>201709131508099_AddListenLaterTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
