@@ -8,6 +8,8 @@ namespace DevPodcasts.DataLayer.Models
 
         public int EpisodeId { get; set; }
 
+        public virtual Episode Episode { get; set; }
+
         public DateTime AddedTimeStamp { get; set; }
     }
 }

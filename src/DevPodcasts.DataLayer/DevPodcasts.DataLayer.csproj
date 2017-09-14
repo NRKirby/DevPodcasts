@@ -64,6 +64,10 @@
     <Compile Include="Migrations\201709131508099_AddListenLaterTable.Designer.cs">
       <DependentUpon>201709131508099_AddListenLaterTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709140539139_AddEpisodeToListenLater.cs" />
+    <Compile Include="Migrations\201709140539139_AddEpisodeToListenLater.Designer.cs">
+      <DependentUpon>201709140539139_AddEpisodeToListenLater.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -91,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709131508099_AddListenLaterTable.resx">
       <DependentUpon>201709131508099_AddListenLaterTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709140539139_AddEpisodeToListenLater.resx">
+      <DependentUpon>201709140539139_AddEpisodeToListenLater.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
