@@ -7,7 +7,7 @@
 <div class="episode-detail-container">
     <h1><a href="~/podcasts/detail/@Model.PodcastId">@Model.PodcastTitle</a></h1>
     <h2>@Model.Title</h2>
-    <button type="button" class="btn btn-primary btn-sm"" onclick="window.open('@Model.EpisodeUrl')" style="margin: 1.5em 0;">Episode Link</button>
+    <button type="button" class="btn btn-primary btn-sm" onclick="location.href = '@Model.EpisodeUrl'" style="margin-top: 0.9em; margin-bottom: 1.5em;">Episode Link</button>
     <br />
 
     <audio controls style="margin: 1em 0">
