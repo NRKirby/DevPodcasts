@@ -3,12 +3,14 @@ using System.Collections.Generic;
 
 namespace DevPodcasts.DataLayer.Models
 {
-    public class Podcast : ModelBase<int>
+    public class Podcast
     {
         public Podcast()
         {
             Episodes = new List<Episode>();
         }
+
+        public int Id { get; set; }
 
         public string Title { get; set; }
 

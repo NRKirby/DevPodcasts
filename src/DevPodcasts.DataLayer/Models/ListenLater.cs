@@ -2,8 +2,10 @@
 
 namespace DevPodcasts.DataLayer.Models
 {
-    public class ListenLater : ModelBase<int>
+    public class ListenLater
     {
+        public int Id { get; set; }
+
         public string UserId { get; set; }
 
         public int EpisodeId { get; set; }
