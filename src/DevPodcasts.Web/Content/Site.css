@@ -106,6 +106,30 @@ h6,
     word-wrap: break-word
 }
 
+#audio {
+    margin: 0 10px;
+    width: 360px;
+}
+
+@media (min-width:768px) {
+    #audio {
+        width: 720px;
+    }
+}
+
+@media (min-width:992px) {
+    #audio {
+        width: 940px;
+    }
+}
+
+@media (min-width:1200px) {
+    #audio {
+        width: 1140px;
+    }
+}
+
+
 /* Tags */
 
 .tags-container h2 {
