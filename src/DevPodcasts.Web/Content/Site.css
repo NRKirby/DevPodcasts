@@ -108,10 +108,10 @@ h6,
 
 #audio {
     margin: 0 10px;
-    width: 400px;
+    width: 100%;
 }
 
-@media (min-width:768px) {
+/*@media (min-width:768px) {
     #audio {
         width: 720px;
     }
@@ -127,7 +127,7 @@ h6,
     #audio {
         width: 1140px;
     }
-}
+}*/
 
 
 /* Tags */
