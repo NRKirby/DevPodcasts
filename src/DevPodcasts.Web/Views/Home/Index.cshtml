@@ -37,7 +37,7 @@
                 <div class="podcast-tag-list">
                     @foreach (var tag in podcast.Tags)
                     {
-                        <a href="~/tags/@tag.Slug" class="podcast-tag">@tag.Name</a>
+                        <a href="~/tags/@tag.Slug" class="podcast-tag" title="Podcasts tagged @tag.Name">@tag.Name</a>
                     }
                 </div>
                 <hr />
