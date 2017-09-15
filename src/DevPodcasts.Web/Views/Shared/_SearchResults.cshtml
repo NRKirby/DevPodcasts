@@ -17,7 +17,7 @@
                             <p>
                                 @Html.ActionLink(result.Title, "Detail", "Podcasts", new { id = result.Id }, null) 
                             </p>
-                            <p>@result.Description</p>
+                            <p class="break-long-words">@result.Description</p>
                         </div>
                         <p class="episode-count pull-right" align="right">
                             <strong>@Html.ActionLink(result.NumberOfEpisodes + " episodes", "Detail", "Podcasts", new { id = result.Id }, null) </strong>
