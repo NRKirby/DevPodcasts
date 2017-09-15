@@ -103,7 +103,13 @@ h6,
 }
 
 .episode-detail-container p {
-    word-wrap: break-word
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+.episode-detail-container h1 {
+    word-wrap: break-word;
+    word-break: break-word;
 }
 
 #audio {
@@ -143,6 +149,7 @@ h6,
 
 .podcasts-container p {
     word-wrap: break-word;
+    word-break: break-word;
 }
 
 .edit-podcast-container .btn-primary {
