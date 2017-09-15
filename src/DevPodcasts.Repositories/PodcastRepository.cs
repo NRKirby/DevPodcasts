@@ -49,6 +49,7 @@ namespace DevPodcasts.Repositories
                     Title = i.Title,
                     Description = i.Description,
                     Tags = i.Tags
+                    .OrderBy(tag => tag.Name)
                     .Select(tag => new ViewModels.Tags.TagViewModel { Name = tag.Name, Slug = tag.Slug })
                 });
         }
