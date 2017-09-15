@@ -147,7 +147,10 @@ namespace DevPodcasts.Repositories
                     Title = i.Title,
                     NumberOfEpisodes = i.Episodes.Count,
                     Description = i.Description,
-                    ImageUrl = i.ImageUrl
+                    ImageUrl = i.ImageUrl,
+                    Tags = i.Tags
+                    .OrderBy(tag => tag.Name)
+                    .Select(tag => new ViewModels.Tags.TagViewModel { Name = tag.Name, Slug = tag.Slug})
                 });
         }
 

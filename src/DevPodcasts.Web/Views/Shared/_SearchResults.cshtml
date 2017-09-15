@@ -15,9 +15,15 @@
                         </div>
                         <div class="podcast-summary">
                             <p>
-                                @Html.ActionLink(result.Title, "Detail", "Podcasts", new { id = result.Id }, null) 
+                                @Html.ActionLink(result.Title, "Detail", "Podcasts", new { id = result.Id }, null)
                             </p>
                             <p class="break-long-words">@result.Description</p>
+                        </div>
+                        <div class="podcast-tag-list">
+                            @foreach (var tag in result.Tags)
+                            {
+                                <a href="~/tags/@tag.Slug" class="podcast-tag">@tag.Name</a>
+                            }
                         </div>
                         <p class="episode-count pull-right" align="right">
                             <strong>@Html.ActionLink(result.NumberOfEpisodes + " episodes", "Detail", "Podcasts", new { id = result.Id }, null) </strong>

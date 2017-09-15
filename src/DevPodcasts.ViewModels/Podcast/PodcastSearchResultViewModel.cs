@@ -1,4 +1,7 @@
-﻿namespace DevPodcasts.ViewModels.Podcast
+﻿using DevPodcasts.ViewModels.Tags;
+using System.Collections.Generic;
+
+namespace DevPodcasts.ViewModels.Podcast
 {
     public class PodcastSearchResultViewModel
     {
@@ -11,5 +14,7 @@
         public string Description { get; set; }
 
         public int NumberOfEpisodes { get; set; }
+
+        public IEnumerable<TagViewModel> Tags { get; set; }
     }
 }
