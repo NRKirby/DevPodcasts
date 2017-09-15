@@ -47,7 +47,9 @@ namespace DevPodcasts.Repositories
                 {
                     PodcastId = i.Id,
                     Title = i.Title,
-                    Description = i.Description
+                    Description = i.Description,
+                    Tags = i.Tags
+                    .Select(tag => new ViewModels.Tags.TagViewModel { Name = tag.Name, Slug = tag.Slug })
                 });
         }
 

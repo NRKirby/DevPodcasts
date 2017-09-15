@@ -1,4 +1,5 @@
 ﻿using DevPodcasts.ViewModels.Episode;
+using DevPodcasts.ViewModels.Tags;
 using System.Collections.Generic;
 
 namespace DevPodcasts.ViewModels.Podcast
@@ -18,12 +19,5 @@ namespace DevPodcasts.ViewModels.Podcast
         public IEnumerable<EpisodeViewModel> Episodes { get; set; }
 
         public IEnumerable<TagViewModel> Tags { get; set; }
-    }
-
-    public class TagViewModel
-    {
-        public string Name { get; set; }
-
-        public string Slug { get; set; }
     }
 }

@@ -5,11 +5,11 @@
 
 <div class="home-container">
     <div class="row">
-        <img src="~/img/podcast-logo.png"/>
+        <img src="~/img/podcast-logo.png" />
         <h1>Dev Podcasts</h1>
         <p class="lead">A directory of podcasts for software developers.</p>
     </div>
-    
+
     <div class="row" style="text-align: center; font-size: 1.5em">
         <p>@Html.ActionLink(Model.TotalPodcasts + " podcasts", "Index", "Podcasts")</p>
         <p style="color: #337ab7">@Model.TotalEpisodes.ToString("#,##0") episodes</p>
@@ -32,8 +32,15 @@
         <h2>Featured podcasts:</h2>
         @foreach (var podcast in Model.FeaturedPodcasts)
         {
-            <div class="col-md-5">
+            <div class="col-md-5 featured-podcast">
                 <h3><a href="~/podcasts/detail/@podcast.PodcastId">@podcast.Title</a></h3>
+                <div class="podcast-tag-list">
+                    @foreach (var tag in podcast.Tags)
+                    {
+                        <a href="~/tags/@tag.Slug" class="podcast-tag">@tag.Name</a>
+                    }
+                </div>
+                <hr />
                 <p style="line-height: 2">
                     @podcast.Description
                 </p>

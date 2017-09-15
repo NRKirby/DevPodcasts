@@ -7,6 +7,7 @@ using DevPodcasts.ServiceLayer.RSS;
 using DevPodcasts.ViewModels.Episode;
 using DevPodcasts.ViewModels.Home;
 using DevPodcasts.ViewModels.Podcast;
+using DevPodcasts.ViewModels.Tags;
 using System;
 using System.Collections.Generic;
 using System.Linq;

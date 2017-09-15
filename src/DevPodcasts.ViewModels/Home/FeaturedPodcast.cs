@@ -1,4 +1,7 @@
-﻿namespace DevPodcasts.ViewModels.Home
+﻿using DevPodcasts.ViewModels.Tags;
+using System.Collections.Generic;
+
+namespace DevPodcasts.ViewModels.Home
 {
     public class FeaturedPodcast
     {
@@ -7,5 +10,7 @@
         public string Description { get; set; }
 
         public string Title { get; set; }
+
+        public IEnumerable<TagViewModel> Tags { get; set; }
     }
 }
