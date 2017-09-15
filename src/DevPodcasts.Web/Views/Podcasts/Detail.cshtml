@@ -11,6 +11,12 @@
             <h2>@Model.Title</h2>
             <p><a href="@Model.SiteUrl" rel="noopener noreferrer" target="_blank">@Model.SiteUrl</a></p>
             <p>@Model.Description</p>
+            <div class="podcast-tag-list">
+                @foreach (var tag in Model.Tags)
+                {
+                    <a href="~/tags/@tag.Slug" class="podcast-tag">@tag.Name</a>
+                }
+            </div>
 
         </div>
         <div style="overflow: hidden; width: 200px; float: right; position: relative; right: 20px;">

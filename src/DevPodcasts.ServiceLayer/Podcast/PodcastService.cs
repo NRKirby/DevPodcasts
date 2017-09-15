@@ -91,7 +91,8 @@ namespace DevPodcasts.ServiceLayer.Podcast
                 Title = podcast.Title,
                 Description = podcast.Description,
                 SiteUrl = podcast.SiteUrl,
-                ImageUrl = podcast.ImageUrl
+                ImageUrl = podcast.ImageUrl,
+                Tags = podcast.Tags.Select(tag => new TagViewModel {Name = tag.Name, Slug = tag.Slug })
             };
 
             var episodes = _episodeRepository.GetAllEpisodes(podcastId);

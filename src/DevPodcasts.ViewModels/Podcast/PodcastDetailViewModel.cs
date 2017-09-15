@@ -16,5 +16,14 @@ namespace DevPodcasts.ViewModels.Podcast
         public string ImageUrl { get; set; }
 
         public IEnumerable<EpisodeViewModel> Episodes { get; set; }
+
+        public IEnumerable<TagViewModel> Tags { get; set; }
+    }
+
+    public class TagViewModel
+    {
+        public string Name { get; set; }
+
+        public string Slug { get; set; }
     }
 }

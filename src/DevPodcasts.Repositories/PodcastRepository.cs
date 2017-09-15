@@ -229,7 +229,10 @@ namespace DevPodcasts.Repositories
                 Title = podcast.Title,
                 SiteUrl = podcast.SiteUrl,
                 Description = podcast.Description,
-                ImageUrl = podcast.ImageUrl
+                ImageUrl = podcast.ImageUrl,
+                Tags = podcast.Tags
+                .OrderBy(tag => tag.Name)
+                .Select(tag => new TagDto {Name = tag.Name, Slug = tag.Slug })
             };
         }
 
