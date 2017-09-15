@@ -162,10 +162,12 @@ h6,
 
 .podcasts-detail-container p {
     word-wrap: break-word;
+    word-break: break-word;
 }
 
 .podcasts-detail-container h2 {
     word-wrap: break-word;
+    word-break: break-word;
 }
 
 .podcast-tag {
