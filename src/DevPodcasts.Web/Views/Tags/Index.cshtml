@@ -8,7 +8,9 @@
         <h2>Tags</h2>
         <p>Tags are a way of associating podcasts with different technologies - a podcast is associated with at least one tag.</p>
         <p>Click a tag below:</p>
+        <hr />
     </div>
+    
 
     <div class="row tags-row">
         @foreach (var item in Model)
@@ -17,7 +19,7 @@
                 <a href="~/tags/@item.Slug">@item.Name (@item.NumberOfPodcasts)</a>
             </div>
         }
-        </div>
+    </div>
 </div>
 
 
