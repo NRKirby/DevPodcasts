@@ -6,6 +6,53 @@
 <div class="tag-results-container">
     <h2>Podcasts tagged <span style="color: rgba(4, 59, 127, 0.95); margin-left: 5px">@Model.TagName</span></h2>
 
-    @Html.Partial("_SearchResults", Model.SearchResults)
+    <div id="results-container">
+        @if (Model != null)
+        {
+            <hr />
+            foreach (var result in Model.SearchResults)
+            {
+                <div class="row result-row" id="@result.Id">
+                    <div class="col-sm-2 hidden-xs">
+                        <img class="result-img" src="@result.ImageUrl" />
+                    </div>
+                    <div class="col-sm-10">
+                        <h3>@result.Title</h3>
+                        <p class="">@result.Description</p>
+                        <div class="row">
+                            <div class="podcast-tag-list col-sm-10">
+                                @if (result.Tags != null)
+                                {
+                                    foreach (var tag in result.Tags)
+                                    {
+                                        <a href="~/tags/@tag.Slug" class="podcast-tag" title="Podcasts tagged @tag.Name">@tag.Name</a>
+                                    }
+                                }
+                            </div>
+                            <div class="col-sm-2"><p class="pull-right"><span class="result-episode-count">@result.NumberOfEpisodes episodes</span></p></div>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+            }
+        }
+    </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $(".result-row").click(function () {
+            var id = this.id;
+            document.location.href = getURL() + "podcasts/detail/" + id;
+        })
+    });
+
+    function getURL() {
+        var arr = window.location.href.split("/");
+        delete arr[arr.length - 1];
+        var url = arr.join("/").replace("podcasts/tagged/", "");
+        console.log(url);
+        return url;
+    }
+</script>
 
