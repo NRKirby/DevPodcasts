@@ -287,6 +287,27 @@ textarea {
 
 
 
+.result-img {
+    width: 100%
+}
+
+.result-row {
+    margin-bottom: 1em;
+}
+
+.result-row h3 {
+    margin-top: 0px;
+}
+
+#results-container a {
+    text-decoration: none;
+    color: black;
+}
+
+.result-episode-count {
+    white-space: nowrap;
+}
+
 #search-list {
     list-style-type: none;
 }
