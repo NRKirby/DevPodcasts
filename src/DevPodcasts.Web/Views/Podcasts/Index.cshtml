@@ -30,7 +30,7 @@
             <hr />
             foreach (var result in Model.Items)
             {
-                <div class="row result-row" id="@result.Id">
+                <div class="row result-row" id="@result.Id" title="@result.Title">
                     <div class="col-sm-2 hidden-xs">
                         <img class="result-img" src="@result.ImageUrl" />
                     </div>

@@ -8,11 +8,11 @@
         {
             <div class="row result-row" id="@result.Id">
                 <div class="col-sm-2 hidden-xs">
-                    <img class="result-img" src="@result.ImageUrl" />
+                    <img class="result-img" src="@result.ImageUrl" title="@result.Title"/>
                 </div>
                 <div class="col-sm-10">
-                    <h3>@result.Title</h3>
-                    <p class="">@result.Description</p>
+                    <h3 title="@result.Title">@result.Title</h3>
+                    <p title="@result.Title">@result.Description</p>
                     <div class="row">
                         <div class="podcast-tag-list col-sm-10">
                             @if (result.Tags != null)
@@ -23,7 +23,7 @@
                                 }
                             }
                         </div>
-                        <div class="col-sm-2"><p class="pull-right"><span class="result-episode-count">@result.NumberOfEpisodes episodes</span></p></div>
+                        <div class="col-sm-2"><p class="pull-right" title="@result.Title"><span class="result-episode-count">@result.NumberOfEpisodes episodes</span></p></div>
                     </div>
                 </div>
             </div>
