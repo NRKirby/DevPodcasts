@@ -46,7 +46,10 @@ namespace DevPodcasts.ServiceLayer.Tag
                     Title = i.Title,
                     ImageUrl = i.ImageUrl,
                     Description = i.Description,
-                    NumberOfEpisodes = i.Episodes.Count
+                    NumberOfEpisodes = i.Episodes.Count,
+                    Tags = i.Tags
+                    .OrderBy(tag => tag.Name)
+                    .Select(tag => new TagViewModel { Name = tag.Name, Slug = tag.Slug })
                 });
 
             return new TagResultViewModel
