@@ -4,14 +4,14 @@
     margin-bottom: 20px;
 }
 
-.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
-    background-color: #78a6ce;
-    margin-bottom: 20px;
-}
+    .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+        background-color: #78a6ce;
+        margin-bottom: 20px;
+    }
 
-.navbar-inverse .navbar-brand {
-    color: #000;
-}
+    .navbar-inverse .navbar-brand {
+        color: #000;
+    }
 
 .dropdown-menu {
     box-shadow: none;
@@ -37,6 +37,10 @@ html {
     height: 100px;
 }
 
+h2 {
+    color: #33658a
+}
+
 body,
 h1,
 h2,
@@ -59,30 +63,30 @@ h6,
     margin-top: 20px;
 }
 
-.home-container .row {
-    margin: 40px 0;
-}
+    .home-container .row {
+        margin: 40px 0;
+    }
 
-.home-container .row .lead {
-    text-align: center;
-}
+        .home-container .row .lead {
+            text-align: center;
+        }
 
-.home-container h1 {
-    text-align: center;
-    color: #232f3e;
-    font-size: 3em;
-}
+    .home-container h1 {
+        text-align: center;
+        color: #232f3e;
+        font-size: 3em;
+    }
 
-.home-container img {
-    margin: 0 auto;
-    display: block;
-    width: 250px;
-    height: auto;
-}
+    .home-container img {
+        margin: 0 auto;
+        display: block;
+        width: 250px;
+        height: auto;
+    }
 
 .recent-episodes p {
     display: inline;
-    font-size: 1.3em;   
+    font-size: 1.3em;
 }
 
 .recent-episodes li {
@@ -92,7 +96,6 @@ h6,
 .recent-episodes ul {
     list-style-type: none;
     padding: 10px;
-    
 }
 
 .featured-podcast hr {
@@ -107,15 +110,15 @@ h6,
     margin-top: 50px;
 }
 
-.episode-detail-container p {
-    word-wrap: break-word;
-    word-break: break-word;
-}
+    .episode-detail-container p {
+        word-wrap: break-word;
+        word-break: break-word;
+    }
 
-.episode-detail-container h1 {
-    word-wrap: break-word;
-    word-break: break-word;
-}
+    .episode-detail-container h1 {
+        word-wrap: break-word;
+        word-break: break-word;
+    }
 
 #audio {
     margin: 0 10px;
@@ -184,14 +187,14 @@ h6,
     display: inline-block;
     margin: 2px 2px 2px 0;
     font-size: 12px;
-    text-decoration: none!important;
+    text-decoration: none !important;
 }
 
-.podcast-tag:hover {
-    color: #33658a;
-    background-color: #cee0ed;
-    border-color: rgba(0,0,0,0);
-}
+    .podcast-tag:hover {
+        color: #33658a;
+        background-color: #cee0ed;
+        border-color: rgba(0,0,0,0);
+    }
 
 .podcast-detail-image {
     margin-top: 25px;
@@ -211,28 +214,31 @@ h6,
 
 /* Footer */
 #footer {
-    margin-top: 40px; padding: 40px 0; background-color: #232F3E; color: azure;
-}
-
-#footer h4 {
-    border-bottom: 1px solid #5d5d5d;
-    padding: 10px 0;
-}
-
-#footer .column ul {
-    font-size: 13px;
-    list-style: none;
-    padding: 0;
-    line-height: 22px;
-}
-
-#footer .footer-2-col {
-    padding-left: 0;
-}
-
-#footer .footer-a {
+    margin-top: 40px;
+    padding: 40px 0;
+    background-color: #232F3E;
     color: azure;
 }
+
+    #footer h4 {
+        border-bottom: 1px solid #5d5d5d;
+        padding: 10px 0;
+    }
+
+    #footer .column ul {
+        font-size: 13px;
+        list-style: none;
+        padding: 0;
+        line-height: 22px;
+    }
+
+    #footer .footer-2-col {
+        padding-left: 0;
+    }
+
+    #footer .footer-a {
+        color: azure;
+    }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -290,9 +296,10 @@ textarea {
     cursor: pointer;
 }
 
-.result-row h3 {
-    margin-top: 0px;
-}
+    .result-row h3 {
+        margin-top: 0px;
+        color: #33658a;
+    }
 
 #results-container a {
     text-decoration: none;
@@ -301,6 +308,9 @@ textarea {
 
 .result-episode-count {
     white-space: nowrap;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #33658a;
 }
 
 #search-list {
@@ -352,9 +362,9 @@ textarea {
     border-radius: 8px;
 }
 
-.form-control:focus {
-    box-shadow: none;
-}
+    .form-control:focus {
+        box-shadow: none;
+    }
 
 .search-btn {
     font-size: 18px;
@@ -395,4 +405,3 @@ textarea {
     hyphens: auto;
     display: block;
 }
-
