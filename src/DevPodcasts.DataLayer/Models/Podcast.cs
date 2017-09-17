@@ -18,6 +18,8 @@ namespace DevPodcasts.DataLayer.Models
 
         public string ImageUrl { get; set; }
 
+        public string ResizedImageUrl { get; set; }
+
         public string FeedUrl { get; set; }
 
         public DateTime DateCreated { get; set; }
