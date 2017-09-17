@@ -11,7 +11,7 @@
     
     @if (ViewBag.MetaDescriptionText == null || ViewBag.MetaDescriptionText == string.Empty)
     {
-        <meta name="description" content="Find software-related podcasts: we list over 100 podcasts and over 14,000 episodes of interest to all kinds of software developers and software engineers.">
+        <meta name="description" content="Find software-related podcasts: we list over 100 podcasts and over 15,000 episodes of interest to all kinds of software developers and engineers.">
     }
     else
     {
@@ -19,13 +19,12 @@
     }
     
     <meta name="keywords" content="software developer podcasts, software development podcasts, software engineering podcasts, javascript podcasts, python podcasts, java podcasts, .net podcasts, c++ podcasts, angular podcasts, dev podcasts, developer podcasts, software podcasts">
-
     <title>Dev Podcasts | @ViewBag.Title</title>
 
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
     @Styles.Render("~/Content/css")
-    <link href="~/Content/Site.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/modernizr")
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <link rel="shortcut icon" href="~/favicon.png" type="image/png">

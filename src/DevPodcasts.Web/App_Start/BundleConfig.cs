@@ -24,8 +24,8 @@ namespace DevPodcasts.Web
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                "~/Content/bootstrap.css"));
-                //"~/Content/site.css")); // TODO - css only applied from this file when added directly to _Layout?
+                "~/Content/bootstrap.css",
+                "~/Content/styles.css"));
         }
     }
 }
