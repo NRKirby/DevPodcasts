@@ -1,11 +1,16 @@
-﻿.navbar-inverse {
-    background-color: #78a6ce;
-    border-color: #78a6ce;
+﻿@lightBlue: #78a6ce;
+@darkerBlue: #33658a; 
+@charcoalBlack: #232F3E;
+
+
+.navbar-inverse {
+    background-color: @lightBlue;
+    border-color: @lightBlue;
     margin-bottom: 20px;
 }
 
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
-    background-color: #78a6ce;
+    background-color: @lightBlue;
     margin-bottom: 20px;
 }
 
@@ -38,7 +43,7 @@ html {
 }
 
 h2 {
-    color: #33658a
+    color: @darkerBlue;
 }
 
 body,
@@ -73,7 +78,7 @@ h6,
 
 .home-container h1 {
     text-align: center;
-    color: #232f3e;
+    color: @charcoalBlack;
     font-size: 3em;
 }
 
@@ -191,7 +196,7 @@ h6,
 }
 
 .podcast-tag:hover {
-    color: #33658a;
+    color: @darkerBlue;
     background-color: #cee0ed;
     border-color: rgba(0,0,0,0);
 }
@@ -216,7 +221,7 @@ h6,
 #footer {
     margin-top: 40px;
     padding: 40px 0;
-    background-color: #232F3E;
+    background-color: @charcoalBlack;
     color: azure;
 }
 
@@ -263,7 +268,7 @@ textarea {
 /* font awesome styling */
 
 .fa-check {
-    color: chartreuse
+    color: chartreuse;
 }
 
 /* search */
@@ -279,14 +284,6 @@ textarea {
     left: 15px;
 }
 
-#search-results {
-    position: relative;
-    top: 20px;
-    border-top: 1px solid #e4e6e8;
-}
-
-
-
 .result-img {
     width: 100%
 }
@@ -298,7 +295,7 @@ textarea {
 
 .result-row h3 {
     margin-top: 0px;
-    color: #33658a;
+    color: @darkerBlue;
 }
 
 #results-container a {
@@ -310,25 +307,11 @@ textarea {
     white-space: nowrap;
     font-size: 0.9em;
     font-weight: bold;
-    color: #33658a;
+    color: @darkerBlue;
 }
 
 #search-list {
     list-style-type: none;
-}
-
-.podcast-list-item {
-    border-bottom: 1px solid #e4e6e8;
-    padding: 12px 0 10px 0;
-}
-
-.search-result {
-    overflow: hidden;
-}
-
-.podcast-image {
-    width: 75px;
-    float: left;
 }
 
 .img-thumb {
@@ -341,13 +324,6 @@ textarea {
     position: relative;
     left: 10px;
 }
-
-.episode-count {
-    position: relative;
-    right: 15px;
-    font-size: 12px;
-}
-
 
 /* bootstrap overrides */
 
