@@ -24,5 +24,20 @@
 
 @if (Model != null)
 {
-    @Html.Partial("_SearchResults", Model.PodcastSearchResults)
+    @Html.Partial("_PodcastRows", Model.PodcastSearchResults)
 }
+
+<script>
+    $(document).ready(function () {
+        $(".result-row").click(function () {
+            var id = this.id;
+            document.location.href = getURL() + "podcasts/detail/" + id;
+        })
+    });
+
+    function getURL() {
+        var arr = window.location.href.split("/");
+        delete arr[arr.length - 1];
+        return arr.join("/");
+    }
+</script>

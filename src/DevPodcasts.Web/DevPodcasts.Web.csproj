@@ -320,6 +320,7 @@
     <Content Include="Views\Tags\Index.cshtml" />
     <Content Include="Views\Podcasts\Tagged.cshtml" />
     <Content Include="Views\Logs\_LogsPager.cshtml" />
+    <Content Include="Views\Shared\_PodcastRows.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
