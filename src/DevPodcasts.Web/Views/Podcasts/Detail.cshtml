@@ -5,44 +5,47 @@
     ViewBag.MetaDescriptionText = Model.Description;
 }
 
-<div class="podcasts-detail-container">
-    <div style="overflow: hidden; margin-top: 60px">
-        <div style="width: 400px; float: left;">
-            <h2>@Model.Title</h2>
-            <p><a href="@Model.SiteUrl" rel="noopener noreferrer" target="_blank">@Model.SiteUrl</a></p>
-            <p>@Model.Description</p>
-            <div class="podcast-tag-list">
-                @foreach (var tag in Model.Tags)
-                {
-                    <a href="~/tags/@tag.Slug" class="podcast-tag">@tag.Name</a>
-                }
-            </div>
+<div class="podcast-detail-container">
 
-        </div>
-        <div class="podcast-detail-image">
-            <img class="img-thumb" src="@Model.ImageUrl" />
+    <div class="col-sm-10">
+        <h2>@Model.Title</h2>
+        <p><a href="@Model.SiteUrl" rel="noopener noreferrer" target="_blank">@Model.SiteUrl</a></p>
+        <p>@Model.Description</p>
+        <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
+        <span class="tag-text"><strong>Tags: </strong></span>
+        <div class="podcast-tags">
+            @if (Model.Tags != null)
+            {
+                foreach (var tag in Model.Tags)
+                {
+                    <a href="~/tags/@tag.Slug" class="podcast-tag" title="Podcasts tagged @tag.Name">@tag.Name</a>
+                }
+            }
         </div>
     </div>
+    <div class="col-sm-2">
+        <img class="podcast-img" src="@Model.ImageUrl" />
+    </div>
+</div>
 
-    <table class="table table-striped" style="margin: 40px 0">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Date Published</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @if (Model?.Episodes != null)
+<table class="table table-striped" style="margin: 40px 0">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Date Published</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model?.Episodes != null)
             {
                 foreach (var item in Model.Episodes)
                 {
-                    <tr>
-                        <td>@Html.ActionLink(item.Title, "Detail", "Episode", new { id = item.Id }, null)</td>
-                        <td>@item.DatePublished.ToShortUkDate()</td>
-                    </tr>
-                }
+                <tr>
+                    <td>@Html.ActionLink(item.Title, "Detail", "Episode", new { id = item.Id }, null)</td>
+                    <td>@item.DatePublished.ToShortUkDate()</td>
+                </tr>
             }
-        </tbody>
-    </table>
-</div>
+        }
+    </tbody>
+</table>
