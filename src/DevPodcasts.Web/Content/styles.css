@@ -305,3 +305,16 @@ textarea {
   hyphens: auto;
   display: block;
 }
+.glyphicon-tags {
+  font-size: 14px;
+  color: #696969;
+}
+.podcast-tags {
+  margin-left: 5px;
+  display: inline;
+}
+.tag-text {
+  margin-left: 3px;
+  color: #696969;
+  font-size: 14px;
+}

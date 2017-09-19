@@ -16,13 +16,17 @@
                     <p class="">@result.Description</p>
                     <div class="row">
                         <div class="podcast-tag-list col-sm-10">
-                            @if (result.Tags != null)
-                            {
-                                foreach (var tag in result.Tags)
+                            <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
+                            <span class="tag-text"><strong>Tags: </strong></span>
+                            <div class="podcast-tags">
+                                @if (result.Tags != null)
                                 {
-                                    <a href="~/tags/@tag.Slug" class="podcast-tag" title="Podcasts tagged @tag.Name">@tag.Name</a>
+                                    foreach (var tag in result.Tags)
+                                    {
+                                        <a href="~/tags/@tag.Slug" class="podcast-tag" title="Podcasts tagged @tag.Name">@tag.Name</a>
+                                    }
                                 }
-                            }
+                            </div>
                         </div>
                         <div class="col-sm-2"><p class="pull-right"><span class="result-episode-count">@result.NumberOfEpisodes episodes</span></p></div>
                     </div>
