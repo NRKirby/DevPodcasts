@@ -35,10 +35,14 @@
             <div class="col-md-5 featured-podcast">
                 <h3><a href="~/podcasts/detail/@podcast.PodcastId">@podcast.Title</a></h3>
                 <div class="podcast-tag-list">
-                    @foreach (var tag in podcast.Tags)
-                    {
-                        <a href="~/tags/@tag.Slug" class="podcast-tag" title="Podcasts tagged @tag.Name">@tag.Name</a>
-                    }
+                    <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
+                    <span class="tag-text"><strong>Tags: </strong></span>
+                    <div class="podcast-tags">
+                        @foreach (var tag in podcast.Tags)
+                        {
+                            <a href="~/tags/@tag.Slug" class="podcast-tag" title="Podcasts tagged @tag.Name">@tag.Name</a>
+                        }
+                    </div>
                 </div>
                 <hr />
                 <p style="line-height: 2">
