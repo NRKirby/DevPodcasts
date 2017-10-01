@@ -27,6 +27,16 @@
 
 
 <script>
+    $(document).ready(function () {
+        var audio = $('#audio')[0];
+        audio.addEventListener("play", function() {
+            gtag('event', 'audio_play', {
+                'episode_title': '@Model.Title',
+                'podcast_title': '@Model.PodcastTitle'
+            });
+        })
+    });
+
     var disqus_config = function () {
         this.page.url = "@HttpContext.Current.Request.Url";
         this.page.identifier = "@Model.Id";
