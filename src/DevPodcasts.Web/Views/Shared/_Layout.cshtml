@@ -71,8 +71,8 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Podcasts", "Index", "Podcasts")</li>
-                    <li>@Html.ActionLink("Tags", "Index", "Tags")</li>
+                    <li><a href="/podcasts">Podcasts</a></li>
+                    <li><a href="/tags">Tags</a></li>
                     @if (ViewContext.HttpContext.User.IsInRole("Admin"))
                     {
                         <li class="dropdown">
