@@ -119,6 +119,7 @@
     <Compile Include="Home\HomeService.cs" />
     <Compile Include="Logging\LogService.cs" />
     <Compile Include="Podcast\PodcastService.cs" />
+    <Compile Include="Podcast\SlugCreator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RSS\RssParser.cs" />
     <Compile Include="RSS\RssService.cs" />
