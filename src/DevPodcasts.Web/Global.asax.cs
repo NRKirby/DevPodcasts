@@ -12,11 +12,13 @@ using DevPodcasts.ServiceLayer.Podcast;
 using DevPodcasts.ServiceLayer.RSS;
 using DevPodcasts.ServiceLayer.Search;
 using DevPodcasts.ServiceLayer.Tag;
+using DevPodcasts.Web.App_Start;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -28,6 +30,7 @@ namespace DevPodcasts.Web
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
