@@ -9,11 +9,11 @@
         {
             <div class="row result-row" id="@result.Id" title="@result.Title">
                 <div class="col-sm-2 hidden-xs">
-                    <img class="result-img" src="@result.ImageUrl" />
+                    <a href="~/podcasts/detail/@result.Id"><img class="result-img" src="@result.ImageUrl" /></a>
                 </div>
                 <div class="col-sm-10">
-                    <h3>@result.Title</h3>
-                    <p class="">@result.Description</p>
+                    <a href="~/podcasts/detail/@result.Id"><h3>@result.Title</h3></a>
+                    <p>@result.Description</p>
                     <div class="row">
                         <div class="podcast-tag-list col-sm-10">
                             <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
@@ -28,7 +28,7 @@
                                 }
                             </div>
                         </div>
-                        <div class="col-sm-2"><p class="pull-right"><span class="result-episode-count">@result.NumberOfEpisodes episodes</span></p></div>
+                        <div class="col-sm-2"><p class="pull-right"><a href="~/podcasts/detail/@result.Id"><span class="result-episode-count">@result.NumberOfEpisodes episodes</span></a></p></div>
                     </div>
                 </div>
             </div>
