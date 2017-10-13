@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using Autofac.Integration.WebApi;
 using DevPodcasts.DataLayer.Models;
 using DevPodcasts.Logging;
 using DevPodcasts.Repositories;
@@ -17,6 +18,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Reflection;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -63,7 +65,7 @@ namespace DevPodcasts.Web
                         roleManager.Create(new IdentityRole(roleName));
                     }
                 }
-            }           
+            }
         }
 
         private static IEnumerable<string> GetRoleNameList()
@@ -78,6 +80,9 @@ namespace DevPodcasts.Web
         {
             var builder = new ContainerBuilder();
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
+
+            // Context 
+            builder.RegisterType<ApplicationDbContext>();
 
             // Logging
             builder.RegisterType<AzureTableLogger>().As<ILogger>();
@@ -100,8 +105,12 @@ namespace DevPodcasts.Web
             builder.RegisterType<TagService>();
             builder.RegisterType<LogService>().As<LogService>();
 
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+
             var container = builder.Build();
+
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
         }
     }
 }
