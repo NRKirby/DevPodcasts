@@ -18,6 +18,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Net;
 using System.Reflection;
 using System.Web;
 using System.Web.Http;
@@ -40,6 +41,7 @@ namespace DevPodcasts.Web
             RegisterComponents();
             CreateRolesIfNotPresentInDatabase();
             WarmUpEntityFrameworkQueries();
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
         }
 
         private void WarmUpEntityFrameworkQueries()
