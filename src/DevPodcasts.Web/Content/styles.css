@@ -308,3 +308,9 @@ textarea {
   color: #696969;
   font-size: 14px;
 }
+.episode-published {
+  color: #696969;
+  display: block;
+  font-size: 0.9em;
+  margin-top: 19px;
+}
