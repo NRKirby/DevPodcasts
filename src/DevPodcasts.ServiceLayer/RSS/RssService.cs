@@ -48,12 +48,12 @@ namespace DevPodcasts.ServiceLayer.RSS
 
             var episodes = new List<EpisodeDto>();
 
-            var newEpisodes = feed.Items
+            var newEpisodes = feed.SyndicationFeed.Items
                 .Where(i => i.PublishDate.DateTime > mostRecentEpisodeDate);
 
             foreach (var newEpisode in newEpisodes)
             {
-                var episodeUrl = GetSiteUrl(feed);
+                var episodeUrl = GetSiteUrl(feed.SyndicationFeed);
                 var audioUrl = GetAudioUrl(newEpisode);
 
                 var episode = new EpisodeDto
@@ -94,7 +94,7 @@ namespace DevPodcasts.ServiceLayer.RSS
                 return dto;
             }
 
-            SyndicationFeed feed = null;
+            RssFeed feed = new RssFeed();
             try
             {
                 feed = _rssParser.ParseRssFeed(rssFeedUrl);
@@ -105,10 +105,10 @@ namespace DevPodcasts.ServiceLayer.RSS
             }
 
             if (feed == null) return dto;
-            var siteUrl = GetSiteUrl(feed);
-            dto.Title = feed.Title?.Text;
-            dto.Description = feed.Description?.Text;
-            dto.ImageUrl = feed.ImageUrl?.AbsoluteUri;
+            var siteUrl = GetSiteUrl(feed.SyndicationFeed);
+            dto.Title = feed.SyndicationFeed.Title?.Text;
+            dto.Description = feed.SyndicationFeed.Description?.Text;
+            dto.ImageUrl = feed.SyndicationFeed.ImageUrl?.AbsoluteUri;
             dto.FeedUrl = rssFeedUrl;
             dto.SiteUrl = siteUrl;
             dto.SuccessResult = SuccessResult.Success;
@@ -125,7 +125,7 @@ namespace DevPodcasts.ServiceLayer.RSS
             if (feed == null)
                 return;
 
-            var episodes = from item in feed.Items
+            var episodes = from item in feed.SyndicationFeed.Items
                 let episodeUrl = GetEpisodeUrl(item)
                 let audioUrl = GetAudioUrl(item)
                 select new EpisodeDto

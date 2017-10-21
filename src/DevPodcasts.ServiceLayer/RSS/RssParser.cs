@@ -1,7 +1,9 @@
 ﻿using DevPodcasts.Logging;
 using System;
+using System.Linq;
 using System.ServiceModel.Syndication;
 using System.Xml;
+using DevPodcasts.Models;
 
 namespace DevPodcasts.ServiceLayer.RSS
 {
@@ -14,7 +16,7 @@ namespace DevPodcasts.ServiceLayer.RSS
             _logger = logger;
         }
 
-        public SyndicationFeed ParseRssFeed(string rssFeedUrl)
+        public RssFeed ParseRssFeed(string rssFeedUrl)
         {
             SyndicationFeed feed;
             try
@@ -28,7 +30,29 @@ namespace DevPodcasts.ServiceLayer.RSS
                 throw;
             }
 
-            return feed;
+            var episodeSummaryLocation = GetEpisodeSummaryLocation(feed);
+
+            var rssFeed = new RssFeed
+            {
+                SyndicationFeed = feed,
+                EpisodeSummaryLocation = episodeSummaryLocation
+            };
+
+            return rssFeed;
+        }
+
+        private EpisodeSummaryLocation GetEpisodeSummaryLocation(SyndicationFeed feed)
+        {
+            if (feed.Items.Any(episode => episode.Summary != null))
+            {
+                return EpisodeSummaryLocation.Summmary;
+            }
+            if (feed.Items.Any(episode => episode.Content != null))
+            {
+                return EpisodeSummaryLocation.Content;
+            }
+
+            return EpisodeSummaryLocation.NotSet;
         }
     }
 }
