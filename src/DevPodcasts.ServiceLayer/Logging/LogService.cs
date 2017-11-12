@@ -12,6 +12,7 @@ namespace DevPodcasts.ServiceLayer.Logging
     public class LogService
     {
         private readonly CloudTable _table;
+        private const int NumberOfRowsToRetrieveFromTableStorage = 500;
 
         public LogService()
         {
@@ -24,17 +25,7 @@ namespace DevPodcasts.ServiceLayer.Logging
 
         public LogsViewModel GetIndexViewModel(int pageIndex, int itemsPerPage, string filter)
         {
-            var query = new TableQuery<LogEntity>();
-
-            if (filter != null)
-            {
-                query = query
-                    .Where(TableQuery.GenerateFilterCondition("Level", QueryComparisons.Equal, filter));
-            }
-
-            var tableQueryResult = _table
-                .ExecuteQuery(query)
-                .ToList();
+            var tableQueryResult = ExecuteTableQuery(filter, NumberOfRowsToRetrieveFromTableStorage);
 
             var logs = tableQueryResult
                 .OrderByDescending(i => i.Timestamp.DateTime)
@@ -57,7 +48,7 @@ namespace DevPodcasts.ServiceLayer.Logging
             return viewModel;
         }
 
-        public IEnumerable<LogItemViewModel> GetLogs(int pageIndex, int itemsPerPage, string filter)
+        private List<LogEntity> ExecuteTableQuery(string filter, int top)
         {
             var query = new TableQuery<LogEntity>();
 
@@ -67,9 +58,16 @@ namespace DevPodcasts.ServiceLayer.Logging
                     .Where(TableQuery.GenerateFilterCondition("Level", QueryComparisons.Equal, filter));
             }
 
-            var tableQueryResult = _table
+            query.Take(top);
+
+            return _table
                 .ExecuteQuery(query)
                 .ToList();
+        }
+
+        public IEnumerable<LogItemViewModel> GetLogs(int pageIndex, int itemsPerPage, string filter)
+        {
+            var tableQueryResult = ExecuteTableQuery(filter, NumberOfRowsToRetrieveFromTableStorage);
 
             return tableQueryResult
                 .OrderByDescending(i => i.Timestamp.DateTime)
