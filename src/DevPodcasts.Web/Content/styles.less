@@ -1,5 +1,5 @@
 ﻿@lightBlue: #78a6ce;
-@darkerBlue: #33658a; 
+@darkerBlue: #33658a;
 @charcoalBlack: #232F3E;
 @lightGrey: #696969;
 @borderRadius: 0;
@@ -64,44 +64,45 @@ h6,
 }
 
 /* Homepage */
-
 .home-container {
     margin-top: 20px;
+
+    .row {
+        margin: 40px 0;
+    }
+
+    .row .lead {
+        text-align: center;
+    }
+
+    h1 {
+        text-align: center;
+        color: @charcoalBlack;
+        font-size: 3em;
+    }
+
+    img {
+        margin: 0 auto;
+        display: block;
+        width: 250px;
+        height: auto;
+    }
 }
 
-.home-container .row {
-    margin: 40px 0;
-}
+.recent-episodes {
+    p {
+        display: inline;
+        font-size: 1.3em;
+    }
 
-.home-container .row .lead {
-    text-align: center;
-}
+    li {
+        margin: 10px 0;
+    }
 
-.home-container h1 {
-    text-align: center;
-    color: @charcoalBlack;
-    font-size: 3em;
-}
-
-.home-container img {
-    margin: 0 auto;
-    display: block;
-    width: 250px;
-    height: auto;
-}
-
-.recent-episodes p {
-    display: inline;
-    font-size: 1.3em;
-}
-
-.recent-episodes li {
-    margin: 10px 0;
-}
-
-.recent-episodes ul {
-    list-style-type: none;
-    padding: 10px;
+    ul {
+        list-style-type: none;
+        padding: 10px;
+    }
 }
 
 .featured-podcast hr {
@@ -110,20 +111,9 @@ h6,
 }
 
 /* Episodes */
-
 .episode-detail-container {
     margin-bottom: 100px;
     margin-top: 50px;
-}
-
-.episode-detail-container p {
-    word-wrap: break-word;
-    word-break: break-word;
-}
-
-.episode-detail-container h1 {
-    word-wrap: break-word;
-    word-break: break-word;
 }
 
 #audio {
@@ -133,38 +123,35 @@ h6,
 
 
 /* Tags */
+.tags-container {
+    p {
+        margin-bottom: 30px;
+    }
 
-.tags-container h2 {
-    margin: 40px 0;
-}
-
-.tags-container p {
-    margin-bottom: 30px;
+    h2 {
+        margin: 40px 0;
+    }
 }
 
 .tags-row {
     margin-bottom: 75px;
 }
 
-.tag-results-container h2 {
-    margin-top: 40px;
-    margin-bottom: 35px;
-}
-
 .tag-results-container {
     margin-bottom: 50px;
+
+    h2 {
+        margin-top: 40px;
+        margin-bottom: 35px;
+    }
 }
 
 /* Podcasts */
-
-.podcasts-container h2 {
-    margin-top: 30px;
-}
-
-.podcasts-container p {
-    word-wrap: break-word;
-    word-break: break-word;
-}
+.podcasts-container {
+    h2 {
+        margin-top: 30px;
+    }
+} 
 
 .podcast-detail-container {
     margin: 1.3em 0;
@@ -173,6 +160,7 @@ h6,
     .col-sm-10, .col-sm-2 {
         padding: 0;
     }
+
     h2 {
         margin-top: 0;
     }
@@ -183,6 +171,7 @@ h6,
     .btn-primary {
         margin-top: 20px;
     }
+
     .btn-danger {
         margin-top: 20px;
     }
@@ -190,28 +179,27 @@ h6,
 
 // .col-sm-10 col-sm-2 breakpoint
 @media (max-width: 770px) {
-
     .podcast-detail-container .col-sm-2 img {
-            margin-top: 1em;
-        }
+        margin-top: 2em;
+    }
 }
 
 .podcast-tag {
-    color: #39739d; 
-    background-color: #E1ECF4; 
-    border-color: transparent; 
-    text-align: center; 
-    padding: .4em .5em; 
-    display: inline-block; 
-    margin: 2px 2px 2px 0; 
-    font-size: 12px; 
+    color: #39739d;
+    background-color: #E1ECF4;
+    border-color: transparent;
+    text-align: center;
+    padding: .4em .5em;
+    display: inline-block;
+    margin: 2px 2px 2px 0;
+    font-size: 12px;
     text-decoration: none !important;
-}
 
-.podcast-tag:hover {
-    color: @darkerBlue;
-    background-color: #cee0ed;
-    border-color: rgba(0,0,0,0);
+    &:hover {
+        color: @darkerBlue;
+        background-color: #cee0ed;
+        border-color: rgba(0,0,0,0);
+    }
 }
 
 @media (max-width:618px) {
@@ -226,16 +214,12 @@ h6,
 }
 
 .button-row {
-    clear: both;    
+    clear: both;
 
     .btn {
         margin: 1.3em 0 0 0;
         padding: 0.4em 0.6em;
-        &:nth-child(1) {
-            margin-left: 15px;
-        }
     }
-
 }
 
 /* Footer */
@@ -341,7 +325,6 @@ textarea {
 }
 
 /* bootstrap overrides */
-
 .form-group {
     margin-bottom: 20px;
 }
@@ -384,19 +367,6 @@ textarea {
     padding: 10px 10px;
 }
 
-.break-long-words {
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    -ms-word-break: break-all;
-    word-break: break-all;
-    word-break: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-    display: block;
-}
-
 .glyphicon-tags {
     font-size: 14px;
     color: @lightGrey;
@@ -405,7 +375,6 @@ textarea {
 .podcast-tags {
     margin-left: 5px;
     display: inline;
-
 }
 
 .tag-text {
@@ -420,5 +389,3 @@ textarea {
     font-size: 0.9em;
     margin-top: 19px;
 }
-
-

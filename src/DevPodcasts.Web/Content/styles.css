@@ -90,42 +90,30 @@ h6,
   margin-bottom: 100px;
   margin-top: 50px;
 }
-.episode-detail-container p {
-  word-wrap: break-word;
-  word-break: break-word;
-}
-.episode-detail-container h1 {
-  word-wrap: break-word;
-  word-break: break-word;
-}
 #audio {
   margin: 0 10px;
   width: 100%;
 }
 /* Tags */
-.tags-container h2 {
-  margin: 40px 0;
-}
 .tags-container p {
   margin-bottom: 30px;
 }
+.tags-container h2 {
+  margin: 40px 0;
+}
 .tags-row {
   margin-bottom: 75px;
+}
+.tag-results-container {
+  margin-bottom: 50px;
 }
 .tag-results-container h2 {
   margin-top: 40px;
   margin-bottom: 35px;
 }
-.tag-results-container {
-  margin-bottom: 50px;
-}
 /* Podcasts */
 .podcasts-container h2 {
   margin-top: 30px;
-}
-.podcasts-container p {
-  word-wrap: break-word;
-  word-break: break-word;
 }
 .podcast-detail-container {
   margin: 1.3em 0;
@@ -146,7 +134,7 @@ h6,
 }
 @media (max-width: 770px) {
   .podcast-detail-container .col-sm-2 img {
-    margin-top: 1em;
+    margin-top: 2em;
   }
 }
 .podcast-tag {
@@ -180,9 +168,6 @@ h6,
 .button-row .btn {
   margin: 1.3em 0 0 0;
   padding: 0.4em 0.6em;
-}
-.button-row .btn:nth-child(1) {
-  margin-left: 15px;
 }
 /* Footer */
 #footer {
@@ -300,18 +285,6 @@ textarea {
 }
 .tag {
   padding: 10px 10px;
-}
-.break-long-words {
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  -ms-word-break: break-all;
-  word-break: break-all;
-  word-break: break-word;
-  -ms-hyphens: auto;
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto;
-  display: block;
 }
 .glyphicon-tags {
   font-size: 14px;
