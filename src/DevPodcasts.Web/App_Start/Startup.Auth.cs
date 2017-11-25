@@ -5,11 +5,14 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
 using DevPodcasts.DataLayer.Models;
+using Microsoft.Owin.Security.DataProtection;
 
 namespace DevPodcasts.Web
 {
     public partial class Startup
     {
+        public static IDataProtectionProvider DataProtectionProvider { get; internal set; }
+
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
