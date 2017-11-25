@@ -128,9 +128,12 @@ h6,
   word-break: break-word;
 }
 .podcast-detail-container {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin: 1.3em 0;
   overflow: auto;
+}
+.podcast-detail-container .col-sm-10,
+.podcast-detail-container .col-sm-2 {
+  padding: 0;
 }
 .podcast-detail-container h2 {
   margin-top: 0;
@@ -140,6 +143,11 @@ h6,
 }
 .edit-podcast-container .btn-danger {
   margin-top: 20px;
+}
+@media (max-width: 770px) {
+  .podcast-detail-container .col-sm-2 img {
+    margin-top: 1em;
+  }
 }
 .podcast-tag {
   color: #39739d;

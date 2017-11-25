@@ -4,6 +4,7 @@ using DevPodcasts.Logging;
 using DevPodcasts.ViewModels.Home;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -147,26 +148,18 @@ namespace DevPodcasts.Repositories
 
         public IEnumerable<RecentEpisode> GetMostRecentEpisodes(int numberOfEpisodes)
         {
-            var recentEpisodes = _context
+            return _context
                 .Episodes
                 .AsNoTracking()
                 .OrderByDescending(i => i.Id)
                 .Take(numberOfEpisodes)
-                .ToList();
-
-            var recentEpisodesList = new List<RecentEpisode>();
-
-            foreach (var episode in recentEpisodes)
-            {
-                recentEpisodesList.Add(new RecentEpisode
+                .Select(x => new RecentEpisode
                 {
-                    Id = episode.Id,
-                    Title = episode.Title,
-                    PodcastTitle = episode.Podcast.Title
-                });
-            }
-
-            return recentEpisodesList;
+                    Id = x.Id,
+                    Title = x.Title,
+                    PodcastTitle = x.Podcast.Title
+                })
+                .ToList();
         }
     }
 }
