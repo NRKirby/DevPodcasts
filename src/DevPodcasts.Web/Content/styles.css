@@ -166,6 +166,16 @@ h6,
 .podcast-img {
   width: 100%;
 }
+.button-row {
+  clear: both;
+}
+.button-row .btn {
+  margin: 1.3em 0 0 0;
+  padding: 0.4em 0.6em;
+}
+.button-row .btn:nth-child(1) {
+  margin-left: 15px;
+}
 /* Footer */
 #footer {
   margin-top: 40px;
@@ -270,8 +280,8 @@ textarea {
 .btn {
   font-size: 17px;
   padding: 7px 20px;
-  -ms-border-radius: 8px;
-  border-radius: 8px;
+  -ms-border-radius: 0;
+  border-radius: 0;
 }
 #log-results {
   margin-bottom: 80px;

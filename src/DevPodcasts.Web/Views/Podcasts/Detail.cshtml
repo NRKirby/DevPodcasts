@@ -6,25 +6,30 @@
 }
 
 <div class="podcast-detail-container">
-
-    <div class="col-sm-10">
-        <h2>@Model.Title</h2>
-        <p><a href="@Model.SiteUrl" rel="noopener noreferrer" target="_blank">@Model.SiteUrl</a></p>
-        <p>@Model.Description</p>
-        <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
-        <span class="tag-text"><strong>Tags: </strong></span>
-        <div class="podcast-tags">
-            @if (Model.Tags != null)
+    <div class="header-row">
+        <div class="col-sm-10">
+            <h2>@Model.Title</h2>
+            <p><a href="@Model.SiteUrl" rel="noopener noreferrer" target="_blank">@Model.SiteUrl</a></p>
+            <p>@Model.Description</p>
+            <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
+            <span class="tag-text"><strong>Tags: </strong></span>
+            <div class="podcast-tags">
+                @if (Model.Tags != null)
             {
                 foreach (var tag in Model.Tags)
                 {
-                    <a href="~/tags/@tag.Slug" class="podcast-tag" title="Podcasts tagged @tag.Name">@tag.Name</a>
+                        <a href="~/tags/@tag.Slug" class="podcast-tag" title="Podcasts tagged @tag.Name">@tag.Name</a>
+                    }
                 }
-            }
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <img class="podcast-img" src="@Model.ImageUrl" />
         </div>
     </div>
-    <div class="col-sm-2">
-        <img class="podcast-img" src="@Model.ImageUrl" />
+    <div class="button-row">
+        <a href="#" class="btn btn-primary" title="Add @Model.Title to Library"><span class="glyphicon glyphicon-plus"></span> Add</a>
+        
     </div>
 </div>
 
