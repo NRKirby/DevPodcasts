@@ -2,6 +2,9 @@
 using DevPodcasts.ServiceLayer.Podcast;
 using DevPodcasts.ServiceLayer.Tag;
 using DevPodcasts.ViewModels.Podcast;
+using DevPodcasts.Web.Features.Library;
+using MediatR;
+using Microsoft.AspNet.Identity;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -11,16 +14,22 @@ namespace DevPodcasts.Web.Controllers
     {
         private readonly PodcastService _podcastService;
         private readonly TagService _tagService;
+        private readonly IMediator _mediator;
 
-        public PodcastsController(PodcastService podcastService, TagService tagService)
+        public PodcastsController(
+            PodcastService podcastService, 
+            TagService tagService,
+            IMediator mediator)
         {
             _tagService = tagService;
             _podcastService = podcastService;
+            _mediator = mediator;
         }
 
         public ActionResult Index(int? page)
         {
             var viewModel = _podcastService.Search();
+
             return View(viewModel);
         }
 
@@ -56,6 +65,7 @@ namespace DevPodcasts.Web.Controllers
                 return RedirectToAction("Index", "Home"); // TODO: redirect to error page
 
             var viewModel = _podcastService.GetPodcastDetail(id);
+            viewModel.UserId = User.Identity.GetUserId();
             return View(viewModel);
         }
 
@@ -82,5 +92,19 @@ namespace DevPodcasts.Web.Controllers
 
             return RedirectToAction("ManagePodcasts", "Admin");
         }
+
+        [HttpPost]
+        public PartialViewResult AddRemove(AjaxModel model)
+        {
+            _mediator.Send(new AddPodcastTo.Command());
+
+            return null;
+        }
+
+        public class AjaxModel
+        {
+            public string UserId { get; set; }
+        }
+
     }
 }

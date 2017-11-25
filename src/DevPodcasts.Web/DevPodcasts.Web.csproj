@@ -221,6 +221,7 @@
     <Compile Include="Controllers\Api\UpdateEpisodesController.cs" />
     <Compile Include="ErrorHandler\AiHandleErrorAttribute.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Features\Library\AddPodcastTo.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -342,7 +343,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Features\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

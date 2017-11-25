@@ -28,27 +28,48 @@
         </div>
     </div>
     <div class="button-row">
-        <a href="#" class="btn btn-primary" title="Add @Model.Title to Library"><span class="glyphicon glyphicon-plus"></span> Add</a>
+        <a href="#" class="btn btn-primary add-remove" title="Add @Model.Title to Library"><span class="glyphicon glyphicon-plus"></span> Add</a>
     </div>
-</div>
 
-<table class="table table-striped" style="margin: 40px 0">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Date Published</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model?.Episodes != null)
+    <table class="table table-striped" style="margin: 40px 0">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date Published</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model?.Episodes != null)
             {
                 foreach (var item in Model.Episodes)
                 {
-                <tr>
-                    <td>@Html.ActionLink(item.Title, "Detail", "Episode", new { id = item.Id }, null)</td>
-                    <td>@item.DatePublished.ToShortUkDate()</td>
-                </tr>
+                    <tr>
+                        <td>@Html.ActionLink(item.Title, "Detail", "Episode", new { id = item.Id }, null)</td>
+                        <td>@item.DatePublished.ToShortUkDate()</td>
+                    </tr>
+                }
             }
-        }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.add-remove').on('click', function () {
+
+            var data = {
+                UserId: '@Model.UserId'
+            }
+
+            $.ajax({
+                url: "/Podcasts/AddRemove",
+                method: "POST",
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                success: function () {
+                }
+            });
+        })
+    })
+    
+</script>

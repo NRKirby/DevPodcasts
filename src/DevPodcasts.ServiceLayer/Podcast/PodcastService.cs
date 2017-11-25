@@ -60,13 +60,6 @@ namespace DevPodcasts.ServiceLayer.Podcast
             return viewModel;
         }
 
-        public PodcastIndexViewModel GetPodcasts(int? page = 0)
-        {
-            //var 
-
-            return null;
-        }
-
         public PodcastIndexViewModel Search(string query = null)
         {
             var viewModel = new PodcastIndexViewModel

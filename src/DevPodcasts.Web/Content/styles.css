@@ -116,7 +116,7 @@ h6,
   margin-top: 30px;
 }
 .podcast-detail-container {
-  margin: 1.3em 0;
+  padding: 2em 0;
   overflow: auto;
 }
 .podcast-detail-container .col-sm-10,
