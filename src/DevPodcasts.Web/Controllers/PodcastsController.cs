@@ -5,6 +5,7 @@ using DevPodcasts.ViewModels.Podcast;
 using DevPodcasts.Web.Features.Library;
 using MediatR;
 using Microsoft.AspNet.Identity;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -94,16 +95,11 @@ namespace DevPodcasts.Web.Controllers
         }
 
         [HttpPost]
-        public PartialViewResult AddRemove(AjaxModel model)
+        public async Task<ActionResult> AddRemove(AddRemoveModel model)
         {
-            _mediator.Send(new AddPodcastTo.Command());
+            var viewModel = await _mediator.Send(new AddOrRemovePodcast.Command { UserId = model.U, PodcastId = model.P } );
 
             return null;
-        }
-
-        public class AjaxModel
-        {
-            public string UserId { get; set; }
         }
 
     }

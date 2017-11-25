@@ -58,7 +58,8 @@
         $('.add-remove').on('click', function () {
 
             var data = {
-                UserId: '@Model.UserId'
+                u: '@Model.UserId',
+                p: '@Model.Id'
             }
 
             $.ajax({
