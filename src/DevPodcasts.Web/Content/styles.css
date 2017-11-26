@@ -169,6 +169,15 @@ h6,
   margin: 1.3em 0 0 0;
   padding: 0.4em 0.6em;
 }
+.button-row .btn span.glyphicon:before {
+  padding-right: 0.3em;
+}
+.button-row .btn .glyphicon-ok:before {
+  /*color: green;*/
+}
+.button-row button {
+  min-width: 62.328px;
+}
 /* Footer */
 #footer {
   margin-top: 40px;
