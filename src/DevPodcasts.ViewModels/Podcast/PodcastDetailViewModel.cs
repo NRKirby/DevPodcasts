@@ -14,5 +14,6 @@ namespace DevPodcasts.ViewModels.Podcast
         public IEnumerable<EpisodeViewModel> Episodes { get; set; }
         public IEnumerable<TagViewModel> Tags { get; set; }
         public string UserId { get; set; }
+        public bool IsSubscribed { get; set; }
     }
 }

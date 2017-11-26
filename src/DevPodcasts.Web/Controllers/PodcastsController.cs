@@ -3,6 +3,7 @@ using DevPodcasts.ServiceLayer.Podcast;
 using DevPodcasts.ServiceLayer.Tag;
 using DevPodcasts.ViewModels.Podcast;
 using DevPodcasts.Web.Features.Library;
+using DevPodcasts.Web.Features.Podcast;
 using MediatR;
 using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
@@ -59,14 +60,15 @@ namespace DevPodcasts.Web.Controllers
             return View(result);
         }
 
-        public ActionResult Detail(int id)
+        public async Task<ActionResult> Detail(int id)
         {
             var podcastExists = _podcastService.PodcastExists(id);
             if (!podcastExists)
                 return RedirectToAction("Index", "Home"); // TODO: redirect to error page
 
-            var viewModel = _podcastService.GetPodcastDetail(id);
-            viewModel.UserId = User.Identity.GetUserId();
+            var userId = User.Identity.GetUserId();
+            var viewModel = await _mediator.Send(new Detail.Query { PodcastId = id, UserId = userId });
+
             return View(viewModel);
         }
 

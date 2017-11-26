@@ -223,6 +223,7 @@
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Features\Library\AddOrRemovePodcast.cs" />
     <Compile Include="Features\Library\AddRemoveModel.cs" />
+    <Compile Include="Features\Podcast\Detail.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
