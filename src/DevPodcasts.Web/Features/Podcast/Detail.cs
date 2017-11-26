@@ -3,6 +3,8 @@ using DevPodcasts.ViewModels.Episode;
 using DevPodcasts.ViewModels.Podcast;
 using DevPodcasts.ViewModels.Tags;
 using MediatR;
+using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -32,19 +34,44 @@ namespace DevPodcasts.Web.Features.Podcast
                 var userId = message.UserId;
                 var podcast = await _context.Podcasts.SingleOrDefaultAsync(p => p.Id == podcastId);
                 var isSubscribed = _context.Users.Single(u => u.Id == userId).SubscribedPodcasts.Any(p => p.Id == podcastId);
+                var episodes = await _context.Episodes
+                    .AsNoTracking()
+                    .Where(episode => episode.PodcastId == podcastId)
+                    .OrderByDescending(episode => episode.DatePublished)
+                    .Select(episode => new { episode.Id, episode.Title, episode.DatePublished })
+                    .ToListAsync();
 
-                return new PodcastDetailViewModel
+                var viewModel = new PodcastDetailViewModel
                 {
                     Id = podcast.Id,
                     Title = podcast.Title,
                     Description = podcast.Description,
                     SiteUrl = podcast.SiteUrl,
                     ImageUrl = podcast.ImageUrl,
-                    Tags = podcast.Tags.Select(tag => new TagViewModel { Name = tag.Name, Slug = tag.Slug }),
+                    Tags = podcast.Tags
+                        .Select(tag => new TagViewModel { Name = tag.Name, Slug = tag.Slug }),
                     IsSubscribed = isSubscribed,
                     UserId = userId,
-                    Episodes = podcast.Episodes.OrderByDescending(episode => episode.DatePublished).Select(episode => new EpisodeViewModel { Id = episode.Id, Title = episode.Title }) // TODO: DatePublished
                 };
+
+                var episodeList = new List<EpisodeViewModel>();
+                foreach (var episode in episodes)
+                {
+                    var episodeViewModel = new EpisodeViewModel
+                    {
+                        Id = episode.Id,
+                        Title = episode.Title
+                    };
+
+                    if (episode.DatePublished != null)
+                        episodeViewModel.DatePublished = (DateTime)episode.DatePublished;
+
+                    episodeList.Add(episodeViewModel);
+                }
+
+                viewModel.Episodes = episodeList;
+
+                return viewModel;
             }
         }
     }
