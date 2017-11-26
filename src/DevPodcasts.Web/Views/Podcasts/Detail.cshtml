@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = Model.Title;
     ViewBag.MetaDescriptionText = Model.Description;
+    var isSubscribed = Model.IsSubscribed;
 }
 
 <div class="podcast-detail-container">
@@ -28,7 +29,14 @@
         </div>
     </div>
     <div class="button-row">
-        <a href="#" class="btn btn-primary add-remove" title="Add @Model.Title to Library"><span class="glyphicon glyphicon-plus"></span> Add</a>
+        @if (isSubscribed)
+        {
+            <button class="btn btn-primary add-remove" title="Add to Library"><span class="glyphicon glyphicon-ok">Added</span></button>
+        }
+        else
+        {
+            <button class="btn btn-primary add-remove" title="Remove from Library"><span class="glyphicon glyphicon-plus">Add</span></button>    
+        }
     </div>
 
     <table class="table table-striped" style="margin: 40px 0">
@@ -72,5 +80,5 @@
             });
         })
     })
-    
+
 </script>
