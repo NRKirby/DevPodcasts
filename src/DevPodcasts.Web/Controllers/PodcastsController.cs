@@ -101,7 +101,7 @@ namespace DevPodcasts.Web.Controllers
         {
             var viewModel = await _mediator.Send(new AddOrRemovePodcast.Command { UserId = model.U, PodcastId = model.P } );
 
-            return null;
+            return Json(viewModel);
         }
 
     }

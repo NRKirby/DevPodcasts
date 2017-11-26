@@ -29,14 +29,13 @@
         </div>
     </div>
     <div class="button-row">
-        @if (isSubscribed)
-        {
-            <button class="btn btn-primary add-remove" title="Add to Library"><span class="glyphicon glyphicon-ok">Added</span></button>
+        @{
+            var addedDisplay = isSubscribed ? "inline-block" : "none";
+            var addDisplay = isSubscribed ? "none" : "inline-block";
         }
-        else
-        {
-            <button class="btn btn-primary add-remove" title="Remove from Library"><span class="glyphicon glyphicon-plus">Add</span></button>    
-        }
+
+        <button class="btn btn-primary add-remove" id="remove-from-libary" title="Remove from Library" style="display: @addedDisplay"><span class="glyphicon glyphicon-ok">Added</span></button>
+        <button class="btn btn-primary add-remove" id="add-to-libary" title="Add to Library" style="display: @addDisplay"><span class="glyphicon glyphicon-plus">Add</span></button>
     </div>
 
     <table class="table table-striped" style="margin: 40px 0">
@@ -72,10 +71,12 @@
 
             $.ajax({
                 url: "/Podcasts/AddRemove",
-                method: "POST",
+                type: "POST",
                 data: JSON.stringify(data),
-                contentType: 'application/json',
-                success: function () {
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    console.log(response);
                 }
             });
         })

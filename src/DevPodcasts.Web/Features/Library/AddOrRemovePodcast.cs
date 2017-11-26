@@ -43,10 +43,12 @@ namespace DevPodcasts.Web.Features.Library
                 if (userIsSubscribed)
                 {
                     user.SubscribedPodcasts.Remove(podcast);
+                    model.IsAdded = false;
                 }
                 else
                 {
                     user.SubscribedPodcasts.Add(podcast);
+                    model.IsAdded = true;
                 }
 
                 model.IsSuccess = true;
