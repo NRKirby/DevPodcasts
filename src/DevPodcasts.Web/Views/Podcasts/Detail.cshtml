@@ -3,7 +3,6 @@
 @{
     ViewBag.Title = Model.Title;
     ViewBag.MetaDescriptionText = Model.Description;
-    var isSubscribed = Model.IsSubscribed;
 }
 
 <div class="podcast-detail-container">
@@ -30,13 +29,13 @@
     </div>
     <div class="button-row">
         @{
-            var addedDisplay = isSubscribed ? "inline-block" : "none";
-            var addDisplay = isSubscribed ? "none" : "inline-block";
+            var isSubscribed = Model.IsSubscribed;
         }
-
-        <button class="btn btn-primary add-remove" id="remove-from-libary" title="Remove from Library" style="display: @addedDisplay"><span class="glyphicon glyphicon-ok">Added</span></button>
-        <button class="btn btn-primary add-remove" id="add-to-libary" title="Add to Library" style="display: @addDisplay"><span class="glyphicon glyphicon-plus">Add</span></button>
     </div>
+    <ul class="button-row">
+        <li id="remove-from-libary" title="Remove from Library" @(isSubscribed ? "style=display:inline-block" : "style=display:none")><span class="glyphicon glyphicon-ok">Added</span></li>
+        <li id="add-to-libary" title="Add to Library" @(isSubscribed ? "style=display:none" : "style=display:inline-block")><span class="glyphicon glyphicon-plus">Add</span></li>
+    </ul>
 
     <table class="table table-striped" style="margin: 40px 0">
         <thead>
