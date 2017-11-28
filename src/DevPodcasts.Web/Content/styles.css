@@ -181,7 +181,8 @@ h6,
 /* Footer */
 #footer {
   margin-top: 40px;
-  padding: 40px 0;
+  padding-top: 40px;
+  padding-bottom: 1em;
   background-color: #232F3E;
   color: azure;
 }
@@ -313,4 +314,15 @@ textarea {
   display: block;
   font-size: 0.9em;
   margin-top: 19px;
+}
+.nrkirby {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 2em;
+  padding-bottom: 0.4em;
+}
+.nrkirby a {
+  text-decoration: none;
+  color: #FFD700;
 }
