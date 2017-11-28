@@ -328,12 +328,9 @@ textarea {
   margin: 0 auto;
   text-align: center;
   padding-top: 2em;
-  padding-bottom: 0.1em;
+  padding-bottom: 0.4em;
 }
 .nrkirby a {
   text-decoration: none;
-  color: #ffd700;
-}
-.nrkirby a:hover {
-  /*color: #d4af37;*/
+  color: #FFD700;
 }
