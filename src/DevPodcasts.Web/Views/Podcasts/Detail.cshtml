@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = Model.Title;
     ViewBag.MetaDescriptionText = Model.Description;
+    var isSubscribed = Model.IsSubscribed;
 }
 
 <div class="podcast-detail-container">
@@ -15,9 +16,9 @@
             <span class="tag-text"><strong>Tags: </strong></span>
             <div class="podcast-tags">
                 @if (Model.Tags != null)
-            {
-                foreach (var tag in Model.Tags)
                 {
+                    foreach (var tag in Model.Tags)
+                    {
                         <a href="~/tags/@tag.Slug" class="podcast-tag" title="Podcasts tagged @tag.Name">@tag.Name</a>
                     }
                 }
@@ -27,14 +28,9 @@
             <img class="podcast-img" src="@Model.ImageUrl" />
         </div>
     </div>
-    <div class="button-row">
-        @{
-            var isSubscribed = Model.IsSubscribed;
-        }
-    </div>
     <ul class="button-row">
-        <li id="remove-from-libary" title="Remove from Library" @(isSubscribed ? "style=display:inline-block" : "style=display:none")><span class="glyphicon glyphicon-ok">Added</span></li>
-        <li id="add-to-libary" title="Add to Library" @(isSubscribed ? "style=display:none" : "style=display:inline-block")><span class="glyphicon glyphicon-plus">Add</span></li>
+        <li id="remove-from-libary" class="add-remove" title="Remove from Library" @(isSubscribed ? "style=display:inline-block" : "style=display:none")><span class="glyphicon glyphicon-ok">Added</span></li>
+        <li id="add-to-libary" class="add-remove" title="Add to Library" @(isSubscribed ? "style=display:none" : "style=display:inline-block")><span class="glyphicon glyphicon-plus">Add</span></li>
     </ul>
 
     <table class="table table-striped" style="margin: 40px 0">

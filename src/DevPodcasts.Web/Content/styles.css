@@ -164,19 +164,21 @@ h6,
 }
 .button-row {
   clear: both;
+  padding-left: 0;
 }
-.button-row .btn {
-  margin: 1.3em 0 0 0;
-  padding: 0.4em 0.6em;
+.button-row li {
+  margin: 10px 0 0 0;
+  /*padding: 0.4em 0.6em;*/
 }
-.button-row .btn span.glyphicon:before {
+.button-row li span.glyphicon:before {
   padding-right: 0.3em;
 }
-.button-row .btn .glyphicon-ok:before {
+.button-row li .glyphicon-ok:before {
   /*color: green;*/
 }
-.button-row button {
-  min-width: 62.328px;
+.button-row span:hover {
+  color: #33658a;
+  cursor: pointer;
 }
 /* Footer */
 #footer {

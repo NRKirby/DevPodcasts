@@ -3,6 +3,7 @@
 @charcoalBlack: #232F3E;
 @lightGrey: #696969;
 @borderRadius: 0;
+@fontFamily: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 .navbar-inverse {
     background-color: @lightBlue;
@@ -60,7 +61,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-    font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: @fontFamily;
 }
 
 /* Homepage */
@@ -215,10 +216,11 @@ h6,
 
 .button-row {
     clear: both;
+    padding-left: 0;
 
-    .btn {
-        margin: 1.3em 0 0 0;
-        padding: 0.4em 0.6em;
+    li {
+        margin: 10px 0 0 0;
+        /*padding: 0.4em 0.6em;*/
 
         span.glyphicon:before {
             padding-right: 0.3em;
@@ -229,8 +231,9 @@ h6,
         }
     }
 
-    button {
-        min-width: 62.328px;
+    span:hover {
+        color: @darkerBlue;
+        cursor: pointer;
     }
 }
 
