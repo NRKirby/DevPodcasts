@@ -177,7 +177,8 @@ h6,
 /* Footer */
 #footer {
   margin-top: 40px;
-  padding: 40px 0;
+  padding-top: 40px;
+  padding-bottom: 1em;
   background-color: #232F3E;
   color: azure;
 }
@@ -327,12 +328,12 @@ textarea {
   margin: 0 auto;
   text-align: center;
   padding-top: 2em;
-  padding-bottom: 0.5em;
+  padding-bottom: 0.1em;
 }
 .nrkirby a {
   text-decoration: none;
   color: #ffd700;
 }
 .nrkirby a:hover {
-  color: #d4af37;
+  /*color: #d4af37;*/
 }
