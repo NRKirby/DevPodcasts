@@ -2,6 +2,8 @@
 @darkerBlue: #33658a; 
 @charcoalBlack: #232F3E;
 @lightGrey: #696969;
+@inputBorderRadius: 3px;
+@buttonBorderRadius: 0;
 
 .navbar-inverse {
     background-color: @lightBlue;
@@ -9,7 +11,9 @@
     margin-bottom: 20px;
 }
 
-.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+.navbar-inverse .navbar-nav > .open > a, 
+.navbar-inverse .navbar-nav > .open > a:hover, 
+.navbar-inverse .navbar-nav > .open > a:focus {
     background-color: @lightBlue;
     margin-bottom: 20px;
 }
@@ -336,8 +340,8 @@ textarea {
 .form-control {
     font-size: 17px;
     padding: 20px 15px;
-    -ms-border-radius: 8px;
-    border-radius: 8px;
+    -ms-border-radius: @inputBorderRadius;
+    border-radius: @inputBorderRadius;
 }
 
 .form-control:focus {
@@ -346,16 +350,16 @@ textarea {
 
 .search-btn {
     font-size: 18px;
-    -ms-border-radius: 8px;
-    border-radius: 8px;
+    -ms-border-radius: @buttonBorderRadius;
+    border-radius: @buttonBorderRadius;
     height: 42px
 }
 
 .btn {
     font-size: 17px;
     padding: 7px 20px;
-    -ms-border-radius: 8px;
-    border-radius: 8px;
+    -ms-border-radius: @buttonBorderRadius;
+    border-radius: @buttonBorderRadius;
 }
 
 #log-results {
@@ -423,8 +427,21 @@ textarea {
 
 /* Login */
 #login-container {
+    padding: 0.2em 0.2em;
+
     h2, h4 {
         text-align: center;
+    }
+
+    .form-control {
+        width: 100%;
+    }
+
+    input.form-control {
+        max-width: 100%;
+        margin: 2em 0;
+        /*border-radius: 0;*/
+        height: 3em;
     }
 }
 

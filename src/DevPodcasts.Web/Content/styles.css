@@ -264,23 +264,23 @@ textarea {
 .form-control {
   font-size: 17px;
   padding: 20px 15px;
-  -ms-border-radius: 8px;
-  border-radius: 8px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
 }
 .form-control:focus {
   box-shadow: none;
 }
 .search-btn {
   font-size: 18px;
-  -ms-border-radius: 8px;
-  border-radius: 8px;
+  -ms-border-radius: 0;
+  border-radius: 0;
   height: 42px;
 }
 .btn {
   font-size: 17px;
   padding: 7px 20px;
-  -ms-border-radius: 8px;
-  border-radius: 8px;
+  -ms-border-radius: 0;
+  border-radius: 0;
 }
 #log-results {
   margin-bottom: 80px;
@@ -335,9 +335,21 @@ textarea {
   color: #FFD700;
 }
 /* Login */
+#login-container {
+  padding: 0.2em 0.2em;
+}
 #login-container h2,
 #login-container h4 {
   text-align: center;
+}
+#login-container .form-control {
+  width: 100%;
+}
+#login-container input.form-control {
+  max-width: 100%;
+  margin: 2em 0;
+  /*border-radius: 0;*/
+  height: 3em;
 }
 /* Bootstrap Navbar collapse */
 @media (max-width: 991px) {
