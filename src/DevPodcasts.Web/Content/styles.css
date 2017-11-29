@@ -334,6 +334,11 @@ textarea {
   text-decoration: none;
   color: #FFD700;
 }
+/* Login */
+#login-container h2,
+#login-container h4 {
+  text-align: center;
+}
 /* Bootstrap Navbar collapse */
 @media (max-width: 991px) {
   .navbar-header {
