@@ -198,24 +198,19 @@ h6,
 #footer .footer-a {
   color: azure;
 }
-/* Set padding to keep content from hitting the edges */
 .body-content {
   padding-left: 15px;
   padding-right: 15px;
+  min-height: 633px;
 }
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
 .dl-horizontal dt {
   white-space: normal;
 }
-/* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
   max-width: 280px;
 }
-/* font awesome styling */
 .fa-check {
   color: chartreuse;
 }
@@ -257,7 +252,6 @@ textarea {
   position: relative;
   left: 10px;
 }
-/* bootstrap overrides */
 .form-group {
   margin-bottom: 20px;
 }
@@ -348,7 +342,6 @@ textarea {
 #login-container input.form-control {
   max-width: 100%;
   margin: 2em 0;
-  /*border-radius: 0;*/
   height: 3em;
 }
 /* Bootstrap Navbar collapse */
