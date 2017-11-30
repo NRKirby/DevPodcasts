@@ -12,7 +12,6 @@
                 {
                     @Html.AntiForgeryToken()
                     <h2>@ViewBag.Title</h2>
-                    <h4>Use a local account to log in.</h4>
                     @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
                     @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                     @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
