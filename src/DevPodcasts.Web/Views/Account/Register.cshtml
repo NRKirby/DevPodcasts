@@ -15,10 +15,12 @@
                     @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "First name" })
                     @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
                 </div>
+                
                 <div class="col-xs-12 col-sm-6" style="padding-right: 0">
                     @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Last name" })
                     @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
                 </div>
+                
                 @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
 
