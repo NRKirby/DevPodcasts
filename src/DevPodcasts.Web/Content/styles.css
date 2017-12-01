@@ -327,29 +327,29 @@ textarea {
   text-decoration: none;
   color: #FFD700;
 }
-/* Login */
-#login-container {
+/* Account */
+.account {
   padding: 0.2em 0.2em;
   margin-top: 20px;
   margin-top: 10vh;
 }
-#login-container h2 {
+.account h2 {
   text-align: left;
 }
-#login-container .form-control {
+.account .form-control {
   width: 100%;
 }
-#login-container input.form-control {
+.account input.form-control {
   max-width: 100%;
   margin: 2em 0;
   height: 3em;
 }
-#login-container input[type="submit"].btn.btn-primary {
+.account input[type="submit"].btn.btn-primary {
   display: block;
   margin: 1.2em 0;
   text-transform: uppercase;
 }
-#login-container #RememberMe {
+.account #RememberMe {
   margin-right: 0.5em;
 }
 /* Bootstrap Navbar collapse */

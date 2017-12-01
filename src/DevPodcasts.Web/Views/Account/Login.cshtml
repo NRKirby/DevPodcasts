@@ -4,7 +4,7 @@
     ViewBag.Title = "Login";
 }
 
-<div id="login-container">
+<div class="account">
     <div class="row">
         <div class="col-xs-12 col-md-6 col-md-offset-3">
             <section id="loginForm">
@@ -12,10 +12,13 @@
                 {
                     @Html.AntiForgeryToken()
                     <h2>@ViewBag.Title</h2>
+                    
                     @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
                     @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    
                     @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
                     @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+
                     @Html.CheckBoxFor(m => m.RememberMe)
                     @Html.LabelFor(m => m.RememberMe)
                     <input type="submit" value="Log in" class="btn btn-primary" />
