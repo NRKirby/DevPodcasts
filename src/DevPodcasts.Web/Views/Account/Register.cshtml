@@ -28,7 +28,9 @@
                 @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm password" })
                 @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
 
-                <button type="submit" class="btn btn-primary">Register</button>
+                <input type="submit" value="Register" class="btn btn-primary" />
+
+                <p> Already registered? @Html.ActionLink("Login", "Login") </p>
             }
         </div>
     </div>
