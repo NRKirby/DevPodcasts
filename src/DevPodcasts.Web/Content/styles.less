@@ -260,7 +260,6 @@ h6,
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-    min-height: 633px;
 }
 
 .dl-horizontal dt {
@@ -423,8 +422,8 @@ textarea {
     margin-top: 20px;
     margin-top: 10vh;
 
-    h2, h4 {
-        text-align: center;
+    h2 {
+        text-align: left;
     }
 
     .form-control {
@@ -439,7 +438,7 @@ textarea {
 
     input[type="submit"].btn.btn-primary {
         display: block;
-        margin-top: 1.2em;
+        margin: 1.2em 0;
         text-transform: uppercase;
     }
 
@@ -495,4 +494,27 @@ textarea {
     }
 }
 /* Bootstrap Navbar collapse end */
+
+/* iPhone 6 */
+@media (min-width: 320px) {
+
+}
+
+/* iPad */
+@media (min-width: 641px) {
+
+    .body-content {
+        min-height: 670px;
+    }
+}
+
+/* Desktop */
+@media (min-width: 961px) {
+
+    .body-content {
+        min-height: 678px;
+    }
+}
+
+
 

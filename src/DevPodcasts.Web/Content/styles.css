@@ -201,7 +201,6 @@ h6,
 .body-content {
   padding-left: 15px;
   padding-right: 15px;
-  min-height: 633px;
 }
 .dl-horizontal dt {
   white-space: normal;
@@ -334,9 +333,8 @@ textarea {
   margin-top: 20px;
   margin-top: 10vh;
 }
-#login-container h2,
-#login-container h4 {
-  text-align: center;
+#login-container h2 {
+  text-align: left;
 }
 #login-container .form-control {
   width: 100%;
@@ -348,7 +346,7 @@ textarea {
 }
 #login-container input[type="submit"].btn.btn-primary {
   display: block;
-  margin-top: 1.2em;
+  margin: 1.2em 0;
   text-transform: uppercase;
 }
 #login-container #RememberMe {
@@ -392,3 +390,16 @@ textarea {
   }
 }
 /* Bootstrap Navbar collapse end */
+/* iPhone 6 */
+/* iPad */
+@media (min-width: 641px) {
+  .body-content {
+    min-height: 670px;
+  }
+}
+/* Desktop */
+@media (min-width: 961px) {
+  .body-content {
+    min-height: 678px;
+  }
+}
