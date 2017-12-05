@@ -352,6 +352,11 @@ textarea {
 .account #RememberMe {
   margin-right: 0.5em;
 }
+@media (max-width: 767px) {
+  .account #register-last-name {
+    padding-left: 0;
+  }
+}
 /* Bootstrap Navbar collapse */
 @media (max-width: 991px) {
   .navbar-header {
