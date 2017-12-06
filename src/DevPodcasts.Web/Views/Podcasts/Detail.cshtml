@@ -29,8 +29,8 @@
         </div>
     </div>
     <ul class="button-row">
-        <li id="remove-from-libary" class="add-remove" title="Remove from Library" @(isSubscribed ? "style=display:inline-block" : "style=display:none")><span class="glyphicon glyphicon-ok">Added</span></li>
-        <li id="add-to-libary" class="add-remove" title="Add to Library" @(isSubscribed ? "style=display:none" : "style=display:inline-block")><span class="glyphicon glyphicon-plus">Add</span></li>
+        <button class="btn btn-primary add-remove" id="remove-from-libary" title="Remove from Library" @(isSubscribed ? "style=display:inline-block" : "style=display:none")><span class="glyphicon glyphicon-ok"></span>Added</button>
+        <button class="btn btn-primary add-remove" id="add-to-libary" title="Add to Library" @(isSubscribed ? "style=display:none" : "style=display:inline-block")><span class="glyphicon glyphicon-plus"></span>Add</button>
     </ul>
 
     <table class="table table-striped" style="margin: 40px 0">

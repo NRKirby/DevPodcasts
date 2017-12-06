@@ -132,6 +132,12 @@ h6,
 .edit-podcast-container .btn-danger {
   margin-top: 20px;
 }
+.button-row .glyphicon {
+  padding-right: 0.5em;
+}
+.button-row button {
+  padding: 0.4em 0.6em;
+}
 @media (max-width: 770px) {
   .podcast-detail-container .col-sm-2 img {
     margin-top: 2em;
