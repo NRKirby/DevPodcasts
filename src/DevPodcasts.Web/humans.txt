@@ -1,4 +1,7 @@
-﻿/* PROJECT */
+﻿# humanstxt.org/
+# The humans responsible & technology colophon
+
+/* PROJECT */
 
 	Site Name:   Dev Podcasts
 	Site URL:    https://devpodcasts.net
