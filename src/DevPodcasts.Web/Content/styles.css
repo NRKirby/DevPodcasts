@@ -204,24 +204,18 @@ h6,
 #footer .footer-a {
   color: azure;
 }
-/* Set padding to keep content from hitting the edges */
 .body-content {
   padding-left: 15px;
   padding-right: 15px;
 }
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
 .dl-horizontal dt {
   white-space: normal;
 }
-/* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
   max-width: 280px;
 }
-/* font awesome styling */
 .fa-check {
   color: chartreuse;
 }
@@ -263,15 +257,14 @@ textarea {
   position: relative;
   left: 10px;
 }
-/* bootstrap overrides */
 .form-group {
   margin-bottom: 20px;
 }
 .form-control {
   font-size: 17px;
   padding: 20px 15px;
-  -ms-border-radius: 0;
-  border-radius: 0;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
 }
 .form-control:focus {
   box-shadow: none;
@@ -327,4 +320,80 @@ textarea {
 .nrkirby a {
   text-decoration: none;
   color: #FFD700;
+}
+/* Account */
+.account {
+  padding: 0.2em 0.2em;
+  margin-top: 20px;
+  margin-top: 10vh;
+}
+.account h2 {
+  text-align: left;
+}
+.account .form-control {
+  width: 100%;
+}
+.account input.form-control {
+  max-width: 100%;
+  margin: 2em 0;
+  height: 3em;
+}
+.account input[type="submit"].btn.btn-primary {
+  display: block;
+  margin: 1.2em 0;
+  text-transform: uppercase;
+}
+.account #RememberMe {
+  margin-right: 0.5em;
+}
+/* Bootstrap Navbar collapse */
+@media (max-width: 991px) {
+  .navbar-header {
+    float: none;
+  }
+  .navbar-left {
+    float: none !important;
+  }
+  .navbar-toggle {
+    display: block;
+  }
+  .navbar-collapse {
+    border-top: 1px solid transparent;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  .navbar-fixed-top {
+    top: 0;
+    border-width: 0 0 1px;
+  }
+  .navbar-collapse.collapse {
+    display: none !important;
+  }
+  .navbar-nav {
+    float: none !important;
+    margin-top: 7.5px;
+  }
+  .navbar-nav > li {
+    float: none;
+  }
+  .navbar-nav > li > a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .collapse.in {
+    display: block !important;
+  }
+}
+/* Bootstrap Navbar collapse end */
+/* iPhone 6 */
+/* iPad */
+@media (min-width: 641px) {
+  .body-content {
+    min-height: 670px;
+  }
+}
+/* Desktop */
+@media (min-width: 961px) {
+  .body-content {
+    min-height: 678px;
+  }
 }
