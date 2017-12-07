@@ -28,12 +28,12 @@
             <img class="podcast-img" src="@Model.ImageUrl" />
         </div>
     </div>
-    <ul class="button-row">
+    <div class="button-row">
         <button class="btn btn-primary add-remove" id="remove-from-libary" title="Remove from Library" @(isSubscribed ? "style=display:inline-block" : "style=display:none")><span class="glyphicon glyphicon-ok"></span>Added</button>
         <button class="btn btn-primary add-remove" id="add-to-libary" title="Add to Library" @(isSubscribed ? "style=display:none" : "style=display:inline-block")><span class="glyphicon glyphicon-plus"></span>Add</button>
-    </ul>
+    </div>
 
-    <table class="table table-striped" style="margin: 40px 0">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Title</th>

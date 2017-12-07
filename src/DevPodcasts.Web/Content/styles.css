@@ -183,7 +183,6 @@ h6,
   /*color: green;*/
 }
 .button-row span:hover {
-  color: #33658a;
   cursor: pointer;
 }
 /* Footer */
@@ -391,6 +390,17 @@ textarea {
 }
 /* Bootstrap Navbar collapse end */
 /* iPhone 6 */
+@media only screen and (min-device-width: 375px) {
+  .podcast-detail-container table.table {
+    margin-top: 0;
+  }
+  .button-row {
+    height: 90px;
+  }
+  .button-row button.btn {
+    margin-top: 25px;
+  }
+}
 /* iPad */
 @media (min-width: 641px) {
   .body-content {

@@ -12,8 +12,8 @@
     margin-bottom: 20px;
 }
 
-.navbar-inverse .navbar-nav > .open > a, 
-.navbar-inverse .navbar-nav > .open > a:hover, 
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
 .navbar-inverse .navbar-nav > .open > a:focus {
     background-color: @lightBlue;
     margin-bottom: 20px;
@@ -235,7 +235,6 @@ h6,
     li {
         margin: 10px 0 0 0;
         /*padding: 0.4em 0.6em;*/
-
         span.glyphicon:before {
             padding-right: 0.3em;
         }
@@ -246,7 +245,6 @@ h6,
     }
 
     span:hover {
-        color: @darkerBlue;
         cursor: pointer;
     }
 }
@@ -455,8 +453,6 @@ textarea {
     #RememberMe {
         margin-right: 0.5em;
     }
-
-
 }
 
 /* Bootstrap Navbar collapse */
@@ -508,8 +504,21 @@ textarea {
 /* Bootstrap Navbar collapse end */
 
 /* iPhone 6 */
-@media (min-width: 320px) {
+@media only screen and (min-device-width : 375px) {
 
+    .podcast-detail-container  {
+        table.table {
+            margin-top: 0;
+        }
+    }
+
+    .button-row {
+        height: 90px;
+
+        button.btn {
+            margin-top: 25px;
+        }
+    }
 }
 
 /* iPad */
@@ -527,6 +536,3 @@ textarea {
         min-height: 678px;
     }
 }
-
-
-
