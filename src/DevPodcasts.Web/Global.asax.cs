@@ -55,9 +55,9 @@ namespace DevPodcasts.Web
 
         private static void CreateRolesIfNotPresentInDatabase()
         {
-            var createRoles = ConfigurationManager.AppSettings["CreateRoles"];
+            var createRoles = bool.Parse(ConfigurationManager.AppSettings["CreateRoles"]);
 
-            if (createRoles.ToLower().Equals("true"))
+            if (createRoles)
             {
                 var context = new ApplicationDbContext();
                 var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
@@ -81,7 +81,7 @@ namespace DevPodcasts.Web
             };
         }
 
-        private void RegisterComponents()
+        private static void RegisterComponents()
         {
             var builder = new ContainerBuilder();
             builder.RegisterControllers(typeof(MvcApplication).Assembly);

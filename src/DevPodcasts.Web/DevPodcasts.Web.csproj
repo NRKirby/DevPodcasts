@@ -188,6 +188,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\EpisodeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LibraryController.cs" />
     <Compile Include="Controllers\LogsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PodcastsController.cs" />
@@ -197,6 +198,7 @@
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Features\Library\AddOrRemovePodcast.cs" />
     <Compile Include="Features\Library\AddRemoveModel.cs" />
+    <Compile Include="Features\Library\Index\List.cs" />
     <Compile Include="Features\Podcast\Detail.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -316,6 +318,7 @@
     <Content Include="Views\Podcasts\Tagged.cshtml" />
     <Content Include="Views\Logs\_LogsPager.cshtml" />
     <Content Include="Views\Shared\_PodcastRows.cshtml" />
+    <Content Include="Views\Library\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

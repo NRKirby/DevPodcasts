@@ -56,32 +56,37 @@
 </div>
 
 <script>
-    $(document).ready(function () {
-        $('.add-remove').on('click', function () {
+    $(document).ready(function() {
+        $('.add-remove').on('click',
+            function() {
 
-            var data = {
-                u: '@Model.UserId',
-                p: '@Model.Id'
-            }
-
-            $.ajax({
-                url: "/Podcasts/AddRemove",
-                type: "POST",
-                data: JSON.stringify(data),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (response) {
-                    console.log(response.IsSuccess);
-                    if (response.IsAdded) {
-                        $('#add-to-libary').hide();
-                        $('#remove-from-libary').show();
-                    } else {
-                        $('#remove-from-libary').hide();
-                        $('#add-to-libary').show();
-                    }
+                var data = {
+                    u: '@Model.UserId',
+                    p: '@Model.Id'
                 }
-            });
-        })
-    })
+
+                $.ajax({
+                    url: "/Podcasts/AddRemove",
+                    type: "POST",
+                    data: JSON.stringify(data),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function(response) {
+                        console.log(response.IsSuccess);
+                        if (response.IsAdded) {
+                            $('#add-to-libary').hide();
+                            $('#remove-from-libary').show();
+                        } else {
+                            $('#remove-from-libary').hide();
+                            $('#add-to-libary').show();
+                        }
+                    }
+                });
+            })
+
+        $('#remove-from-libary').mouseover(function() {
+            // change text to remove
+        });
+    });
 
 </script>
