@@ -15,7 +15,15 @@ namespace DevPodcasts.Web.Controllers
             _mediator = mediator;
         }
 
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Podcasts()
+        {
+            if (!User.Identity.IsAuthenticated) return View();
+
+            var viewModel = await _mediator.Send(new List.Query { UserId = User.Identity.GetUserId() });
+            return View(viewModel);
+        }
+
+        public async Task<ActionResult> Episodes()
         {
             if (!User.Identity.IsAuthenticated) return View();
 
