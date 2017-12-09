@@ -1,0 +1,24 @@
+﻿# humanstxt.org/
+# The humans responsible & technology colophon
+
+/* PROJECT */
+
+	Site Name:   Dev Podcasts
+	Site URL:    https://devpodcasts.net
+	Created:     2016
+
+/* AUTHOR */
+
+	Name:        Nick Kirby
+	Location:    Shrewsbury, UK.
+	Site:        https://nrkirby.co.uk
+	Blog:        https://diaryofadev.net
+
+/* SOCIAL */
+
+	Twitter:     https://twitter.com/nrkirby | @NRKirby
+	Linkedin:    https://www.linkedin.com/in/nrkirby/
+
+/* META */
+
+	Built with: ASP.NET MVC, C#, HTML, CSS, jQuery, JavaScript, VSTS
