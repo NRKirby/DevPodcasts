@@ -1,5 +1,6 @@
 ﻿using System;
 using Autofac;
+using Autofac.Features.Variance;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
 using DevPodcasts.DataLayer.Models;
@@ -15,10 +16,13 @@ using DevPodcasts.ServiceLayer.RSS;
 using DevPodcasts.ServiceLayer.Search;
 using DevPodcasts.ServiceLayer.Tag;
 using DevPodcasts.Web.App_Start;
+using MediatR;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin.Security.DataProtection;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Web;
@@ -35,7 +39,6 @@ namespace DevPodcasts.Web
         {
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             MvcHandler.DisableMvcResponseHeader = true;
@@ -65,9 +68,9 @@ namespace DevPodcasts.Web
 
         private static void CreateRolesIfNotPresentInDatabase()
         {
-            var createRoles = ConfigurationManager.AppSettings["CreateRoles"];
+            var createRoles = bool.Parse(ConfigurationManager.AppSettings["CreateRoles"]);
 
-            if (createRoles.ToLower().Equals("true"))
+            if (createRoles)
             {
                 var context = new ApplicationDbContext();
                 var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
@@ -91,7 +94,7 @@ namespace DevPodcasts.Web
             };
         }
 
-        private void RegisterComponents()
+        private static void RegisterComponents()
         {
             var builder = new ContainerBuilder();
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
@@ -122,10 +125,59 @@ namespace DevPodcasts.Web
 
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
+            SetUpMediator(builder);
+            SetUpMicrosoftIdentity(builder);
+
             var container = builder.Build();
 
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
             GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+        }
+
+        private static void SetUpMediator(ContainerBuilder builder)
+        {
+            builder.RegisterSource(new ContravariantRegistrationSource());
+            builder.RegisterAssemblyTypes(typeof(IMediator).GetTypeInfo().Assembly).AsImplementedInterfaces();
+
+            builder.RegisterAssemblyTypes(typeof(Startup).GetTypeInfo().Assembly).Where(t =>
+                    t.GetInterfaces().Any(i => i.IsClosedTypeOf(typeof(IRequestHandler<,>))
+                                               || i.IsClosedTypeOf(typeof(IRequestHandler<>))
+                                               || i.IsClosedTypeOf(typeof(IAsyncRequestHandler<,>))
+                                               || i.IsClosedTypeOf(typeof(IAsyncRequestHandler<>))
+                                               || i.IsClosedTypeOf(typeof(ICancellableAsyncRequestHandler<,>))
+                                               || i.IsClosedTypeOf(typeof(INotificationHandler<>))
+                                               || i.IsClosedTypeOf(typeof(IAsyncNotificationHandler<>))
+                                               || i.IsClosedTypeOf(typeof(ICancellableAsyncNotificationHandler<>))
+                    )
+                )
+                .AsImplementedInterfaces();
+
+            builder.Register<SingleInstanceFactory>(ctx =>
+            {
+                var c = ctx.Resolve<IComponentContext>();
+                return t =>
+                {
+                    object o;
+                    return c.TryResolve(t, out o) ? o : null;
+                };
+            });
+            builder.Register<MultiInstanceFactory>(ctx =>
+            {
+                var c = ctx.Resolve<IComponentContext>();
+                return t => (IEnumerable<object>)c.Resolve(typeof(IEnumerable<>).MakeGenericType(t));
+            });
+        }
+
+        private static void SetUpMicrosoftIdentity(ContainerBuilder builder)
+        {
+            builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
+            builder.RegisterType<ApplicationDbContext>().AsSelf().InstancePerRequest();
+            builder.Register(c => new UserStore<ApplicationUser>(c.Resolve<ApplicationDbContext>())).AsImplementedInterfaces().InstancePerRequest();
+
+            builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
+            builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).As<Microsoft.Owin.Security.IAuthenticationManager>();
+
+            builder.Register<IDataProtectionProvider>(c => Startup.DataProtectionProvider).InstancePerRequest();
         }
     }
 }

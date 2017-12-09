@@ -2,6 +2,11 @@
 using DevPodcasts.ServiceLayer.Podcast;
 using DevPodcasts.ServiceLayer.Tag;
 using DevPodcasts.ViewModels.Podcast;
+using DevPodcasts.Web.Features.Library;
+using DevPodcasts.Web.Features.Podcast;
+using MediatR;
+using Microsoft.AspNet.Identity;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -11,16 +16,22 @@ namespace DevPodcasts.Web.Controllers
     {
         private readonly PodcastService _podcastService;
         private readonly TagService _tagService;
+        private readonly IMediator _mediator;
 
-        public PodcastsController(PodcastService podcastService, TagService tagService)
+        public PodcastsController(
+            PodcastService podcastService, 
+            TagService tagService,
+            IMediator mediator)
         {
             _tagService = tagService;
             _podcastService = podcastService;
+            _mediator = mediator;
         }
 
         public ActionResult Index(int? page)
         {
             var viewModel = _podcastService.Search();
+
             return View(viewModel);
         }
 
@@ -49,13 +60,15 @@ namespace DevPodcasts.Web.Controllers
             return View(result);
         }
 
-        public ActionResult Detail(int id)
+        public async Task<ActionResult> Detail(int id)
         {
             var podcastExists = _podcastService.PodcastExists(id);
             if (!podcastExists)
                 return RedirectToAction("Index", "Home"); // TODO: redirect to error page
 
-            var viewModel = _podcastService.GetPodcastDetail(id);
+            var userId = User.Identity.GetUserId();
+            var viewModel = await _mediator.Send(new Detail.Query { PodcastId = id, UserId = userId });
+
             return View(viewModel);
         }
 
@@ -82,5 +95,14 @@ namespace DevPodcasts.Web.Controllers
 
             return RedirectToAction("ManagePodcasts", "Admin");
         }
+
+        [HttpPost]
+        public async Task<ActionResult> AddRemove(AddRemoveModel model)
+        {
+            var viewModel = await _mediator.Send(new AddOrRemovePodcast.Command { UserId = model.U, PodcastId = model.P } );
+
+            return Json(viewModel);
+        }
+
     }
 }

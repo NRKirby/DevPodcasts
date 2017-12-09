@@ -4,11 +4,8 @@ using DevPodcasts.Models;
 using DevPodcasts.Repositories;
 using DevPodcasts.ServiceLayer.Email;
 using DevPodcasts.ServiceLayer.RSS;
-using DevPodcasts.ViewModels.Episode;
 using DevPodcasts.ViewModels.Home;
 using DevPodcasts.ViewModels.Podcast;
-using DevPodcasts.ViewModels.Tags;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,19 +19,22 @@ namespace DevPodcasts.ServiceLayer.Podcast
         private readonly RssService _rssService;
         private readonly PodcastEmailService _podcastEmailService;
         private readonly TagsRepository _tagsRepository;
+        private readonly ApplicationDbContext _context;
 
         public PodcastService(
             PodcastRepository podcastRepository,
             EpisodeRepository episodeRepository,
             RssService rssService,
             PodcastEmailService podcastEmailService,
-            TagsRepository tagsRepository)
+            TagsRepository tagsRepository,
+            ApplicationDbContext context)
         {
             _podcastRepository = podcastRepository;
             _episodeRepository = episodeRepository;
             _rssService = rssService;
             _podcastEmailService = podcastEmailService;
             _tagsRepository = tagsRepository;
+            _context = context;
         }
 
         public int GetTotalPodcasts()
@@ -60,13 +60,6 @@ namespace DevPodcasts.ServiceLayer.Podcast
             return viewModel;
         }
 
-        public PodcastIndexViewModel GetPodcasts(int? page = 0)
-        {
-            //var 
-
-            return null;
-        }
-
         public PodcastIndexViewModel Search(string query = null)
         {
             var viewModel = new PodcastIndexViewModel
@@ -81,41 +74,6 @@ namespace DevPodcasts.ServiceLayer.Podcast
         public IEnumerable<FeaturedPodcast> GetFeaturedPodcasts()
         {
             return _podcastRepository.GetFeaturedPodcasts(3);
-        }
-
-        public PodcastDetailViewModel GetPodcastDetail(int podcastId)
-        {
-            var podcast = _podcastRepository.GetPodcast(podcastId);
-            var viewModel = new PodcastDetailViewModel
-            {
-                Id = podcast.Id,
-                Title = podcast.Title,
-                Description = podcast.Description,
-                SiteUrl = podcast.SiteUrl,
-                ImageUrl = podcast.ImageUrl,
-                Tags = podcast.Tags.Select(tag => new TagViewModel {Name = tag.Name, Slug = tag.Slug })
-            };
-
-            var episodes = _episodeRepository.GetAllEpisodes(podcastId);
-
-            var episodeList = new List<EpisodeViewModel>();
-            foreach (var episode in episodes)
-            {
-                var episodeViewModel = new EpisodeViewModel
-                {
-                    Id = episode.Id,
-                    Title = episode.Title
-                };
-
-                if (episode.DatePublished != null)
-                    episodeViewModel.DatePublished = (DateTime)episode.DatePublished;
-
-                episodeList.Add(episodeViewModel);
-            }
-
-            viewModel.Episodes = episodeList;
-
-            return viewModel;
         }
 
         public bool PodcastExists(int podcastId)

@@ -1,0 +1,25 @@
+﻿@*@model DevPodcasts.Web.Features.Library.Index.List.ViewModel
+@{
+    ViewBag.Title = "Episodes";
+}
+
+<div class="library-container container">
+    <h1>Library</h1>
+
+    <ul class="nav nav-tabs" role="tablist">
+        <li><a href="~/library/podcasts" role="tab">Podcasts</a></li>
+        <li class="active"><a href="~/library/episodes" role="tab">Episodes</a></li>
+    </ul>
+
+    @if (Model.SubscribedPodcasts != null)
+    {
+        <ul>
+            @foreach (var podcast in Model.SubscribedPodcasts)
+            {
+                <li><a href="~/podcasts/detail/@podcast.Id">@podcast.Title</a></li>
+            }
+        </ul>
+    }
+
+</div>*@
+

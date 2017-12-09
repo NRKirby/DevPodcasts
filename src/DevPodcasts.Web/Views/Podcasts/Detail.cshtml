@@ -3,48 +3,97 @@
 @{
     ViewBag.Title = Model.Title;
     ViewBag.MetaDescriptionText = Model.Description;
+    var isSubscribed = Model.IsSubscribed;
 }
 
 <div class="podcast-detail-container">
-
-    <div class="col-sm-10">
-        <h2>@Model.Title</h2>
-        <p><a href="@Model.SiteUrl" rel="noopener noreferrer" target="_blank">@Model.SiteUrl</a></p>
-        <p>@Model.Description</p>
-        <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
-        <span class="tag-text"><strong>Tags: </strong></span>
-        <div class="podcast-tags">
-            @if (Model.Tags != null)
-            {
-                foreach (var tag in Model.Tags)
+    <div class="header-row">
+        <div class="col-sm-10">
+            <h2>@Model.Title</h2>
+            <p><a href="@Model.SiteUrl" rel="noopener noreferrer" target="_blank">@Model.SiteUrl</a></p>
+            <p>@Model.Description</p>
+            <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
+            <span class="tag-text"><strong>Tags: </strong></span>
+            <div class="podcast-tags">
+                @if (Model.Tags != null)
                 {
-                    <a href="~/tags/@tag.Slug" class="podcast-tag" title="Podcasts tagged @tag.Name">@tag.Name</a>
+                    foreach (var tag in Model.Tags)
+                    {
+                        <a href="~/tags/@tag.Slug" class="podcast-tag" title="Podcasts tagged @tag.Name">@tag.Name</a>
+                    }
                 }
-            }
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <img class="podcast-img" src="@Model.ImageUrl" />
         </div>
     </div>
-    <div class="col-sm-2">
-        <img class="podcast-img" src="@Model.ImageUrl" alt="@Model.Title logo" />
+    <div class="button-row">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <button class="btn btn-primary add-remove" id="remove-from-libary" title="Remove from Library" @(isSubscribed ? "style=display:inline-block" : "style=display:none")><span class="glyphicon glyphicon-ok"></span>Added</button>
+            <button class="btn btn-primary add-remove" id="add-to-libary" title="Add to Library" @(isSubscribed ? "style=display:none" : "style=display:inline-block")><span class="glyphicon glyphicon-plus"></span>Add</button>
+        }
+        else
+        {
+            <a href='@Url.Action("Login", "Account", new { ReturnUrl = "~/podcasts/detail/" + Model.Id })'><button class="btn btn-default" title="Sign in to add podcast to Library"><span class="glyphicon glyphicon-plus"></span>Add</button></a>
+        }
     </div>
-</div>
 
-<table class="table table-striped" style="margin: 40px 0">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Date Published</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model?.Episodes != null)
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date Published</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model?.Episodes != null)
             {
                 foreach (var item in Model.Episodes)
                 {
-                <tr>
-                    <td>@Html.ActionLink(item.Title, "Detail", "Episode", new { id = item.Id }, null)</td>
-                    <td>@item.DatePublished.ToShortUkDate()</td>
-                </tr>
+                    <tr>
+                        <td>@Html.ActionLink(item.Title, "Detail", "Episode", new { id = item.Id }, null)</td>
+                        <td>@item.DatePublished.ToShortUkDate()</td>
+                    </tr>
+                }
             }
-        }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('.add-remove').on('click',
+            function() {
+
+                var data = {
+                    u: '@Model.UserId',
+                    p: '@Model.Id'
+                }
+
+                $.ajax({
+                    url: "/Podcasts/AddRemove",
+                    type: "POST",
+                    data: JSON.stringify(data),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function(response) {
+                        console.log(response.IsSuccess);
+                        if (response.IsAdded) {
+                            $('#add-to-libary').hide();
+                            $('#remove-from-libary').show();
+                        } else {
+                            $('#remove-from-libary').hide();
+                            $('#add-to-libary').show();
+                        }
+                    }
+                });
+            })
+
+        $('#remove-from-libary').mouseover(function() {
+            // change text to remove
+        });
+    });
+
+</script>
