@@ -15,6 +15,11 @@ namespace DevPodcasts.Web.Controllers
             _mediator = mediator;
         }
 
+        public ActionResult Index()
+        {
+            return RedirectToAction("Podcasts");
+        }
+
         public async Task<ActionResult> Podcasts()
         {
             if (!User.Identity.IsAuthenticated) return View();
@@ -23,12 +28,12 @@ namespace DevPodcasts.Web.Controllers
             return View(viewModel);
         }
 
-        public async Task<ActionResult> Episodes()
-        {
-            if (!User.Identity.IsAuthenticated) return View();
+        //public async Task<ActionResult> Episodes()
+        //{
+        //    if (!User.Identity.IsAuthenticated) return View();
 
-            var viewModel = await _mediator.Send(new List.Query { UserId = User.Identity.GetUserId() });
-            return View(viewModel);
-        }
+        //    var viewModel = await _mediator.Send(new List.Query { UserId = User.Identity.GetUserId() });
+        //    return View(viewModel);
+        //}
     }
 }

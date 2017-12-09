@@ -355,6 +355,35 @@ textarea {
   list-style: none;
   padding-left: 0;
 }
+.library-container ul.nav {
+  margin-bottom: 1em;
+}
+.library-container h1 {
+  margin: 1em 0;
+}
+.library-container table {
+  width: 100%;
+  margin-top: 1em !important;
+}
+.library-container tr {
+  /*td:nth-child(3) {
+            width: 7%;
+            font-size: 0.9em;
+            color: red;
+        }*/
+}
+.library-container tr td {
+  text-align: right;
+}
+.library-container tr td:nth-child(1) {
+  width: 86%;
+  text-align: left;
+}
+.library-container tr td:nth-child(2) {
+  width: 7%;
+  font-size: 0.9em;
+  color: red;
+}
 /* Bootstrap Navbar collapse */
 @media (max-width: 991px) {
   .navbar-header {
@@ -403,12 +432,6 @@ textarea {
   }
   .button-row button.btn {
     margin-top: 25px;
-  }
-  .library-container ul.nav {
-    margin-bottom: 1em;
-  }
-  .library-container h1 {
-    margin: 1em 0;
   }
 }
 /* iPad */
