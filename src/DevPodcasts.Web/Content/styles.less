@@ -477,7 +477,9 @@ textarea {
 
     tr {
         td {
-            text-align: right;  
+            text-align: right;
+            padding-top: 0.3em;
+            padding-bottom: 0.3em;
         }
 
         td:nth-child(1) {
@@ -490,7 +492,6 @@ textarea {
             font-size: 0.9em;
             color: red;
         }
-
         /*td:nth-child(3) {
             width: 7%;
             font-size: 0.9em;
@@ -558,7 +559,7 @@ textarea {
 /* iPhone 6 */
 @media only screen and (min-device-width : 375px) {
 
-    .podcast-detail-container  {
+    .podcast-detail-container {
         table.table {
             margin-top: 0;
         }
@@ -571,26 +572,15 @@ textarea {
             margin-top: 25px;
         }
     }
-
-    
 }
 
 /* iPad */
 @media (min-width: 641px) {
 
-    .library-container {
-        tr {
-            td {
-                padding-top: 0.3em;
-                padding-bottom: 0.3em;
-            }
-        }
+    .body-content {
+        min-height: 670px;
     }
-
-        .body-content {
-            min-height: 670px;
-        }
-    }
+}
 
 /* Desktop */
 @media (min-width: 961px) {
