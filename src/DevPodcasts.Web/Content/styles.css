@@ -436,6 +436,10 @@ textarea {
 }
 /* iPad */
 @media (min-width: 641px) {
+  .library-container tr td {
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+  }
   .body-content {
     min-height: 670px;
   }

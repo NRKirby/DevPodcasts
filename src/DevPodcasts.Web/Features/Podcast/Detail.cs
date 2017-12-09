@@ -32,14 +32,24 @@ namespace DevPodcasts.Web.Features.Podcast
             {
                 var podcastId = message.PodcastId;
                 var userId = message.UserId;
-                var podcast = await _context.Podcasts.SingleOrDefaultAsync(p => p.Id == podcastId);
-                var isSubscribed = _context.Users.Single(u => u.Id == userId).SubscribedPodcasts.Any(p => p.Id == podcastId);
+                var podcast = await _context.Podcasts
+                    .SingleOrDefaultAsync(p => p.Id == podcastId);
+
                 var episodes = await _context.Episodes
                     .AsNoTracking()
                     .Where(episode => episode.PodcastId == podcastId)
                     .OrderByDescending(episode => episode.DatePublished)
                     .Select(episode => new { episode.Id, episode.Title, episode.DatePublished })
                     .ToListAsync();
+
+                var isSubscribed = false;
+                if (message.UserId != null)
+                {
+                    isSubscribed = _context.Users
+                        .Single(u => u.Id == userId)
+                        .SubscribedPodcasts
+                        .Any(p => p.Id == podcastId);
+                }
 
                 var viewModel = new PodcastDetailViewModel
                 {
