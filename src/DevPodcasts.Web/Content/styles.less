@@ -192,6 +192,17 @@ h6,
     }
 }
 
+.button-row {
+
+    .glyphicon {
+        padding-right: 0.5em;
+    }
+
+    button {
+        padding: 0.4em 0.6em;
+    }
+}
+
 // .col-sm-10 col-sm-2 breakpoint
 @media (max-width: 770px) {
     .podcast-detail-container .col-sm-2 img {
@@ -226,6 +237,27 @@ h6,
 
 .podcast-img {
     width: 100%
+}
+
+.button-row {
+    clear: both;
+    padding-left: 0;
+
+    li {
+        margin: 10px 0 0 0;
+        /*padding: 0.4em 0.6em;*/
+        span.glyphicon:before {
+            padding-right: 0.3em;
+        }
+
+        .glyphicon-ok:before {
+            /*color: green;*/
+        }
+    }
+
+    span:hover {
+        cursor: pointer;
+    }
 }
 
 .button-row {
