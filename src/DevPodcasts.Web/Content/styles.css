@@ -377,6 +377,7 @@ textarea {
   width: 40px;
   font-size: 0.9em;
   color: red;
+  cursor: pointer;
 }
 .library-container tr td:nth-child(3) {
   width: auto;

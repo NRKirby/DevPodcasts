@@ -32,10 +32,12 @@
 <script>
     $('.remove-from-library').on('click', function () {
         if (confirm('Are you sure you want to remove?')) {
-            var p = $(this).parents('tr').find('input[type="hidden"]').val();
+                        
+            //console.log($(this).parents('tr').children().find('.podcast-title > a').text());
 
             var thisTableRow = $(this).parents('tr');
 
+            var p = $(this).parents('tr').find('input[type="hidden"]').val();
             var data = {
                 u: '@userId',
                 p: p
@@ -49,7 +51,6 @@
                 dataType: "json",
                 success: function() {
                     $(thisTableRow).hide("slow");
-                    // hide row
                 }
             });
         }
