@@ -1,6 +1,6 @@
 ﻿@model DevPodcasts.Web.Features.Library.Index.List.ViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Library";
 }
 
 <div class="library-container container">
@@ -17,12 +17,44 @@
             @foreach (var podcast in Model.SubscribedPodcasts)
             {
                 <tr>
-                    <td><a href="~/podcasts/detail/@podcast.Id">@podcast.Title</a></td>
+                    @Html.HiddenFor(m => podcast.Id)
+                    <td class="remove-from-library"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+                    <td class="podcast-title"><a href="~/podcasts/detail/@podcast.Id">@podcast.Title</a></td>
                     @*<td><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></td>*@
-                    @*<td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>*@
                 </tr>
             }
         </table>
     }
 
 </div>
+
+<script>
+    $('.remove-from-library').on('click', function () {
+        if (confirm('Are you sure you want to remove ?')) {
+            var p = console.log($(this).parents('tr').find('input[type="hidden"]').val());
+
+            var data = {
+                u: ' ',
+                p: p
+        }
+
+            $.ajax({
+                url: "/Podcasts/AddRemove",
+                type: "POST",
+                data: JSON.stringify(data),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(response) {
+                    console.log(response.IsSuccess);
+                    if (response.IsAdded) {
+                        $('#add-to-libary').hide();
+                        $('#remove-from-libary').show();
+                    } else {
+                        $('#remove-from-libary').hide();
+                        $('#add-to-libary').show();
+                    }
+                }
+            });
+        }
+    })
+</script>
