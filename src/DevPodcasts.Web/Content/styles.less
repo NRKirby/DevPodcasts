@@ -192,6 +192,17 @@ h6,
     }
 }
 
+.button-row {
+
+    .glyphicon {
+        padding-right: 0.5em;
+    }
+
+    button {
+        padding: 0.4em 0.6em;
+    }
+}
+
 // .col-sm-10 col-sm-2 breakpoint
 @media (max-width: 770px) {
     .podcast-detail-container .col-sm-2 img {
@@ -249,33 +260,53 @@ h6,
     }
 }
 
-/* Footer */
+.button-row {
+    clear: both;
+    padding-left: 0;
+
+    li {
+        margin: 10px 0 0 0;
+        /*padding: 0.4em 0.6em;*/
+        span.glyphicon:before {
+            padding-right: 0.3em;
+        }
+
+        .glyphicon-ok:before {
+            /*color: green;*/
+        }
+    }
+
+    span:hover {
+        cursor: pointer;
+    }
+}
+
 #footer {
     margin-top: 40px;
     padding-top: 40px;
     padding-bottom: 1em;
     background-color: @charcoalBlack;
     color: azure;
-}
 
-#footer h4 {
-    border-bottom: 1px solid #5d5d5d;
-    padding: 10px 0;
-}
+    h4 {
+        border-bottom: 1px solid #5d5d5d;
+        padding: 10px 0;
+    }
 
-#footer .column ul {
-    font-size: 13px;
-    list-style: none;
-    padding: 0;
-    line-height: 22px;
-}
+    .footer-a {
+        color: azure;
+    }
 
-#footer .footer-2-col {
-    padding-left: 0;
-}
+    .footer-2-col {
+        padding-left: 0;
+    }
 
-#footer .footer-a {
-    color: azure;
+    .column ul {
+        font-size: 13px;
+        list-style: none;
+        padding: 0;
+        line-height: 22px;
+    }
 }
 
 .body-content {
@@ -476,21 +507,19 @@ textarea {
     }
 
     tr {
-        td {
-            text-align: right;
-            padding-top: 0.3em;
-            padding-bottom: 0.3em;
-        }
-
-        td:nth-child(1) {
-            width: 86%;
-            text-align: left;
-        }
 
         td:nth-child(2) {
-            width: 7%;
+            padding-left: 3px;
+            text-align: left;
+            width: 40px;
             font-size: 0.9em;
             color: red;
+            cursor: pointer;
+        }
+
+        td:nth-child(3) {
+            width: auto;
+            text-align: left;
         }
         /*td:nth-child(3) {
             width: 7%;
@@ -559,7 +588,7 @@ textarea {
 /* iPhone 6 */
 @media only screen and (min-device-width : 375px) {
 
-    .podcast-detail-container {
+    .podcast-detail-container  {
         table.table {
             margin-top: 0;
         }
@@ -572,15 +601,26 @@ textarea {
             margin-top: 25px;
         }
     }
+
+    
 }
 
 /* iPad */
 @media (min-width: 641px) {
 
-    .body-content {
-        min-height: 670px;
+    .library-container {
+        tr {
+            td {
+                padding-top: 0.3em;
+                padding-bottom: 0.3em;
+            }
+        }
     }
-}
+
+        .body-content {
+            min-height: 670px;
+        }
+    }
 
 /* Desktop */
 @media (min-width: 961px) {

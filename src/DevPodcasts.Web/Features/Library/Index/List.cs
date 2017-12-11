@@ -1,9 +1,8 @@
-﻿using MediatR;
+﻿using DevPodcasts.DataLayer.Models;
+using MediatR;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using DevPodcasts.DataLayer.Models;
 
 namespace DevPodcasts.Web.Features.Library.Index
 {
@@ -17,6 +16,7 @@ namespace DevPodcasts.Web.Features.Library.Index
         public class ViewModel : IRequest
         {
             public IEnumerable<SubscribedPodcast> SubscribedPodcasts { get; set; }
+            public string UserId { get; set; }
         }
 
         public class QueryHandler : IAsyncRequestHandler<Query, ViewModel>
@@ -42,6 +42,7 @@ namespace DevPodcasts.Web.Features.Library.Index
                     }).ToList();
 
                 viewModel.SubscribedPodcasts = subscribedPodcasts;
+                viewModel.UserId = message.UserId;
                 return viewModel;
             }
         }

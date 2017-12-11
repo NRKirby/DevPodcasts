@@ -185,7 +185,6 @@ h6,
 .button-row span:hover {
   cursor: pointer;
 }
-/* Footer */
 #footer {
   margin-top: 40px;
   padding-top: 40px;
@@ -197,17 +196,17 @@ h6,
   border-bottom: 1px solid #5d5d5d;
   padding: 10px 0;
 }
+#footer .footer-a {
+  color: azure;
+}
+#footer .footer-2-col {
+  padding-left: 0;
+}
 #footer .column ul {
   font-size: 13px;
   list-style: none;
   padding: 0;
   line-height: 22px;
-}
-#footer .footer-2-col {
-  padding-left: 0;
-}
-#footer .footer-a {
-  color: azure;
 }
 .body-content {
   padding-left: 15px;
@@ -372,19 +371,17 @@ textarea {
             color: red;
         }*/
 }
-.library-container tr td {
-  text-align: right;
-  padding-top: 0.3em;
-  padding-bottom: 0.3em;
-}
-.library-container tr td:nth-child(1) {
-  width: 86%;
-  text-align: left;
-}
 .library-container tr td:nth-child(2) {
-  width: 7%;
+  padding-left: 3px;
+  text-align: left;
+  width: 40px;
   font-size: 0.9em;
   color: red;
+  cursor: pointer;
+}
+.library-container tr td:nth-child(3) {
+  width: auto;
+  text-align: left;
 }
 @media (max-width: 767px) {
   .account #register-last-name {
@@ -443,6 +440,10 @@ textarea {
 }
 /* iPad */
 @media (min-width: 641px) {
+  .library-container tr td {
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+  }
   .body-content {
     min-height: 670px;
   }
