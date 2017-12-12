@@ -38,9 +38,10 @@
         {
             <a href='@Url.Action("Login", "Account", new { ReturnUrl = "~/podcasts/detail/" + Model.Id })'><button class="btn btn-default" title="Sign in to add podcast to Library"><span class="glyphicon glyphicon-plus"></span>Add</button></a>
         }
+        <input type="text" id="search-episodes" onkeyup="search()" class="form-control" placeholder="Search episodes...">
     </div>
 
-    <table class="table table-striped">
+    <table class="table table-striped" id="podcast-episodes">
         <thead>
             <tr>
                 <th>Title</th>
@@ -94,6 +95,28 @@
         $('#remove-from-libary').mouseover(function() {
             // change text to remove
         });
+
+        
     });
+
+    function search() {
+        // Declare variables 
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("search-episodes");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("podcast-episodes");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            } 
+        }
+    }
 
 </script>

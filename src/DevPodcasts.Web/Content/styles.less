@@ -183,12 +183,24 @@ h6,
 
 .button-row {
 
+    height: 40px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+
     .glyphicon {
         padding-right: 0.5em;
     }
 
     button {
         padding: 0.4em 0.6em;
+        height: 100%;
+    }
+
+    #search-episodes {
+        display: inline-block;
+        margin-left: 7px;
+        height: 100%;
+        width: 250px;
     }
 }
 
@@ -598,17 +610,7 @@ textarea {
         table.table {
             margin-top: 0;
         }
-    }
-
-    .button-row {
-        height: 90px;
-
-        button.btn {
-            margin-top: 25px;
-        }
-    }
-
-    
+    }   
 }
 
 /* iPad */
@@ -633,5 +635,12 @@ textarea {
 
     .body-content {
         min-height: 678px;
+    }
+
+    .button-row {
+
+        #search-episodes {
+            width: 100%;
+        }
     }
 }
