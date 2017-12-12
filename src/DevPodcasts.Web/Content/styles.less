@@ -114,19 +114,16 @@ h6,
     margin-bottom: 5px;
 }
 
-/* Episodes */
 .episode-detail-container {
     margin-bottom: 100px;
     margin-top: 50px;
+
+    #audio {
+        margin: 0 10px;
+        width: 100%;
+    }
 }
 
-#audio {
-    margin: 0 10px;
-    width: 100%;
-}
-
-
-/* Tags */
 .tags-container {
     p {
         margin-bottom: 30px;
@@ -150,7 +147,6 @@ h6,
     }
 }
 
-/* Podcasts */
 .podcasts-container {
     h2 {
         margin-top: 30px;
@@ -159,7 +155,10 @@ h6,
 
 .podcast-detail-container {
     padding: 2em 0;
-    overflow: auto;
+
+    .header-row {
+        overflow: hidden;
+    }
 
     .col-sm-10, .col-sm-2 {
         padding: 0;
@@ -167,6 +166,49 @@ h6,
 
     h2 {
         margin-top: 0;
+    }
+
+    .button-row {
+        height: 40px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        clear: both;
+        padding-left: 0;
+
+        .glyphicon {
+            padding-right: 0.5em;
+        }
+
+        li {
+            margin: 10px 0 0 0;
+
+            span.glyphicon:before {
+                padding-right: 0.3em;
+            }
+        }
+
+        span:hover {
+            cursor: pointer;
+        }
+
+        button {
+            padding: 0.4em 0.6em;
+            height: 100%;
+        }
+
+        #search-episodes {
+            display: inline-block;
+            margin-left: 7px;
+            height: 100%;
+        }
+
+        .glyphicon {
+            padding-right: 0.5em;
+        }
+
+        button {
+            padding: 0.4em 0.6em;
+        }
     }
 }
 
@@ -178,47 +220,6 @@ h6,
 
     .btn-danger {
         margin-top: 20px;
-    }
-}
-
-.button-row {
-
-    height: 40px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-
-    .glyphicon {
-        padding-right: 0.5em;
-    }
-
-    button {
-        padding: 0.4em 0.6em;
-        height: 100%;
-    }
-
-    #search-episodes {
-        display: inline-block;
-        margin-left: 7px;
-        height: 100%;
-        width: 250px;
-    }
-}
-
-.button-row {
-
-    .glyphicon {
-        padding-right: 0.5em;
-    }
-
-    button {
-        padding: 0.4em 0.6em;
-    }
-}
-
-// .col-sm-10 col-sm-2 breakpoint
-@media (max-width: 770px) {
-    .podcast-detail-container .col-sm-2 img {
-        margin-top: 2em;
     }
 }
 
@@ -240,85 +241,8 @@ h6,
     }
 }
 
-@media (max-width:618px) {
-    .podcast-detail-image {
-        margin-top: 15px;
-        float: left;
-    }
-}
-
 .podcast-img {
     width: 100%
-}
-
-.button-row {
-    clear: both;
-    padding-left: 0;
-
-    li {
-        margin: 10px 0 0 0;
-        /*padding: 0.4em 0.6em;*/
-        span.glyphicon:before {
-            padding-right: 0.3em;
-        }
-
-        .glyphicon-ok:before {
-            /*color: green;*/
-        }
-    }
-
-    span:hover {
-        cursor: pointer;
-    }
-}
-
-.button-row {
-    clear: both;
-    padding-left: 0;
-
-    li {
-        margin: 10px 0 0 0;
-        /*padding: 0.4em 0.6em;*/
-        span.glyphicon:before {
-            padding-right: 0.3em;
-        }
-
-        .glyphicon-ok:before {
-            /*color: green;*/
-        }
-    }
-
-    span:hover {
-        cursor: pointer;
-    }
-}
-
-#footer {
-    margin-top: 40px;
-    padding-top: 40px;
-    padding-bottom: 1em;
-    background-color: @charcoalBlack;
-    color: azure;
-
-    h4 {
-        border-bottom: 1px solid #5d5d5d;
-        padding: 10px 0;
-    }
-
-    .footer-a {
-        color: azure;
-    }
-
-    .footer-2-col {
-        padding-left: 0;
-    }
-
-    .column ul {
-        font-size: 13px;
-        list-style: none;
-        padding: 0;
-        line-height: 22px;
-    }
 }
 
 .body-content {
@@ -339,8 +263,6 @@ textarea {
 .fa-check {
     color: chartreuse;
 }
-
-/* search */
 
 .search-bar {
     padding: 0 0 0 0;
@@ -453,21 +375,6 @@ textarea {
     margin-top: 19px;
 }
 
-.nrkirby {
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-    padding-top: 2em;
-    padding-bottom: 0.4em;
-
-    a {
-        text-decoration: none;
-        color: #FFD700;
-    }
-}
-
-/* Account */
-
 .account {
     padding: 0.2em 0.2em;
     margin-top: 20px;
@@ -547,10 +454,122 @@ textarea {
     }
 }
 
+#footer {
+    margin-top: 40px;
+    padding-top: 40px;
+    padding-bottom: 1em;
+    background-color: @charcoalBlack;
+    color: azure;
+
+    h4 {
+        border-bottom: 1px solid #5d5d5d;
+        padding: 10px 0;
+    }
+
+    .footer-a {
+        color: azure;
+    }
+
+    .footer-2-col {
+        padding-left: 0;
+    }
+
+    .column ul {
+        font-size: 13px;
+        list-style: none;
+        padding: 0;
+        line-height: 22px;
+    }
+
+    .nrkirby {
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+        padding-top: 2em;
+        padding-bottom: 0.4em;
+
+        a {
+            text-decoration: none;
+            color: #FFD700;
+        }
+    }
+}
+
+/* Media queries */
+
+@media (min-width: 320px) {
+
+    .podcast-detail-container {
+        #search-episodes {
+            width: 182px;
+        }
+    }
+}
+
+/* iPhone 6 */
+@media only screen and (min-device-width : 375px) {
+
+    .podcast-detail-container {
+        table.table {
+            margin-top: 0;
+        }
+
+        #search-episodes {
+            width: 237px;
+        }
+    }
+}
+
+@media (max-width:618px) {
+    .podcast-detail-image {
+        margin-top: 15px;
+        float: left;
+    }
+}
+
+/* iPad */
+@media (min-width: 641px) {
+
+    .library-container {
+        tr {
+            td {
+                padding-top: 0.3em;
+                padding-bottom: 0.3em;
+            }
+        }
+    }
+
+    .body-content {
+        min-height: 670px;
+    }
+}
+
 @media (max-width: 767px) {
     .account {
         #register-last-name {
             padding-left: 0;
+        }
+    }
+}
+
+// .col-sm-10 col-sm-2 breakpoint
+@media (max-width: 770px) {
+    .podcast-detail-container .col-sm-2 img {
+        margin-top: 2em;
+    }
+}
+
+/* Desktop */
+@media (min-width: 961px) {
+
+    .body-content {
+        min-height: 678px;
+    }
+
+    .button-row {
+
+        #search-episodes {
+            width: 100%;
         }
     }
 }
@@ -599,48 +618,5 @@ textarea {
 
     .collapse.in {
         display: block !important;
-    }
-}
-/* Bootstrap Navbar collapse end */
-
-/* iPhone 6 */
-@media only screen and (min-device-width : 375px) {
-
-    .podcast-detail-container  {
-        table.table {
-            margin-top: 0;
-        }
-    }   
-}
-
-/* iPad */
-@media (min-width: 641px) {
-
-    .library-container {
-        tr {
-            td {
-                padding-top: 0.3em;
-                padding-bottom: 0.3em;
-            }
-        }
-    }
-
-        .body-content {
-            min-height: 670px;
-        }
-    }
-
-/* Desktop */
-@media (min-width: 961px) {
-
-    .body-content {
-        min-height: 678px;
-    }
-
-    .button-row {
-
-        #search-episodes {
-            width: 100%;
-        }
     }
 }

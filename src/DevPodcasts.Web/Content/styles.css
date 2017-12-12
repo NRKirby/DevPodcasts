@@ -85,16 +85,14 @@ h6,
   margin-top: 10px;
   margin-bottom: 5px;
 }
-/* Episodes */
 .episode-detail-container {
   margin-bottom: 100px;
   margin-top: 50px;
 }
-#audio {
+.episode-detail-container #audio {
   margin: 0 10px;
   width: 100%;
 }
-/* Tags */
 .tags-container p {
   margin-bottom: 30px;
 }
@@ -111,13 +109,14 @@ h6,
   margin-top: 40px;
   margin-bottom: 35px;
 }
-/* Podcasts */
 .podcasts-container h2 {
   margin-top: 30px;
 }
 .podcast-detail-container {
   padding: 2em 0;
-  overflow: auto;
+}
+.podcast-detail-container .header-row {
+  overflow: hidden;
 }
 .podcast-detail-container .col-sm-10,
 .podcast-detail-container .col-sm-2 {
@@ -126,40 +125,45 @@ h6,
 .podcast-detail-container h2 {
   margin-top: 0;
 }
+.podcast-detail-container .button-row {
+  height: 40px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  clear: both;
+  padding-left: 0;
+}
+.podcast-detail-container .button-row .glyphicon {
+  padding-right: 0.5em;
+}
+.podcast-detail-container .button-row li {
+  margin: 10px 0 0 0;
+}
+.podcast-detail-container .button-row li span.glyphicon:before {
+  padding-right: 0.3em;
+}
+.podcast-detail-container .button-row span:hover {
+  cursor: pointer;
+}
+.podcast-detail-container .button-row button {
+  padding: 0.4em 0.6em;
+  height: 100%;
+}
+.podcast-detail-container .button-row #search-episodes {
+  display: inline-block;
+  margin-left: 7px;
+  height: 100%;
+}
+.podcast-detail-container .button-row .glyphicon {
+  padding-right: 0.5em;
+}
+.podcast-detail-container .button-row button {
+  padding: 0.4em 0.6em;
+}
 .edit-podcast-container .btn-primary {
   margin-top: 20px;
 }
 .edit-podcast-container .btn-danger {
   margin-top: 20px;
-}
-.button-row {
-  height: 40px;
-  margin-top: 15px;
-  margin-bottom: 15px;
-}
-.button-row .glyphicon {
-  padding-right: 0.5em;
-}
-.button-row button {
-  padding: 0.4em 0.6em;
-  height: 100%;
-}
-.button-row #search-episodes {
-  display: inline-block;
-  margin-left: 7px;
-  height: 100%;
-  width: 250px;
-}
-.button-row .glyphicon {
-  padding-right: 0.5em;
-}
-.button-row button {
-  padding: 0.4em 0.6em;
-}
-@media (max-width: 770px) {
-  .podcast-detail-container .col-sm-2 img {
-    margin-top: 2em;
-  }
 }
 .podcast-tag {
   color: #39739d;
@@ -177,71 +181,8 @@ h6,
   background-color: #cee0ed;
   border-color: rgba(0, 0, 0, 0);
 }
-@media (max-width: 618px) {
-  .podcast-detail-image {
-    margin-top: 15px;
-    float: left;
-  }
-}
 .podcast-img {
   width: 100%;
-}
-.button-row {
-  clear: both;
-  padding-left: 0;
-}
-.button-row li {
-  margin: 10px 0 0 0;
-  /*padding: 0.4em 0.6em;*/
-}
-.button-row li span.glyphicon:before {
-  padding-right: 0.3em;
-}
-.button-row li .glyphicon-ok:before {
-  /*color: green;*/
-}
-.button-row span:hover {
-  cursor: pointer;
-}
-.button-row {
-  clear: both;
-  padding-left: 0;
-}
-.button-row li {
-  margin: 10px 0 0 0;
-  /*padding: 0.4em 0.6em;*/
-}
-.button-row li span.glyphicon:before {
-  padding-right: 0.3em;
-}
-.button-row li .glyphicon-ok:before {
-  /*color: green;*/
-}
-.button-row span:hover {
-  cursor: pointer;
-}
-#footer {
-  margin-top: 40px;
-  padding-top: 40px;
-  padding-bottom: 1em;
-  background-color: #232F3E;
-  color: azure;
-}
-#footer h4 {
-  border-bottom: 1px solid #5d5d5d;
-  padding: 10px 0;
-}
-#footer .footer-a {
-  color: azure;
-}
-#footer .footer-2-col {
-  padding-left: 0;
-}
-#footer .column ul {
-  font-size: 13px;
-  list-style: none;
-  padding: 0;
-  line-height: 22px;
 }
 .body-content {
   padding-left: 15px;
@@ -258,7 +199,6 @@ textarea {
 .fa-check {
   color: chartreuse;
 }
-/* search */
 .search-bar {
   padding: 0 0 0 0;
 }
@@ -349,18 +289,6 @@ textarea {
   font-size: 0.9em;
   margin-top: 19px;
 }
-.nrkirby {
-  display: block;
-  margin: 0 auto;
-  text-align: center;
-  padding-top: 2em;
-  padding-bottom: 0.4em;
-}
-.nrkirby a {
-  text-decoration: none;
-  color: #FFD700;
-}
-/* Account */
 .account {
   padding: 0.2em 0.2em;
   margin-top: 20px;
@@ -423,9 +351,88 @@ textarea {
   width: auto;
   text-align: left;
 }
+#footer {
+  margin-top: 40px;
+  padding-top: 40px;
+  padding-bottom: 1em;
+  background-color: #232F3E;
+  color: azure;
+}
+#footer h4 {
+  border-bottom: 1px solid #5d5d5d;
+  padding: 10px 0;
+}
+#footer .footer-a {
+  color: azure;
+}
+#footer .footer-2-col {
+  padding-left: 0;
+}
+#footer .column ul {
+  font-size: 13px;
+  list-style: none;
+  padding: 0;
+  line-height: 22px;
+}
+#footer .nrkirby {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 2em;
+  padding-bottom: 0.4em;
+}
+#footer .nrkirby a {
+  text-decoration: none;
+  color: #FFD700;
+}
+/* Media queries */
+@media (min-width: 320px) {
+  .podcast-detail-container #search-episodes {
+    width: 182px;
+  }
+}
+/* iPhone 6 */
+@media only screen and (min-device-width: 375px) {
+  .podcast-detail-container table.table {
+    margin-top: 0;
+  }
+  .podcast-detail-container #search-episodes {
+    width: 237px;
+  }
+}
+@media (max-width: 618px) {
+  .podcast-detail-image {
+    margin-top: 15px;
+    float: left;
+  }
+}
+/* iPad */
+@media (min-width: 641px) {
+  .library-container tr td {
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+  }
+  .body-content {
+    min-height: 670px;
+  }
+}
 @media (max-width: 767px) {
   .account #register-last-name {
     padding-left: 0;
+  }
+}
+@media (max-width: 770px) {
+  .podcast-detail-container .col-sm-2 img {
+    margin-top: 2em;
+  }
+}
+/* Desktop */
+@media (min-width: 961px) {
+  .body-content {
+    min-height: 678px;
+  }
+  .button-row #search-episodes {
+    width: 100%;
   }
 }
 /* Bootstrap Navbar collapse */
@@ -463,31 +470,5 @@ textarea {
   }
   .collapse.in {
     display: block !important;
-  }
-}
-/* Bootstrap Navbar collapse end */
-/* iPhone 6 */
-@media only screen and (min-device-width: 375px) {
-  .podcast-detail-container table.table {
-    margin-top: 0;
-  }
-}
-/* iPad */
-@media (min-width: 641px) {
-  .library-container tr td {
-    padding-top: 0.3em;
-    padding-bottom: 0.3em;
-  }
-  .body-content {
-    min-height: 670px;
-  }
-}
-/* Desktop */
-@media (min-width: 961px) {
-  .body-content {
-    min-height: 678px;
-  }
-  .button-row #search-episodes {
-    width: 100%;
   }
 }
