@@ -329,6 +329,7 @@ textarea {
   margin-top: 1em !important;
 }
 .library-container tr {
+  border-bottom: 1px #e1e4e8 solid;
   /*td:nth-child(3) {
             width: 7%;
             font-size: 0.9em;
@@ -336,8 +337,8 @@ textarea {
         }*/
 }
 .library-container tr td {
-  padding-top: 0.3em;
-  padding-bottom: 0.3em;
+  padding-top: 0.6em;
+  padding-bottom: 0.6em;
 }
 .library-container tr td:nth-child(2) {
   padding-left: 3px;
@@ -409,10 +410,6 @@ textarea {
 }
 /* iPad */
 @media (min-width: 641px) {
-  .library-container tr td {
-    padding-top: 0.3em;
-    padding-bottom: 0.3em;
-  }
   .body-content {
     min-height: 670px;
   }
