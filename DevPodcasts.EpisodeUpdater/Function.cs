@@ -12,7 +12,7 @@ namespace DevPodcasts.EpisodeUpdater
     public static class Function
     {
         [FunctionName("Function")]
-        public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWriter log)
+        public static void Run([TimerTrigger("0 */30 * * * *")]TimerInfo myTimer, TraceWriter log)
         {
             log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
 
@@ -29,7 +29,7 @@ namespace DevPodcasts.EpisodeUpdater
 
             foreach (var podcast in podcasts)
             {
-                var mostRecentEpisodeDate = GetMostRecentEpisodeDate(podcast);
+                var mostRecentEpisodeDate = GetMostRecentEpisodeDate(podcast, context);
 
                 SyndicationFeed feed = null;
                 var feedUrl = podcast.FeedUrl;
@@ -94,19 +94,16 @@ namespace DevPodcasts.EpisodeUpdater
                         }
                     }
                 }
+            }
 
-                if (episodesAddedCount > 0)
-                {
-                    log.Info($"Number of episodes added: {episodesAddedCount}");
-                }
+            if (episodesAddedCount > 0)
+            {
+                log.Info($"Number of episodes added: {episodesAddedCount}");
             }
         }
 
-        private static DateTime? GetMostRecentEpisodeDate(Podcast podcast)
+        private static DateTime? GetMostRecentEpisodeDate(Podcast podcast, ApplicationDbContext context)
         {
-            const string connectionString = "Server=tcp:devpodcasts.database.windows.net,1433;Initial Catalog=devpodcasts;Persist Security Info=False;User ID=whiffwhaff9238;Password=mtisaIr2ESthVS64Kx7z;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-            var context = new ApplicationDbContext(connectionString);
-
             return context.Episodes
                 .AsNoTracking()
                 .Where(i => i.PodcastId == podcast.Id)
