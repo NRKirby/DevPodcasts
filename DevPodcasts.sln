@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevPodcasts.Models", "src\D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevPodcasts.Tests", "test\DevPodcasts.Tests\DevPodcasts.Tests.csproj", "{CE17C881-26CF-4292-A97B-7D56B0853355}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevPodcasts.EpisodeUpdater", "DevPodcasts.EpisodeUpdater\DevPodcasts.EpisodeUpdater.csproj", "{4CC795B1-8BD2-439D-9C8B-D1F40E6F4D4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevPodcasts.EpisodeUpdater", "src\DevPodcasts.EpisodeUpdater\DevPodcasts.EpisodeUpdater.csproj", "{03A0F7F0-9BC1-4FE3-A042-6BFD65D07516}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,10 +65,10 @@ Global
 		{CE17C881-26CF-4292-A97B-7D56B0853355}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE17C881-26CF-4292-A97B-7D56B0853355}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE17C881-26CF-4292-A97B-7D56B0853355}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4CC795B1-8BD2-439D-9C8B-D1F40E6F4D4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4CC795B1-8BD2-439D-9C8B-D1F40E6F4D4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4CC795B1-8BD2-439D-9C8B-D1F40E6F4D4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4CC795B1-8BD2-439D-9C8B-D1F40E6F4D4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03A0F7F0-9BC1-4FE3-A042-6BFD65D07516}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03A0F7F0-9BC1-4FE3-A042-6BFD65D07516}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03A0F7F0-9BC1-4FE3-A042-6BFD65D07516}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03A0F7F0-9BC1-4FE3-A042-6BFD65D07516}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
