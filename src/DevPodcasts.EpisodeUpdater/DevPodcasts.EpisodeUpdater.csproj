@@ -9,7 +9,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="DevPodcasts.DataLayer">
-      <HintPath>bin\Debug\net461\bin\DevPodcasts.DataLayer.dll</HintPath>
+      <HintPath>bin\Debug\net461\DevPodcasts.DataLayer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ServiceModel" />

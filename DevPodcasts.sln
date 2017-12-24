@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevPodcasts.Tests", "test\D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevPodcasts.EpisodeUpdater", "src\DevPodcasts.EpisodeUpdater\DevPodcasts.EpisodeUpdater.csproj", "{03A0F7F0-9BC1-4FE3-A042-6BFD65D07516}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureFunctions", "AzureFunctions", "{0E9AF081-14DC-4C61-91B4-60262535037D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,6 +74,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{03A0F7F0-9BC1-4FE3-A042-6BFD65D07516} = {0E9AF081-14DC-4C61-91B4-60262535037D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F555C391-347C-439C-B96E-AA39E3EA2110}
