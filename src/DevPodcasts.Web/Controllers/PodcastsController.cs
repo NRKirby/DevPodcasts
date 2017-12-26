@@ -67,7 +67,7 @@ namespace DevPodcasts.Web.Controllers
                 return RedirectToAction("Index", "Home"); // TODO: redirect to error page
 
             var userId = User.Identity.GetUserId();
-            var viewModel = await _mediator.Send(new Detail.Query { PodcastId = id, UserId = userId });
+            var viewModel = await _mediator.Send(new List.Query { PodcastId = id, UserId = userId });
 
             return View(viewModel);
         }
@@ -97,12 +97,19 @@ namespace DevPodcasts.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddRemove(AddRemoveModel model)
+        public async Task<ActionResult> AddRemove(AjaxModel model)
         {
-            var viewModel = await _mediator.Send(new AddOrRemovePodcast.Command { UserId = model.U, PodcastId = model.P } );
+            var viewModel = await _mediator.Send(new AddOrRemove.Command { UserId = model.U, PodcastId = model.P } );
 
             return Json(viewModel);
         }
 
+        [HttpPost]
+        public async Task<ActionResult> SubscribeUnsubscribe(AjaxModel model)
+        {
+            var viewModel = await _mediator.Send(new AddOrRemove.Command { UserId = model.U, PodcastId = model.P });
+
+            return Json(viewModel);
+        }
     }
 }

@@ -1,19 +1,20 @@
-﻿using DevPodcasts.DataLayer.Models;
-using MediatR;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Threading.Tasks;
+using DevPodcasts.DataLayer.Models;
+using DevPodcasts.Web.Features.Library;
+using MediatR;
 
-namespace DevPodcasts.Web.Features.Library
+namespace DevPodcasts.Web.Features.Podcast
 {
-    public class AddOrRemovePodcast
+    public class AddOrRemove
     {
-        public class Command : IRequest<AddRemoveModel>
+        public class Command : IRequest<AjaxModel>
         {
             public string UserId { get; set; }
             public int PodcastId { get; set; }
         }
 
-        public class CommandHandler : IAsyncRequestHandler<Command, AddRemoveModel>
+        public class CommandHandler : IAsyncRequestHandler<Command, AjaxModel>
         {
             private readonly ApplicationDbContext _context;
 
@@ -22,9 +23,9 @@ namespace DevPodcasts.Web.Features.Library
                 _context = context;
             }
 
-            public async Task<AddRemoveModel> Handle(Command message)
+            public async Task<AjaxModel> Handle(Command message)
             {
-                var model = new AddRemoveModel { IsSuccess = false };
+                var model = new AjaxModel { IsSuccess = false };
                 var user = await _context.Users.SingleOrDefaultAsync(u => u.Id == message.UserId);
                 if (user == null)
                 {

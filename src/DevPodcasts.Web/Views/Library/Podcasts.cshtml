@@ -21,7 +21,7 @@
                     @Html.HiddenFor(m => podcast.Id)
                     <td class="remove-from-library"><span class="glyphicon glyphicon-remove" aria-hidden="true" title="Remove @podcast.Title from library"></span></td>
                     <td class="podcast-title"><a href="~/podcasts/detail/@podcast.Id">@podcast.Title</a></td>
-                    @*<td><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></td>*@
+                    <td class="get-email-notification"><span class="glyphicon glyphicon-envelope" aria-hidden="true" title="Get email notifications when new episodes are released"></span></td>
                 </tr>
             }
         </table>
@@ -35,7 +35,7 @@
         var podcastTitle = $(this).parents('tr').find('td.podcast-title').text();
 
         if (confirm('Are you sure you want to remove ' + podcastTitle + ' from your library?')) {
-                        
+
             var thisTableRow = $(this).parents('tr');
 
             var p = $(this).parents('tr').find('input[type="hidden"]').val();
@@ -55,5 +55,25 @@
                 }
             });
         }
+    })
+
+    $('.get-email-notification').on('click', function () {
+
+        var p = $(this).parents('tr').find('input[type="hidden"]').val();
+        var data = {
+            u: '@userId',
+            p: p
+        }
+
+        $.ajax({
+            url: "/Podcasts/SubscribeUnsubscribe",
+            type: "POST",
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function() {
+
+            }
+        });
     })
 </script>
