@@ -76,6 +76,10 @@
     <Compile Include="Migrations\201712271637421_CreateLibraryPodcastTable.Designer.cs">
       <DependentUpon>201712271637421_CreateLibraryPodcastTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712271907228_AddPodcastTitleToLibraryPodcast.cs" />
+    <Compile Include="Migrations\201712271907228_AddPodcastTitleToLibraryPodcast.Designer.cs">
+      <DependentUpon>201712271907228_AddPodcastTitleToLibraryPodcast.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -114,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712271637421_CreateLibraryPodcastTable.resx">
       <DependentUpon>201712271637421_CreateLibraryPodcastTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712271907228_AddPodcastTitleToLibraryPodcast.resx">
+      <DependentUpon>201712271907228_AddPodcastTitleToLibraryPodcast.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -56,6 +56,7 @@ namespace DevPodcasts.Web.Features.Podcast
                     {
                         PodcastId = podcast.Id,
                         Podcast = podcast,
+                        PodcastTitle = podcast.Title,
                         UserId = user.Id,
                         ApplicationUser = user,
                         IsSubscribed = false,
