@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 using DevPodcasts.DataLayer.Models;
 using DevPodcasts.Web.Features.Library;
@@ -40,15 +42,27 @@ namespace DevPodcasts.Web.Features.Podcast
                     return model;
                 }
 
-                var userIsSubscribed = user.SubscribedPodcasts.Contains(podcast);
+                var userIsSubscribed = user.LibraryPodcasts.Any(p => p.PodcastId == podcast.Id);
                 if (userIsSubscribed)
                 {
-                    user.SubscribedPodcasts.Remove(podcast);
+                    var libraryPodcast = await _context.LibraryPodcasts.SingleAsync(p => p.PodcastId == podcast.Id);
+                    _context.LibraryPodcasts.Remove(libraryPodcast);
+                    user.LibraryPodcasts.Remove(libraryPodcast);
                     model.IsAdded = false;
                 }
                 else
                 {
-                    user.SubscribedPodcasts.Add(podcast);
+                    var libraryPodcast = new LibraryPodcast
+                    {
+                        PodcastId = podcast.Id,
+                        Podcast = podcast,
+                        UserId = user.Id,
+                        ApplicationUser = user,
+                        IsSubscribed = false,
+                        DateAdded = DateTime.Now
+                    };
+                    user.LibraryPodcasts.Add(libraryPodcast);
+                    _context.LibraryPodcasts.Add(libraryPodcast);
                     model.IsAdded = true;
                 }
 

@@ -72,6 +72,10 @@
     <Compile Include="Migrations\201709171726175_AddResizedImageUrlToPodcasts.Designer.cs">
       <DependentUpon>201709171726175_AddResizedImageUrlToPodcasts.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712271637421_CreateLibraryPodcastTable.cs" />
+    <Compile Include="Migrations\201712271637421_CreateLibraryPodcastTable.Designer.cs">
+      <DependentUpon>201712271637421_CreateLibraryPodcastTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -107,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709171726175_AddResizedImageUrlToPodcasts.resx">
       <DependentUpon>201709171726175_AddResizedImageUrlToPodcasts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712271637421_CreateLibraryPodcastTable.resx">
+      <DependentUpon>201712271637421_CreateLibraryPodcastTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
