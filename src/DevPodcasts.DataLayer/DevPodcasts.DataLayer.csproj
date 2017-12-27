@@ -80,13 +80,15 @@
     <Compile Include="Migrations\201712271907228_AddPodcastTitleToLibraryPodcast.Designer.cs">
       <DependentUpon>201712271907228_AddPodcastTitleToLibraryPodcast.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712271910334_RemoveUnusedListerLatersTable.cs" />
+    <Compile Include="Migrations\201712271910334_RemoveUnusedListerLatersTable.Designer.cs">
+      <DependentUpon>201712271910334_RemoveUnusedListerLatersTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\LibraryEpisode.cs" />
     <Compile Include="Models\LibraryPodcast.cs" />
-    <Compile Include="Models\ListenLater.cs" />
-    <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\CheckBoxListItem.cs" />
     <Compile Include="Models\Episode.cs" />
@@ -121,6 +123,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712271907228_AddPodcastTitleToLibraryPodcast.resx">
       <DependentUpon>201712271907228_AddPodcastTitleToLibraryPodcast.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712271910334_RemoveUnusedListerLatersTable.resx">
+      <DependentUpon>201712271910334_RemoveUnusedListerLatersTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

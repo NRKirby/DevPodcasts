@@ -55,8 +55,6 @@ namespace DevPodcasts.DataLayer.Models
 
         public DbSet<Tag> Tags { get; set; }
 
-        public DbSet<ListenLater> ListenLaters { get; set; }
-
         public DbSet<LibraryPodcast> LibraryPodcasts { get; set; }
 
         public DbSet<LibraryEpisode> LibraryEpisodes { get; set; }
