@@ -67,7 +67,7 @@ namespace DevPodcasts.Web.Controllers
                 return RedirectToAction("Index", "Home"); // TODO: redirect to error page
 
             var userId = User.Identity.GetUserId();
-            var viewModel = await _mediator.Send(new List.Query { PodcastId = id, UserId = userId });
+            var viewModel = await _mediator.Send(new Detail.Query { PodcastId = id, UserId = userId });
 
             return View(viewModel);
         }

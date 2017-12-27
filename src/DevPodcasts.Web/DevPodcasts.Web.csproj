@@ -199,7 +199,7 @@
     <Compile Include="Features\Podcast\AddOrRemove.cs" />
     <Compile Include="Features\Library\AjaxModel.cs" />
     <Compile Include="Features\Library\Index\List.cs" />
-    <Compile Include="Features\Podcast\List.cs" />
+    <Compile Include="Features\Podcast\Detail.cs" />
     <Compile Include="Features\Podcast\EmailNotificationSubscribeOrUnsubscribe.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

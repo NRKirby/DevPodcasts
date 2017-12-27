@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DevPodcasts.Web.Features.Podcast
 {
-    public class List
+    public class Detail
     {
         public class Query : IRequest<PodcastDetailViewModel>
         {
