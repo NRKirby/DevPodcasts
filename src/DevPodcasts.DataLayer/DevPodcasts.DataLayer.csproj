@@ -84,6 +84,10 @@
     <Compile Include="Migrations\201712271910334_RemoveUnusedListerLatersTable.Designer.cs">
       <DependentUpon>201712271910334_RemoveUnusedListerLatersTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712272115330_RemoveRedundantSubscribedPodcasts.cs" />
+    <Compile Include="Migrations\201712272115330_RemoveRedundantSubscribedPodcasts.Designer.cs">
+      <DependentUpon>201712272115330_RemoveRedundantSubscribedPodcasts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -126,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712271910334_RemoveUnusedListerLatersTable.resx">
       <DependentUpon>201712271910334_RemoveUnusedListerLatersTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712272115330_RemoveRedundantSubscribedPodcasts.resx">
+      <DependentUpon>201712272115330_RemoveRedundantSubscribedPodcasts.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
