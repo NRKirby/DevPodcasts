@@ -1,4 +1,4 @@
-﻿@model DevPodcasts.Web.Features.Library.Index.List.ViewModel
+﻿@model DevPodcasts.Web.Features.Library.ListPodcasts.ViewModel
 @{
     ViewBag.Title = "Library";
     var userId = Model?.UserId ?? string.Empty;
@@ -21,7 +21,7 @@
                     @Html.HiddenFor(m => podcast.Id)
                     <td class="remove-from-library"><span class="glyphicon glyphicon-remove" aria-hidden="true" title="Remove @podcast.Title from library"></span></td>
                     <td class="podcast-title"><a href="~/podcasts/detail/@podcast.Id">@podcast.Title</a></td>
-                    <td class="get-email-notification"><span class="glyphicon glyphicon-envelope" aria-hidden="true" title="Get email notifications when new episodes are released"></span></td>
+                    <td class="subscribe-email-notification"><span class="glyphicon glyphicon-envelope" aria-hidden="true" title="Get email notifications when new episodes are released"></span></td>
                 </tr>
             }
         </table>
@@ -57,7 +57,7 @@
         }
     })
 
-    $('.get-email-notification').on('click', function () {
+    $('.subscribe-email-notification').on('click', function () {
 
         var p = $(this).parents('tr').find('input[type="hidden"]').val();
         var data = {
@@ -66,7 +66,7 @@
         }
 
         $.ajax({
-            url: "/Podcasts/SubscribeUnsubscribe",
+            url: "/Podcasts/SubscribeUnsubscribeEmail",
             type: "POST",
             data: JSON.stringify(data),
             contentType: "application/json; charset=utf-8",

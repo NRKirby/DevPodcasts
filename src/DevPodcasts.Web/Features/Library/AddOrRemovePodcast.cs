@@ -1,14 +1,13 @@
-﻿using System;
+﻿using DevPodcasts.DataLayer.Models;
+using MediatR;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using DevPodcasts.DataLayer.Models;
-using DevPodcasts.Web.Features.Library;
-using MediatR;
 
-namespace DevPodcasts.Web.Features.Podcast
+namespace DevPodcasts.Web.Features.Library
 {
-    public class AddOrRemove
+    public class AddOrRemovePodcast
     {
         public class Command : IRequest<AjaxModel>
         {
