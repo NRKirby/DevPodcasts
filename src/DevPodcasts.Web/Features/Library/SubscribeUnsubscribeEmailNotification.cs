@@ -26,19 +26,6 @@ namespace DevPodcasts.Web.Features.Library
             public async Task<AjaxModel> Handle(Command message)
             {
                 var model = new AjaxModel { IsSuccess = false };
-                var userExists = _context.Users.Any(u => u.Id == message.UserId);
-                if (!userExists)
-                {
-                    model.Error = "User doesn't exist";
-                    return model;
-                }
-
-                var podcastExists = _context.Podcasts.Any(p => p.Id == message.PodcastId);
-                if (!podcastExists)
-                {
-                    model.Error = "Podcast doesn't exist";
-                    return model;
-                }
 
                 var libraryPodcast = await _context.LibraryPodcasts
                     .Where(p => p.PodcastId == message.PodcastId && p.UserId == message.UserId)
