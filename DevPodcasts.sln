@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevPodcasts.EpisodeUpdater"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureFunctions", "AzureFunctions", "{0E9AF081-14DC-4C61-91B4-60262535037D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevPodcasts.NotifyPodcastSubscribers", "src\DevPodcasts.NotifyPodcastSubscribers\DevPodcasts.NotifyPodcastSubscribers.csproj", "{6EF7BBF2-2A78-4B77-A025-89E749804FEE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,12 +73,17 @@ Global
 		{03A0F7F0-9BC1-4FE3-A042-6BFD65D07516}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03A0F7F0-9BC1-4FE3-A042-6BFD65D07516}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03A0F7F0-9BC1-4FE3-A042-6BFD65D07516}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EF7BBF2-2A78-4B77-A025-89E749804FEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EF7BBF2-2A78-4B77-A025-89E749804FEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EF7BBF2-2A78-4B77-A025-89E749804FEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EF7BBF2-2A78-4B77-A025-89E749804FEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{03A0F7F0-9BC1-4FE3-A042-6BFD65D07516} = {0E9AF081-14DC-4C61-91B4-60262535037D}
+		{6EF7BBF2-2A78-4B77-A025-89E749804FEE} = {0E9AF081-14DC-4C61-91B4-60262535037D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F555C391-347C-439C-B96E-AA39E3EA2110}
