@@ -3,14 +3,12 @@
     <TargetFramework>net461</TargetFramework>
   </PropertyGroup>
   <ItemGroup>    
+    <PackageReference Include="DevPodcasts.DataLayer" Version="0.0.1" />    
     <PackageReference Include="EntityFramework" Version="6.2.0" />    
     <PackageReference Include="Microsoft.AspNet.Identity.EntityFramework" Version="2.2.1" />    
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.2" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="DevPodcasts.DataLayer">
-      <HintPath>bin\Debug\DevPodcasts.DataLayer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ServiceModel" />
   </ItemGroup>
