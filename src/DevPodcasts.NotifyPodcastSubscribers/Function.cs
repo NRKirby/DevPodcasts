@@ -18,8 +18,7 @@ namespace DevPodcasts.NotifyPodcastSubscribers
 
             PostData data = await req.Content.ReadAsAsync<PostData>();
 
-            //const string connectionString = "Server=tcp:devpodcasts.database.windows.net,1433;Initial Catalog=devpodcasts;Persist Security Info=False;User ID=whiffwhaff9238;Password=mtisaIr2ESthVS64Kx7z;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-            const string connectionString = @"Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=DevPodcasts02012018;Integrated Security=True";
+            const string connectionString = "Server=tcp:devpodcasts.database.windows.net,1433;Initial Catalog=devpodcasts;Persist Security Info=False;User ID=whiffwhaff9238;Password=mtisaIr2ESthVS64Kx7z;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             var context = new ApplicationDbContext(connectionString);
 
 
