@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Mvc;
-using DevPodcasts.Web.Features.Library.Index;
+using DevPodcasts.Web.Features.Library;
 using MediatR;
 using Microsoft.AspNet.Identity;
 
@@ -24,7 +24,7 @@ namespace DevPodcasts.Web.Controllers
         {
             if (!User.Identity.IsAuthenticated) return View();
 
-            var viewModel = await _mediator.Send(new List.Query { UserId = User.Identity.GetUserId() });
+            var viewModel = await _mediator.Send(new ListPodcasts.Query { UserId = User.Identity.GetUserId() });
             return View(viewModel);
         }
 

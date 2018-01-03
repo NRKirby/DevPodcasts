@@ -20,7 +20,7 @@ namespace DevPodcasts.DataLayer.Models
 
         public string LastName { get; set; }
 
-        public virtual ICollection<Podcast> SubscribedPodcasts { get; set; }
+        public virtual ICollection<LibraryPodcast> LibraryPodcasts { get; set; }
 
         public virtual ICollection<LibraryEpisode> LibraryEpisodes { get; set; }
     }

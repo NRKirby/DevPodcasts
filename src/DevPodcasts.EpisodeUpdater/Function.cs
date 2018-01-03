@@ -81,6 +81,7 @@ namespace DevPodcasts.EpisodeUpdater
                                     episodesAddedCount++;
                                     log.Info($"{podcast.Title} {episode.Title} added");
                                     context.SaveChanges();
+                                    // Call NotifyPodcastSubscribers function passing episodeId and podcastId
                                 }
                             }
 

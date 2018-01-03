@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DevPodcasts.Web.Features.Library.Index
+namespace DevPodcasts.Web.Features.Library
 {
-    public class List
+    public class ListPodcasts
     {
         public class Query : IRequest<ViewModel>
         {
@@ -31,14 +31,14 @@ namespace DevPodcasts.Web.Features.Library.Index
             public async Task<ViewModel> Handle(Query message)
             {
                 var viewModel = new ViewModel();
-                var subscribedPodcasts = _context.Users
-                    .Single(user => user.Id == message.UserId)
-                    .SubscribedPodcasts
-                    .OrderBy(podcast => podcast.Title)
+
+                var subscribedPodcasts = _context.LibraryPodcasts
+                    .Where(user => user.UserId == message.UserId)
+                    .OrderBy(podcast => podcast.PodcastTitle)
                     .Select(podcast => new SubscribedPodcast
                     {
-                        Id = podcast.Id,
-                        Title = podcast.Title
+                        Id = podcast.PodcastId,
+                        Title = podcast.PodcastTitle
                     }).ToList();
 
                 viewModel.SubscribedPodcasts = subscribedPodcasts;

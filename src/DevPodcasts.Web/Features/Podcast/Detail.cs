@@ -47,8 +47,8 @@ namespace DevPodcasts.Web.Features.Podcast
                 {
                     isSubscribed = _context.Users
                         .Single(u => u.Id == userId)
-                        .SubscribedPodcasts
-                        .Any(p => p.Id == podcastId);
+                        .LibraryPodcasts
+                        .Any(p => p.PodcastId == podcastId);
                 }
 
                 var viewModel = new PodcastDetailViewModel

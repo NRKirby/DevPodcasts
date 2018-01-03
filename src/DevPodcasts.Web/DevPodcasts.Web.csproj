@@ -203,8 +203,9 @@
     <Compile Include="Controllers\Api\UpdateEpisodesController.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Features\Library\AddOrRemovePodcast.cs" />
-    <Compile Include="Features\Library\AddRemoveModel.cs" />
-    <Compile Include="Features\Library\Index\List.cs" />
+    <Compile Include="Features\Library\AjaxModel.cs" />
+    <Compile Include="Features\Library\ListPodcasts.cs" />
+    <Compile Include="Features\Library\SubscribeUnsubscribeEmailNotification.cs" />
     <Compile Include="Features\Podcast\Detail.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
