@@ -16,7 +16,7 @@ namespace DevPodcasts.EpisodeUpdater
         {
             log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
 
-            const string connectionString = "Server=tcp:devpodcasts.database.windows.net,1433;Initial Catalog=devpodcasts;Persist Security Info=False;User ID=whiffwhaff9238;Password=mtisaIr2ESthVS64Kx7z;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            var connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["AzureSqlDb"].ConnectionString;
             var context = new ApplicationDbContext(connectionString);
 
             var podcasts = context.Podcasts
