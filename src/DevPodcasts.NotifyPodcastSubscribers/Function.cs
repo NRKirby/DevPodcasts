@@ -2,6 +2,8 @@ using DevPodcasts.DataLayer.Models;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Azure.WebJobs.Host;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -21,23 +23,42 @@ namespace DevPodcasts.NotifyPodcastSubscribers
             var connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["AzureSqlDb"].ConnectionString;
             var context = new ApplicationDbContext(connectionString);
 
-
             var key = data?.Key;
-            int episodeId = data.EpisodeId;
-            var podcastId = context.Episodes.Where(episode => episode.Id == episodeId).Select(episode => episode.Podcast.Id).SingleOrDefault();
-
             if (key != "theKey")
                 return req.CreateResponse(HttpStatusCode.BadRequest, "Invalid key");
 
-            var users = context.LibraryPodcasts.Where(p => p.PodcastId == podcastId).Select(p => p.ApplicationUser).ToList();
+            int episodeId = data.EpisodeId;
+            var episode = context.Episodes.SingleOrDefault(e => e.Id == episodeId);
+            var podcast = episode.Podcast;
 
             // notify each user of new episode
+            var users = context.LibraryPodcasts.Where(p => p.PodcastId == podcast.Id).Select(p => p.ApplicationUser).ToList();
+            var count = 0;
             foreach (var user in users)
             {
-
+                await SendEmail(user, episode);
+                count++;
             }
 
-            return req.CreateResponse(HttpStatusCode.OK, "Hello ");
+            log.Info($"{count} emails sent");
+
+            return req.CreateResponse(HttpStatusCode.OK, $"{count} emails sent");
+        }
+
+        private static async Task SendEmail(ApplicationUser user, Episode episode)
+        {
+            const string apiKey = "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";
+
+            var podcast = episode.Podcast;
+            var client = new SendGridClient(apiKey);
+            var from = new EmailAddress("do_not_reply@devpodcasts.net", "Dev Podcasts");
+            var subject = $"DevPodcasts: New {podcast.Title} episode available";
+            var to = new EmailAddress($"{user.Email}", $"{user.FirstName} {user.LastName}");
+            var plainTextContent = $"New episode: {episode.Title} available";
+            var htmlContent = $"New episode: {episode.Title} available";
+            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+
+            var response = await client.SendEmailAsync(msg);
         }
     }
 }
