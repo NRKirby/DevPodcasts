@@ -13,7 +13,7 @@ namespace DevPodcasts.NotifyPodcastSubscribers
 {
     public static class Function
     {
-        [FunctionName("NotifyPodcastSubscribers")] // http://localhost:7071/api/NotifyPodcastSubscribers
+        [FunctionName("NotifyPodcastSubscribers")]
         public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)]HttpRequestMessage req, TraceWriter log)
         {
             log.Info("C# HTTP trigger function processed a request.");
@@ -24,7 +24,7 @@ namespace DevPodcasts.NotifyPodcastSubscribers
             var context = new ApplicationDbContext(connectionString);
 
             var key = data?.Key;
-            if (key != "theKey")
+            if (key != "pT2BAmc0FQTLbicn6cDXkPXTagCqCoei")
                 return req.CreateResponse(HttpStatusCode.BadRequest, "Invalid key");
 
             int episodeId = data.EpisodeId;
