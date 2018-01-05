@@ -1,18 +1,24 @@
 using DevPodcasts.DataLayer.Models;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
+using Newtonsoft.Json;
 using System;
 using System.Linq;
+using System.Net.Http;
 using System.Reflection;
 using System.ServiceModel.Syndication;
+using System.Text;
+using System.Threading.Tasks;
 using System.Xml;
 
 namespace DevPodcasts.EpisodeUpdater
 {
     public static class Function
     {
+        private static HttpClient client = new HttpClient();
+
         [FunctionName("Function")]
-        public static void Run([TimerTrigger("0 */30 * * * *")]TimerInfo myTimer, TraceWriter log)
+        public static async Task Run([TimerTrigger("0 */30 * * * *")]TimerInfo myTimer, TraceWriter log)
         {
             log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
 
@@ -81,7 +87,9 @@ namespace DevPodcasts.EpisodeUpdater
                                     episodesAddedCount++;
                                     log.Info($"{podcast.Title} {episode.Title} added");
                                     context.SaveChanges();
-                                    // Call NotifyPodcastSubscribers function passing episodeId and podcastId
+                                    
+                                    // Call NotifyPodcastSubscribers Azure function
+                                    await NotifyPodcastSubscribers(episode.Id);
                                 }
                             }
 
@@ -101,6 +109,20 @@ namespace DevPodcasts.EpisodeUpdater
             {
                 log.Info($"Number of episodes added: {episodesAddedCount}");
             }
+        }
+
+        private async static Task NotifyPodcastSubscribers(int episodeId)
+        {
+            var obj = new
+            {
+                Key = "pT2BAmc0FQTLbicn6cDXkPXTagCqCoei",
+                EpisodeId = episodeId
+            };
+
+            var content = new StringContent(JsonConvert.SerializeObject(obj).ToString(), Encoding.UTF8, "application/json");
+            var response = await client.PostAsync("https://devpodcastsnotifypodcastsubscribers.azurewebsites.net/api/NotifyPodcastSubscribers", content);
+
+            var responseString = await response.Content.ReadAsStringAsync();
         }
 
         private static DateTime? GetMostRecentEpisodeDate(Podcast podcast, ApplicationDbContext context)
