@@ -47,15 +47,20 @@ namespace DevPodcasts.NotifyPodcastSubscribers
 
         private static async Task SendEmail(ApplicationUser user, Episode episode)
         {
-            const string apiKey = "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";
-
             var podcast = episode.Podcast;
+
+            const string apiKey = "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";
             var client = new SendGridClient(apiKey);
+
             var from = new EmailAddress("do_not_reply@devpodcasts.net", "Dev Podcasts");
-            var subject = $"DevPodcasts: New {podcast.Title} episode available";
+            var subject = $"New {podcast.Title} episode available!";
             var to = new EmailAddress($"{user.Email}", $"{user.FirstName} {user.LastName}");
-            var plainTextContent = $"New episode: {episode.Title} available";
-            var htmlContent = $"New episode: {episode.Title} available";
+
+            var plainTextContent = $"New episode: {episode.Title} available\ndevpodcasts.net/episodes/detail/{episode.Id}";
+            var htmlContent = $@"<h1>Dev Podcasts</h1>
+                                 <p>New episode <strong>{episode.Title}</strong> available</p>
+                                 <a href=""https://devpodcasts.net/episode/detail/{episode.Id}"">https://devpodcasts.net/episode/detail/{episode.Id}</a>";
+
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
 
             var response = await client.SendEmailAsync(msg);
