@@ -98,6 +98,7 @@ h6,
 }
 .episode-detail-container h4 {
   margin-top: 0;
+  margin-bottom: 1em;
   font-weight: bold;
 }
 .episode-detail-container .summary {
