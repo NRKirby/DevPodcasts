@@ -45,9 +45,8 @@
         })
     });
 
-    var thisUrl = "@HttpContext.Current.Request.Url".replace("http", "https");
     var disqus_config = function () {
-        this.page.url = thisUrl;
+        this.page.url = "@HttpContext.Current.Request.Url";
         this.page.identifier = "@Model.Id";
     };
 
