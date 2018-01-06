@@ -32,10 +32,12 @@ namespace DevPodcasts.ServiceLayer.Admin
             return viewModel;
         }
 
-        public async Task Save(int podcastId, IEnumerable<int> selectedCategoryIds)
+        public async Task Save(ReviewPodcastViewModel model)
         {
+            var podcastId = model.Id;
+            var selectedTags = model.Tags.Where(x => x.IsChecked).Select(x => x.Id).ToList();
             _podcastService.AddPodcastEpisodes(podcastId);
-            await _podcastRepository.SaveCategories(podcastId, selectedCategoryIds);
+            await _podcastRepository.SaveTags(podcastId, selectedTags);
         }
 
         public async Task Reject(int podcastId)

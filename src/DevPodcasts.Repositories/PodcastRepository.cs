@@ -95,7 +95,7 @@ namespace DevPodcasts.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task SaveCategories(int podcastId, IEnumerable<int> categoryIds)
+        public async Task SaveTags(int podcastId, IEnumerable<int> tagIds)
         {
             var podcast = _context
                 .Podcasts
@@ -103,10 +103,10 @@ namespace DevPodcasts.Repositories
                 .Include(i => i.Tags)
                 .Single();
 
-            foreach (var categoryId in categoryIds)
+            foreach (var tagId in tagIds)
             {
-                var category = _context.Tags.Find(categoryId);
-                podcast.Tags.Add(category);
+                var tag = _context.Tags.Find(tagId);
+                podcast.Tags.Add(tag);
             }
             await _context.SaveChangesAsync();
         }

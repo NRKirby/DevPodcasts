@@ -31,8 +31,7 @@ namespace DevPodcasts.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> ReviewSubmission(ReviewPodcastViewModel model)
         {
-            var selectedTags = model.Tags.Where(x => x.IsChecked).Select(x => x.Id).ToList();
-            await _adminService.Save(model.Id, selectedTags);
+            await _adminService.Save(model);
             return RedirectToAction("Index");
         }
 
