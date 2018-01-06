@@ -58,7 +58,7 @@ namespace DevPodcasts.Web.Features.Library
                         PodcastTitle = podcast.Title,
                         UserId = user.Id,
                         ApplicationUser = user,
-                        IsSubscribed = false,
+                        IsSubscribed = true,
                         DateAdded = DateTime.Now
                     };
                     user.LibraryPodcasts.Add(libraryPodcast);
