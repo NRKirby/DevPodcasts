@@ -8,21 +8,21 @@
     <h1><a href="~/podcasts/detail/@Model.PodcastId">@Model.PodcastTitle</a></h1>
     <h2>@Model.Title</h2>
     <span class="episode-published">Published @Model.DatePublished.ToString("dd MMMM yyyy")</span>
-    
-    <audio id="audio" controls style="margin: 1em 0">
+
+    <audio id="audio" controls>
         <source src=@Model.AudioUrl type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-    <button type="button" class="btn btn-primary btn-sm" onclick="location.href = '@Model.EpisodeUrl'" style="margin-top: 0.9em; margin-bottom: 1.5em;">Episode Link</button>
+    <button type="button" class="btn btn-primary btn-sm" onclick="location.href = '@Model.EpisodeUrl'">Episode Link</button>
 
-    <div style="border: 1px solid #005cb9; background-color: #f1f5f9; overflow: auto; margin-bottom: 1.7em; margin-top: 1em; padding: 1em !important;">
-        <h4 style="margin-top: 0">Summary:</h4>
-        @Model.Summary
+    <div class="summary">
+        <h4>Summary:</h4>
+        @Html.Raw(@Model.Summary)
     </div>
 
 
     <br />
-    <div id="disqus_thread" style="position: relative; top: 100px"></div>
+    <div id="disqus_thread"></div>
 </div>
 
 
@@ -45,8 +45,9 @@
         })
     });
 
+    var thisUrl = "@HttpContext.Current.Request.Url".replace("http", "https");
     var disqus_config = function () {
-        this.page.url = "@HttpContext.Current.Request.Url";
+        this.page.url = thisUrl;
         this.page.identifier = "@Model.Id";
     };
 

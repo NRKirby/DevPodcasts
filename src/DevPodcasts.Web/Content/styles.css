@@ -87,11 +87,30 @@ h6,
 }
 .episode-detail-container {
   margin-bottom: 100px;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 .episode-detail-container #audio {
-  margin: 0 10px;
   width: 100%;
+  margin: 1em 0;
+}
+.episode-detail-container .btn {
+  padding: 5px 10px;
+}
+.episode-detail-container h4 {
+  margin-top: 0;
+  font-weight: bold;
+}
+.episode-detail-container .summary {
+  border: 1px solid #005cb9;
+  background-color: #f1f5f9;
+  overflow: auto;
+  margin-bottom: 1.7em;
+  margin-top: 3em;
+  padding: 1em !important;
+}
+.episode-detail-container #disqus_thread {
+  position: relative;
+  top: 50px;
 }
 .tags-container p {
   margin-bottom: 30px;
