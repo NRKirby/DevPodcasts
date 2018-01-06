@@ -16,7 +16,6 @@ namespace DevPodcasts.ServiceLayer.Episode
         public EpisodeDetailViewModel GetEpisodeDetail(int id)
         {
             var episode = _episodeRepository.GetEpisode(id);
-            var summary = episode.Summary;
             var viewModel = new EpisodeDetailViewModel
             {
                 Id = episode.Id,
@@ -24,7 +23,8 @@ namespace DevPodcasts.ServiceLayer.Episode
                 Title = episode.Title,
                 AudioUrl = episode.AudioUrl,
                 EpisodeUrl = episode.EpisodeUrl,
-                PodcastTitle = episode.PodcastTitle
+                PodcastTitle = episode.PodcastTitle,
+                Summary = episode.Summary
             };
 
             if (episode.DatePublished != null)
