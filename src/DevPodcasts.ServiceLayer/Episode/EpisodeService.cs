@@ -1,7 +1,6 @@
-﻿using System;
-using DevPodcasts.Repositories;
+﻿using DevPodcasts.Repositories;
 using DevPodcasts.ViewModels.Episode;
-using System.Text.RegularExpressions;
+using System;
 
 namespace DevPodcasts.ServiceLayer.Episode
 {
@@ -33,24 +32,12 @@ namespace DevPodcasts.ServiceLayer.Episode
                 viewModel.DatePublished = (DateTime)episode.DatePublished;
             }
 
-            if (summary != null)
-            {
-                viewModel.Summary = StripHtml(summary);
-            }
-
             return viewModel;
         }
 
         public bool EpisodeExists(int episodeId)
         {
             return _episodeRepository.EpisodeExists(episodeId);
-        }
-
-        public static string StripHtml(string input)
-        {
-            var replace = Regex.Replace(input, "<.*?>", string.Empty);
-            replace = Regex.Replace(replace, "&nbsp;", " ");
-            return replace;
         }
     }
 }
