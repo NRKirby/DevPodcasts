@@ -200,7 +200,6 @@
     <Compile Include="Controllers\PodcastsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
-    <Compile Include="Controllers\Api\UpdateEpisodesController.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Features\Library\AddOrRemovePodcast.cs" />
     <Compile Include="Features\Library\AjaxModel.cs" />
