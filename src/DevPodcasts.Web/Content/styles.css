@@ -109,6 +109,9 @@ h6,
   margin-top: 3em;
   padding: 1em !important;
 }
+.episode-detail-container .summary img {
+  width: 100%;
+}
 .episode-detail-container #disqus_thread {
   position: relative;
   top: 50px;
@@ -441,7 +444,8 @@ textarea {
 }
 @media (max-width: 770px) {
   .podcast-detail-container .col-sm-2 img {
-    margin-top: 2em;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
   }
 }
 /* Desktop */
