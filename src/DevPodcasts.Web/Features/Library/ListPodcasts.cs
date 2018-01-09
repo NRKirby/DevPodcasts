@@ -38,7 +38,8 @@ namespace DevPodcasts.Web.Features.Library
                     .Select(podcast => new SubscribedPodcast
                     {
                         Id = podcast.PodcastId,
-                        Title = podcast.PodcastTitle
+                        Title = podcast.PodcastTitle,
+                        ReceiveEmailAlerts = podcast.IsSubscribed
                     }).ToList();
 
                 viewModel.SubscribedPodcasts = subscribedPodcasts;
@@ -52,5 +53,6 @@ namespace DevPodcasts.Web.Features.Library
     {
         public int Id { get; set; }
         public string Title { get; set; }
+        public bool ReceiveEmailAlerts { get; set; }
     }
 }

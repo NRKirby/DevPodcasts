@@ -17,11 +17,13 @@
         <table>
             @foreach (var podcast in Model.SubscribedPodcasts)
             {
+                var emailSubscribed = podcast.ReceiveEmailAlerts ? "email-subscribed" : "";
+                var title = podcast.ReceiveEmailAlerts ? "Stop receiving email alerts" : "Receive email alerts";
                 <tr>
                     @Html.HiddenFor(m => podcast.Id)
                     <td class="remove-from-library"><span class="glyphicon glyphicon-remove" aria-hidden="true" title="Remove @podcast.Title from library"></span></td>
                     <td class="podcast-title"><a href="~/podcasts/detail/@podcast.Id">@podcast.Title</a></td>
-                    <td class="subscribe-email-notification"><span class="glyphicon glyphicon-envelope" aria-hidden="true" title="Get email notifications when new episodes are released"></span></td>
+                    <td class="subscribe-email-notification"><span class="glyphicon glyphicon-envelope @emailSubscribed" aria-hidden="true" title="@title"></span></td>
                 </tr>
             }
         </table>
