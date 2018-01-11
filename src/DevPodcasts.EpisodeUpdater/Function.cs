@@ -119,7 +119,7 @@ namespace DevPodcasts.EpisodeUpdater
                 EpisodeId = episodeId
             };
 
-            var content = new StringContent(JsonConvert.SerializeObject(obj).ToString(), Encoding.UTF8, "application/json");
+            var content = new StringContent(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json");
             var response = await client.PostAsync("https://devpodcastsnotifypodcastsubscribers.azurewebsites.net/api/NotifyPodcastSubscribers", content);
 
             var responseString = await response.Content.ReadAsStringAsync();

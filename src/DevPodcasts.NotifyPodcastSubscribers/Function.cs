@@ -52,7 +52,7 @@ namespace DevPodcasts.NotifyPodcastSubscribers
             const string apiKey = "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";
             var client = new SendGridClient(apiKey);
 
-            var from = new EmailAddress("do_not_reply@devpodcasts.net", "Dev Podcasts");
+            var from = new EmailAddress("episodenotificationsdevpodcasts.net", "Dev Podcasts");
             var subject = $"New {podcast.Title} episode available!";
             var to = new EmailAddress($"{user.Email}", $"{user.FirstName} {user.LastName}");
 
