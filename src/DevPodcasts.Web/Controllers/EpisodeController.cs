@@ -17,13 +17,12 @@ namespace DevPodcasts.Web.Controllers
             return View();
         }
 
-        public ActionResult Detail(int id)
+        public ActionResult Detail(int? id)
         {
-            var episodeExists = _episodeService.EpisodeExists(id);
-            if (!episodeExists)
+            if (id == null ||  !_episodeService.EpisodeExists((int)id))
                 return RedirectToAction("Index", "Home"); // TODO: redirect to error page
 
-            var viewModel = _episodeService.GetEpisodeDetail(id);
+            var viewModel = _episodeService.GetEpisodeDetail((int)id);
             return View(viewModel);
         }
     }

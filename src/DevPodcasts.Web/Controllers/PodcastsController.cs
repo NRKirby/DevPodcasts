@@ -60,16 +60,20 @@ namespace DevPodcasts.Web.Controllers
             return View(result);
         }
 
-        public async Task<ActionResult> Detail(int id)
+        public async Task<ActionResult> Detail(int? id)
         {
-            var podcastExists = _podcastService.PodcastExists(id);
-            if (!podcastExists)
+            if (id == null || !_podcastService.PodcastExists((int)id))
                 return RedirectToAction("Index", "Home"); // TODO: redirect to error page
 
             var userId = User.Identity.GetUserId();
-            var viewModel = await _mediator.Send(new Detail.Query { PodcastId = id, UserId = userId });
+            var viewModel = await _mediator.Send(new Detail.Query { PodcastId = (int)id, UserId = userId });
 
             return View(viewModel);
+        }
+
+        private bool IsInteger(object value)
+        {
+            return false;
         }
 
         [Authorize(Roles = "Admin")]
