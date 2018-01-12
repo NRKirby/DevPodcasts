@@ -1,6 +1,6 @@
 ﻿namespace DevPodcasts.Web.Features.Library
 {
-    public class AjaxModel
+    public class AddRemovePodcastAjaxModel
     {
         public string U { get; set; }
         public int P { get; set; }

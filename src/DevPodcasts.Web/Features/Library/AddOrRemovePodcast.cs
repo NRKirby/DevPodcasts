@@ -9,13 +9,13 @@ namespace DevPodcasts.Web.Features.Library
 {
     public class AddOrRemovePodcast
     {
-        public class Command : IRequest<AjaxModel>
+        public class Command : IRequest<AddRemovePodcastAjaxModel>
         {
             public string UserId { get; set; }
             public int PodcastId { get; set; }
         }
 
-        public class CommandHandler : IAsyncRequestHandler<Command, AjaxModel>
+        public class CommandHandler : IAsyncRequestHandler<Command, AddRemovePodcastAjaxModel>
         {
             private readonly ApplicationDbContext _context;
 
@@ -24,9 +24,9 @@ namespace DevPodcasts.Web.Features.Library
                 _context = context;
             }
 
-            public async Task<AjaxModel> Handle(Command message)
+            public async Task<AddRemovePodcastAjaxModel> Handle(Command message)
             {
-                var model = new AjaxModel { IsSuccess = false };
+                var model = new AddRemovePodcastAjaxModel { IsSuccess = false };
                 var user = await _context.Users.SingleOrDefaultAsync(u => u.Id == message.UserId);
                 if (user == null)
                 {

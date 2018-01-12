@@ -8,13 +8,13 @@ namespace DevPodcasts.Web.Features.Library
 {
     public class SubscribeUnsubscribeEmailNotification
     {
-        public class Command : IRequest<AjaxModel>
+        public class Command : IRequest<SubscribeUnsubscribePodcastAjaxModel>
         {
             public string UserId { get; set; }
             public int PodcastId { get; set; }
         }
 
-        public class CommandHandler : IAsyncRequestHandler<Command, AjaxModel>
+        public class CommandHandler : IAsyncRequestHandler<Command, SubscribeUnsubscribePodcastAjaxModel>
         {
             private readonly ApplicationDbContext _context;
 
@@ -23,9 +23,9 @@ namespace DevPodcasts.Web.Features.Library
                 _context = context;
             }
 
-            public async Task<AjaxModel> Handle(Command message)
+            public async Task<SubscribeUnsubscribePodcastAjaxModel> Handle(Command message)
             {
-                var model = new AjaxModel { IsSuccess = false };
+                var model = new SubscribeUnsubscribePodcastAjaxModel { IsSuccess = false };
 
                 var libraryPodcast = await _context.LibraryPodcasts
                     .Where(p => p.PodcastId == message.PodcastId && p.UserId == message.UserId)
@@ -39,10 +39,20 @@ namespace DevPodcasts.Web.Features.Library
 
                 libraryPodcast.IsSubscribed = !libraryPodcast.IsSubscribed;
                 await _context.SaveChangesAsync();
+                model.IsSubscribedForEmailNotification = libraryPodcast.IsSubscribed;
                 model.IsSuccess = true;
 
                 return model;
             }
         }
+    }
+
+    public class SubscribeUnsubscribePodcastAjaxModel
+    {
+        public string U { get; set; }
+        public int P { get; set; }
+        public bool IsSuccess { get; set; }
+        public bool IsSubscribedForEmailNotification { get; set; }
+        public string Error { get; set; }
     }
 }
