@@ -18,7 +18,7 @@
             @foreach (var podcast in Model.SubscribedPodcasts)
             {
                 var emailSubscribed = podcast.ReceiveEmailAlerts ? "email-subscribed" : "";
-                var title = podcast.ReceiveEmailAlerts ? "Stop receiving email alerts" : "Receive email alerts";
+                var title = podcast.ReceiveEmailAlerts ? "Stop receiving email notifications" : "Receive email notifications when new episodes become available";
                 <tr>
                     @Html.HiddenFor(m => podcast.Id)
                     <td class="remove-from-library"><span class="glyphicon glyphicon-remove" aria-hidden="true" title="Remove @podcast.Title from library"></span></td>
@@ -62,6 +62,9 @@
     $('.subscribe-email-notification').on('click', function () {
 
         var p = $(this).parents('tr').find('input[type="hidden"]').val();
+
+        var selectedRow = $(this);
+
         var data = {
             u: '@userId',
             p: p
@@ -73,8 +76,18 @@
             data: JSON.stringify(data),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-            success: function() {
-
+            success: function(response) {
+                if (response.IsSubscribedForEmailNotification) {
+                    if (!selectedRow.children(":first").attr("class").includes("email-subscribed")) {
+                        selectedRow.children(":first").addClass("email-subscribed")
+                        selectedRow.children(":first").attr("title", "Stop receving email notifications")
+                    }
+                }  else {
+                    if (selectedRow.children(":first").attr("class").includes("email-subscribed")) {
+                        selectedRow.children(":first").removeClass("email-subscribed")
+                        selectedRow.children(":first").attr("title", "Receive email notifications when new episodes become available")
+                    }
+                }
             }
         });
     })
