@@ -25,7 +25,7 @@ namespace DevPodcasts.Web
             );
 
             routes.MapRoute(
-                "Podcasts",
+                "PodcastsTagged",
                 "Podcasts/Tagged/{tagSlug}",
                 new { controller = "Podcasts", action = "Tagged", tagSlug = UrlParameter.Optional }
             );
