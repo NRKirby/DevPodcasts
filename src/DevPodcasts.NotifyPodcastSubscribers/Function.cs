@@ -31,15 +31,20 @@ namespace DevPodcasts.NotifyPodcastSubscribers
             var episode = context.Episodes.SingleOrDefault(e => e.Id == episodeId);
             var podcast = episode.Podcast;
 
+            log.Info($"{podcast.Title}: {episode.Title}");
+            log.Info($"*********************");
+
             // notify each user of new episode
             var users = context.LibraryPodcasts.Where(p => p.PodcastId == podcast.Id).Select(p => p.ApplicationUser).ToList();
             var count = 0;
             foreach (var user in users)
             {
                 await SendEmail(user, episode);
+                
                 count++;
             }
 
+            log.Info($"*********************");
             log.Info($"{count} emails sent");
 
             return req.CreateResponse(HttpStatusCode.OK, $"{count} emails sent");
