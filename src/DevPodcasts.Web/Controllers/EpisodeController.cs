@@ -1,5 +1,6 @@
 ﻿using DevPodcasts.ServiceLayer.Episode;
 using DevPodcasts.Web.Features.Episode;
+using DevPodcasts.Web.Features.Library;
 using MediatR;
 using Microsoft.AspNet.Identity;
 using System.Threading.Tasks;
@@ -32,6 +33,14 @@ namespace DevPodcasts.Web.Controllers
             var viewModel = await _mediator.Send(new Detail.Query {EpisodeId = (int)id, UserId = userId });
 
             return View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> AddRemove(AddRemoveLibraryAjaxModel model)
+        {
+            var viewModel = await _mediator.Send(new AddOrRemoveEpisode.Command { UserId = model.U, EpisodeId = model.P });
+
+            return Json(viewModel);
         }
     }
 }
