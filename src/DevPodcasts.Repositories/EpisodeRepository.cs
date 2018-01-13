@@ -4,7 +4,6 @@ using DevPodcasts.Logging;
 using DevPodcasts.ViewModels.Home;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -19,37 +18,6 @@ namespace DevPodcasts.Repositories
         {
             _context = new ApplicationDbContext();
             _logger = logger;
-        }
-
-        public IEnumerable<EpisodeDto> GetAllEpisodes(int podcastId)
-        {
-            return _context
-                .Episodes
-                .AsNoTracking()
-                .Where(i => i.PodcastId == podcastId)
-                .OrderByDescending(i => i.DatePublished)
-                .Select(i => new EpisodeDto
-                {
-                    Id = i.Id,
-                    Title = i.Title,
-                    DatePublished = i.DatePublished
-                });
-        }
-
-        public EpisodeDto GetEpisode(int episodeId)
-        {
-            var episode = _context.Episodes.AsNoTracking().Single(i => i.Id == episodeId);
-            return new EpisodeDto
-            {
-                Id = episode.Id,
-                PodcastId = episode.PodcastId,
-                Title = episode.Title,
-                Summary = episode.Summary,
-                AudioUrl = episode.AudioUrl,
-                EpisodeUrl = episode.EpisodeUrl,
-                DatePublished = episode.DatePublished,
-                PodcastTitle = episode.Podcast.Title
-            };
         }
 
         public DateTime? GetMostRecentEpisodeDate(int podcastId)

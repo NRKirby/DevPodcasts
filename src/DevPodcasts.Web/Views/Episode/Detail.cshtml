@@ -13,7 +13,19 @@
         <source src=@Model.AudioUrl type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-    <button type="button" class="btn btn-primary btn-sm" onclick="location.href = '@Model.EpisodeUrl'">Episode Link</button>
+    <div class="button-row">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <button class="btn btn-primary add-remove" id="remove-from-libary" title="Remove from Library"><span class="glyphicon glyphicon-ok"></span>Added</button>
+            <button class="btn btn-primary add-remove" id="add-to-libary" title="Add to Library"><span class="glyphicon glyphicon-plus"></span>Add</button>
+        }
+        else
+        {
+            <a href='@Url.Action("Login", "Account", new { ReturnUrl = "~/podcasts/detail/" + Model.Id })'><button class="btn btn-default" title="Sign in to add podcast to Library"><span class="glyphicon glyphicon-plus"></span>Add</button></a>
+        }
+        <button type="button" class="btn btn-primary btn-sm" onclick="location.href = '@Model.EpisodeUrl'">Episode Link</button>
+    </div>
+
 
     <div class="summary">
         <h4>Summary:</h4>
