@@ -11,7 +11,7 @@
         <li class="active"><a href="~/library/episodes" role="tab">Episodes</a></li>
     </ul>
 
-    @if (Model.SubscribedEpisodes != null)
+    @if (Model?.SubscribedEpisodes != null)
     {
         <ul>
             @foreach (var episode in Model.SubscribedEpisodes)
