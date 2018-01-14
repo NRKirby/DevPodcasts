@@ -13,12 +13,14 @@
 
     @if (Model?.SubscribedEpisodes != null)
     {
-        <ul>
+        <table>
             @foreach (var episode in Model.SubscribedEpisodes)
             {
-                <li><a href="~/episode/detail/@episode.Id">@episode.Title</a></li>
+                <tr>
+                    <td><a href="~/episode/detail/@episode.Id">@episode.Title</a></td>
+                </tr>
             }
-        </ul>
+        </table>
     }
 
 </div>

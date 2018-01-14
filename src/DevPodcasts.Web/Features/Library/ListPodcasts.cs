@@ -1,6 +1,7 @@
 ﻿using DevPodcasts.DataLayer.Models;
 using MediatR;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -26,7 +27,7 @@ namespace DevPodcasts.Web.Features.Library
             {
                 var viewModel = new ViewModel();
 
-                var subscribedPodcasts = _context.LibraryPodcasts
+                var subscribedPodcasts = await _context.LibraryPodcasts
                     .Where(user => user.UserId == message.UserId)
                     .OrderBy(podcast => podcast.PodcastTitle)
                     .Select(podcast => new SubscribedPodcast
@@ -34,7 +35,7 @@ namespace DevPodcasts.Web.Features.Library
                         Id = podcast.PodcastId,
                         Title = podcast.PodcastTitle,
                         ReceiveEmailAlerts = podcast.IsSubscribed
-                    }).ToList();
+                    }).ToListAsync();
 
                 viewModel.SubscribedPodcasts = subscribedPodcasts;
                 viewModel.UserId = message.UserId;

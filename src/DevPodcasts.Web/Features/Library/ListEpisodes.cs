@@ -29,7 +29,7 @@ namespace DevPodcasts.Web.Features.Library
 
                 var subscribedEpisodes = await _context.LibraryEpisodes
                     .Where(user => user.UserId == message.UserId)
-                    .OrderBy(episode => episode.Episode.Title)
+                    .OrderByDescending(episode => episode.DateAdded)
                     .Select(episode => new SubscribedEpisode
                     {
                         Id = episode.EpisodeId,
