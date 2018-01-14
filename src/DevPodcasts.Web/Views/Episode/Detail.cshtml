@@ -17,8 +17,8 @@
     <div class="button-row">
         @if (User.Identity.IsAuthenticated)
         {
-            <button class="btn btn-primary add-remove" id="remove-from-libary" title="Remove from Library" @(isSubscribed ? "style=display:inline-block" : "style=display:none")><span class="glyphicon glyphicon-ok"></span>Added</button>
-            <button class="btn btn-primary add-remove" id="add-to-libary" title="Add to Library" @(isSubscribed ? "style=display:none" : "style=display:inline-block")><span class="glyphicon glyphicon-plus"></span>Add</button>
+            <button class="btn btn-primary btn-sm add-remove" id="remove-from-libary" title="Remove from Library" @(isSubscribed ? "style=display:inline-block" : "style=display:none")><span class="glyphicon glyphicon-ok"></span>Added</button>
+            <button class="btn btn-primary btn-sm add-remove" id="add-to-libary" title="Add to Library" @(isSubscribed ? "style=display:none" : "style=display:inline-block")><span class="glyphicon glyphicon-plus"></span>Add</button>
         }
         else
         {

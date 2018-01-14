@@ -1,4 +1,4 @@
-﻿@*@model DevPodcasts.Web.Features.Library.Index.List.ViewModel
+﻿@model DevPodcasts.Web.Features.Library.ListEpisodes.ViewModel
 @{
     ViewBag.Title = "Episodes";
 }
@@ -11,15 +11,15 @@
         <li class="active"><a href="~/library/episodes" role="tab">Episodes</a></li>
     </ul>
 
-    @if (Model.SubscribedPodcasts != null)
+    @if (Model.SubscribedEpisodes != null)
     {
         <ul>
-            @foreach (var podcast in Model.SubscribedPodcasts)
+            @foreach (var episode in Model.SubscribedEpisodes)
             {
-                <li><a href="~/podcasts/detail/@podcast.Id">@podcast.Title</a></li>
+                <li><a href="~/episode/detail/@episode.Id">@episode.Title</a></li>
             }
         </ul>
     }
 
-</div>*@
+</div>
 
