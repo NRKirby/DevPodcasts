@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Mvc;
+using DevPodcasts.Web.Features.Episode;
 using DevPodcasts.Web.Features.Library;
 using MediatR;
 using Microsoft.AspNet.Identity;
@@ -28,12 +29,12 @@ namespace DevPodcasts.Web.Controllers
             return View(viewModel);
         }
 
-        //public async Task<ActionResult> Episodes()
-        //{
-        //    if (!User.Identity.IsAuthenticated) return View();
+        public async Task<ActionResult> Episodes()
+        {
+            if (!User.Identity.IsAuthenticated) return View();
 
-        //    var viewModel = await _mediator.Send(new List.Query { UserId = User.Identity.GetUserId() });
-        //    return View(viewModel);
-        //}
+            var viewModel = await _mediator.Send(new ListEpisodes.Query { UserId = User.Identity.GetUserId() });
+            return View(viewModel);
+        }
     }
 }

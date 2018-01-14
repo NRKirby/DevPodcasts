@@ -43,7 +43,7 @@ namespace DevPodcasts.Web.Features.Podcast
                     .ToListAsync();
 
                 var isSubscribed = false;
-                if (message.UserId != null)
+                if (userId != null)
                 {
                     isSubscribed = _context.Users
                         .Single(u => u.Id == userId)

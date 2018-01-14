@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = Model.Title + " - " + Model.PodcastTitle;
     ViewBag.MetaDescriptionText = Model.Summary;
+    var isSubscribed = Model.IsSubscribed;
 }
 
 <div class="episode-detail-container">
@@ -13,7 +14,19 @@
         <source src=@Model.AudioUrl type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-    <button type="button" class="btn btn-primary btn-sm" onclick="location.href = '@Model.EpisodeUrl'">Episode Link</button>
+    <div class="button-row">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <button class="btn btn-primary btn-sm add-remove" id="remove-from-libary" title="Remove from Library" @(isSubscribed ? "style=display:inline-block" : "style=display:none")><span class="glyphicon glyphicon-ok"></span>Added</button>
+            <button class="btn btn-primary btn-sm add-remove" id="add-to-libary" title="Add to Library" @(isSubscribed ? "style=display:none" : "style=display:inline-block")><span class="glyphicon glyphicon-plus"></span>Add</button>
+        }
+        else
+        {
+            <a href='@Url.Action("Login", "Account", new { ReturnUrl = "~/podcasts/detail/" + Model.Id })'><button class="btn btn-default" title="Sign in to add podcast to Library"><span class="glyphicon glyphicon-plus"></span>Add</button></a>
+        }
+        <button type="button" class="btn btn-primary btn-sm" onclick="location.href = '@Model.EpisodeUrl'">Episode Link</button>
+    </div>
+
 
     <div class="summary">
         <h4>Summary:</h4>
@@ -43,6 +56,33 @@
             });
 
         })
+
+        $('.add-remove').on('click',
+            function() {
+
+                var data = {
+                    u: '@Model.UserId',
+                    p: '@Model.Id'
+                }
+
+                $.ajax({
+                    url: "/Episode/AddRemove",
+                    type: "POST",
+                    data: JSON.stringify(data),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function(response) {
+                        console.log(response.IsSuccess);
+                        if (response.IsAdded) {
+                            $('#add-to-libary').hide();
+                            $('#remove-from-libary').show();
+                        } else {
+                            $('#remove-from-libary').hide();
+                            $('#add-to-libary').show();
+                        }
+                    }
+                });
+            })
     });
 
     var disqus_config = function () {

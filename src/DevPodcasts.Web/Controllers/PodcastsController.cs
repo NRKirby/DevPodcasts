@@ -101,7 +101,7 @@ namespace DevPodcasts.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddRemove(AddRemovePodcastAjaxModel model)
+        public async Task<ActionResult> AddRemove(AddRemoveLibraryAjaxModel model)
         {
             var viewModel = await _mediator.Send(new AddOrRemovePodcast.Command { UserId = model.U, PodcastId = model.P } );
 
@@ -109,7 +109,7 @@ namespace DevPodcasts.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> SubscribeUnsubscribeEmail(AddRemovePodcastAjaxModel model)
+        public async Task<ActionResult> SubscribeUnsubscribeEmail(AddRemoveLibraryAjaxModel model)
         {
             var viewModel = await _mediator.Send(new SubscribeUnsubscribeEmailNotification.Command { UserId = model.U, PodcastId = model.P });
 

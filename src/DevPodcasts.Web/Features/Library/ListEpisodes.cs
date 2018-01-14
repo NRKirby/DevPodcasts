@@ -1,12 +1,13 @@
 ﻿using DevPodcasts.DataLayer.Models;
 using MediatR;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace DevPodcasts.Web.Features.Library
 {
-    public class ListPodcasts
+    public class ListEpisodes
     {
         public class Query : IRequest<ViewModel>
         {
@@ -26,33 +27,33 @@ namespace DevPodcasts.Web.Features.Library
             {
                 var viewModel = new ViewModel();
 
-                var subscribedPodcasts = _context.LibraryPodcasts
+                var subscribedEpisodes = await _context.LibraryEpisodes
                     .Where(user => user.UserId == message.UserId)
-                    .OrderBy(podcast => podcast.PodcastTitle)
-                    .Select(podcast => new SubscribedPodcast
+                    .OrderBy(episode => episode.Episode.Title)
+                    .Select(episode => new SubscribedEpisode
                     {
-                        Id = podcast.PodcastId,
-                        Title = podcast.PodcastTitle,
-                        ReceiveEmailAlerts = podcast.IsSubscribed
-                    }).ToList();
+                        Id = episode.EpisodeId,
+                        Title = episode.Episode.Title,
+                        PodcastTitle = episode.Episode.Podcast.Title
+                    }).ToListAsync();
 
-                viewModel.SubscribedPodcasts = subscribedPodcasts;
+                viewModel.SubscribedEpisodes = subscribedEpisodes;
                 viewModel.UserId = message.UserId;
                 return viewModel;
             }
         }
 
-        public class ViewModel : IRequest
+        public class ViewModel
         {
-            public IEnumerable<SubscribedPodcast> SubscribedPodcasts { get; set; }
+            public IEnumerable<SubscribedEpisode> SubscribedEpisodes { get; set; }
             public string UserId { get; set; }
         }
 
-        public class SubscribedPodcast
+        public class SubscribedEpisode
         {
             public int Id { get; set; }
             public string Title { get; set; }
-            public bool ReceiveEmailAlerts { get; set; }
+            public string PodcastTitle { get; set; }
         }
     }
 }
