@@ -27,17 +27,17 @@ namespace DevPodcasts.Web.Features.Library
             {
                 var viewModel = new ViewModel();
 
-                var subscribedEpisodes = await _context.LibraryEpisodes
+                var bookmarkedEpisodes = await _context.LibraryEpisodes
                     .Where(user => user.UserId == message.UserId)
                     .OrderByDescending(episode => episode.DateAdded)
-                    .Select(episode => new SubscribedEpisode
+                    .Select(episode => new BookmarkedEpisode
                     {
-                        Id = episode.EpisodeId,
-                        Title = episode.Episode.Title,
+                        EpisodeId = episode.EpisodeId,
+                        EpisodeTitle = episode.Episode.Title,
                         PodcastTitle = episode.Episode.Podcast.Title
                     }).ToListAsync();
 
-                viewModel.SubscribedEpisodes = subscribedEpisodes;
+                viewModel.BookmarkedEpisodes = bookmarkedEpisodes;
                 viewModel.UserId = message.UserId;
                 return viewModel;
             }
@@ -45,14 +45,14 @@ namespace DevPodcasts.Web.Features.Library
 
         public class ViewModel
         {
-            public IEnumerable<SubscribedEpisode> SubscribedEpisodes { get; set; }
+            public IEnumerable<BookmarkedEpisode> BookmarkedEpisodes { get; set; }
             public string UserId { get; set; }
         }
 
-        public class SubscribedEpisode
+        public class BookmarkedEpisode
         {
-            public int Id { get; set; }
-            public string Title { get; set; }
+            public int EpisodeId { get; set; }
+            public string EpisodeTitle { get; set; }
             public string PodcastTitle { get; set; }
         }
     }

@@ -32,8 +32,8 @@ namespace DevPodcasts.Web.Features.Library
                     .OrderBy(podcast => podcast.PodcastTitle)
                     .Select(podcast => new SubscribedPodcast
                     {
-                        Id = podcast.PodcastId,
-                        Title = podcast.PodcastTitle,
+                        PodcastId = podcast.PodcastId,
+                        PodcastTitle = podcast.PodcastTitle,
                         ReceiveEmailAlerts = podcast.IsSubscribed
                     }).ToListAsync();
 
@@ -51,8 +51,8 @@ namespace DevPodcasts.Web.Features.Library
 
         public class SubscribedPodcast
         {
-            public int Id { get; set; }
-            public string Title { get; set; }
+            public int PodcastId { get; set; }
+            public string PodcastTitle { get; set; }
             public bool ReceiveEmailAlerts { get; set; }
         }
     }
