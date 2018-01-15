@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace DevPodcasts.Web.Features.Library
 {
-    public class AddOrRemovePodcast
+    public class AddOrRemoveEpisode
     {
         public class Command : IRequest<AddRemoveLibraryAjaxModel>
         {
             public string UserId { get; set; }
-            public int PodcastId { get; set; }
+            public int EpisodeId { get; set; }
         }
 
         public class CommandHandler : IAsyncRequestHandler<Command, AddRemoveLibraryAjaxModel>
@@ -34,35 +34,33 @@ namespace DevPodcasts.Web.Features.Library
                     return model;
                 }
 
-                var podcast = await _context.Podcasts.SingleOrDefaultAsync(p => p.Id == message.PodcastId);
-                if (podcast == null)
+                var episode = await _context.Episodes.SingleOrDefaultAsync(p => p.Id == message.EpisodeId);
+                if (episode == null)
                 {
-                    model.Error = "Podcast doesn't exist";
+                    model.Error = "Episode doesn't exist";
                     return model;
                 }
 
-                var userIsSubscribed = user.LibraryPodcasts.Any(p => p.PodcastId == podcast.Id);
+                var userIsSubscribed = user.LibraryEpisodes.Any(p => p.EpisodeId == episode.Id);
                 if (userIsSubscribed)
                 {
-                    var libraryPodcast = await _context.LibraryPodcasts.SingleAsync(p => p.PodcastId == podcast.Id);
-                    _context.LibraryPodcasts.Remove(libraryPodcast);
-                    user.LibraryPodcasts.Remove(libraryPodcast);
+                    var libraryEpisode = await _context.LibraryEpisodes.SingleAsync(e => e.EpisodeId == episode.Id);
+                    _context.LibraryEpisodes.Remove(libraryEpisode);
+                    user.LibraryEpisodes.Remove(libraryEpisode);
                     model.IsAdded = false;
                 }
                 else
                 {
-                    var libraryPodcast = new LibraryPodcast
+                    var libraryEpisode = new LibraryEpisode
                     {
-                        PodcastId = podcast.Id,
-                        Podcast = podcast,
-                        PodcastTitle = podcast.Title,
+                        EpisodeId = episode.Id,
+                        Episode = episode,
                         UserId = user.Id,
                         ApplicationUser = user,
-                        IsSubscribed = true,
                         DateAdded = DateTime.Now
                     };
-                    user.LibraryPodcasts.Add(libraryPodcast);
-                    _context.LibraryPodcasts.Add(libraryPodcast);
+                    user.LibraryEpisodes.Add(libraryEpisode);
+                    _context.LibraryEpisodes.Add(libraryEpisode);
                     model.IsAdded = true;
                 }
 

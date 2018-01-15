@@ -1,25 +1,27 @@
-﻿@*@model DevPodcasts.Web.Features.Library.Index.List.ViewModel
+﻿@model DevPodcasts.Web.Features.Library.ListEpisodes.ViewModel
 @{
-    ViewBag.Title = "Episodes";
+    ViewBag.Title = "Bookmarked Episodes";
 }
 
 <div class="library-container container">
-    <h1>Library</h1>
+    <h1>Bookmarked Episodes</h1>
 
     <ul class="nav nav-tabs" role="tablist">
-        <li><a href="~/library/podcasts" role="tab">Podcasts</a></li>
-        <li class="active"><a href="~/library/episodes" role="tab">Episodes</a></li>
+        <li><a href="~/library/podcasts" role="tab">Subscribed Podcasts</a></li>
+        <li class="active"><a href="~/library/episodes" role="tab">Bookmarked Episodes</a></li>
     </ul>
 
-    @if (Model.SubscribedPodcasts != null)
+    @if (Model?.BookmarkedEpisodes != null)
     {
-        <ul>
-            @foreach (var podcast in Model.SubscribedPodcasts)
+        <table>
+            @foreach (var episode in Model.BookmarkedEpisodes)
             {
-                <li><a href="~/podcasts/detail/@podcast.Id">@podcast.Title</a></li>
+                <tr>
+                    <td><a href="~/episode/detail/@episode.EpisodeId">@episode.EpisodeTitle</a></td>
+                </tr>
             }
-        </ul>
+        </table>
     }
 
-</div>*@
+</div>
 

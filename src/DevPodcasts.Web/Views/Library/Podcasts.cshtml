@@ -1,15 +1,15 @@
 ﻿@model DevPodcasts.Web.Features.Library.ListPodcasts.ViewModel
 @{
-    ViewBag.Title = "Library";
+    ViewBag.Title = "Subscribed Podcasts";
     var userId = Model?.UserId ?? string.Empty;
 }
 
 <div class="library-container container">
-    <h1>Library</h1>
+    <h1>Subscribed Podcasts</h1>
 
     <ul class="nav nav-tabs" role="tablist">
-        <li class="active"><a href="~/library/podcasts" role="tab">Podcasts</a></li>
-        @*<li><a href="~/library/episodes" role="tab">Episodes</a></li>*@
+        <li class="active"><a href="~/library/podcasts" role="tab">Subscribed Podcasts</a></li>
+        <li><a href="~/library/episodes" role="tab">Bookmarked Episodes</a></li>
     </ul>
 
     @if (Model?.SubscribedPodcasts != null)
@@ -20,9 +20,9 @@
                 var emailSubscribed = podcast.ReceiveEmailAlerts ? "email-subscribed" : "";
                 var title = podcast.ReceiveEmailAlerts ? "Stop receiving email notifications" : "Receive email notifications when new episodes become available";
                 <tr>
-                    @Html.HiddenFor(m => podcast.Id)
-                    <td class="remove-from-library"><span class="glyphicon glyphicon-remove" aria-hidden="true" title="Remove @podcast.Title from library"></span></td>
-                    <td class="podcast-title"><a href="~/podcasts/detail/@podcast.Id">@podcast.Title</a></td>
+                    @Html.HiddenFor(m => podcast.PodcastId)
+                    <td class="remove-from-library"><span class="glyphicon glyphicon-remove" aria-hidden="true" title="Remove @podcast.PodcastTitle from library"></span></td>
+                    <td class="podcast-title"><a href="~/podcasts/detail/@podcast.PodcastId">@podcast.PodcastTitle</a></td>
                     <td class="subscribe-email-notification"><span class="glyphicon glyphicon-envelope @emailSubscribed" aria-hidden="true" title="@title"></span></td>
                 </tr>
             }

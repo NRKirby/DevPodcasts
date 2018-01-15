@@ -201,8 +201,11 @@
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Features\Episode\Detail.cs" />
+    <Compile Include="Features\Library\ListEpisodes.cs" />
+    <Compile Include="Features\Library\AddOrRemoveEpisode.cs" />
     <Compile Include="Features\Library\AddOrRemovePodcast.cs" />
-    <Compile Include="Features\Library\AjaxModel.cs" />
+    <Compile Include="Features\Library\AddRemoveLibraryAjaxModel.cs" />
     <Compile Include="Features\Library\ListPodcasts.cs" />
     <Compile Include="Features\Library\SubscribeUnsubscribeEmailNotification.cs" />
     <Compile Include="Features\Podcast\Detail.cs" />

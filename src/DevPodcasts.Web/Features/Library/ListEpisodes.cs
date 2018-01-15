@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DevPodcasts.Web.Features.Library
 {
-    public class ListPodcasts
+    public class ListEpisodes
     {
         public class Query : IRequest<ViewModel>
         {
@@ -27,33 +27,33 @@ namespace DevPodcasts.Web.Features.Library
             {
                 var viewModel = new ViewModel();
 
-                var subscribedPodcasts = await _context.LibraryPodcasts
+                var bookmarkedEpisodes = await _context.LibraryEpisodes
                     .Where(user => user.UserId == message.UserId)
-                    .OrderBy(podcast => podcast.PodcastTitle)
-                    .Select(podcast => new SubscribedPodcast
+                    .OrderByDescending(episode => episode.DateAdded)
+                    .Select(episode => new BookmarkedEpisode
                     {
-                        PodcastId = podcast.PodcastId,
-                        PodcastTitle = podcast.PodcastTitle,
-                        ReceiveEmailAlerts = podcast.IsSubscribed
+                        EpisodeId = episode.EpisodeId,
+                        EpisodeTitle = episode.Episode.Title,
+                        PodcastTitle = episode.Episode.Podcast.Title
                     }).ToListAsync();
 
-                viewModel.SubscribedPodcasts = subscribedPodcasts;
+                viewModel.BookmarkedEpisodes = bookmarkedEpisodes;
                 viewModel.UserId = message.UserId;
                 return viewModel;
             }
         }
 
-        public class ViewModel : IRequest
+        public class ViewModel
         {
-            public IEnumerable<SubscribedPodcast> SubscribedPodcasts { get; set; }
+            public IEnumerable<BookmarkedEpisode> BookmarkedEpisodes { get; set; }
             public string UserId { get; set; }
         }
 
-        public class SubscribedPodcast
+        public class BookmarkedEpisode
         {
-            public int PodcastId { get; set; }
+            public int EpisodeId { get; set; }
+            public string EpisodeTitle { get; set; }
             public string PodcastTitle { get; set; }
-            public bool ReceiveEmailAlerts { get; set; }
         }
     }
 }
