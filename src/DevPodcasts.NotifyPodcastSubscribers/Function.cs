@@ -40,11 +40,10 @@ namespace DevPodcasts.NotifyPodcastSubscribers
             foreach (var user in users)
             {
                 await SendEmail(user, episode);
-                
+                log.Info($"Email sent to {user.Email}");
                 count++;
             }
 
-            log.Info($"*********************");
             log.Info($"{count} emails sent");
 
             return req.CreateResponse(HttpStatusCode.OK, $"{count} emails sent");
@@ -57,7 +56,7 @@ namespace DevPodcasts.NotifyPodcastSubscribers
             const string apiKey = "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";
             var client = new SendGridClient(apiKey);
 
-            var from = new EmailAddress("episodenotificationsdevpodcasts.net", "Dev Podcasts");
+            var from = new EmailAddress("notifications@devpodcasts.net", "Dev Podcasts");
             var subject = $"New {podcast.Title} episode available!";
             var to = new EmailAddress($"{user.Email}", $"{user.FirstName} {user.LastName}");
 
