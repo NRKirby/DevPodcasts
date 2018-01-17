@@ -18,11 +18,11 @@
         @if (User.Identity.IsAuthenticated)
         {
             <button class="btn btn-primary btn-sm add-remove" id="remove-from-libary" title="Remove from Library bookmarked" @(isSubscribed ? "style=display:inline-block" : "style=display:none")><span class="glyphicon glyphicon-ok"></span>Bookmarked</button>
-            <button class="btn btn-primary btn-sm add-remove" id="add-to-libary" title="Add to Library bookmarks" @(isSubscribed ? "style=display:none" : "style=display:inline-block")><span class="glyphicon glyphicon-bookmark"></span>Bookmark</button>
+            <button class="btn btn-primary btn-sm add-remove" id="add-to-libary" title="Add to bookmarks" @(isSubscribed ? "style=display:none" : "style=display:inline-block")><span class="glyphicon glyphicon-bookmark"></span>Bookmark</button>
         }
         else
         {
-            <a href='@Url.Action("Login", "Account", new { ReturnUrl = "~/podcasts/detail/" + Model.Id })'><button class="btn btn-default" title="Sign in to add podcast to Library"><span class="glyphicon glyphicon-plus"></span>Add</button></a>
+            <a href='@Url.Action("Login", "Account", new { ReturnUrl = "~/podcasts/detail/" + Model.Id })'><button class="btn btn-primary" title="Sign in to add episode to bookmarks"><span class="glyphicon glyphicon-bookmark"></span>Bookmark</button></a>
         }
         <button type="button" class="btn btn-primary btn-sm" onclick="location.href = '@Model.EpisodeUrl'">Episode Link</button>
     </div>

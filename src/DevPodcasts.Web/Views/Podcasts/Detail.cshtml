@@ -36,7 +36,7 @@
         }
         else
         {
-            <a href='@Url.Action("Login", "Account", new { ReturnUrl = "~/podcasts/detail/" + Model.Id })'><button class="btn btn-default" title="Sign in to add podcast to Library"><span class="glyphicon glyphicon-plus"></span>Add</button></a>
+            <a href='@Url.Action("Login", "Account", new { ReturnUrl = "~/podcasts/detail/" + Model.Id })'><button class="btn btn-primary" title="Sign in to add podcast to Library"><span class="glyphicon glyphicon-plus"></span>Add</button></a>
         }
         <input type="text" id="search-episodes" onkeyup="search()" class="form-control" placeholder="Search episodes...">
     </div>
