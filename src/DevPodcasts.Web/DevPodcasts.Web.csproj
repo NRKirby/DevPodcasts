@@ -199,6 +199,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PodcastsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\SitemapController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Features\Episode\Detail.cs" />
@@ -330,6 +331,7 @@
     <Content Include="Views\Shared\_PodcastRows.cshtml" />
     <Content Include="Views\Library\Podcasts.cshtml" />
     <Content Include="Views\Library\Episodes.cshtml" />
+    <Content Include="Views\Sitemap\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
