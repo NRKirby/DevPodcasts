@@ -1,9 +1,8 @@
-﻿using System.Threading.Tasks;
-using System.Web.Mvc;
-using DevPodcasts.Web.Features.Episode;
-using DevPodcasts.Web.Features.Library;
+﻿using DevPodcasts.Web.Features.Library;
 using MediatR;
 using Microsoft.AspNet.Identity;
+using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace DevPodcasts.Web.Controllers
 {
@@ -18,7 +17,7 @@ namespace DevPodcasts.Web.Controllers
 
         public ActionResult Index()
         {
-            return RedirectToAction("Podcasts");
+            return RedirectToAction("Episodes");
         }
 
         public async Task<ActionResult> Podcasts()
