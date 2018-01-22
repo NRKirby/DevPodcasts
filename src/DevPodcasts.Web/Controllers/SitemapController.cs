@@ -1,4 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using DevPodcasts.Web.Features.Sitemap;
+using System;
+using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace DevPodcasts.Web.Controllers
 {
@@ -6,7 +9,13 @@ namespace DevPodcasts.Web.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var sitemapItems = new List<SitemapItem>
+            {
+                new SitemapItem("https://devpodcasts.net/home/index", changeFrequency: SitemapChangeFrequency.Always, priority: 1.0),
+                new SitemapItem("https://devpodcasts.net/home/about", lastModified: DateTime.Now),
+            };
+
+            return new SitemapResult(sitemapItems);
         }
     }
 }
