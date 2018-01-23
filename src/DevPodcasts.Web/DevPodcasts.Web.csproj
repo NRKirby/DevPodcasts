@@ -128,6 +128,7 @@
       <Private>True</Private>
       <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
       <HintPath>..\..\packages\WebActivatorEx.2.0.3\lib\net40\WebActivatorEx.dll</HintPath>
@@ -199,6 +200,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PodcastsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\SitemapController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Features\Episode\Detail.cs" />
@@ -209,6 +211,13 @@
     <Compile Include="Features\Library\ListPodcasts.cs" />
     <Compile Include="Features\Library\SubscribeUnsubscribeEmailNotification.cs" />
     <Compile Include="Features\Podcast\Detail.cs" />
+    <Compile Include="Features\Sitemap\GenerateSitemapItems.cs" />
+    <Compile Include="Features\Sitemap\ISitemapGenerator.cs" />
+    <Compile Include="Features\Sitemap\ISitemapItem.cs" />
+    <Compile Include="Features\Sitemap\SitemapChangeFrequency.cs" />
+    <Compile Include="Features\Sitemap\SitemapGenerator.cs" />
+    <Compile Include="Features\Sitemap\SitemapItem.cs" />
+    <Compile Include="Features\Sitemap\SitemapResult.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -330,6 +339,7 @@
     <Content Include="Views\Shared\_PodcastRows.cshtml" />
     <Content Include="Views\Library\Podcasts.cshtml" />
     <Content Include="Views\Library\Episodes.cshtml" />
+    <Content Include="Views\Sitemap\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
