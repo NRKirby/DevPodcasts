@@ -1,19 +1,23 @@
 ﻿using DevPodcasts.Web.Features.Sitemap;
-using System;
+using MediatR;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace DevPodcasts.Web.Controllers
 {
     public class SitemapController : Controller
     {
-        public ActionResult Index()
+        private readonly IMediator _mediator;
+
+        public SitemapController(IMediator mediator)
         {
-            var sitemapItems = new List<SitemapItem>
-            {
-                new SitemapItem("https://devpodcasts.net/home/index", changeFrequency: SitemapChangeFrequency.Always, priority: 1.0),
-                new SitemapItem("https://devpodcasts.net/home/about", lastModified: DateTime.Now),
-            };
+            _mediator = mediator;
+        }
+
+        public async Task<ActionResult> Index()
+        {
+            var sitemapItems = await _mediator.Send(new GenerateSitemapItems.Query());
 
             return new SitemapResult(sitemapItems);
         }
