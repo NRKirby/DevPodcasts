@@ -26,12 +26,12 @@ namespace DevPodcasts.Web.Features.Sitemap
             {
                 var sitemapItems = new List<SitemapItem>
                 {
-                    new SitemapItem("https://devpodcasts.net/home/index", changeFrequency: SitemapChangeFrequency.Always),
+                    new SitemapItem("https://devpodcasts.net"),
                     new SitemapItem("https://devpodcasts.net/home/login"),
                     new SitemapItem("https://devpodcasts.net/home/register"),
-                    new SitemapItem("https://devpodcasts.net/home/tags"),
-                    new SitemapItem("https://devpodcasts.net/home/search"),
-                    new SitemapItem("https://devpodcasts.net/home/podcasts")
+                    new SitemapItem("https://devpodcasts.net/tags"),
+                    new SitemapItem("https://devpodcasts.net/search"),
+                    new SitemapItem("https://devpodcasts.net/podcasts")
                 };
 
                 var podcastIds = _context.Podcasts.Where(podcast => podcast.IsApproved == true).Select(podcast => podcast.Id).ToList();
