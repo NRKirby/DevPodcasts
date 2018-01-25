@@ -1,2 +1,7 @@
 User-agent: *
+Disallow: /Library
+Disallow: /Library/
 Allow: /
+
+
+Sitemap: https://devpodcasts.net/sitemap.xml
