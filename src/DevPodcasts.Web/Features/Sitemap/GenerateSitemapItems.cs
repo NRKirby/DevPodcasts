@@ -38,7 +38,7 @@ namespace DevPodcasts.Web.Features.Sitemap
 
                 foreach (var id in episodeIds)
                 {
-                    sitemapItems.Add(new SitemapItem($"https://devpodcasts.net/episode/detail/{id}", priority: 1, changeFrequency: SitemapChangeFrequency.Never));
+                    sitemapItems.Add(new SitemapItem($"https://devpodcasts.net/episode/detail/{id}", priority: 1));
                 }
 
                 var podcastIds = _context.Podcasts.Where(podcast => podcast.IsApproved == true).Select(podcast => podcast.Id).ToList();
