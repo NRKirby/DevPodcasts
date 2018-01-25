@@ -1,13 +1,13 @@
 ﻿using DevPodcasts.DataLayer.Models;
 using DevPodcasts.Dtos;
 using DevPodcasts.ViewModels.Admin;
-using System;
 using DevPodcasts.ViewModels.Home;
+using DevPodcasts.ViewModels.Podcast;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using DevPodcasts.ViewModels.Podcast;
 
 namespace DevPodcasts.Repositories
 {
@@ -148,10 +148,10 @@ namespace DevPodcasts.Repositories
                     Title = i.Title,
                     NumberOfEpisodes = i.Episodes.Count,
                     Description = i.Description,
-                    ImageUrl = i.ImageUrl,
+                    ImageUrl = i.ResizedImageUrl ?? i.ImageUrl,
                     Tags = i.Tags
                     .OrderBy(tag => tag.Name)
-                    .Select(tag => new ViewModels.Tags.TagViewModel { Name = tag.Name, Slug = tag.Slug})
+                    .Select(tag => new ViewModels.Tags.TagViewModel { Name = tag.Name, Slug = tag.Slug })
                 });
         }
 

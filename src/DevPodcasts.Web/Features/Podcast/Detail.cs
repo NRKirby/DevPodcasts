@@ -57,7 +57,7 @@ namespace DevPodcasts.Web.Features.Podcast
                     Title = podcast.Title,
                     Description = podcast.Description,
                     SiteUrl = podcast.SiteUrl,
-                    ImageUrl = podcast.ImageUrl,
+                    ImageUrl = podcast.ResizedImageUrl ?? podcast.ImageUrl,
                     Tags = podcast.Tags
                         .Select(tag => new TagViewModel { Name = tag.Name, Slug = tag.Slug }),
                     IsSubscribed = isSubscribed,
