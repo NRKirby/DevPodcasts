@@ -64,7 +64,7 @@ namespace DevPodcasts.NotifyPodcastSubscribers
             var htmlContent = $@"<h1>Dev Podcasts</h1>
                                  <p>New episode <strong>{episode.Title}</strong> available</p>
                                  <a href=""https://devpodcasts.net/episode/detail/{episode.Id}"">https://devpodcasts.net/episode/detail/{episode.Id}</a>
-                                 <p><strong>Summary:</strong</p>
+                                 <p><strong>Summary:</strong></p>
                                  <p>{episode.Summary}</p>";
 
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
