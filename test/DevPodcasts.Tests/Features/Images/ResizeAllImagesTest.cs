@@ -9,12 +9,12 @@ namespace DevPodcasts.Tests.Features.Images
     public class ResizeAllImagesTest : TestBase
     {
         // We don't need to run this test continuously
-        [Ignore] 
+        [Ignore]
         [TestMethod]
         public void ResizeAllPodcastImages()
         {
             var context = new ApplicationDbContext();
-            const string containerName = "images-test";
+            const string containerName = "podcast-images";
             const int width = 500;
             const int height = 500;
 
