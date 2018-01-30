@@ -9,7 +9,7 @@ namespace DevPodcasts.Tests.Features.Images
     public class ResizeAllImagesTest : TestBase
     {
         // We don't need to run this test continuously
-        [Ignore]
+        //[Ignore]
         [TestMethod]
         public void ResizeAllPodcastImages()
         {
