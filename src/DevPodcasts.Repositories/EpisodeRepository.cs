@@ -4,8 +4,11 @@ using DevPodcasts.Logging;
 using DevPodcasts.ViewModels.Home;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using Dapper;
+using System.Configuration;
 
 namespace DevPodcasts.Repositories
 {
@@ -116,18 +119,22 @@ namespace DevPodcasts.Repositories
 
         public IEnumerable<RecentEpisode> GetMostRecentEpisodes(int numberOfEpisodes)
         {
-            return _context
-                .Episodes
-                .AsNoTracking()
-                .OrderByDescending(i => i.Id)
-                .Take(numberOfEpisodes)
-                .Select(x => new RecentEpisode
-                {
-                    Id = x.Id,
-                    Title = x.Title,
-                    PodcastTitle = x.Podcast.Title
-                })
-                .ToList();
+            IEnumerable<RecentEpisode> episodes;
+            using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                episodes = db.Query<RecentEpisode>(GetQuery());
+            };
+            return episodes;
+        }
+
+        private static string GetQuery()
+        {
+            return @"SELECT TOP 10 Episodes.Id as Id, Episodes.Title as Title, Podcasts.Title AS PodcastTitle 
+                     FROM Episodes
+                     INNER JOIN Podcasts
+                     ON Episodes.PodcastId = Podcasts.Id
+                     ORDER BY DatePublished DESC";
         }
     }
+
 }
