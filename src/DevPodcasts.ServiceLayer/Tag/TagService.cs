@@ -44,7 +44,7 @@ namespace DevPodcasts.ServiceLayer.Tag
                 {
                     Id = i.Id,
                     Title = i.Title,
-                    ImageUrl = i.ImageUrl,
+                    ImageUrl = i.ResizedImageUrl ?? i.ImageUrl,
                     Description = i.Description,
                     NumberOfEpisodes = i.Episodes.Count,
                     Tags = i.Tags
