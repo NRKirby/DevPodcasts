@@ -4,6 +4,7 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Azure.WebJobs.Host;
 using SendGrid;
 using SendGrid.Helpers.Mail;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -18,16 +19,16 @@ namespace DevPodcasts.NotifyPodcastSubscribers
         {
             log.Info("C# HTTP trigger function processed a request.");
 
-            PostData data = await req.Content.ReadAsAsync<PostData>();
+            var data = await req.Content.ReadAsAsync<PostData>();
 
-            var connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["AzureSqlDb"].ConnectionString;
+            var connectionString = ConfigurationManager.ConnectionStrings["AzureSqlDb"].ConnectionString;
             var context = new ApplicationDbContext(connectionString);
 
             var key = data?.Key;
             if (key != "pT2BAmc0FQTLbicn6cDXkPXTagCqCoei")
                 return req.CreateResponse(HttpStatusCode.BadRequest, "Invalid key");
 
-            int episodeId = data.EpisodeId;
+            var episodeId = data.EpisodeId;
             var episode = context.Episodes.SingleOrDefault(e => e.Id == episodeId);
             var podcast = episode.Podcast;
 
@@ -53,7 +54,7 @@ namespace DevPodcasts.NotifyPodcastSubscribers
         {
             var podcast = episode.Podcast;
 
-            const string apiKey = "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";
+            var apiKey = ConfigurationManager.AppSettings["SendGridKey"];
             var client = new SendGridClient(apiKey);
 
             var from = new EmailAddress("notifications@devpodcasts.net", "Dev Podcasts");

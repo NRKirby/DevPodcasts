@@ -111,7 +111,7 @@ namespace DevPodcasts.EpisodeUpdater
             }
         }
 
-        private async static Task NotifyPodcastSubscribers(int episodeId)
+        private static async Task NotifyPodcastSubscribers(int episodeId)
         {
             var obj = new
             {
