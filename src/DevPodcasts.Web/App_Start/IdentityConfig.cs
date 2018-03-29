@@ -26,6 +26,7 @@ namespace DevPodcasts.Web
         public ApplicationUserManager(IUserStore<ApplicationUser> store)
             : base(store)
         {
+            this.UserTokenProvider = new TotpSecurityStampBasedTokenProvider<ApplicationUser, string>();
         }
 
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 

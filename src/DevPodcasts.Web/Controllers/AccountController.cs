@@ -154,9 +154,6 @@ namespace DevPodcasts.Web.Controllers
 
                     await _context.SaveChangesAsync();
 
-                    var provider = new DpapiDataProtectionProvider("DevPodcasts");
-                    UserManager.UserTokenProvider = new DataProtectorTokenProvider<ApplicationUser, string>(provider.Create("UserToken"));
-
                     var code = await UserManager.GenerateEmailConfirmationTokenAsync(newUser.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account",
                        new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
