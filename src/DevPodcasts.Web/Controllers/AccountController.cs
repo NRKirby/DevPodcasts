@@ -3,6 +3,7 @@ using DevPodcasts.ViewModels.Account;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.DataProtection;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -15,7 +16,7 @@ namespace DevPodcasts.Web.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
         public AccountController()
         {
@@ -153,7 +154,10 @@ namespace DevPodcasts.Web.Controllers
 
                     await _context.SaveChangesAsync();
 
-                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var provider = new DpapiDataProtectionProvider("DevPodcasts");
+                    UserManager.UserTokenProvider = new DataProtectorTokenProvider<ApplicationUser, string>(provider.Create("UserToken"));
+
+                    var code = await UserManager.GenerateEmailConfirmationTokenAsync(newUser.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account",
                        new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     await UserManager.SendEmailAsync(user.Id,
