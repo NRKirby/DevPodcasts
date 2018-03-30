@@ -8,7 +8,6 @@ namespace DevPodcasts.ServiceLayer.Email
         public const string AdminEmailAddress = "nrkirb@gmail.com";
         public const string AdminNoReplyAddress = "no-reply@devpodcasts.net";
         public const string DevPodcasts = "Dev Podcasts";
-        public const string GCaptchaSecret = "6LeAoA8UAAAAAHLLZXNxdUxnWsj5wNCtPPvecs8o";
 
         public const string ContactResponseMessage = "Thanks for contacting us, we will contact you as soon as we can.";
     }

@@ -3,6 +3,7 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using Newtonsoft.Json;
 using System;
+using System.Configuration;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
@@ -15,14 +16,14 @@ namespace DevPodcasts.EpisodeUpdater
 {
     public static class Function
     {
-        private static HttpClient client = new HttpClient();
+        private static readonly HttpClient client = new HttpClient();
 
         [FunctionName("Function")]
         public static async Task Run([TimerTrigger("0 */30 * * * *")]TimerInfo myTimer, TraceWriter log)
         {
             log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
 
-            var connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["AzureSqlDb"].ConnectionString;
+            var connectionString = ConfigurationManager.ConnectionStrings["AzureSqlDb"].ConnectionString;
             var context = new ApplicationDbContext(connectionString);
 
             var podcasts = context.Podcasts
@@ -115,7 +116,7 @@ namespace DevPodcasts.EpisodeUpdater
         {
             var obj = new
             {
-                Key = "pT2BAmc0FQTLbicn6cDXkPXTagCqCoei",
+                Key = ConfigurationManager.AppSettings["NotifyPodcastSubscribersAccessKey"],
                 EpisodeId = episodeId
             };
 

@@ -2,7 +2,7 @@
 {
     public class PostData
     {
-        public string Key { get; set; }
+        public string AccessKey { get; set; }
         public int EpisodeId { get; set; }
     }
 }

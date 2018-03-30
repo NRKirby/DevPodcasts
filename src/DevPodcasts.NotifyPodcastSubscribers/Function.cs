@@ -21,12 +21,11 @@ namespace DevPodcasts.NotifyPodcastSubscribers
 
             var data = await req.Content.ReadAsAsync<PostData>();
 
+            if (data?.AccessKey != ConfigurationManager.AppSettings["AccessKey"])
+                return req.CreateResponse(HttpStatusCode.BadRequest, "Invalid key");
+
             var connectionString = ConfigurationManager.ConnectionStrings["AzureSqlDb"].ConnectionString;
             var context = new ApplicationDbContext(connectionString);
-
-            var key = data?.Key;
-            if (key != "pT2BAmc0FQTLbicn6cDXkPXTagCqCoei")
-                return req.CreateResponse(HttpStatusCode.BadRequest, "Invalid key");
 
             var episodeId = data.EpisodeId;
             var episode = context.Episodes.SingleOrDefault(e => e.Id == episodeId);
