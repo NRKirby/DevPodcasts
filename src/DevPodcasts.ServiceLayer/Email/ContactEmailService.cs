@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using SendGrid;
 using SendGrid.Helpers.Mail;
+using System.Configuration;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -27,10 +28,11 @@ namespace DevPodcasts.ServiceLayer.Email
             return model;
         }
 
-        private async Task<CaptchaResponse> ValidateCaptchaResponse(string gCaptchaResponse)
+        private static async Task<CaptchaResponse> ValidateCaptchaResponse(string gCaptchaResponse)
         {
+            var gCaptchaSecret = ConfigurationManager.AppSettings["GCaptchaSecret"];
             var webClient = new WebClient();
-            var reply = await webClient.DownloadStringTaskAsync($"https://www.google.com/recaptcha/api/siteverify?secret={EmailConstants.GCaptchaSecret}&response={gCaptchaResponse}");
+            var reply = await webClient.DownloadStringTaskAsync($"https://www.google.com/recaptcha/api/siteverify?secret={gCaptchaSecret}&response={gCaptchaResponse}");
 
             return JsonConvert.DeserializeObject<CaptchaResponse>(reply);
         }
