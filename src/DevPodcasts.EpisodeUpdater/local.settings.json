@@ -2,7 +2,8 @@
   "IsEncrypted": false,
   "Values": {
     "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=devpodcastswesteu;AccountKey=DMrz807e6jBTJMJCY1oLiPs8DpUEZ8ObjKA12czFWPStPjhpURwcyKiL0FBqDHsz0DmWfAdxN7ISmjcRISBu2A==;EndpointSuffix=core.windows.net",
-    "AzureWebJobsDashboard": ""
+    "AzureWebJobsDashboard": "",
+    "NotifyPodcastSubscribersAccessKey": "000000"
   },
   "ConnectionStrings": {
     "AzureSqlDb": "Server=tcp:devpodcasts.database.windows.net,1433;Initial Catalog=devpodcasts;Persist Security Info=False;User ID=whiffwhaff9238;Password=mtisaIr2ESthVS64Kx7z;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
