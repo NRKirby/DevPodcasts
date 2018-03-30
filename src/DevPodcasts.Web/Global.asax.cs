@@ -122,6 +122,7 @@ namespace DevPodcasts.Web
             builder.RegisterType<SearchService>();
             builder.RegisterType<TagService>();
             builder.RegisterType<LogService>().As<LogService>();
+            builder.RegisterType<AccountEmailService>().As<IIdentityMessageService>();
 
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
