@@ -24,7 +24,7 @@ namespace DevPodcasts.NotifyPodcastSubscribers
             if (data?.AccessKey != ConfigurationManager.AppSettings["AccessKey"])
                 return req.CreateResponse(HttpStatusCode.BadRequest, "Invalid key");
 
-            var connectionString = ConfigurationManager.ConnectionStrings["AzureSqlDb"].ConnectionString;
+            var connectionString = ConfigurationManager.ConnectionStrings["SqlDb"].ConnectionString;
             var context = new ApplicationDbContext(connectionString);
 
             var episodeId = data.EpisodeId;

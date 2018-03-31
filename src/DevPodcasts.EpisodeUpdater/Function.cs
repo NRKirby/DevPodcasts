@@ -16,14 +16,14 @@ namespace DevPodcasts.EpisodeUpdater
 {
     public static class Function
     {
-        private static readonly HttpClient client = new HttpClient();
+        private static readonly HttpClient Client = new HttpClient();
 
         [FunctionName("Function")]
         public static async Task Run([TimerTrigger("0 */30 * * * *")]TimerInfo myTimer, TraceWriter log)
         {
             log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
 
-            var connectionString = ConfigurationManager.ConnectionStrings["AzureSqlDb"].ConnectionString;
+            var connectionString = ConfigurationManager.ConnectionStrings["SqlDb"].ConnectionString;
             var context = new ApplicationDbContext(connectionString);
 
             var podcasts = context.Podcasts
@@ -121,7 +121,7 @@ namespace DevPodcasts.EpisodeUpdater
             };
 
             var content = new StringContent(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json");
-            var response = await client.PostAsync("https://devpodcastsnotifypodcastsubscribers.azurewebsites.net/api/NotifyPodcastSubscribers", content);
+            var response = await Client.PostAsync("https://devpodcastsnotifypodcastsubscribers.azurewebsites.net/api/NotifyPodcastSubscribers", content);
 
             var responseString = await response.Content.ReadAsStringAsync();
         }
