@@ -1,7 +1,7 @@
 {
   "IsEncrypted": false,
   "Values": {
-    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=devpodcastswesteu;AccountKey=DMrz807e6jBTJMJCY1oLiPs8DpUEZ8ObjKA12czFWPStPjhpURwcyKiL0FBqDHsz0DmWfAdxN7ISmjcRISBu2A==;EndpointSuffix=core.windows.net",
+    "AzureWebJobsStorage": "",
     "AzureWebJobsDashboard": "",
     "SendGridKey": "000000",
     "AccessKey": "000000"
