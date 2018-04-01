@@ -1,7 +1,7 @@
-﻿using DevPodcasts.DataLayer.Models;
-using DevPodcasts.Dtos;
-using DevPodcasts.Logging;
+﻿using DevPodcasts.Logging;
 using DevPodcasts.Models;
+using DevPodcasts.Models.Dtos;
+using DevPodcasts.Models.DTOs;
 using DevPodcasts.Repositories;
 using System;
 using System.Linq;
@@ -11,23 +11,17 @@ namespace DevPodcasts.ServiceLayer.RSS
 {
     public class RssService
     {
-        private readonly EpisodeRepository _episodeRepository;
         private readonly PodcastRepository _podcastRepository;
         private readonly RssParser _rssParser;
         private readonly ILogger _logger;
-        private readonly ApplicationDbContext _context;
 
-        public RssService(EpisodeRepository episodeRepository,
-            PodcastRepository podcastRepository,
+        public RssService(PodcastRepository podcastRepository,
             RssParser rssParser,
-            ILogger logger,
-            ApplicationDbContext context)
+            ILogger logger)
         {
-            _episodeRepository = episodeRepository;
             _podcastRepository = podcastRepository;
             _rssParser = rssParser;
             _logger = logger;
-            _context = context;
         }
 
         public PodcastDto GetPodcastForReview(string rssFeedUrl)
@@ -105,12 +99,12 @@ namespace DevPodcasts.ServiceLayer.RSS
             return item.Links.FirstOrDefault(i => i.RelationshipType == "alternate")?.Uri.ToString();
         }
 
-        private string GetSiteUrl(SyndicationFeed feed)
+        private static string GetSiteUrl(SyndicationFeed feed)
         {
             return feed.Links.FirstOrDefault(i => i.RelationshipType == "alternate")?.Uri.ToString();
         }
 
-        private string GetAudioUrl(SyndicationItem item)
+        private static string GetAudioUrl(SyndicationItem item)
         {
             return item.Links.FirstOrDefault(i => i.RelationshipType == "enclosure")?.Uri.ToString();
         }

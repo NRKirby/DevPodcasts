@@ -1,7 +1,7 @@
-﻿using DevPodcasts.Models;
+﻿using DevPodcasts.Models.Dtos;
 using System.Collections.Generic;
 
-namespace DevPodcasts.Dtos
+namespace DevPodcasts.Models.DTOs
 {
     public class PodcastDto
     {

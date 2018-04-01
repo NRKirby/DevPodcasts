@@ -64,6 +64,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTOs\EpisodeDto.cs" />
+    <Compile Include="DTOs\PodcastDto.cs" />
+    <Compile Include="DTOs\TagDto.cs" />
     <Compile Include="EpisodeSummaryLocation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RssFeed.cs" />

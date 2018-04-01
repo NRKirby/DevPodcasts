@@ -13,8 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevPodcasts.Repositories", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevPodcasts.Logging", "src\DevPodcasts.Logging\DevPodcasts.Logging.csproj", "{DADD403F-5DF9-48BE-9D19-68847B9767AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevPodcasts.Dtos", "src\DevPodcasts.Dtos\DevPodcasts.Dtos.csproj", "{4ECC6970-F931-4D33-B125-C58954D93917}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevPodcasts.DataLayer", "src\DevPodcasts.DataLayer\DevPodcasts.DataLayer.csproj", "{4AE9EE14-21C0-4DB6-AF8A-0AB2D4356470}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevPodcasts.Models", "src\DevPodcasts.Models\DevPodcasts.Models.csproj", "{B57CD494-1622-44FD-B8AF-C3504D57B7CC}"
@@ -53,10 +51,6 @@ Global
 		{DADD403F-5DF9-48BE-9D19-68847B9767AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DADD403F-5DF9-48BE-9D19-68847B9767AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DADD403F-5DF9-48BE-9D19-68847B9767AA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4ECC6970-F931-4D33-B125-C58954D93917}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4ECC6970-F931-4D33-B125-C58954D93917}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4ECC6970-F931-4D33-B125-C58954D93917}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4ECC6970-F931-4D33-B125-C58954D93917}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4AE9EE14-21C0-4DB6-AF8A-0AB2D4356470}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4AE9EE14-21C0-4DB6-AF8A-0AB2D4356470}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4AE9EE14-21C0-4DB6-AF8A-0AB2D4356470}.Release|Any CPU.ActiveCfg = Release|Any CPU

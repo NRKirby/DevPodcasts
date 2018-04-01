@@ -1,6 +1,6 @@
 ﻿using DevPodcasts.DataLayer.Models;
-using DevPodcasts.Dtos;
 using DevPodcasts.Models;
+using DevPodcasts.Models.DTOs;
 using DevPodcasts.Repositories;
 using DevPodcasts.ServiceLayer.Email;
 using DevPodcasts.ServiceLayer.RSS;
@@ -19,22 +19,19 @@ namespace DevPodcasts.ServiceLayer.Podcast
         private readonly RssService _rssService;
         private readonly PodcastEmailService _podcastEmailService;
         private readonly TagsRepository _tagsRepository;
-        private readonly ApplicationDbContext _context;
 
         public PodcastService(
             PodcastRepository podcastRepository,
             EpisodeRepository episodeRepository,
             RssService rssService,
             PodcastEmailService podcastEmailService,
-            TagsRepository tagsRepository,
-            ApplicationDbContext context)
+            TagsRepository tagsRepository)
         {
             _podcastRepository = podcastRepository;
             _episodeRepository = episodeRepository;
             _rssService = rssService;
             _podcastEmailService = podcastEmailService;
             _tagsRepository = tagsRepository;
-            _context = context;
         }
 
         public int GetTotalPodcasts()

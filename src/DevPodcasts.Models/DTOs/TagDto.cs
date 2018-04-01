@@ -1,4 +1,4 @@
-﻿namespace DevPodcasts.Dtos
+﻿namespace DevPodcasts.Models.DTOs
 {
     public class TagDto
     {

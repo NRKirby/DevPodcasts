@@ -1,14 +1,14 @@
-﻿using DevPodcasts.DataLayer.Models;
-using DevPodcasts.Dtos;
+﻿using Dapper;
+using DevPodcasts.DataLayer.Models;
 using DevPodcasts.Logging;
+using DevPodcasts.Models.Dtos;
 using DevPodcasts.ViewModels.Home;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
-using Dapper;
-using System.Configuration;
 
 namespace DevPodcasts.Repositories
 {

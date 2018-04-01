@@ -1,5 +1,4 @@
 ﻿using DevPodcasts.DataLayer.Models;
-using DevPodcasts.Dtos;
 using DevPodcasts.ViewModels.Admin;
 using DevPodcasts.ViewModels.Home;
 using DevPodcasts.ViewModels.Podcast;
@@ -8,6 +7,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
+using DevPodcasts.Models.DTOs;
 
 namespace DevPodcasts.Repositories
 {

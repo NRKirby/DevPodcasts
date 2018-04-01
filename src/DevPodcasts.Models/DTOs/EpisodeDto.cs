@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Security.AccessControl;
 
-namespace DevPodcasts.Dtos
+namespace DevPodcasts.Models.Dtos
 {
     public class EpisodeDto
     {
