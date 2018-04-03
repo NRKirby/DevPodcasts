@@ -116,7 +116,7 @@ namespace DevPodcasts.EpisodeUpdater
         {
             var obj = new
             {
-                Key = ConfigurationManager.AppSettings["NotifyPodcastSubscribersAccessKey"],
+                AccessKey = ConfigurationManager.AppSettings["NotifyPodcastSubscribersAccessKey"],
                 EpisodeId = episodeId
             };
 
