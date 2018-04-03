@@ -1,3 +1,4 @@
+using System;
 using DevPodcasts.DataLayer.Models;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
@@ -22,7 +23,12 @@ namespace DevPodcasts.NotifyPodcastSubscribers
             var data = await req.Content.ReadAsAsync<PostData>();
 
             if (data?.AccessKey != ConfigurationManager.AppSettings["AccessKey"])
-                return req.CreateResponse(HttpStatusCode.BadRequest, "Invalid key");
+            {
+                var invalidKeyMessage = $"{data?.AccessKey} is an invalid key";
+                log.Error(invalidKeyMessage);
+                return req.CreateResponse(HttpStatusCode.BadRequest, invalidKeyMessage);
+            }
+                
 
             var connectionString = ConfigurationManager.ConnectionStrings["SqlDb"].ConnectionString;
             var context = new ApplicationDbContext(connectionString);
@@ -39,7 +45,7 @@ namespace DevPodcasts.NotifyPodcastSubscribers
             var count = 0;
             foreach (var user in users)
             {
-                await SendEmail(user, episode);
+                await SendEmail(user, episode, log);
                 log.Info($"Email sent to {user.Email}");
                 count++;
             }
@@ -49,7 +55,7 @@ namespace DevPodcasts.NotifyPodcastSubscribers
             return req.CreateResponse(HttpStatusCode.OK, $"{count} emails sent");
         }
 
-        private static async Task SendEmail(ApplicationUser user, Episode episode)
+        private static async Task SendEmail(ApplicationUser user, Episode episode , TraceWriter log)
         {
             var podcast = episode.Podcast;
 
@@ -69,7 +75,15 @@ namespace DevPodcasts.NotifyPodcastSubscribers
 
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
 
-            var response = await client.SendEmailAsync(msg);
+            try
+            {
+                await client.SendEmailAsync(msg);
+            }
+            catch (Exception ex)
+            {
+                log.Error($"Problem sending email\n\n {ex}");
+            }
+            
         }
     }
 }
