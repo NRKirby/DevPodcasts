@@ -114,9 +114,11 @@ namespace DevPodcasts.EpisodeUpdater
 
         private static async Task NotifyPodcastSubscribers(int episodeId)
         {
+            var accessKey = ConfigurationManager.AppSettings["NotifyPodcastSubscribersAccessKey"];
+
             var obj = new
             {
-                AccessKey = ConfigurationManager.AppSettings["NotifyPodcastSubscribersAccessKey"],
+                AccessKey = accessKey,
                 EpisodeId = episodeId
             };
 
