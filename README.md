@@ -7,6 +7,7 @@ Initially built as part of an [Open University](https://www.open.ac.uk) final pr
 ## Built With
 
 * [ASP.NET MVC5](https://github.com/aspnet/AspNetWebStack) - Web framework
+* [Azure Functions](https://azure.microsoft.com/en-gb/services/functions/) - Episode Updater, Notifying subscribers of new episodes
 * [Nuget](https://www.nuget.org) - Dependency Management
 * [SyndicationFeed](https://msdn.microsoft.com/en-us/library/system.servicemodel.syndication.syndicationfeed(v=vs.110).aspx) - Used to parse RSS feeds
 * [JQuery](https://github.com/jquery/jquery) - JavaScript Library
