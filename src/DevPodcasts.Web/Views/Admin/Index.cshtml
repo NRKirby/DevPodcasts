@@ -24,9 +24,9 @@
                     <td>@item.Title</td> 
                     <td><a href="@item.SiteUrl" rel="noopener noreferrer" target="_blank">@item.SiteUrl</a></td>
                     <td>@item.DateAdded</td> 
-                    <td>
-                        <a href="@Url.Action("ReviewSubmission", "Admin", new { podcastId = @item.Id })"><i class="fa fa-check fa-lg" aria-hidden="true" style="color: #228B22;" title="Review submission & approve"></i></a>
-                        <a href="@Url.Action("Reject", "Admin", new { podcastId = @item.Id })"><i class="fa fa-times fa-lg" aria-hidden="true" style="color: red; position: relative; left: 15px" title="Reject"></i></a>
+                    <td style="width: 75px">
+                        <a href="@Url.Action("ReviewSubmission", "Admin", new { podcastId = @item.Id })"><i class="fa fa-check fa-lg" aria-hidden="true" style="color: #228B22;" title="Review/approve"></i></a>
+                        <a href="@Url.Action("Reject", "Admin", new { podcastId = @item.Id })"><i class="fa fa-times fa-lg" aria-hidden="true" style="color: red; margin-left: 10px;" title="Reject" onclick="return confirmReject();"></i></a>
                     </td>
                 </tr>
             }
@@ -35,6 +35,11 @@
     </table>
 }
 
+<script>
+    function confirmReject() {
+        return confirm("Are you sure you want to reject this podcast?");
+    }
+</script>
 
 
 

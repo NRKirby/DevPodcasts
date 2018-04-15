@@ -77,7 +77,7 @@ namespace DevPodcasts.Repositories
                 .Podcasts
                 .AsNoTracking()
                 .Where(i => i.IsApproved == null)
-                .OrderBy(i => i.DateCreated)
+                .OrderByDescending(i => i.DateCreated)
                 .Select(i => new PodcastViewModel
                 {
                     Id = i.Id,
