@@ -44,14 +44,6 @@ namespace DevPodcasts.Web.Features.Images
                         using (var imageFactory = new ImageFactory())
                         {
                             imageFactory.Load(inStream);
-                            var image = imageFactory.Image;
-
-                            // only resize images which are larger than resize size
-                            var max = Math.Max(image.Width, image.Height);
-                            if (max < message.Width)
-                            {
-                                return null;
-                            }
 
                             imageFactory
                                 .Resize(new System.Drawing.Size(message.Width, message.Height))
@@ -70,7 +62,7 @@ namespace DevPodcasts.Web.Features.Images
             private static string GetImageNameAndExtension(string podcastTitle, string contentType)
             {
                 var imageExtension = contentType == "image/jpeg" ? ".jpeg" : ".png";
-                var imageName = Regex.Replace(podcastTitle, "[.|%|'|(|)|_|®|@]", "").Replace(" ","_").ToLower();
+                var imageName = Regex.Replace(podcastTitle, "[.|%|'|(|)|_|®|@]", "").Replace(" ", "_").ToLower();
 
                 return imageName + imageExtension;
             }
