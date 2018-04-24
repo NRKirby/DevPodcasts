@@ -1,8 +1,6 @@
 ﻿using DevPodcasts.DataLayer.Models;
-using DevPodcasts.Models;
 using DevPodcasts.Models.DTOs;
 using DevPodcasts.Repositories;
-using DevPodcasts.ServiceLayer.Email;
 using DevPodcasts.ServiceLayer.RSS;
 using DevPodcasts.ViewModels.Home;
 using DevPodcasts.ViewModels.Podcast;
@@ -17,44 +15,18 @@ namespace DevPodcasts.ServiceLayer.Podcast
         private readonly PodcastRepository _podcastRepository;
         private readonly EpisodeRepository _episodeRepository;
         private readonly RssService _rssService;
-        private readonly PodcastEmailService _podcastEmailService;
         private readonly TagsRepository _tagsRepository;
 
         public PodcastService(
             PodcastRepository podcastRepository,
             EpisodeRepository episodeRepository,
             RssService rssService,
-            PodcastEmailService podcastEmailService,
             TagsRepository tagsRepository)
         {
             _podcastRepository = podcastRepository;
             _episodeRepository = episodeRepository;
             _rssService = rssService;
-            _podcastEmailService = podcastEmailService;
             _tagsRepository = tagsRepository;
-        }
-
-        public int GetTotalPodcasts()
-        {
-            return _podcastRepository.GetTotalPodcasts();
-        }
-
-        public async Task<SubmitPodcastViewModel> SubmitPodcastForReview(SubmitPodcastViewModel model)
-        {
-            var podcastDto = _rssService.GetPodcastForReview(model.RssFeedUrl);
-            if (podcastDto.SuccessResult == SuccessResult.Success)
-            {
-                await _podcastRepository.Add(podcastDto);
-                await _podcastEmailService.SendPodcastSubmittedEmailAsync(podcastDto.Title);
-            }
-
-            var viewModel = new SubmitPodcastViewModel
-            {
-                RssFeedUrl = podcastDto.FeedUrl,
-                SuccessResult = podcastDto.SuccessResult
-            };
-
-            return viewModel;
         }
 
         public PodcastIndexViewModel Search(string query = null)

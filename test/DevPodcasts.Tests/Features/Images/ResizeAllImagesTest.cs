@@ -23,26 +23,27 @@ namespace DevPodcasts.Tests.Features.Images
                     && !podcast.Title.Contains("svg"))
                 .ToList();
 
+            var resizeHandler = new Resize.CommandHandler();
+            var uploadHandler = new UploadToBlob.CommandHandler();
+
             foreach (var podcast in podcasts)
             {
                 var url = podcast.ImageUrl;
 
-                var resizedImage = Mediator.Send(new Resize.Command {
+                var resizedImage = resizeHandler.Handle(new Resize.Command {
                     Width = width,
                     Height = height,
                     ImageUrl = url,
-                    PodcastTitle = podcast.Title })
-                    .Result;
+                    PodcastTitle = podcast.Title });
 
                 if (resizedImage == null)
                     continue;
 
-                var resizedImageUrl = Mediator.Send(new UploadToBlob.Command {
+                var resizedImageUrl = uploadHandler.Handle(new UploadToBlob.Command {
                     Bytes = resizedImage.ImageBytes,
                     BlobReference = resizedImage.ImageName,
                     ContainerName = containerName,
-                    ContentType = resizedImage.ContentType })
-                    .Result;
+                    ContentType = resizedImage.ContentType });
 
                 podcast.ResizedImageUrl = resizedImageUrl;
             }

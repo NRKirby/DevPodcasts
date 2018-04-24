@@ -1,5 +1,5 @@
 ﻿@using DevPodcasts.Models
-@model DevPodcasts.ViewModels.Podcast.SubmitPodcastViewModel
+@model DevPodcasts.Web.Features.Podcast.SubmitForReview.Model
 @{
     ViewBag.Title = "Submit a podcast";
     var successResult = Model.SuccessResult;
@@ -59,11 +59,8 @@ else
     </div>
 }
 
-@if (successResult != SuccessResult.NotSet)
-{
-    <script>
-        $('#alert').delay(4000).fadeOut('slow');
-    </script>
-}
+<script>
+    $('#alert').delay(4000).fadeOut('slow');
+</script>
 
 

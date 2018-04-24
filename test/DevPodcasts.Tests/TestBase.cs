@@ -1,65 +1,33 @@
-﻿using Autofac;
-using Autofac.Features.Variance;
-using DevPodcasts.DataLayer.Models;
-using DevPodcasts.Web;
-using MediatR;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
+﻿using DevPodcasts.DataLayer.Models;
+using Respawn;
+using System;
+using System.Configuration;
 
 namespace DevPodcasts.Tests
 {
-    public abstract class TestBase
+    public abstract class TestBase : IDisposable
     {
-        protected IMediator Mediator;
+        private static Checkpoint _checkpoint;
+        protected ApplicationDbContext Context;
 
         protected TestBase()
         {
-            var builder = new ContainerBuilder();
-
-            builder.RegisterType<ApplicationDbContext>();
-
-            Register.RegisterTypes(builder);
-            var container = builder.Build();
-
-            Mediator = container.Resolve<IMediator>(new NamedParameter("IMediator", this));
+            Context = GetTestContext();
+            _checkpoint = new Checkpoint();
         }
 
-        public static class Register
+        private static ApplicationDbContext GetTestContext()
         {
-            public static void RegisterTypes(ContainerBuilder builder)
-            {
-                builder.RegisterSource(new ContravariantRegistrationSource());
-                builder.RegisterAssemblyTypes(typeof(IMediator).GetTypeInfo().Assembly).AsImplementedInterfaces();
+            return new ApplicationDbContext(ConfigurationManager.ConnectionStrings["IntegrationTest"].ConnectionString);
+        }
 
-                builder.RegisterAssemblyTypes(typeof(Startup).GetTypeInfo().Assembly).Where(t =>
-                        t.GetInterfaces().Any(i => i.IsClosedTypeOf(typeof(IRequestHandler<,>))
-                                                   || i.IsClosedTypeOf(typeof(IRequestHandler<>))
-                                                   || i.IsClosedTypeOf(typeof(IAsyncRequestHandler<,>))
-                                                   || i.IsClosedTypeOf(typeof(IAsyncRequestHandler<>))
-                                                   || i.IsClosedTypeOf(typeof(ICancellableAsyncRequestHandler<,>))
-                                                   || i.IsClosedTypeOf(typeof(INotificationHandler<>))
-                                                   || i.IsClosedTypeOf(typeof(IAsyncNotificationHandler<>))
-                                                   || i.IsClosedTypeOf(typeof(ICancellableAsyncNotificationHandler<>))
-                        )
-                    )
-                    .AsImplementedInterfaces();
+        public void Dispose()
+        {
+            _checkpoint.Reset(ConfigurationManager.ConnectionStrings["IntegrationTest"].ConnectionString)
+                .GetAwaiter()
+                .GetResult();
 
-                builder.Register<SingleInstanceFactory>(ctx =>
-                {
-                    var c = ctx.Resolve<IComponentContext>();
-                    return t =>
-                    {
-                        object o;
-                        return c.TryResolve(t, out o) ? o : null;
-                    };
-                });
-                builder.Register<MultiInstanceFactory>(ctx =>
-                {
-                    var c = ctx.Resolve<IComponentContext>();
-                    return t => (IEnumerable<object>)c.Resolve(typeof(IEnumerable<>).MakeGenericType(t));
-                });
-            }
+            Context?.Dispose();
         }
     }
 }

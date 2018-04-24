@@ -1,8 +1,8 @@
-﻿using System;
-using Autofac;
+﻿using Autofac;
 using Autofac.Features.Variance;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
+using AutoMapper;
 using DevPodcasts.DataLayer.Models;
 using DevPodcasts.Logging;
 using DevPodcasts.Repositories;
@@ -15,11 +15,14 @@ using DevPodcasts.ServiceLayer.Podcast;
 using DevPodcasts.ServiceLayer.RSS;
 using DevPodcasts.ServiceLayer.Search;
 using DevPodcasts.ServiceLayer.Tag;
+using DevPodcasts.ViewModels.Podcast;
 using DevPodcasts.Web.App_Start;
+using DevPodcasts.Web.Features.Podcast;
 using MediatR;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security.DataProtection;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -46,6 +49,12 @@ namespace DevPodcasts.Web
             CreateRolesIfNotPresentInDatabase();
             WarmUpEntityFrameworkQueries();
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            InitializeMappings();
+        }
+
+        private static void InitializeMappings()
+        {
+            Mapper.Initialize(cfg => { cfg.CreateMap<SubmitPodcastViewModel, SubmitForReview.Command>(); });
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

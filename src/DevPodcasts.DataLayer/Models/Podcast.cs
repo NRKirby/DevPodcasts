@@ -8,6 +8,7 @@ namespace DevPodcasts.DataLayer.Models
         public Podcast()
         {
             Episodes = new List<Episode>();
+            DateCreated = DateTime.Now;
         }
 
         public int Id { get; set; }

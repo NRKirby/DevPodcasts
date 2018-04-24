@@ -15,9 +15,11 @@ namespace DevPodcasts.Tests.Features.Images
             const string containerName = "images-test";
             const string podcastTitle = "Agile in 3 Minutes";
 
-            var resizedImage =  Mediator.Send(new Resize.Command { Width = width, Height = height, ImageUrl = url, PodcastTitle = podcastTitle}).Result;
+            var resizeHandler = new Resize.CommandHandler();
+            var resizedImage = resizeHandler.Handle(new Resize.Command { Width = width, Height = height, ImageUrl = url, PodcastTitle = podcastTitle});
 
-            var result = Mediator.Send(new UploadToBlob.Command { Bytes = resizedImage.ImageBytes, BlobReference = resizedImage.ImageName, ContainerName = containerName, ContentType = resizedImage.ContentType  }).Result;
+            var uploadHandler = new UploadToBlob.CommandHandler();
+            var result = uploadHandler.Handle(new UploadToBlob.Command { Bytes = resizedImage.ImageBytes, BlobReference = resizedImage.ImageName, ContainerName = containerName, ContentType = resizedImage.ContentType  });
 
             Assert.AreEqual($"https://devpodcasts.blob.core.windows.net/{containerName}/agile_in_3_minutes.png", result);
         }

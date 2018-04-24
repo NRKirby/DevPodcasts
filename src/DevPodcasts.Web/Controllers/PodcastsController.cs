@@ -6,9 +6,9 @@ using DevPodcasts.Web.Features.Library;
 using DevPodcasts.Web.Features.Podcast;
 using MediatR;
 using Microsoft.AspNet.Identity;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using AutoMapper;
 
 namespace DevPodcasts.Web.Controllers
 {
@@ -48,15 +48,15 @@ namespace DevPodcasts.Web.Controllers
         [Authorize]
         public ActionResult Submit()
         {
-            var viewModel = new SubmitPodcastViewModel{ SuccessResult = SuccessResult.NotSet };
-            return View(viewModel);
+            return View(new SubmitForReview.Model());
         }
 
         [HttpPost]
         [Authorize]
         public async Task<ActionResult> Submit(SubmitPodcastViewModel model)
         {
-            var result = await _podcastService.SubmitPodcastForReview(model);
+            var command = Mapper.Map<SubmitPodcastViewModel, SubmitForReview.Command>(model);
+            var result = await _mediator.Send(command);
             return View(result);
         }
 
