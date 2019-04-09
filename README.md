@@ -2,7 +2,7 @@
 
 DevPodcasts is a directory of podcasts for software developers.
 
-Initially built as part of an [Open University](https://www.open.ac.uk) final project in 2017.
+Built as part of an [Open University](https://www.open.ac.uk) final project in 2017.
 
 ## Built With
 
